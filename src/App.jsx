@@ -1,6 +1,13 @@
 import React from "react";
-import "./App.scss";
+// components
+import Header from "./components/Header";
+// style
+import "./styles/App.scss";
 
-const App = () => <div>App</div>;
+const App = () => (
+  <div className="container-app">
+    <Header />
+  </div>
+);
 
 export default App;
