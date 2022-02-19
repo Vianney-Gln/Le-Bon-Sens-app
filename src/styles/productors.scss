@@ -14,7 +14,14 @@
     .container-carrousel {
       width: 50%;
       height: 400px;
-      background-color: grey;
+
+      .each-slide {
+        height: 400px;
+        .slide {
+          height: 100%;
+          background-size: cover;
+        }
+      }
     }
     .container-description-productor {
       width: 50%;
