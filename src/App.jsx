@@ -1,5 +1,5 @@
 import React from "react";
-// import Footer from "./components/Footer";
+import Footer from "./components/Footer";
 // components
 import Header from "./components/Header";
 import Products from "./components/Products";
@@ -12,7 +12,7 @@ const App = () => (
     <Header />
     <Products />
     {/* <Shop /> */}
-    {/* <Footer /> */}
+    <Footer />
   </div>
 );
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles/products.scss";
 
 // icons sort
@@ -11,8 +11,25 @@ import diversProducts from "../images/divers-products.jpg";
 const Products = () => {
   // doc title
   document.title = "Le Bon Sens - Nos Produits";
+
+  // states
+  const [insert, setInsert] = useState(true);
+
+  // function disabling insert
+  const disableInsert = () => {
+    setInsert(!insert);
+  };
+
   return (
     <div className="container-products">
+      {insert && (
+        <div className="insert-event">
+          <p>Nouvel évènement disponible!</p>
+          <button type="button" onClick={() => disableInsert()}>
+            fermer
+          </button>
+        </div>
+      )}
       <h1>Nos Produits</h1>
       <div className="container-search-bar">
         <label htmlFor="search">
@@ -43,78 +60,84 @@ const Products = () => {
           </li>
         </ul>
       </div>
-      <ul className="container-list-products">
-        <li>
-          <img src={diversProducts} alt="product" />
-          <span>Choux</span>
-          <span>1.48€/kg</span>
-        </li>
-        <li>
-          <img src={diversProducts} alt="product" />
-          <span>Choux</span>
-          <span>1.48€/kg</span>
-        </li>
-        <li>
-          <img src={diversProducts} alt="product" />
-          <span>Choux</span>
-          <span>1.48€/kg</span>
-        </li>
-        <li>
-          <img src={diversProducts} alt="product" />
-          <span>Choux</span>
-          <span>1.48€/kg</span>
-        </li>
-        <li>
-          <img src={diversProducts} alt="product" />
-          <span>Choux</span>
-          <span>1.48€/kg</span>
-        </li>
-        <li>
-          <img src={diversProducts} alt="product" />
-          <span>Choux</span>
-          <span>1.48€/kg</span>
-        </li>
-        <li>
-          <img src={diversProducts} alt="product" />
-          <span>Choux</span>
-          <span>1.48€/kg</span>
-        </li>
-        <li>
-          <img src={diversProducts} alt="product" />
-          <span>Choux</span>
-          <span>1.48€/kg</span>
-        </li>
-        <li>
-          <img src={diversProducts} alt="product" />
-          <span>Choux</span>
-          <span>1.48€/kg</span>
-        </li>
-        <li>
-          <img src={diversProducts} alt="product" />
-          <span>Choux</span>
-          <span>1.48€/kg</span>
-        </li>
-        <li>
-          <img src={diversProducts} alt="product" />
-          <span>Choux</span>
-          <span>1.48€/kg</span>
-        </li>
-        <li>
-          <img src={diversProducts} alt="product" />
-          <span>Choux</span>
-          <span>1.48€/kg</span>
-        </li>
-        <li>
-          <img src={diversProducts} alt="product" />
-          <span>Choux</span>
-          <span>1.48€/kg</span>
-        </li>
-        <li>
-          <img src={diversProducts} alt="product" />
-          <span>Choux</span>
-          <span>1.48€/kg</span>
-        </li>
-      </ul>
+      <p className="infos-price">
+        Les prix indiqués sont valables en boutique, il n&apos; y a pas
+        possibilité d&apos; acheter sur ce site.
+      </p>
+      <div className="container-products">
+        <ul className="container-list-products">
+          <li>
+            <img src={diversProducts} alt="product" />
+            <span>Choux</span>
+            <span>1.48€/kg</span>
+          </li>
+          <li>
+            <img src={diversProducts} alt="product" />
+            <span>Choux</span>
+            <span>1.48€/kg</span>
+          </li>
+          <li>
+            <img src={diversProducts} alt="product" />
+            <span>Choux</span>
+            <span>1.48€/kg</span>
+          </li>
+          <li>
+            <img src={diversProducts} alt="product" />
+            <span>Choux</span>
+            <span>1.48€/kg</span>
+          </li>
+          <li>
+            <img src={diversProducts} alt="product" />
+            <span>Choux</span>
+            <span>1.48€/kg</span>
+          </li>
+          <li>
+            <img src={diversProducts} alt="product" />
+            <span>Choux</span>
+            <span>1.48€/kg</span>
+          </li>
+          <li>
+            <img src={diversProducts} alt="product" />
+            <span>Choux</span>
+            <span>1.48€/kg</span>
+          </li>
+          <li>
+            <img src={diversProducts} alt="product" />
+            <span>Choux</span>
+            <span>1.48€/kg</span>
+          </li>
+          <li>
+            <img src={diversProducts} alt="product" />
+            <span>Choux</span>
+            <span>1.48€/kg</span>
+          </li>
+          <li>
+            <img src={diversProducts} alt="product" />
+            <span>Choux</span>
+            <span>1.48€/kg</span>
+          </li>
+          <li>
+            <img src={diversProducts} alt="product" />
+            <span>Choux</span>
+            <span>1.48€/kg</span>
+          </li>
+          <li>
+            <img src={diversProducts} alt="product" />
+            <span>Choux</span>
+            <span>1.48€/kg</span>
+          </li>
+          <li>
+            <img src={diversProducts} alt="product" />
+            <span>Choux</span>
+            <span>1.48€/kg</span>
+          </li>
+          <li>
+            <img src={diversProducts} alt="product" />
+            <span>Choux</span>
+            <span>1.48€/kg</span>
+          </li>
+        </ul>
+      </div>
     </div>
   );
 };
