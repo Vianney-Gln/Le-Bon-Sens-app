@@ -1,0 +1,60 @@
+.container-productors {
+  font-family: "Patrick Hand", cursive;
+  width: 100%;
+
+  h1 {
+    margin-top: 20px;
+    text-align: center;
+  }
+  .container-top {
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+
+    .container-carrousel {
+      width: 50%;
+      height: 400px;
+      background-color: grey;
+    }
+    .container-description-productor {
+      width: 50%;
+      height: 400px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      h2 {
+        font-weight: normal;
+        margin-top: 40px;
+      }
+      .description-productor,
+      .link-website {
+        margin-top: 20px;
+        width: 60%;
+        font-size: 1.2rem;
+      }
+      .link-website {
+        margin-top: 40px;
+        a {
+          display: flex;
+          justify-content: center;
+          text-decoration: none;
+          color: black;
+
+          span {
+            margin-left: 30px;
+          }
+        }
+      }
+    }
+    .link-social-networks {
+      margin-top: 40px;
+      display: flex;
+      justify-content: space-around;
+      width: 30%;
+      img {
+        width: 40px;
+      }
+    }
+  }
+}
