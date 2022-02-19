@@ -64,4 +64,23 @@
       }
     }
   }
+  .container-bottom {
+    width: 100%;
+    height: 300px;
+    max-height: 300px;
+    display: flex;
+    justify-content: space-between;
+    .description-productor2 {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      p {
+        width: 70%;
+        h3 {
+          margin-bottom: 20px;
+        }
+      }
+    }
+  }
 }

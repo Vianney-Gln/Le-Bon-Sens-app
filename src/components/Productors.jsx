@@ -36,7 +36,7 @@ const Productors = () => {
       <div className="container-top">
         <div className="container-carrousel">
           <Slide>
-            {slideImages.map((slideImage, index) => (
+            {slideImages.map((slideImage) => (
               <div className="each-slide" key={slideImage.caption}>
                 <div
                   className="slide"
@@ -74,6 +74,19 @@ const Productors = () => {
             <img src={iconTwitter} alt="twitter" />
           </div>
         </div>
+      </div>
+      <div className="container-bottom">
+        <img src={carrou1} alt="carrou1" />
+        <div className="description-productor2">
+          <p>
+            <h3> Lorem ipsum, dolor sit amet</h3>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Suscipit
+            veniam cupiditate aperiam consectetur expedita accusamus molestiae.
+            Libero repellendus minus, similique consequatur, neque vero
+            molestiae doloremque quia consectetur, at a nisi?
+          </p>
+        </div>
+        <img src={carrou2} alt="carrou2" />
       </div>
     </div>
   );
