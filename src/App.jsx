@@ -10,6 +10,7 @@ import Shop from "./pages/Shop";
 import Events from "./pages/Events";
 // style
 import "./styles/App.scss";
+import FindUs from "./pages/FindUs";
 
 const App = () => {
   /* ------ about Insert-event component ------- */
@@ -40,6 +41,7 @@ const App = () => {
           element={<Productors disableInsert={disableInsert} insert={insert} />}
         />
         <Route exact path="events" element={<Events />} />
+        <Route exact path="find-us" element={<FindUs />} />
       </Routes>
       <Footer />
     </div>
