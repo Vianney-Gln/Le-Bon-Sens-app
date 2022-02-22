@@ -2,11 +2,12 @@ import React, { useState } from "react";
 // routing
 import { Route, Routes } from "react-router-dom";
 import Footer from "./pages/Footer";
-// components
+// Pages
 import Header from "./pages/Header";
 import Productors from "./pages/Productors";
 import Products from "./pages/Products";
 import Shop from "./pages/Shop";
+import Events from "./pages/Events";
 // style
 import "./styles/App.scss";
 
@@ -38,6 +39,7 @@ const App = () => {
           path="productors"
           element={<Productors disableInsert={disableInsert} insert={insert} />}
         />
+        <Route exact path="events" element={<Events />} />
       </Routes>
       <Footer />
     </div>
