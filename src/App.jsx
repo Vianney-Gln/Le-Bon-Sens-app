@@ -1,12 +1,12 @@
 import React from "react";
 // routing
 import { Route, Routes } from "react-router-dom";
-import Footer from "./components/Footer";
+import Footer from "./pages/Footer";
 // components
-import Header from "./components/Header";
-import Productors from "./components/Productors";
-import Products from "./components/Products";
-import Shop from "./components/Shop";
+import Header from "./pages/Header";
+import Productors from "./pages/Productors";
+import Products from "./pages/Products";
+import Shop from "./pages/Shop";
 // style
 import "./styles/App.scss";
 
