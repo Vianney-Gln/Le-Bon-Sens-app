@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 // routing
 import { Route, Routes } from "react-router-dom";
 import Footer from "./pages/Footer";
@@ -10,16 +10,30 @@ import Shop from "./pages/Shop";
 // style
 import "./styles/App.scss";
 
-const App = () => (
-  <div className="container-app">
-    <Header />
-    <Routes>
-      <Route exact path="products" element={<Products />} />
-      <Route exact path="/" element={<Shop />} />
-      <Route exact path="productors" element={<Productors />} />
-    </Routes>
-    <Footer />
-  </div>
-);
+const App = () => {
+  // about Insert-event component
+  // states
+  const [insert, setInsert] = useState(true);
+
+  // function disabling insert
+  const disableInsert = () => {
+    setInsert(!insert);
+  };
+  return (
+    <div className="container-app">
+      <Header />
+      <Routes>
+        <Route
+          exact
+          path="products"
+          element={<Products disableInsert={disableInsert} insert={insert} />}
+        />
+        <Route exact path="/" element={<Shop />} />
+        <Route exact path="productors" element={<Productors />} />
+      </Routes>
+      <Footer />
+    </div>
+  );
+};
 
 export default App;

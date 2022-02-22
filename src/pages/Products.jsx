@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "../styles/products.scss";
 
 // icons sort
@@ -7,29 +7,16 @@ import meat from "../images/meat.jpg";
 import vegetables from "../images/vegetables.jpg";
 import dairyProducts from "../images/dairy-products.png";
 import diversProducts from "../images/divers-products.jpg";
+// components
+import InsertEvent from "../components/InsertEvent";
 
-const Products = () => {
+const Products = ({ disableInsert, insert }) => {
   // doc title
   document.title = "Le Bon Sens - Nos Produits";
 
-  // states
-  const [insert, setInsert] = useState(true);
-
-  // function disabling insert
-  const disableInsert = () => {
-    setInsert(!insert);
-  };
-
   return (
     <div className="container-products">
-      {insert && (
-        <div className="insert-event">
-          <p>Nouvel évènement disponible!</p>
-          <button type="button" onClick={() => disableInsert()}>
-            fermer
-          </button>
-        </div>
-      )}
+      {insert && <InsertEvent disableInsert={disableInsert} />}
       <h1>Nos Produits</h1>
       <div className="container-search-bar">
         <label htmlFor="search">
