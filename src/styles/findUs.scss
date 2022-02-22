@@ -9,11 +9,9 @@
   .container {
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     margin-top: 20px;
     h3 {
-      margin-left: 25px;
-
       span {
         margin-left: 10px;
       }
