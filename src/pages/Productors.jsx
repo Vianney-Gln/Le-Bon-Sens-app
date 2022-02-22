@@ -10,7 +10,10 @@ import carrou1 from "../images/carrou1.jpg";
 import carrou2 from "../images/carrou2.jpg";
 import carrou3 from "../images/carrou3.jpg";
 
-const Productors = () => {
+// components
+import InsertEvent from "../components/InsertEvent";
+
+const Productors = ({ insert, disableInsert }) => {
   // doc title
   document.title = "Le Bon Sens - Nos Producteurs associés";
 
@@ -32,6 +35,7 @@ const Productors = () => {
 
   return (
     <div className="container-productors">
+      {insert && <InsertEvent disableInsert={disableInsert} />}
       <h1>Nos producteurs associés</h1>
       <div className="container-top">
         <div className="container-carrousel">

@@ -11,7 +11,7 @@ import Shop from "./pages/Shop";
 import "./styles/App.scss";
 
 const App = () => {
-  // about Insert-event component
+  /* ------ about Insert-event component ------- */
   // states
   const [insert, setInsert] = useState(true);
 
@@ -28,8 +28,16 @@ const App = () => {
           path="products"
           element={<Products disableInsert={disableInsert} insert={insert} />}
         />
-        <Route exact path="/" element={<Shop />} />
-        <Route exact path="productors" element={<Productors />} />
+        <Route
+          exact
+          path="/"
+          element={<Shop disableInsert={disableInsert} insert={insert} />}
+        />
+        <Route
+          exact
+          path="productors"
+          element={<Productors disableInsert={disableInsert} insert={insert} />}
+        />
       </Routes>
       <Footer />
     </div>

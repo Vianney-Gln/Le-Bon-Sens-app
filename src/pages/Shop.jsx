@@ -6,11 +6,15 @@ import herbs from "../images/herbs.jpg";
 import kiwi from "../images/kiwi.jpg";
 import storeShelf from "../images/store-shelf.jpg";
 
-const Shop = () => {
+// components
+import InsertEvent from "../components/InsertEvent";
+
+const Shop = ({ insert, disableInsert }) => {
   // doc title
   document.title = "Le Bon Sens - Notre Magasin";
   return (
     <div className="container-shop">
+      {insert && <InsertEvent disableInsert={disableInsert} />}
       <h1>Notre Magasin</h1>
       <p className="description">
         Sed ut perspiciatis unde omnis iste natus error sit voluptatem
