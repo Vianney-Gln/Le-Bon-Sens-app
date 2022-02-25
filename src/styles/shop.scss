@@ -1,0 +1,28 @@
+.container-shop {
+  font-family: "Patrick Hand", cursive;
+  margin-top: 20px;
+  width: 100%;
+  padding-left: 50px;
+  padding-right: 50px;
+  position: relative;
+  h1 {
+    text-align: center;
+  }
+  .description {
+    font-size: 1.4rem;
+    margin-top: 40px;
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+  .container-images {
+    margin-top: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    .image {
+      img {
+        height: 220px;
+      }
+    }
+  }
+}
