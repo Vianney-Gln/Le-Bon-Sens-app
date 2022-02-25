@@ -1,4 +1,8 @@
-import React from "react";
+/* eslint-disable react/jsx-indent */
+/* eslint-disable indent */
+/* eslint-disable react/jsx-indent-props */
+/* eslint-disable no-param-reassign */
+import React, { useEffect, useState } from "react";
 import "../styles/products.scss";
 
 // icons sort
@@ -9,10 +13,32 @@ import dairyProducts from "../images/dairy-products.png";
 import diversProducts from "../images/divers-products.jpg";
 // components
 import InsertEvent from "../components/InsertEvent";
+import CardsProducts from "../components/cardsProducts";
+
+// services
+import getProducts from "../services/products";
+
+// utility
+import translateEuro from "../utility/utility_functions";
 
 const Products = ({ disableInsert, insert }) => {
   // doc title
   document.title = "Le Bon Sens - Nos Produits";
+
+  // variables statement
+  const [listProducts, setListProducts] = useState([]);
+
+  // getting products on mounting component and translate "?" into "€";
+  useEffect(() => {
+    getProducts().then((products) => {
+      products.forEach((product) => {
+        if (product.price) {
+          product.price = translateEuro(product.price);
+        }
+      });
+      setListProducts(products);
+    });
+  }, []);
 
   return (
     <div className="container-products">
@@ -58,71 +84,16 @@ const Products = ({ disableInsert, insert }) => {
             <span>Choux</span>
             <span>1.48€/kg</span>
           </li>
-          <li>
-            <img src={diversProducts} alt="product" />
-            <span>Choux</span>
-            <span>1.48€/kg</span>
-          </li>
-          <li>
-            <img src={diversProducts} alt="product" />
-            <span>Choux</span>
-            <span>1.48€/kg</span>
-          </li>
-          <li>
-            <img src={diversProducts} alt="product" />
-            <span>Choux</span>
-            <span>1.48€/kg</span>
-          </li>
-          <li>
-            <img src={diversProducts} alt="product" />
-            <span>Choux</span>
-            <span>1.48€/kg</span>
-          </li>
-          <li>
-            <img src={diversProducts} alt="product" />
-            <span>Choux</span>
-            <span>1.48€/kg</span>
-          </li>
-          <li>
-            <img src={diversProducts} alt="product" />
-            <span>Choux</span>
-            <span>1.48€/kg</span>
-          </li>
-          <li>
-            <img src={diversProducts} alt="product" />
-            <span>Choux</span>
-            <span>1.48€/kg</span>
-          </li>
-          <li>
-            <img src={diversProducts} alt="product" />
-            <span>Choux</span>
-            <span>1.48€/kg</span>
-          </li>
-          <li>
-            <img src={diversProducts} alt="product" />
-            <span>Choux</span>
-            <span>1.48€/kg</span>
-          </li>
-          <li>
-            <img src={diversProducts} alt="product" />
-            <span>Choux</span>
-            <span>1.48€/kg</span>
-          </li>
-          <li>
-            <img src={diversProducts} alt="product" />
-            <span>Choux</span>
-            <span>1.48€/kg</span>
-          </li>
-          <li>
-            <img src={diversProducts} alt="product" />
-            <span>Choux</span>
-            <span>1.48€/kg</span>
-          </li>
-          <li>
-            <img src={diversProducts} alt="product" />
-            <span>Choux</span>
-            <span>1.48€/kg</span>
-          </li>
+          {listProducts
+            ? listProducts.map((prod) => (
+                <CardsProducts
+                  productName={prod.name}
+                  productPrice={prod.price}
+                  productImage={prod.urlImage}
+                  productCategory={prod.category}
+                />
+              ))
+            : ""}
         </ul>
       </div>
     </div>
