@@ -1,18 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useContext } from "react";
 // routing
 import { Link } from "react-router-dom";
 // styles
 import "../styles/header.scss";
 // service
 import getInfosShop from "../services/shop";
+// context
+import { shopContext } from "../context/shop";
 
 const Header = () => {
-  // variables statements
-  const [mainInfosShop, setMainInfosShop] = useState([]);
-  // getting infos shop
+  // useContext
+  const ShopContext = useContext(shopContext);
+
+  // getting infos shop and store them in te shop context
   useEffect(() => {
     getInfosShop().then((res) => {
-      setMainInfosShop(res);
+      ShopContext.setInfosShop(res);
     });
   }, []);
 
@@ -45,10 +48,12 @@ const Header = () => {
         </nav>
       </div>
       <div className="title-shop">
-        {mainInfosShop.name && <h1>{mainInfosShop.name}</h1>}
+        {ShopContext.infosShop.name && <h1>{ShopContext.infosShop.name}</h1>}
       </div>
       <div className="schedules">
-        {mainInfosShop.schedule && <p>{mainInfosShop.schedule}</p>}
+        {ShopContext.infosShop.schedule && (
+          <p>{ShopContext.infosShop.schedule}</p>
+        )}
       </div>
     </header>
   );
