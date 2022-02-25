@@ -82,6 +82,7 @@ const Products = ({ disableInsert, insert }) => {
           {listProducts
             ? listProducts.map((prod) => (
                 <CardsProducts
+                  key={prod.id}
                   productName={prod.name}
                   productPrice={prod.price}
                   productImage={prod.urlImage}

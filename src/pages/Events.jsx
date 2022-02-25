@@ -22,45 +22,56 @@ const Events = () => {
       <div className="container-past-event">
         <h1>Evènements passés</h1>
 
-        <p className="description-event">
+        <div className="description-event">
           <h3>Dégustation gratuite de légumes et saucissons du 18/02/2022</h3>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem beatae
-          quas voluptatum quibusdam reprehenderit id earum natus eligendi harum
-          eaque. Sit reiciendis, earum quaerat cupiditate repellendus possimus
-          tempore corporis reprehenderit.
-        </p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem
+            beatae quas voluptatum quibusdam reprehenderit id earum natus
+            eligendi harum eaque. Sit reiciendis, earum quaerat cupiditate
+            repellendus possimus tempore corporis reprehenderit.
+          </p>
+        </div>
 
-        <p className="description-event">
+        <div className="description-event">
           <h3>Dégustation gratuite de légumes et saucissons du 18/02/2022</h3>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem beatae
-          quas voluptatum quibusdam reprehenderit id earum natus eligendi harum
-          eaque. Sit reiciendis, earum quaerat cupiditate repellendus possimus
-          tempore corporis reprehenderit.
-        </p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem
+            beatae quas voluptatum quibusdam reprehenderit id earum natus
+            eligendi harum eaque. Sit reiciendis, earum quaerat cupiditate
+            repellendus possimus tempore corporis reprehenderit.
+          </p>
+        </div>
 
-        <p className="description-event">
+        <div className="description-event">
           <h3>Dégustation gratuite de légumes et saucissons du 18/02/2022</h3>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem beatae
-          quas voluptatum quibusdam reprehenderit id earum natus eligendi harum
-          eaque. Sit reiciendis, earum quaerat cupiditate repellendus possimus
-          tempore corporis reprehenderit.
-        </p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem
+            beatae quas voluptatum quibusdam reprehenderit id earum natus
+            eligendi harum eaque. Sit reiciendis, earum quaerat cupiditate
+            repellendus possimus tempore corporis reprehenderit.
+          </p>
+        </div>
 
-        <p className="description-event">
+        <div className="description-event">
           <h3>Dégustation gratuite de légumes et saucissons du 18/02/2022</h3>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem beatae
-          quas voluptatum quibusdam reprehenderit id earum natus eligendi harum
-          eaque. Sit reiciendis, earum quaerat cupiditate repellendus possimus
-          tempore corporis reprehenderit.
-        </p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem
+            beatae quas voluptatum quibusdam reprehenderit id earum natus
+            eligendi harum eaque. Sit reiciendis, earum quaerat cupiditate
+            repellendus possimus tempore corporis reprehenderit.
+          </p>
+        </div>
 
-        <p className="description-event">
+        <div className="description-event">
           <h3>Dégustation gratuite de légumes et saucissons du 18/02/2022</h3>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem beatae
-          quas voluptatum quibusdam reprehenderit id earum natus eligendi harum
-          eaque. Sit reiciendis, earum quaerat cupiditate repellendus possimus
-          tempore corporis reprehenderit.
-        </p>
+
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem
+            beatae quas voluptatum quibusdam reprehenderit id earum natus
+            eligendi harum eaque. Sit reiciendis, earum quaerat cupiditate
+            repellendus possimus tempore corporis reprehenderit.
+          </p>
+        </div>
       </div>
     </div>
   );
