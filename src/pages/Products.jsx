@@ -79,11 +79,6 @@ const Products = ({ disableInsert, insert }) => {
       </p>
       <div className="container-products">
         <ul className="container-list-products">
-          <li>
-            <img src={diversProducts} alt="product" />
-            <span>Choux</span>
-            <span>1.48€/kg</span>
-          </li>
           {listProducts
             ? listProducts.map((prod) => (
                 <CardsProducts
