@@ -13,6 +13,7 @@ const Shop = ({ insert, disableInsert }) => {
   // variables statements
   const [infosShop, setInfosShop] = useState([]);
 
+  // getting infos shop on component mounting
   useEffect(() => {
     getInfosShop().then((infos) => setInfosShop(infos));
   }, []);
