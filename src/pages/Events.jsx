@@ -25,7 +25,7 @@ const Events = () => {
         if (evt.isCurrent === 1) {
           setCurrentEvent(evt);
         } else {
-          setEvents((oldEvents) => [evt, ...oldEvents]); // "push" events
+          setEvents((oldEvents) => [...oldEvents, evt]); // "push" events
         }
       });
     });
@@ -38,21 +38,24 @@ const Events = () => {
           /* If there is a current event, display it */
           <>
             <h1>Evènement à venir</h1>
-            <h3>{currentEvent.name}</h3>
+            <h3>
+              {currentEvent.name}
+              <span>{currentEvent.date}</span>
+            </h3>
             <img src={currentEvent.urlImage} alt={currentEvent.name} />
             <div className="description-event">
               <p>{currentEvent.description}</p>
             </div>
           </>
         ) : events.length ? (
-          /* If not, display the last past event */
+          /* If not, display the last past event (first of the list) */
           <>
             <h1>Dernier évènement</h1>
-            <h3>{events[events.length - 1].name}</h3>
-            <img
-              src={events[events.length - 1].urlImage}
-              alt={events[events.length - 1].name}
-            />
+            <h3>
+              {events[0].name}
+              <span> du {events[0].date}</span>
+            </h3>
+            <img src={events[0].urlImage} alt={events[0].name} />
             <div className="description-event">
               <p>{events[events.length - 1].description}</p>
             </div>
@@ -64,12 +67,14 @@ const Events = () => {
       <div className="container-past-event">
         <h1>Evènements passés</h1>
         {events &&
-          events.map((eve, index) => {
-            /* logic displaying all past events expept the most recent who's displaying to top */
-            if (index < events.length - 1) {
+          events.map((eve) => {
+            if (eve.isCurrent === 0) {
               return (
                 <div key={eve.id} className="description-event">
-                  <h3>{eve.name}</h3>
+                  <h3>
+                    {eve.name}
+                    <span> le {eve.date}</span>
+                  </h3>
                   <p>{eve.description}</p>
                 </div>
               );
