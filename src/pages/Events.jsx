@@ -31,20 +31,11 @@ const Events = () => {
     });
   }, []);
 
-  // const getting lasts events
-  // const lastsEvents = events.map((ev) => (
-  //   <div key={ev.id} className="description-event">
-  //     <h3>{ev.name}</h3>
-  //     <p>{ev.description}</p>
-  //   </div>
-  // ));
-
-  /* if current event ==> current event , if not ===> last event , anyway ==> list of last events */
-
   return (
     <div className="container-events">
       <div className="container-event-comming">
         {!isObjEmpty(currentEvent) ? (
+          /* If there is a current event, display it */
           <>
             <h1>Evènement à venir</h1>
             <h3>{currentEvent.name}</h3>
@@ -54,6 +45,7 @@ const Events = () => {
             </div>
           </>
         ) : events.length ? (
+          /* If not, display the last past event */
           <>
             <h1>Dernier évènement</h1>
             <h3>{events[events.length - 1].name}</h3>
@@ -72,12 +64,18 @@ const Events = () => {
       <div className="container-past-event">
         <h1>Evènements passés</h1>
         {events &&
-          events.map((eve) => (
-            <div key={eve.id} className="description-event">
-              <h3>{eve.name}</h3>
-              <p>{eve.description}</p>
-            </div>
-          ))}
+          events.map((eve, index) => {
+            /* logic displaying all past events expept the most recent who's displaying to top */
+            if (index < events.length - 1) {
+              return (
+                <div key={eve.id} className="description-event">
+                  <h3>{eve.name}</h3>
+                  <p>{eve.description}</p>
+                </div>
+              );
+            }
+            return true;
+          })}
       </div>
     </div>
   );
