@@ -21,16 +21,15 @@ const Events = () => {
   // getting all infos about events on component mounting
   useEffect(() => {
     getInfosEvents().then((evts) => {
+      console.log(evts);
       evts.forEach((evt) => {
         if (evt.isCurrent === 1) {
           setCurrentEvent(evt);
-        } else {
-          setEvents((oldEvents) => [...oldEvents, evt]); // "push" events
         }
+        setEvents((oldEvents) => [...oldEvents, evt]); // "push" events
       });
     });
   }, []);
-
   return (
     <div className="container-events">
       <div className="container-event-comming">
@@ -40,7 +39,7 @@ const Events = () => {
             <h1>Evènement à venir</h1>
             <h3>
               {currentEvent.name}
-              <span>{currentEvent.date}</span>
+              <span>{currentEvent.sortedDate}</span>
             </h3>
             <img src={currentEvent.urlImage} alt={currentEvent.name} />
             <div className="description-event">
@@ -53,7 +52,7 @@ const Events = () => {
             <h1>Dernier évènement</h1>
             <h3>
               {events[0].name}
-              <span> du {events[0].date}</span>
+              <span> du {events[0].sortedDate}</span>
             </h3>
             <img src={events[0].urlImage} alt={events[0].name} />
             <div className="description-event">
@@ -68,12 +67,15 @@ const Events = () => {
         <h1>Evènements passés</h1>
         {events &&
           events.map((eve) => {
-            if (eve.isCurrent === 0) {
+            if (
+              eve.isCurrent === 0 &&
+              eve.sortedDate !== events[0].sortedDate
+            ) {
               return (
                 <div key={eve.id} className="description-event">
                   <h3>
                     {eve.name}
-                    <span> le {eve.date}</span>
+                    <span> le {eve.sortedDate}</span>
                   </h3>
                   <p>{eve.description}</p>
                 </div>
