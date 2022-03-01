@@ -1,35 +1,22 @@
-import React from "react";
-
+import React, { useState, useEffect } from "react";
 // style
 import "../styles/recipes.scss";
+// service
+import getRecipes from "../services/recipes";
+// component
+import CardRecipe from "../components/CardRecipe";
 
 const Recipes = () => {
+  // doc title
   document.title = "Le Bon Sens - Recettes";
-  // data static temporal
-  const number = 10;
-  const arrayRecipe = [];
-  const recipe = (
-    <div className="card-recipes">
-      <h2>Titre recette</h2>
-      <div className="image" />
-      <div className="description">
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque ipsa
-          tempora suscipit modi alias quisquam et ea assumenda facilis
-          temporibus unde, quo voluptate incidunt expedita atque itaque fuga
-          sapiente quod!
-        </p>
-        <p className="detail-recipe">
-          <span>temps de cuisson:20min</span>
-          <span>temps de préparation:20min</span>
-        </p>
-      </div>
-    </div>
-  );
 
-  for (let i = 0; i < number; i += 1) {
-    arrayRecipe.push(recipe);
-  }
+  // variables statement
+  const [recipes, setRecipes] = useState([]);
+
+  // getting all recipes on mounting componant
+  useEffect(() => {
+    getRecipes().then((rcp) => setRecipes(rcp));
+  }, []);
 
   return (
     <div className="container-recipes">
@@ -38,7 +25,18 @@ const Recipes = () => {
         <input name="search-recipes" type="text" placeholder="search" />
       </label>
       <div className="container-center-cards-recipes">
-        <div className="container-cards-recipes">{arrayRecipe}</div>
+        <div className="container-cards-recipes">
+          {recipes.length &&
+            recipes.map((recipe) => (
+              <CardRecipe
+                name={recipe.name}
+                description={recipe.description}
+                cookingTime={recipe.cookingTime}
+                preparationTime={recipe.preparationTime}
+                urlImage={recipe.urlImage}
+              />
+            ))}
+        </div>
       </div>
     </div>
   );

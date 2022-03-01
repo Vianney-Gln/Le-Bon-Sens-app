@@ -21,7 +21,6 @@ const Events = () => {
   // getting all infos about events on component mounting
   useEffect(() => {
     getInfosEvents().then((evts) => {
-      console.log(evts);
       evts.forEach((evt) => {
         if (evt.isCurrent === 1) {
           setCurrentEvent(evt);
@@ -72,7 +71,7 @@ const Events = () => {
               eve.sortedDate !== events[0].sortedDate
             ) {
               return (
-                <div key={eve.id} className="description-event">
+                <div key={eve.sortedDate} className="description-event">
                   <h3>
                     {eve.name}
                     <span> le {eve.sortedDate}</span>
