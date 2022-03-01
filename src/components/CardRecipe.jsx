@@ -1,18 +1,22 @@
 import React from "react";
 
-const CardRecipe = () => (
+const CardRecipe = ({
+  name,
+  description,
+  cookingTime,
+  preparationTime,
+  urlImage,
+}) => (
   <div className="card-recipes">
-    <h2>Titre recette</h2>
-    <div className="image" />
+    <h2>{name}</h2>
+    <div className="image">
+      <img src={urlImage} alt={name} />
+    </div>
     <div className="description">
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque ipsa
-        tempora suscipit modi alias quisquam et ea assumenda facilis temporibus
-        unde, quo voluptate incidunt expedita atque itaque fuga sapiente quod!
-      </p>
+      <p>{description}</p>
       <p className="detail-recipe">
-        <span>temps de cuisson:20min</span>
-        <span>temps de préparation:20min</span>
+        <span>temps de cuisson: {cookingTime + "min"}</span>
+        <span>temps de préparation: {preparationTime + "min"}</span>
       </p>
     </div>
   </div>
