@@ -39,21 +39,12 @@ const Header = ({ productors }) => {
             <li className="tab-productor">
               Producteurs
               <ul className="list-productor">
-                <li>Le potager ludique</li>
-                <li>nscdbdbdndddddddddddddddddddddddddddd</li>
-                <li>
-                  nscdbdbdndddddddddddddddddddddddddddddddddddddddddddddddddddd
-                </li>
-                <li>Le potager ludique</li>
-                <li>Le potager ludique</li>
-                <li>Le potager ludique</li>
-                <li>Le potager ludique</li>
-                <li>Le potager ludique</li>
-                <li>Le potager ludique</li>
-                <li>Le potager ludique</li>
-                <li>Le potager ludique</li>
-                <li>Le potager ludique</li>
-                <li>Le potager ludique</li>
+                {productors &&
+                  productors.map((productor) => (
+                    <Link to={`productors/${productor.id}`}>
+                      <li key={productor.id}>{productor.name}</li>
+                    </Link>
+                  ))}
               </ul>
             </li>
 

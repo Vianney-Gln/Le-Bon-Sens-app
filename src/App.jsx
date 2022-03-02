@@ -49,7 +49,7 @@ const App = () => {
         />
         <Route
           exact
-          path="productors"
+          path="productors/:id"
           element={<Productors disableInsert={disableInsert} insert={insert} />}
         />
         <Route exact path="events" element={<Events />} />
