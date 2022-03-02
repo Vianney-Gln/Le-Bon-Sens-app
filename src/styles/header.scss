@@ -42,6 +42,10 @@
 
         li {
           cursor: pointer;
+
+          .list-productors-hover {
+            display: none;
+          }
         }
         li:hover {
           text-decoration: underline;

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 // routing
 import { Route, Routes } from "react-router-dom";
 import Footer from "./components/Footer";
@@ -12,6 +12,8 @@ import Events from "./pages/Events";
 import "./styles/App.scss";
 import FindUs from "./pages/FindUs";
 import Recipes from "./pages/Recipes";
+//service
+import { getNamesProductors } from "./services/productors";
 
 const App = () => {
   /* ------ about Insert-event component ------- */
@@ -22,9 +24,18 @@ const App = () => {
   const disableInsert = () => {
     setInsert(!insert);
   };
+
+  /* ------ about productors ------*/
+  //states
+  const [productors, setProductor] = useState([]);
+  //getting infos on component mounting
+  useEffect(() => {
+    getNamesProductors().then((result) => setProductor(result));
+  }, []);
+
   return (
     <div className="container-app">
-      <Header />
+      <Header productors={productors} />
       <Routes>
         <Route
           exact

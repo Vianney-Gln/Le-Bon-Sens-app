@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-no-constructed-context-values */
 import React, { createContext, useState } from "react";
 
 const shopContext = createContext(null);

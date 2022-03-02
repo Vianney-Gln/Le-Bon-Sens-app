@@ -7,7 +7,7 @@ const url = "http://localhost:3001/api/LeBonSens/productors";
  * @returns array
  */
 const getNamesProductors = () => {
-  axios.get(url).then((result) => result.data);
+  return axios.get(url).then((result) => result.data);
 };
 
 /**
@@ -15,15 +15,17 @@ const getNamesProductors = () => {
  * @param {number} id
  * @returns array
  */
-const getInfosProductors = (id) =>
-  axios.get(`${url}/${id}`).then((result) => result.data);
+const getInfosProductors = (id) => {
+  return axios.get(`${url}/${id}`).then((result) => result.data);
+};
 
 /**
  *function getting carrousel from one productor by his id
  * @param {number} id
  * @returns array
  */
-const getCarrouselProductor = (id) =>
-  axios.get(`${url}/getCarrousel/${id}`).then((result) => result.data);
+const getCarrouselProductor = (id) => {
+  return axios.get(`${url}/getCarrousel/${id}`).then((result) => result.data);
+};
 
-export { getInfosProductors, getCarrouselProductor, getNamesProductors };
+export { getNamesProductors, getInfosProductors, getCarrouselProductor };

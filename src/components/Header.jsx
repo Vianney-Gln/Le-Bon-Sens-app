@@ -8,7 +8,7 @@ import getInfosShop from "../services/shop";
 // context
 import { shopContext } from "../context/shop";
 
-const Header = () => {
+const Header = ({ productors }) => {
   // useContext
   const ShopContext = useContext(shopContext);
 
@@ -30,7 +30,10 @@ const Header = () => {
         <nav className="navigation-header">
           <ul className="container-list-header">
             <Link to="products">
-              <li>Produits</li>
+              <li>
+                Produits
+                <ul className="list-productors-hover">ddd</ul>
+              </li>
             </Link>
             <Link to="events">
               <li>Evènements</li>
