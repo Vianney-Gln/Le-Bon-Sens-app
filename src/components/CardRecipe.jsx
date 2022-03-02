@@ -12,8 +12,8 @@ const CardRecipe = ({
     <div className="image">
       <img src={urlImage} alt={name} />
     </div>
-    <div className="description">
-      <p>{description}</p>
+    <div className="container-description">
+      <p className="description">{description}</p>
       <p className="detail-recipe">
         <span>temps de cuisson: {cookingTime + "min"}</span>
         <span>temps de préparation: {preparationTime + "min"}</span>

@@ -29,6 +29,7 @@ const Recipes = () => {
           {recipes.length &&
             recipes.map((recipe) => (
               <CardRecipe
+                key={recipe.id}
                 name={recipe.name}
                 description={recipe.description}
                 cookingTime={recipe.cookingTime}
