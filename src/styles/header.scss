@@ -42,13 +42,29 @@
 
         li {
           cursor: pointer;
+          position: relative;
 
-          .list-productors-hover {
+          .list-productor {
+            position: absolute;
+            list-style-type: none;
+            background-color: black;
+            opacity: 0.8;
+            padding: 10px;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
             display: none;
+            font-size: 1.2rem;
+            width: 100%;
+            z-index: 5;
           }
         }
         li:hover {
           text-decoration: underline;
+        }
+        .tab-productor:hover {
+          .list-productor {
+            display: block;
+          }
         }
       }
     }

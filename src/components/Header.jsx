@@ -30,17 +30,21 @@ const Header = ({ productors }) => {
         <nav className="navigation-header">
           <ul className="container-list-header">
             <Link to="products">
-              <li>
-                Produits
-                <ul className="list-productors-hover">ddd</ul>
-              </li>
+              <li>Produits</li>
             </Link>
             <Link to="events">
               <li>Evènements</li>
             </Link>
-            <Link to="productors">
-              <li>Producteurs</li>
-            </Link>
+
+            <li className="tab-productor">
+              Producteurs
+              <ul className="list-productor">
+                <li>nscdbdbdn</li>
+                <li>nscdbdbdn</li>
+                <li>nscdbdbdn</li>
+              </ul>
+            </li>
+
             <Link to="recipes">
               <li>Recettes</li>
             </Link>
