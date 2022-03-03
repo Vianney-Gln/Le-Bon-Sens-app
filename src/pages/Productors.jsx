@@ -96,6 +96,7 @@ const Productors = ({ insert, disableInsert }) => {
               </a>
             )}
           </div>
+          <div className="container-buttons">dddd</div>
         </div>
       </div>
       <div className="container-bottom">
