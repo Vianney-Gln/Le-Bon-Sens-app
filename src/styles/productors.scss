@@ -13,19 +13,21 @@
     display: flex;
 
     .container-carrousel {
-      width: 50%;
+      width: 55%;
       height: 400px;
+      position: relative;
 
       .each-slide {
         height: 400px;
         .slide {
           height: 100%;
           background-size: cover;
+          background-position: center;
         }
       }
     }
     .container-description-productor {
-      width: 50%;
+      width: 45%;
       height: 400px;
       display: flex;
       flex-direction: column;
@@ -71,12 +73,16 @@
     max-height: 300px;
     display: flex;
     justify-content: space-between;
+    img {
+      width: 33.3%;
+      object-fit: cover;
+    }
     .description-productor2 {
-      width: 100%;
+      width: 33.3%;
       display: flex;
       justify-content: center;
       align-items: center;
-      p {
+      div {
         width: 70%;
         h3 {
           margin-bottom: 20px;
@@ -84,4 +90,31 @@
       }
     }
   }
+}
+
+/* ------buttons carousel ------- */
+#root
+  > div
+  > div
+  > div.container-top
+  > div.container-carrousel
+  > div
+  > div
+  > button:nth-child(1) {
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+}
+
+#root
+  > div
+  > div
+  > div.container-top
+  > div.container-carrousel
+  > div
+  > div
+  > button:nth-child(3) {
+  position: absolute;
+  bottom: 0px;
+  right: -23%;
 }

@@ -41,8 +41,8 @@ const Header = ({ productors }) => {
               <ul className="list-productor">
                 {productors &&
                   productors.map((productor) => (
-                    <Link to={`productors/${productor.id}`}>
-                      <li key={productor.id}>{productor.name}</li>
+                    <Link key={productor.id} to={`productors/${productor.id}`}>
+                      <li>{productor.name}</li>
                     </Link>
                   ))}
               </ul>

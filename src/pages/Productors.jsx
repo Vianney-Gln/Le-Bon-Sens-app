@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 // style
 import "../styles/productors.scss";
 import "react-slideshow-image/dist/styles.css";
@@ -9,13 +10,25 @@ import iconTwitter from "../images/icone-twitter.png";
 import carrou1 from "../images/carrou1.jpg";
 import carrou2 from "../images/carrou2.jpg";
 import carrou3 from "../images/carrou3.jpg";
-
 // components
 import InsertEvent from "../components/InsertEvent";
+//service
+import { getInfosProductors } from "../services/productors";
 
 const Productors = ({ insert, disableInsert }) => {
-  // doc title
+  /* ----- doc title ----- */
   document.title = "Le Bon Sens - Nos Producteurs associés";
+
+  /* ----- param ----- */
+  const param = useParams();
+
+  /* ----- states ----- */
+  const [infosProductor, setInfosProductor] = useState({});
+
+  /* ----- getting infos productor by id on component mounting ----- */
+  useEffect(() => {
+    getInfosProductors(param.id).then((result) => setInfosProductor(result));
+  }, []);
 
   // carrousel
   const slideImages = [
@@ -53,14 +66,12 @@ const Productors = ({ insert, disableInsert }) => {
           </Slide>
         </div>
         <div className="container-description-productor">
-          <h2>Nom du producteur</h2>
-          <p className="description-productor">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia enim
-            recusandae quae. Fugit tempore ab nisi, consectetur, natus sunt vel
-            dicta error incidunt quidem qui, omnis corporis in sed voluptatum.
-          </p>
+          <h2>{infosProductor.name}</h2>
+          <p className="description-productor">{infosProductor.description1}</p>
           <p className="link-website">
-            <a href="http://localhost:3000/">
+            <a
+              href={infosProductor.urlWebsite ? infosProductor.urlWebsite : "#"}
+            >
               Site Web
               <span>
                 <svg width="40" height="12" xmlns="http://www.w3.org/2000/svg">
@@ -74,23 +85,28 @@ const Productors = ({ insert, disableInsert }) => {
             </a>
           </p>
           <div className="link-social-networks">
-            <img src={iconFaceBook} alt="facebook" />
-            <img src={iconTwitter} alt="twitter" />
+            {infosProductor.urlFacebook && (
+              <a href={infosProductor.urlFacebook}>
+                <img src={iconFaceBook} alt="facebook" />
+              </a>
+            )}
+            {infosProductor.urlTwitter && (
+              <a href={infosProductor.urlTwitter}>
+                <img src={iconTwitter} alt="twitter" />
+              </a>
+            )}
           </div>
         </div>
       </div>
       <div className="container-bottom">
-        <img src={carrou1} alt="carrou1" />
+        <img src={infosProductor.urlImage1} alt="" />
         <div className="description-productor2">
-          <p>
-            <h3> Lorem ipsum, dolor sit amet</h3>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Suscipit
-            veniam cupiditate aperiam consectetur expedita accusamus molestiae.
-            Libero repellendus minus, similique consequatur, neque vero
-            molestiae doloremque quia consectetur, at a nisi?
-          </p>
+          <div>
+            <h3>{infosProductor.titleDescription2}</h3>
+            <p>{infosProductor.description2}</p>
+          </div>
         </div>
-        <img src={carrou2} alt="carrou2" />
+        <img src={infosProductor.urlImage2} alt="" />
       </div>
     </div>
   );
