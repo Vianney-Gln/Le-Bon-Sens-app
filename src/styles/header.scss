@@ -42,9 +42,45 @@
 
         li {
           cursor: pointer;
+          position: relative;
+
+          /*slide down management*/
+          .list-productor {
+            position: absolute;
+            list-style-type: none;
+            background-color: black;
+            opacity: 0.8;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+            font-size: 1.2rem;
+            z-index: 5;
+            max-width: 250px;
+            max-height: 0px;
+            overflow-y: auto;
+            transition: 0.3s;
+            padding: 0px 10px;
+
+            li {
+              width: 100%;
+              overflow-x: hidden;
+              white-space: nowrap;
+              text-overflow: ellipsis;
+            }
+          }
+          ::-webkit-scrollbar {
+            /* Scrollbar slidedown */
+            display: none;
+          }
         }
+
         li:hover {
           text-decoration: underline;
+        }
+        .tab-productor:hover {
+          .list-productor {
+            max-height: 250px;
+            padding: 10px 10px;
+          }
         }
       }
     }

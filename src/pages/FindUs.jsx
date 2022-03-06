@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 // style
 import "../styles/findUs.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -7,24 +7,36 @@ import {
   faPhone,
   faEnvelope,
 } from "@fortawesome/free-solid-svg-icons";
+// context
+import { shopContext } from "../context/shop";
 
 const FindUs = () => {
+  // doc title
   document.title = "Le Bon Sens - Nous trouver";
+
+  // useContext
+  const ShopContext = useContext(shopContext);
   return (
     <div className="container-find-us">
       <h1>Nous contacter</h1>
       <div className="container">
         <h3>
           <FontAwesomeIcon icon={faLocationDot} color="blue" />
-          <span>adresse: 18 allée de la mer 44000 Nantes</span>
+          {ShopContext.infosShop.address && (
+            <span>{ShopContext.infosShop.address}</span>
+          )}
         </h3>
         <h3>
           <FontAwesomeIcon icon={faPhone} color="blue" />
-          <span>téléphone: 0607452218</span>
+          {ShopContext.infosShop.phone && (
+            <span>{ShopContext.infosShop.phone}</span>
+          )}
         </h3>
         <h3>
           <FontAwesomeIcon icon={faEnvelope} color="blue" />
-          <span>email: nom.prenom@exemple.com</span>
+          {ShopContext.infosShop.email && (
+            <span>{ShopContext.infosShop.email}</span>
+          )}
         </h3>
       </div>
       <div className="container-iframe">

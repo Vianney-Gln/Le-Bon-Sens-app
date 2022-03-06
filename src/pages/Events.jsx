@@ -1,66 +1,87 @@
-import React from "react";
+/* eslint-disable operator-linebreak */
+/* eslint-disable no-nested-ternary */
+import React, { useState, useEffect } from "react";
 // style
 import "../styles/events.scss";
-// images
-import vegetableGarden from "../images/potager-visite.jpg";
+
+// utility
+import { isObjEmpty } from "../utility/utility_functions";
+
+// service
+import getInfosEvents from "../services/events";
 
 const Events = () => {
+  // doc title
   document.title = "Le Bon Sens - Evènements";
+
+  // variables statement
+  const [currentEvent, setCurrentEvent] = useState({}); // current event
+  const [events, setEvents] = useState([]); // all other events
+
+  // getting all infos about events on component mounting
+  useEffect(() => {
+    getInfosEvents().then((evts) => {
+      evts.forEach((evt) => {
+        if (evt.isCurrent === 1) {
+          setCurrentEvent(evt);
+        }
+        setEvents((oldEvents) => [...oldEvents, evt]); // "push" events
+      });
+    });
+  }, []);
   return (
     <div className="container-events">
       <div className="container-event-comming">
-        <h1>Evènement à venir</h1>
-        <h3>Visite du potager ludique le Mercredi 23 Février 2022 à 14H.</h3>
-        <img src={vegetableGarden} alt="vegetableGarden" />
-        <p className="description-event">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem beatae
-          quas voluptatum quibusdam reprehenderit id earum natus eligendi harum
-          eaque. Sit reiciendis, earum quaerat cupiditate repellendus possimus
-          tempore corporis reprehenderit.
-        </p>
+        {!isObjEmpty(currentEvent) ? (
+          /* If there is a current event, display it */
+          <>
+            <h1>Evènement à venir</h1>
+            <h3>
+              {currentEvent.name}
+              <span>{currentEvent.sortedDate}</span>
+            </h3>
+            <img src={currentEvent.urlImage} alt={currentEvent.name} />
+            <div className="description-event">
+              <p>{currentEvent.description}</p>
+            </div>
+          </>
+        ) : events.length ? (
+          /* If not, display the last past event (first of the list) */
+          <>
+            <h1>Dernier évènement</h1>
+            <h3>
+              {events[0].name}
+              <span> du {events[0].sortedDate}</span>
+            </h3>
+            <img src={events[0].urlImage} alt={events[0].name} />
+            <div className="description-event">
+              <p>{events[events.length - 1].description}</p>
+            </div>
+          </>
+        ) : (
+          ""
+        )}
       </div>
       <div className="container-past-event">
         <h1>Evènements passés</h1>
-
-        <p className="description-event">
-          <h3>Dégustation gratuite de légumes et saucissons du 18/02/2022</h3>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem beatae
-          quas voluptatum quibusdam reprehenderit id earum natus eligendi harum
-          eaque. Sit reiciendis, earum quaerat cupiditate repellendus possimus
-          tempore corporis reprehenderit.
-        </p>
-
-        <p className="description-event">
-          <h3>Dégustation gratuite de légumes et saucissons du 18/02/2022</h3>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem beatae
-          quas voluptatum quibusdam reprehenderit id earum natus eligendi harum
-          eaque. Sit reiciendis, earum quaerat cupiditate repellendus possimus
-          tempore corporis reprehenderit.
-        </p>
-
-        <p className="description-event">
-          <h3>Dégustation gratuite de légumes et saucissons du 18/02/2022</h3>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem beatae
-          quas voluptatum quibusdam reprehenderit id earum natus eligendi harum
-          eaque. Sit reiciendis, earum quaerat cupiditate repellendus possimus
-          tempore corporis reprehenderit.
-        </p>
-
-        <p className="description-event">
-          <h3>Dégustation gratuite de légumes et saucissons du 18/02/2022</h3>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem beatae
-          quas voluptatum quibusdam reprehenderit id earum natus eligendi harum
-          eaque. Sit reiciendis, earum quaerat cupiditate repellendus possimus
-          tempore corporis reprehenderit.
-        </p>
-
-        <p className="description-event">
-          <h3>Dégustation gratuite de légumes et saucissons du 18/02/2022</h3>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem beatae
-          quas voluptatum quibusdam reprehenderit id earum natus eligendi harum
-          eaque. Sit reiciendis, earum quaerat cupiditate repellendus possimus
-          tempore corporis reprehenderit.
-        </p>
+        {events &&
+          events.map((eve) => {
+            if (
+              eve.isCurrent === 0 &&
+              eve.sortedDate !== events[0].sortedDate
+            ) {
+              return (
+                <div key={eve.sortedDate} className="description-event">
+                  <h3>
+                    {eve.name}
+                    <span> le {eve.sortedDate}</span>
+                  </h3>
+                  <p>{eve.description}</p>
+                </div>
+              );
+            }
+            return true;
+          })}
       </div>
     </div>
   );
