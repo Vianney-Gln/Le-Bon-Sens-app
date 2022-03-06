@@ -1,6 +1,5 @@
-/* eslint-disable react/jsx-indent */
 /* eslint-disable indent */
-/* eslint-disable react/jsx-indent-props */
+
 /* eslint-disable no-param-reassign */
 import React, { useEffect, useState } from "react";
 import "../styles/products.scss";
@@ -22,13 +21,14 @@ import getProducts from "../services/products";
 import translateEuro from "../utility/utility_functions";
 
 const Products = ({ disableInsert, insert }) => {
-  // doc title
+  /* ----- doc title ----- */
   document.title = "Le Bon Sens - Nos Produits";
 
-  // variables statement
+  /* ----- variables statement -----*/
   const [listProducts, setListProducts] = useState([]);
+  const [sortParam, setSortParam] = useState("");
 
-  // getting products on mounting component and translate "?" into "€";
+  /* ----- getting products on mounting component and translate "?" into "€" ----- */
   useEffect(() => {
     getProducts().then((products) => {
       products.forEach((product) => {
@@ -51,24 +51,24 @@ const Products = ({ disableInsert, insert }) => {
       </div>
       <div className="container-sort-products">
         <ul>
-          <li>
+          <li onClick={() => setSortParam("all products")}>
             <img src={all} alt="all products" />
             <span>Tous les produits</span>
           </li>
-          <li>
+          <li onClick={() => setSortParam("meat")}>
             <img src={meat} alt="meat" />
             <span>Viandes</span>
           </li>
-          <li>
+          <li onClick={() => setSortParam("vegetables")}>
             <img src={vegetables} alt="vegetables" />
             <span>Légumes</span>
           </li>
-          <li>
+          <li onClick={() => setSortParam("dairyProducts")}>
             <img src={dairyProducts} alt="dairyProducts" />
             <span>Produits laitiers</span>
           </li>
-          <li>
-            <img src={diversProducts} alt="diversProducts" />
+          <li onClick={() => setSortParam("other locals products")}>
+            <img src={diversProducts} alt="other locals products" />
             <span>Produits locaux divers</span>
           </li>
         </ul>
