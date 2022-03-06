@@ -1,5 +1,10 @@
 import axios from "axios";
 
+/**
+ *function getting all recipes or recipes in terms of searchParams
+ * @param {string} paramSearch
+ * @returns array
+ */
 const getRecipes = (paramSearch) => {
   let url = "http://localhost:3001/api/LeBonSens/recipes";
 

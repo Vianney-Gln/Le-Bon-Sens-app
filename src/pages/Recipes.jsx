@@ -14,10 +14,10 @@ const Recipes = () => {
   const [recipes, setRecipes] = useState([]);
   const [searchParam, setSearchParam] = useState("");
 
-  /* ----- getting all recipes on mounting componant -----*/
+  /* ----- getting all recipes on mounting componant or recipes in terms of searchParams -----*/
   useEffect(() => {
     getRecipes(searchParam).then((rcp) => setRecipes(rcp));
-  }, []);
+  }, [searchParam]);
 
   return (
     <div className="container-recipes">
