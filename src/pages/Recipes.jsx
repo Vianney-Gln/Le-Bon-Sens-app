@@ -7,22 +7,28 @@ import getRecipes from "../services/recipes";
 import CardRecipe from "../components/CardRecipe";
 
 const Recipes = () => {
-  // doc title
+  /* ----- doc title -----*/
   document.title = "Le Bon Sens - Recettes";
 
-  // variables statement
+  /* ----- variables statement -----*/
   const [recipes, setRecipes] = useState([]);
+  const [searchParam, setSearchParam] = useState("");
 
-  // getting all recipes on mounting componant
+  /* ----- getting all recipes on mounting componant -----*/
   useEffect(() => {
-    getRecipes().then((rcp) => setRecipes(rcp));
+    getRecipes(searchParam).then((rcp) => setRecipes(rcp));
   }, []);
 
   return (
     <div className="container-recipes">
       <h1>Quelques recettes ...</h1>
       <label htmlFor="search-recipes">
-        <input name="search-recipes" type="text" placeholder="search" />
+        <input
+          onChange={(e) => setSearchParam(e.target.value)}
+          name="search-recipes"
+          type="text"
+          placeholder="search"
+        />
       </label>
       <div className="container-center-cards-recipes">
         <div className="container-cards-recipes">
