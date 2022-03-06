@@ -31,7 +31,7 @@ const Products = ({ disableInsert, insert }) => {
 
   /* ----- getting products on mounting component and translate "?" into "€" ----- */
   useEffect(() => {
-    getProducts().then((products) => {
+    getProducts(sortParam, searchParam).then((products) => {
       products.forEach((product) => {
         if (product.price) {
           product.price = translateEuro(product.price);
@@ -39,7 +39,7 @@ const Products = ({ disableInsert, insert }) => {
       });
       setListProducts(products);
     });
-  }, []);
+  }, [sortParam, searchParam]);
 
   return (
     <div className="container-products">
