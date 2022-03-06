@@ -29,7 +29,7 @@ const Products = ({ disableInsert, insert }) => {
   const [sortParam, setSortParam] = useState("");
   const [searchParam, setSearchParam] = useState("");
 
-  /* ----- getting products on mounting component and translate "?" into "€" ----- */
+  /* ----- getting products on mounting component, translate "?" into "€" on rerend on each changement of sortParams or searchParams ----- */
   useEffect(() => {
     getProducts(sortParam, searchParam).then((products) => {
       products.forEach((product) => {

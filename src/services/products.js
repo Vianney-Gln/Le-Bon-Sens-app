@@ -1,7 +1,8 @@
 import axios from "axios";
 
 /**
- * function calling api getting products infos
+ * function calling api getting products infos in terms of params(category or name)
+ * @param (string,string)
  * @returns array
  */
 const getProducts = (paramCategory, paramSearch) => {
