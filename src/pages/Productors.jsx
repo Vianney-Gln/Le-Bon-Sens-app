@@ -13,7 +13,10 @@ import carrou3 from "../images/carrou3.jpg";
 // components
 import InsertEvent from "../components/InsertEvent";
 //service
-import { getInfosProductors } from "../services/productors";
+import {
+  getInfosProductors,
+  getCarrouselProductor,
+} from "../services/productors";
 
 const Productors = ({ insert, disableInsert }) => {
   /* ----- doc title ----- */
@@ -24,10 +27,14 @@ const Productors = ({ insert, disableInsert }) => {
 
   /* ----- states ----- */
   const [infosProductor, setInfosProductor] = useState({});
+  const [carrouselProductor, setCarrouselProductor] = useState([]);
 
   /* ----- getting infos productor by id on component mounting ----- */
   useEffect(() => {
     getInfosProductors(param.id).then((result) => setInfosProductor(result));
+    getCarrouselProductor(param.id).then((result) =>
+      setCarrouselProductor(result)
+    );
   }, []);
 
   // carrousel
@@ -53,12 +60,12 @@ const Productors = ({ insert, disableInsert }) => {
       <div className="container-top">
         <div className="container-carrousel">
           <Slide>
-            {slideImages.map((slideImage) => (
-              <div className="each-slide" key={slideImage.caption}>
+            {carrouselProductor.map((slideImage) => (
+              <div className="each-slide" key={slideImage.id}>
                 <div
                   className="slide"
                   style={{
-                    backgroundImage: `url(${slideImage.url})`,
+                    backgroundImage: `url(${slideImage.urlImageCarrousel})`,
                   }}
                 />
               </div>
@@ -100,14 +107,14 @@ const Productors = ({ insert, disableInsert }) => {
         </div>
       </div>
       <div className="container-bottom">
-        <img src={infosProductor.urlImage1} alt="" />
+        <img src={infosProductor.urlImage1} alt={infosProductor.name} />
         <div className="description-productor2">
           <div>
             <h3>{infosProductor.titleDescription2}</h3>
             <p>{infosProductor.description2}</p>
           </div>
         </div>
-        <img src={infosProductor.urlImage2} alt="" />
+        <img src={infosProductor.urlImage2} alt={infosProductor.name} />
       </div>
     </div>
   );
