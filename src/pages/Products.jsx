@@ -27,6 +27,7 @@ const Products = ({ disableInsert, insert }) => {
   /* ----- variables statement -----*/
   const [listProducts, setListProducts] = useState([]);
   const [sortParam, setSortParam] = useState("");
+  const [searchParam, setSearchParam] = useState("");
 
   /* ----- getting products on mounting component and translate "?" into "€" ----- */
   useEffect(() => {
@@ -46,16 +47,21 @@ const Products = ({ disableInsert, insert }) => {
       <h1>Nos Produits</h1>
       <div className="container-search-bar">
         <label htmlFor="search">
-          <input type="text" name="search" placeholder="search" />
+          <input
+            onChange={(e) => setSearchParam(e.target.value)}
+            type="text"
+            name="search"
+            placeholder="search"
+          />
         </label>
       </div>
       <div className="container-sort-products">
         <ul>
-          <li onClick={() => setSortParam("all products")}>
+          <li onClick={() => setSortParam("")}>
             <img src={all} alt="all products" />
             <span>Tous les produits</span>
           </li>
-          <li onClick={() => setSortParam("meat")}>
+          <li onClick={() => setSortParam("meats")}>
             <img src={meat} alt="meat" />
             <span>Viandes</span>
           </li>
@@ -63,8 +69,8 @@ const Products = ({ disableInsert, insert }) => {
             <img src={vegetables} alt="vegetables" />
             <span>Légumes</span>
           </li>
-          <li onClick={() => setSortParam("dairyProducts")}>
-            <img src={dairyProducts} alt="dairyProducts" />
+          <li onClick={() => setSortParam("dairy products")}>
+            <img src={dairyProducts} alt="dairy products" />
             <span>Produits laitiers</span>
           </li>
           <li onClick={() => setSortParam("other locals products")}>
