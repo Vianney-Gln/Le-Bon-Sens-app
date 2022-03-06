@@ -57,23 +57,40 @@ const Products = ({ disableInsert, insert }) => {
       </div>
       <div className="container-sort-products">
         <ul>
-          <li onClick={() => setSortParam("")}>
+          <li
+            className={sortParam === "" && "filter-selected"}
+            onClick={() => setSortParam("")}
+          >
             <img src={all} alt="all products" />
             <span>Tous les produits</span>
           </li>
-          <li onClick={() => setSortParam("meats")}>
+          <li
+            className={sortParam === "meats" && "filter-selected"}
+            onClick={() => setSortParam("meats")}
+          >
             <img src={meat} alt="meat" />
             <span>Viandes</span>
           </li>
-          <li onClick={() => setSortParam("vegetables")}>
+          <li
+            className={sortParam === "vegetables" && "filter-selected"}
+            onClick={() => setSortParam("vegetables")}
+          >
             <img src={vegetables} alt="vegetables" />
             <span>Légumes</span>
           </li>
-          <li onClick={() => setSortParam("dairy products")}>
+          <li
+            className={sortParam === "dairy products" && "filter-selected"}
+            onClick={() => setSortParam("dairy products")}
+          >
             <img src={dairyProducts} alt="dairy products" />
             <span>Produits laitiers</span>
           </li>
-          <li onClick={() => setSortParam("other locals products")}>
+          <li
+            className={
+              sortParam === "other locals products" && "filter-selected"
+            }
+            onClick={() => setSortParam("other locals products")}
+          >
             <img src={diversProducts} alt="other locals products" />
             <span>Produits locaux divers</span>
           </li>
