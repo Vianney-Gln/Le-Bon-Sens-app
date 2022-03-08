@@ -14,6 +14,7 @@ import FindUs from "./pages/FindUs";
 import Recipes from "./pages/Recipes";
 //service
 import { getNamesProductors } from "./services/productors";
+import Admin from "./admin/Admin";
 
 const App = () => {
   /* ------ about Insert-event component ------- */
@@ -55,6 +56,7 @@ const App = () => {
         <Route exact path="events" element={<Events />} />
         <Route exact path="find-us" element={<FindUs />} />
         <Route exact path="recipes" element={<Recipes />} />
+        <Route exact path="admin" element={<Admin />} />
       </Routes>
       <Footer />
     </div>
