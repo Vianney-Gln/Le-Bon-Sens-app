@@ -17,4 +17,17 @@ const getProducts = (paramCategory, paramSearch) => {
   return axios.get(url).then((products) => products.data);
 };
 
+/**
+ * function creating a new product
+ * @param {object} dataProduct
+ * @returns object
+ */
+export const postOneProduct = (dataProduct) => {
+  return axios({
+    method: "post",
+    url: "http://localhost:3001/api/LeBonSens/products",
+    data: dataProduct,
+  });
+};
+
 export default getProducts;
