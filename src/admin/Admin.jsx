@@ -39,7 +39,13 @@ const Admin = () => {
         </ul>
 
         <div className="container-rubric">
-          {operation === "addProduct" && <FormAddProduct />}
+          {operation === "addProduct" ? (
+            <FormAddProduct />
+          ) : operation === "" ? (
+            <FormAddProduct />
+          ) : (
+            ""
+          )}
         </div>
       </div>
     </div>
