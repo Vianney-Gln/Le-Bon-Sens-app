@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 // routing
 import { Route, Routes } from "react-router-dom";
+//components
 import Footer from "./components/Footer";
 // Pages
 import Header from "./components/Header";

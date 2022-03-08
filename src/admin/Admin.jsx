@@ -1,11 +1,15 @@
-import React from "react";
-
+import React, { useState } from "react";
 //style
 import "../styles/admin.scss";
+//components admin
+import FormAddProduct from "./FormAddProduct";
 
 const Admin = () => {
   /* ----- doc title ----- */
   document.title = "Le Bon Sens - Admin";
+
+  /* ----- states -----*/
+  const [operation, setOperation] = useState(""); // this state define the component that will be used in the div below "container-rubric"
   return (
     <div className="container-admin">
       <h1>Bienvenue dans votre espace admin</h1>
@@ -18,7 +22,10 @@ const Admin = () => {
       </div>
       <div className="container-rubrics-form">
         <ul>
-          <li>Ajouter des produits en stock</li>
+          <li onClick={() => setOperation("addProduct")}>
+            Ajouter des produits en stock
+          </li>
+
           <li>Supprimer un produit du stock</li>
           <li>Ajouter une recette</li>
           <li>Supprimer une recette</li>
@@ -31,7 +38,9 @@ const Admin = () => {
           <li>Déconnexion</li>
         </ul>
 
-        <div className="fake-box"></div>
+        <div className="container-rubric">
+          {operation === "addProduct" && <FormAddProduct />}
+        </div>
       </div>
     </div>
   );
