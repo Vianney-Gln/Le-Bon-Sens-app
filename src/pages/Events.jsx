@@ -10,7 +10,10 @@ import { isObjEmpty } from "../utility/utility_functions";
 // service
 import getInfosEvents from "../services/events";
 
-const Events = () => {
+const Events = ({ setInsert }) => {
+  /* ------ disable insert event ------*/
+  setInsert(false);
+
   // doc title
   document.title = "Le Bon Sens - Evènements";
 

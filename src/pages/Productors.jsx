@@ -10,15 +10,14 @@ import iconTwitter from "../images/icone-twitter.png";
 import carrou1 from "../images/carrou1.jpg";
 import carrou2 from "../images/carrou2.jpg";
 import carrou3 from "../images/carrou3.jpg";
-// components
-import InsertEvent from "../components/InsertEvent";
+
 //service
 import {
   getInfosProductors,
   getCarrouselProductor,
 } from "../services/productors";
 
-const Productors = ({ insert, disableInsert }) => {
+const Productors = () => {
   /* ----- doc title ----- */
   document.title = "Le Bon Sens - Nos Producteurs associés";
 
@@ -55,7 +54,6 @@ const Productors = ({ insert, disableInsert }) => {
 
   return (
     <div className="container-productors">
-      {insert && <InsertEvent disableInsert={disableInsert} />}
       <h1>Nos producteurs associés</h1>
       <div className="container-top">
         <div className="container-carrousel">

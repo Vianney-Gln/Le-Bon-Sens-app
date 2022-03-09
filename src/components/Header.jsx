@@ -7,8 +7,10 @@ import "../styles/header.scss";
 import getInfosShop from "../services/shop";
 // context
 import { shopContext } from "../context/shop";
+//components
+import InsertEvent from "./InsertEvent";
 
-const Header = ({ productors }) => {
+const Header = ({ productors, insert, disableInsert }) => {
   // useContext
   const ShopContext = useContext(shopContext);
 
@@ -65,6 +67,7 @@ const Header = ({ productors }) => {
           <p>{ShopContext.infosShop.schedule}</p>
         )}
       </div>
+      {insert && <InsertEvent disableInsert={disableInsert} />}
     </header>
   );
 };

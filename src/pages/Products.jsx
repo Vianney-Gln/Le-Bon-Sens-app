@@ -11,13 +11,12 @@ import vegetables from "../images/vegetables.jpg";
 import dairyProducts from "../images/dairy-products.png";
 import diversProducts from "../images/divers-products.jpg";
 // components
-import InsertEvent from "../components/InsertEvent";
 import CardsProducts from "../components/cardsProducts";
 
 // services
 import getProducts from "../services/products";
 
-const Products = ({ disableInsert, insert }) => {
+const Products = () => {
   /* ----- doc title ----- */
   document.title = "Le Bon Sens - Nos Produits";
 
@@ -35,7 +34,6 @@ const Products = ({ disableInsert, insert }) => {
 
   return (
     <div className="container-products">
-      {insert && <InsertEvent disableInsert={disableInsert} />}
       <h1>Nos Produits</h1>
       <div className="container-search-bar">
         <label htmlFor="search">

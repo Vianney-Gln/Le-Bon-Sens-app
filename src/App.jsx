@@ -37,24 +37,16 @@ const App = () => {
 
   return (
     <div className="container-app">
-      <Header productors={productors} />
+      <Header
+        productors={productors}
+        insert={insert}
+        disableInsert={disableInsert}
+      />
       <Routes>
-        <Route
-          exact
-          path="products"
-          element={<Products disableInsert={disableInsert} insert={insert} />}
-        />
-        <Route
-          exact
-          path="/"
-          element={<Shop disableInsert={disableInsert} insert={insert} />}
-        />
-        <Route
-          exact
-          path="productors/:id"
-          element={<Productors disableInsert={disableInsert} insert={insert} />}
-        />
-        <Route exact path="events" element={<Events />} />
+        <Route exact path="products" element={<Products />} />
+        <Route exact path="/" element={<Shop />} />
+        <Route exact path="productors/:id" element={<Productors />} />
+        <Route exact path="events" element={<Events setInsert={setInsert} />} />
         <Route exact path="find-us" element={<FindUs />} />
         <Route exact path="recipes" element={<Recipes />} />
         <Route exact path="admin" element={<Admin />} />
