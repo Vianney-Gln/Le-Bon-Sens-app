@@ -36,4 +36,12 @@ form {
     background-color: #858585;
     transform: scale(1.1);
   }
+  .success {
+    margin-top: 20px;
+    color: green;
+  }
+  .fail {
+    margin-top: 20px;
+    color: red;
+  }
 }
