@@ -48,7 +48,9 @@ const CardsProducts = ({
       >
         <p>Etes vous sûr de vouloir supprimer ce produit?</p>
         <div className="container-buttons-modal">
-          <button type="button">oui</button>
+          <button type="button" onClick={console.log("coucou")}>
+            oui
+          </button>
           <button type="button">non</button>
         </div>
       </Modal>

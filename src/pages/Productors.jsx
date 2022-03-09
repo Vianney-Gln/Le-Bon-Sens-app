@@ -59,7 +59,7 @@ const Productors = () => {
         <div className="container-carrousel">
           <Slide>
             {carrouselProductor.map((slideImage) => (
-              <div className="each-slide" key={slideImage.id}>
+              <div className="each-slide" key={slideImage.urlImageCarrousel}>
                 <div
                   className="slide"
                   style={{
@@ -101,7 +101,7 @@ const Productors = () => {
               </a>
             )}
           </div>
-          <div className="container-buttons">dddd</div>
+          <div className="container-buttons"></div>
         </div>
       </div>
       <div className="container-bottom">

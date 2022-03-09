@@ -11,9 +11,6 @@ import { isObjEmpty } from "../utility/utility_functions";
 import getInfosEvents from "../services/events";
 
 const Events = ({ setInsert }) => {
-  /* ------ disable insert event ------*/
-  setInsert(false);
-
   // doc title
   document.title = "Le Bon Sens - Evènements";
 
@@ -23,6 +20,8 @@ const Events = ({ setInsert }) => {
 
   // getting all infos about events on component mounting
   useEffect(() => {
+    /* ------ disable insert event ------*/
+    setInsert(false);
     getInfosEvents().then((evts) => {
       evts.forEach((evt) => {
         if (evt.isCurrent === 1) {
