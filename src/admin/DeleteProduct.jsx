@@ -59,11 +59,15 @@ const DeleteProduct = () => {
           navigate("/admin");
         }, 3000);
       })
-      .catch((err) => {
-        console.log(err);
+      .catch(() => {
         setSuccessMessage(
-          "il y a eu une erreur lors de la suppression du produit"
+          "il y a eu une erreur lors de la suppression du produit, vous serez redirigé..."
         );
+        setTimeout(() => {
+          closeModal();
+          navigate("/products");
+          navigate("/admin");
+        }, 3000);
       });
   };
 
