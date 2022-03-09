@@ -33,6 +33,12 @@ h3 {
         background-color: #c4c4c4;
         border: none;
         padding: 5px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.5s ease;
+      }
+      button:hover {
+        background-color: #858585;
       }
     }
   }
