@@ -22,13 +22,31 @@ const FormAddProduct = () => {
   };
 
   /**
-   * function running the PostOneProduct from service and manage errors
+   * function removing all fields after success request
    */
-  const runPostOneProduct = () => {
+  const resetFields = () => {
+    document.getElementById("name").value = "";
+    document.getElementById("price").value = "";
+    document.getElementById("urlImage").value = "";
+    document.getElementById("category").value = "";
+  };
+
+  /**
+   * function running the PostOneProduct from service and manage errors after submit form
+   */
+  const handleForm = (e) => {
+    e.preventDefault();
     postOneProduct(dataProduct)
       .then(() => {
         setMessage("produit correctement ajouté");
         setError(false);
+        setDataProduct({
+          name: "",
+          price: "",
+          urlImage: "",
+          id_categoryProducts: "",
+        });
+        resetFields();
       })
       .catch(() => {
         setMessage(
@@ -40,11 +58,12 @@ const FormAddProduct = () => {
   return (
     <>
       <h3>Ajouter des produits en stock</h3>
-      <form>
+      <form onSubmit={handleForm}>
         <label htmlFor="name">
           <input
             type="text"
             name="name"
+            id="name"
             placeholder="nom du produit"
             onChange={(e) => getDataProduct(e.target.value, "name")}
           ></input>
@@ -53,6 +72,7 @@ const FormAddProduct = () => {
           <input
             type="text"
             name="price"
+            id="price"
             placeholder="prix du produit (exemple:1.49€/kg)"
             onChange={(e) => getDataProduct(e.target.value, "price")}
           ></input>
@@ -61,6 +81,7 @@ const FormAddProduct = () => {
           <input
             type="text"
             name="urlImage"
+            id="urlImage"
             placeholder="entrez une url image"
             onChange={(e) => getDataProduct(e.target.value, "urlImage")}
           ></input>
@@ -68,11 +89,14 @@ const FormAddProduct = () => {
         <label htmlFor="category">
           <select
             name="category"
+            id="category"
             onChange={(e) =>
               getDataProduct(Number(e.target.value), "id_categoryProducts")
             }
           >
-            <option className="option-fake">-catégories de produit-</option>
+            <option value="" className="option-fake">
+              -catégories de produit-
+            </option>
             <option value="1">Tous les produits</option>
             <option value="2">Viandes</option>
             <option value="3">Légumes</option>
@@ -80,9 +104,7 @@ const FormAddProduct = () => {
             <option value="5">Produits locaux divers</option>
           </select>
         </label>
-        <button onClick={() => runPostOneProduct()} type="button">
-          valider
-        </button>
+        <button type="submit">valider</button>
         {message && <p className={error ? "fail" : "success"}>{message}</p>}
       </form>
     </>
