@@ -7,7 +7,6 @@ h3 {
   display: flex;
   justify-content: center;
   max-height: 600px;
-  overflow-y: auto;
 
   .container-list-products-to-delete {
     list-style-type: none;
@@ -16,6 +15,7 @@ h3 {
     justify-content: flex-start;
     margin-top: 30px;
     flex-wrap: wrap;
+    overflow-y: scroll;
 
     li {
       display: flex;
@@ -24,13 +24,20 @@ h3 {
       align-items: center;
       margin: 30px;
       box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    }
-    img {
-      width: 150px;
+      img {
+        width: 150px;
+      }
+      button {
+        margin-bottom: 10px;
+        margin-top: 10px;
+        background-color: #c4c4c4;
+        border: none;
+        padding: 5px;
+      }
     }
   }
-}
-::-webkit-scrollbar {
-  /* Scrollbars */
-  display: none;
+  ::-webkit-scrollbar {
+    /* Scrollbars */
+    display: none;
+  }
 }
