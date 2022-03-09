@@ -6,6 +6,8 @@ const CardsProducts = ({
   productImage,
   toDelete,
   openModal,
+  setIdToDelete,
+  productId,
 }) => {
   return (
     <li>
@@ -13,7 +15,13 @@ const CardsProducts = ({
       <span>{productName}</span>
       <span>{productPrice}</span>
       {toDelete && (
-        <button onClick={openModal} type="button">
+        <button
+          onClick={() => {
+            openModal();
+            setIdToDelete(productId);
+          }}
+          type="button"
+        >
           supprimer
         </button>
       )}
