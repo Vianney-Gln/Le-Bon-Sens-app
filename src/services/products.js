@@ -30,4 +30,8 @@ export const postOneProduct = (dataProduct) => {
   });
 };
 
+export const deleteOneProduct = (id) => {
+  return axios.delete(`http://localhost:3001/api/LeBonSens/products/${id}`);
+};
+
 export default getProducts;
