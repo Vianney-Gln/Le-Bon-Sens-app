@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import "../styles/admin.scss";
 //components admin
 import FormAddProduct from "./FormAddProduct";
+import DeleteProduct from "./DeleteProduct";
 
 const Admin = () => {
   /* ----- doc title ----- */
@@ -26,7 +27,9 @@ const Admin = () => {
             Ajouter des produits en stock
           </li>
 
-          <li>Supprimer un produit du stock</li>
+          <li onClick={() => setOperation("deleteProduct")}>
+            Supprimer un produit du stock
+          </li>
           <li>Ajouter une recette</li>
           <li>Supprimer une recette</li>
           <li>Ajouter un producteur</li>
@@ -46,6 +49,7 @@ const Admin = () => {
           ) : (
             ""
           )}
+          {operation === "deleteProduct" && <DeleteProduct />}
         </div>
       </div>
     </div>
