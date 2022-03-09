@@ -5,7 +5,6 @@ import "../styles/deleteProduct.scss";
 import getProducts from "../services/products";
 //components
 import CardsProducts from "../components/cardsProducts";
-
 const DeleteProduct = () => {
   /*----- states -----*/
   const [productsToDelete, setProductsToDelete] = useState([]);
@@ -17,6 +16,7 @@ const DeleteProduct = () => {
       console.log(result);
     });
   }, []);
+
   return (
     <>
       <h3>Supprimer un produit</h3>
