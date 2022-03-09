@@ -22,7 +22,7 @@ const Admin = () => {
         </p>
       </div>
       <div className="container-rubrics-form">
-        <ul>
+        <ul className="container-list-rubrics">
           <li onClick={() => setOperation("addProduct")}>
             Ajouter des produits en stock
           </li>
