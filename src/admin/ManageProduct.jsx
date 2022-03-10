@@ -42,9 +42,14 @@ const ManageProduct = ({ setOperation }) => {
 
   /*----- getting all products on component mounting -----*/
   useEffect(() => {
-    getProducts().then((result) => {
-      setProductsToDelete(result);
-    });
+    let isMounted = true;
+    if (isMounted) {
+      getProducts().then((result) => {
+        setProductsToDelete(result);
+      });
+    } else {
+      return () => (isMounted = false);
+    }
   }, []);
 
   const runDeleteOneProduct = () => {

@@ -34,7 +34,7 @@ const FormProduct = ({ operation }) => {
   /**
    * function running the PostOneProduct from service and manage errors after submit form
    */
-  const handleForm = (e) => {
+  const handleFormPost = (e) => {
     e.preventDefault();
     postOneProduct(dataProduct)
       .then(() => {
@@ -55,11 +55,20 @@ const FormProduct = ({ operation }) => {
         setError(true);
       });
   };
+
+  const handleFormUpdate = (e) => {
+    e.preventDefault();
+    console.log("update");
+  };
   return (
     <>
       {operation === "addProduct" && <h3>Ajouter des produits en stock</h3>}
       {operation === "updateProduct" && <h3>Modifier un produit en stock</h3>}
-      <form onSubmit={handleForm}>
+      <form
+        onSubmit={
+          operation === "addProduct" ? handleFormPost : handleFormUpdate
+        }
+      >
         <label htmlFor="name">
           <input
             type="text"
@@ -105,7 +114,10 @@ const FormProduct = ({ operation }) => {
             <option value="5">Produits locaux divers</option>
           </select>
         </label>
-        <button type="submit">valider</button>
+        {operation === "addProduct" && <button type="submit">valider</button>}
+        {operation === "updateProduct" && (
+          <button type="submit">modifier</button>
+        )}
         {message && <p className={error ? "fail" : "success"}>{message}</p>}
       </form>
     </>
