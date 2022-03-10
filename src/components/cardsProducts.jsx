@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 const CardsProducts = ({
   productName,
@@ -30,6 +30,7 @@ const CardsProducts = ({
             type="button"
             onClick={() => {
               setOperation("updateProduct");
+              setIdProductToManage(productId);
             }}
           >
             modifier

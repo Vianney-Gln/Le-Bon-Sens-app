@@ -52,7 +52,10 @@ const Admin = () => {
             />
           )}
           {operation === "updateProduct" && (
-            <FormProduct operation={operation} />
+            <FormProduct
+              operation={operation}
+              idProductToManage={idProductToManage}
+            />
           )}
         </div>
       </div>

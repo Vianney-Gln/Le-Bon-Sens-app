@@ -45,14 +45,11 @@ const ManageProduct = ({
 
   /*----- getting all products on component mounting -----*/
   useEffect(() => {
-    let isMounted = true;
     getProducts().then((result) => {
-      if (isMounted) {
-        setProductsToManage(result);
-      }
+      setProductsToManage(result);
     });
     return () => {
-      isMounted = false; //have to cleanup all asynchronous operation on unmount (dev tools fix)
+      setIdProductToManage([]);
     };
   }, []);
 
@@ -64,8 +61,7 @@ const ManageProduct = ({
         );
         setTimeout(() => {
           closeModal();
-          navigate("/products");
-          navigate("/admin");
+          setOperation("addProduct");
         }, 3000);
       })
       .catch(() => {
@@ -74,8 +70,7 @@ const ManageProduct = ({
         );
         setTimeout(() => {
           closeModal();
-          navigate("/products");
-          navigate("/admin");
+          setOperation("addProduct");
         }, 3000);
       });
   };

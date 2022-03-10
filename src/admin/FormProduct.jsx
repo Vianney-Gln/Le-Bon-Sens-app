@@ -4,7 +4,7 @@ import "../styles/formProduct.scss";
 //service
 import { postOneProduct, getOneProductById } from "../services/products";
 
-const FormProduct = ({ operation }) => {
+const FormProduct = ({ operation, idProductToManage }) => {
   /* -----states-----*/
   const [dataProduct, setDataProduct] = useState({});
   const [error, setError] = useState(false); // state true if error while sending post request- Manage the color of the message
@@ -57,11 +57,21 @@ const FormProduct = ({ operation }) => {
   };
 
   //getting all infos for one product on component mounting IF operation === updateProduct
+  useEffect(() => {
+    if (operation === "updateProduct") {
+      getOneProductById(idProductToManage)
+        .then((result) => setDataProduct(result))
+        .catch((err) => console.log(err));
+    }
+    return () => {
+      setDataProduct({});
+    };
+  }, []);
 
   //function update test (temp)
   const handleFormUpdate = (e) => {
     e.preventDefault();
-    console.log("update");
+    console.log("update", dataProduct);
   };
   return (
     <>
