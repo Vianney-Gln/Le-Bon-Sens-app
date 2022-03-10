@@ -17,6 +17,12 @@ const getProducts = (paramCategory, paramSearch) => {
   return axios.get(url).then((products) => products.data);
 };
 
+export const getOneProductById = (id) => {
+  return axios
+    .get(`http://localhost:3001/api/LeBonSens/products/${id}`)
+    .then((product) => product.data);
+};
+
 /**
  * function creating a new product
  * @param {object} dataProduct

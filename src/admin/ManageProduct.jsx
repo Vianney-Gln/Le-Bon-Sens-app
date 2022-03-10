@@ -48,7 +48,7 @@ const ManageProduct = ({ setOperation }) => {
         setProductsToDelete(result);
       });
     } else {
-      return () => (isMounted = false);
+      return () => (isMounted = false); //have to cleanup all asynchronous operation on unmount (dev tools fix)
     }
   }, []);
 
