@@ -1,4 +1,6 @@
 import React from "react";
+//routing
+import { useNavigate } from "react-router-dom";
 
 const CardsProducts = ({
   productName,
@@ -8,8 +10,9 @@ const CardsProducts = ({
   openModal,
   setIdProductToManage,
   productId,
-  setOperation,
 }) => {
+  /* ----- navigate -----*/
+  const navigate = useNavigate();
   return (
     <li>
       <img src={productImage} alt="product" />
@@ -29,8 +32,8 @@ const CardsProducts = ({
           <button
             type="button"
             onClick={() => {
-              setOperation("updateProduct");
               setIdProductToManage(productId);
+              navigate("/admin/updateProduct");
             }}
           >
             modifier

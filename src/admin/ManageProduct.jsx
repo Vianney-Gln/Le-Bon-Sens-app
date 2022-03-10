@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-
+//routing
+import { useNavigate } from "react-router-dom";
 //style
 import "../styles/deleteProduct.scss";
 //service
@@ -8,11 +9,9 @@ import getProducts, { deleteOneProduct } from "../services/products";
 import CardsProducts from "../components/cardsProducts";
 //Modal
 import Modal from "react-modal";
-const ManageProduct = ({
-  setOperation,
-  setIdProductToManage,
-  idProductToManage,
-}) => {
+const ManageProduct = ({ setIdProductToManage, idProductToManage }) => {
+  /* -----navigate -----*/
+  const navigate = useNavigate();
   /*----- states -----*/
   const [productsToManage, setProductsToManage] = useState([]); //array recieving result.data from service
   const [modalIsOpen, setIsOpen] = useState(false); //state Modal
@@ -58,7 +57,7 @@ const ManageProduct = ({
         );
         setTimeout(() => {
           closeModal();
-          setOperation("addProduct");
+          navigate("/admin");
         }, 3000);
       })
       .catch(() => {
@@ -67,7 +66,7 @@ const ManageProduct = ({
         );
         setTimeout(() => {
           closeModal();
-          setOperation("addProduct");
+          navigate("/admin");
         }, 3000);
       });
   };
@@ -109,7 +108,6 @@ const ManageProduct = ({
                 toManage={true}
                 openModal={openModal}
                 setIdProductToManage={setIdProductToManage}
-                setOperation={setOperation}
               />
             ))}
         </ul>

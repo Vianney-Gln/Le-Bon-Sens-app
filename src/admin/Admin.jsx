@@ -1,16 +1,22 @@
 import React, { useState } from "react";
+//routing
+import { Link, useParams } from "react-router-dom";
 //style
 import "../styles/admin.scss";
 //components admin
 import FormProduct from "./FormProduct";
 import ManageProduct from "./ManageProduct";
+import AddRecipe from "./AddRecipe";
 
 const Admin = () => {
   /* ----- doc title ----- */
   document.title = "Le Bon Sens - Admin";
 
+  /* ----- params ----- */
+  const param = useParams();
+
   /* ----- states -----*/
-  const [operation, setOperation] = useState("addProduct"); // this state define the component that will be used in the div below "container-rubric"
+
   const [idProductToManage, setIdProductToManage] = useState(""); // id product to manage
   return (
     <div className="container-admin">
@@ -24,14 +30,16 @@ const Admin = () => {
       </div>
       <div className="container-rubrics-form">
         <ul className="container-list-rubrics">
-          <li onClick={() => setOperation("addProduct")}>
-            Ajouter des produits en stock
-          </li>
+          <Link to="/admin/addProduct">
+            <li>Ajouter des produits en stock</li>
+          </Link>
 
-          <li onClick={() => setOperation("ManageProduct")}>
-            Gérer les produits
-          </li>
-          <li>Ajouter une recette</li>
+          <Link to="/admin/manageProduct">
+            <li>Gérer les produits</li>
+          </Link>
+          <Link to="/admin/addRecipe">
+            <li>Ajouter une recette</li>
+          </Link>
           <li>Supprimer une recette</li>
           <li>Ajouter un producteur</li>
           <li>Modifier les infos d'un producteur</li>
@@ -43,20 +51,22 @@ const Admin = () => {
         </ul>
 
         <div className="container-rubric">
-          {operation === "addProduct" && <FormProduct operation={operation} />}
-          {operation === "ManageProduct" && (
+          {param.operation === "addProduct" && (
+            <FormProduct operation={param.operation} />
+          )}
+          {param.operation === "manageProduct" && (
             <ManageProduct
-              setOperation={setOperation}
               idProductToManage={idProductToManage}
               setIdProductToManage={setIdProductToManage}
             />
           )}
-          {operation === "updateProduct" && (
+          {param.operation === "updateProduct" && (
             <FormProduct
-              operation={operation}
+              operation={param.operation}
               idProductToManage={idProductToManage}
             />
           )}
+          {param.operation === "addRecipe" && <AddRecipe />}
         </div>
       </div>
     </div>

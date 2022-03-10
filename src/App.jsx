@@ -50,6 +50,7 @@ const App = () => {
         <Route exact path="find-us" element={<FindUs />} />
         <Route exact path="recipes" element={<Recipes />} />
         <Route exact path="admin" element={<Admin />} />
+        <Route exact path="admin/:operation" element={<Admin />} />
       </Routes>
       <Footer />
     </div>
