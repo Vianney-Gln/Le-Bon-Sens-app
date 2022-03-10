@@ -2,7 +2,7 @@ import React, { useState } from "react";
 //style
 import "../styles/admin.scss";
 //components admin
-import FormAddProduct from "./FormAddProduct";
+import FormProduct from "./FormProduct";
 import DeleteProduct from "./DeleteProduct";
 
 const Admin = () => {
@@ -28,7 +28,7 @@ const Admin = () => {
           </li>
 
           <li onClick={() => setOperation("deleteProduct")}>
-            Supprimer un produit du stock
+            Gérer les produits
           </li>
           <li>Ajouter une recette</li>
           <li>Supprimer une recette</li>
@@ -43,9 +43,9 @@ const Admin = () => {
 
         <div className="container-rubric">
           {operation === "addProduct" ? (
-            <FormAddProduct />
+            <FormProduct />
           ) : operation === "" ? (
-            <FormAddProduct />
+            <FormProduct />
           ) : (
             ""
           )}

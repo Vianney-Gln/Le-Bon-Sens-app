@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 //style
-import "../styles/formAddProduct.scss";
+import "../styles/formProduct.scss";
 //service
 import { postOneProduct } from "../services/products";
 
-const FormAddProduct = () => {
+const FormProduct = () => {
   /* -----states-----*/
   const [dataProduct, setDataProduct] = useState({});
   const [error, setError] = useState(false); // state true if error while sending post request- Manage the color of the message
@@ -111,4 +111,4 @@ const FormAddProduct = () => {
   );
 };
 
-export default FormAddProduct;
+export default FormProduct;
