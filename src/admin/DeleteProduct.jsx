@@ -105,7 +105,7 @@ const DeleteProduct = () => {
                 productName={prod.name}
                 productPrice={prod.price}
                 productImage={prod.urlImage}
-                toDelete={true}
+                toManage={true}
                 openModal={openModal}
                 setIdToDelete={setIdToDelete}
               />

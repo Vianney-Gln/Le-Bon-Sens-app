@@ -4,7 +4,7 @@ const CardsProducts = ({
   productName,
   productPrice,
   productImage,
-  toDelete,
+  toManage,
   openModal,
   setIdToDelete,
   productId,
@@ -14,16 +14,19 @@ const CardsProducts = ({
       <img src={productImage} alt="product" />
       <span>{productName}</span>
       <span>{productPrice}</span>
-      {toDelete && (
-        <button
-          onClick={() => {
-            openModal();
-            setIdToDelete(productId);
-          }}
-          type="button"
-        >
-          supprimer
-        </button>
+      {toManage && (
+        <div className="container-buttons-delete-update">
+          <button
+            onClick={() => {
+              openModal();
+              setIdToDelete(productId);
+            }}
+            type="button"
+          >
+            supprimer
+          </button>
+          <button type="button">modifier</button>
+        </div>
       )}
     </li>
   );
