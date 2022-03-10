@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 //style
 import "../styles/formProduct.scss";
 //service
-import { postOneProduct } from "../services/products";
+import { postOneProduct, getOneProductById } from "../services/products";
 
 const FormProduct = ({ operation }) => {
   /* -----states-----*/
@@ -56,6 +56,9 @@ const FormProduct = ({ operation }) => {
       });
   };
 
+  //getting all infos for one product on component mounting IF operation === updateProduct
+
+  //function update test (temp)
   const handleFormUpdate = (e) => {
     e.preventDefault();
     console.log("update");

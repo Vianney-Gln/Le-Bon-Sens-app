@@ -11,6 +11,7 @@ const Admin = () => {
 
   /* ----- states -----*/
   const [operation, setOperation] = useState("addProduct"); // this state define the component that will be used in the div below "container-rubric"
+  const [idProductToManage, setIdProductToManage] = useState(""); // id product to manage
   return (
     <div className="container-admin">
       <h1>Bienvenue dans votre espace admin</h1>
@@ -44,7 +45,11 @@ const Admin = () => {
         <div className="container-rubric">
           {operation === "addProduct" && <FormProduct operation={operation} />}
           {operation === "ManageProduct" && (
-            <ManageProduct setOperation={setOperation} />
+            <ManageProduct
+              setOperation={setOperation}
+              idProductToManage={idProductToManage}
+              setIdProductToManage={setIdProductToManage}
+            />
           )}
           {operation === "updateProduct" && (
             <FormProduct operation={operation} />

@@ -9,13 +9,16 @@ import getProducts, { deleteOneProduct } from "../services/products";
 import CardsProducts from "../components/cardsProducts";
 //Modal
 import Modal from "react-modal";
-const ManageProduct = ({ setOperation }) => {
+const ManageProduct = ({
+  setOperation,
+  setIdProductToManage,
+  idProductToManage,
+}) => {
   /*----- navigate -----*/
   const navigate = useNavigate();
   /*----- states -----*/
-  const [productsToDelete, setProductsToDelete] = useState([]); //array recieving result.data from service
+  const [productsToManage, setProductsToManage] = useState([]); //array recieving result.data from service
   const [modalIsOpen, setIsOpen] = useState(false); //state Modal
-  const [idToDelete, setIdToDelete] = useState(""); // id to delete
   const [successMessage, setSuccessMessage] = useState("");
   /* -----Modal -----*/
   Modal.setAppElement("#root");
@@ -43,17 +46,18 @@ const ManageProduct = ({ setOperation }) => {
   /*----- getting all products on component mounting -----*/
   useEffect(() => {
     let isMounted = true;
-    if (isMounted) {
-      getProducts().then((result) => {
-        setProductsToDelete(result);
-      });
-    } else {
-      return () => (isMounted = false); //have to cleanup all asynchronous operation on unmount (dev tools fix)
-    }
+    getProducts().then((result) => {
+      if (isMounted) {
+        setProductsToManage(result);
+      }
+    });
+    return () => {
+      isMounted = false; //have to cleanup all asynchronous operation on unmount (dev tools fix)
+    };
   }, []);
 
   const runDeleteOneProduct = () => {
-    deleteOneProduct(idToDelete)
+    deleteOneProduct(idProductToManage)
       .then(() => {
         setSuccessMessage(
           "produit supprimé avec succès! vous serez redirigé..."
@@ -102,8 +106,8 @@ const ManageProduct = ({ setOperation }) => {
       <h3>Gérer les produits</h3>
       <div className="container-products-to-delete">
         <ul className="container-list-products-to-delete">
-          {productsToDelete &&
-            productsToDelete.map((prod) => (
+          {productsToManage &&
+            productsToManage.map((prod) => (
               <CardsProducts
                 key={prod.id}
                 productId={prod.id}
@@ -112,7 +116,7 @@ const ManageProduct = ({ setOperation }) => {
                 productImage={prod.urlImage}
                 toManage={true}
                 openModal={openModal}
-                setIdToDelete={setIdToDelete}
+                setIdProductToManage={setIdProductToManage}
                 setOperation={setOperation}
               />
             ))}

@@ -6,7 +6,7 @@ const CardsProducts = ({
   productImage,
   toManage,
   openModal,
-  setIdToDelete,
+  setIdProductToManage,
   productId,
   setOperation,
 }) => {
@@ -20,7 +20,7 @@ const CardsProducts = ({
           <button
             onClick={() => {
               openModal();
-              setIdToDelete(productId);
+              setIdProductToManage(productId);
             }}
             type="button"
           >
