@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import "../styles/admin.scss";
 //components admin
 import FormProduct from "./FormProduct";
-import DeleteProduct from "./DeleteProduct";
+import ManageProduct from "./ManageProduct";
 
 const Admin = () => {
   /* ----- doc title ----- */
@@ -49,7 +49,7 @@ const Admin = () => {
           ) : (
             ""
           )}
-          {operation === "deleteProduct" && <DeleteProduct />}
+          {operation === "deleteProduct" && <ManageProduct />}
         </div>
       </div>
     </div>

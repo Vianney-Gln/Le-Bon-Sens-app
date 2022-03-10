@@ -9,7 +9,7 @@ import getProducts, { deleteOneProduct } from "../services/products";
 import CardsProducts from "../components/cardsProducts";
 //Modal
 import Modal from "react-modal";
-const DeleteProduct = () => {
+const ManageProduct = () => {
   /*----- navigate -----*/
   const navigate = useNavigate();
   /*----- states -----*/
@@ -116,4 +116,4 @@ const DeleteProduct = () => {
   );
 };
 
-export default DeleteProduct;
+export default ManageProduct;
