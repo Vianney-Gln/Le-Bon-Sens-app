@@ -9,7 +9,7 @@ import getProducts, { deleteOneProduct } from "../services/products";
 import CardsProducts from "../components/cardsProducts";
 //Modal
 import Modal from "react-modal";
-const ManageProduct = () => {
+const ManageProduct = ({ setOperation }) => {
   /*----- navigate -----*/
   const navigate = useNavigate();
   /*----- states -----*/
@@ -94,7 +94,7 @@ const ManageProduct = () => {
         )}
         {successMessage && <p>{successMessage}</p>}
       </Modal>
-      <h3>Supprimer un produit</h3>
+      <h3>Gérer les produits</h3>
       <div className="container-products-to-delete">
         <ul className="container-list-products-to-delete">
           {productsToDelete &&
@@ -108,6 +108,7 @@ const ManageProduct = () => {
                 toManage={true}
                 openModal={openModal}
                 setIdToDelete={setIdToDelete}
+                setOperation={setOperation}
               />
             ))}
         </ul>

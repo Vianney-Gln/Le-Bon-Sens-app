@@ -4,7 +4,7 @@ import "../styles/formProduct.scss";
 //service
 import { postOneProduct } from "../services/products";
 
-const FormProduct = () => {
+const FormProduct = ({ operation }) => {
   /* -----states-----*/
   const [dataProduct, setDataProduct] = useState({});
   const [error, setError] = useState(false); // state true if error while sending post request- Manage the color of the message
@@ -57,7 +57,8 @@ const FormProduct = () => {
   };
   return (
     <>
-      <h3>Ajouter des produits en stock</h3>
+      {operation === "addProduct" && <h3>Ajouter des produits en stock</h3>}
+      {operation === "updateProduct" && <h3>Modifier un produit en stock</h3>}
       <form onSubmit={handleForm}>
         <label htmlFor="name">
           <input

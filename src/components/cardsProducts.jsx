@@ -8,6 +8,7 @@ const CardsProducts = ({
   openModal,
   setIdToDelete,
   productId,
+  setOperation,
 }) => {
   return (
     <li>
@@ -25,7 +26,14 @@ const CardsProducts = ({
           >
             supprimer
           </button>
-          <button type="button">modifier</button>
+          <button
+            type="button"
+            onClick={() => {
+              setOperation("updateProduct");
+            }}
+          >
+            modifier
+          </button>
         </div>
       )}
     </li>

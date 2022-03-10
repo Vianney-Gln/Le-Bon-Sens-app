@@ -10,7 +10,7 @@ const Admin = () => {
   document.title = "Le Bon Sens - Admin";
 
   /* ----- states -----*/
-  const [operation, setOperation] = useState(""); // this state define the component that will be used in the div below "container-rubric"
+  const [operation, setOperation] = useState("addProduct"); // this state define the component that will be used in the div below "container-rubric"
   return (
     <div className="container-admin">
       <h1>Bienvenue dans votre espace admin</h1>
@@ -27,7 +27,7 @@ const Admin = () => {
             Ajouter des produits en stock
           </li>
 
-          <li onClick={() => setOperation("deleteProduct")}>
+          <li onClick={() => setOperation("ManageProduct")}>
             Gérer les produits
           </li>
           <li>Ajouter une recette</li>
@@ -42,14 +42,13 @@ const Admin = () => {
         </ul>
 
         <div className="container-rubric">
-          {operation === "addProduct" ? (
-            <FormProduct />
-          ) : operation === "" ? (
-            <FormProduct />
-          ) : (
-            ""
+          {operation === "addProduct" && <FormProduct operation={operation} />}
+          {operation === "ManageProduct" && (
+            <ManageProduct setOperation={setOperation} />
           )}
-          {operation === "deleteProduct" && <ManageProduct />}
+          {operation === "updateProduct" && (
+            <FormProduct operation={operation} />
+          )}
         </div>
       </div>
     </div>
