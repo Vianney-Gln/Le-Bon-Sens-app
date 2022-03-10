@@ -88,6 +88,7 @@ const FormProduct = ({ operation, idProductToManage }) => {
             name="name"
             id="name"
             placeholder="nom du produit"
+            defaultValue={operation === "updateProduct" ? dataProduct.name : ""}
             onChange={(e) => getDataProduct(e.target.value, "name")}
           ></input>
         </label>
@@ -97,6 +98,9 @@ const FormProduct = ({ operation, idProductToManage }) => {
             name="price"
             id="price"
             placeholder="prix du produit (exemple:1.49€/kg)"
+            defaultValue={
+              operation === "updateProduct" ? dataProduct.price : ""
+            }
             onChange={(e) => getDataProduct(e.target.value, "price")}
           ></input>
         </label>
@@ -106,6 +110,9 @@ const FormProduct = ({ operation, idProductToManage }) => {
             name="urlImage"
             id="urlImage"
             placeholder="entrez une url image"
+            defaultValue={
+              operation === "updateProduct" ? dataProduct.urlImage : ""
+            }
             onChange={(e) => getDataProduct(e.target.value, "urlImage")}
           ></input>
         </label>
