@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-//routing
-import { useNavigate } from "react-router-dom";
+
 //style
 import "../styles/deleteProduct.scss";
 //service
@@ -14,8 +13,6 @@ const ManageProduct = ({
   setIdProductToManage,
   idProductToManage,
 }) => {
-  /*----- navigate -----*/
-  const navigate = useNavigate();
   /*----- states -----*/
   const [productsToManage, setProductsToManage] = useState([]); //array recieving result.data from service
   const [modalIsOpen, setIsOpen] = useState(false); //state Modal
