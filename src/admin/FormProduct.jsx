@@ -73,7 +73,10 @@ const FormProduct = ({ operation, idProductToManage }) => {
     }
   }, []);
 
-  //function update test (temp)
+  /**
+   * function running handleFormUpdate
+   * @param {*} e
+   */
   const handleFormUpdate = (e) => {
     e.preventDefault();
     updateOneProduct(dataProduct, idProductToManage)
