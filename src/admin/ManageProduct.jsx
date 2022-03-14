@@ -44,9 +44,6 @@ const ManageProduct = ({ setIdProductToManage, idProductToManage }) => {
     getProducts().then((result) => {
       setProductsToManage(result);
     });
-    return () => {
-      setIdProductToManage([]);
-    };
   }, []);
 
   const runDeleteOneProduct = () => {
