@@ -10,7 +10,7 @@ import { isObjEmpty } from "../utility/utility_functions";
 // service
 import getInfosEvents from "../services/events";
 
-const Events = () => {
+const Events = ({ setInsert }) => {
   // doc title
   document.title = "Le Bon Sens - Evènements";
 
@@ -20,6 +20,8 @@ const Events = () => {
 
   // getting all infos about events on component mounting
   useEffect(() => {
+    /* ------ disable insert event ------*/
+    setInsert(false);
     getInfosEvents().then((evts) => {
       evts.forEach((evt) => {
         if (evt.isCurrent === 1) {

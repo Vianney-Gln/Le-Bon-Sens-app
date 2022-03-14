@@ -11,16 +11,12 @@ import vegetables from "../images/vegetables.jpg";
 import dairyProducts from "../images/dairy-products.png";
 import diversProducts from "../images/divers-products.jpg";
 // components
-import InsertEvent from "../components/InsertEvent";
 import CardsProducts from "../components/cardsProducts";
 
 // services
 import getProducts from "../services/products";
 
-// utility
-import translateEuro from "../utility/utility_functions";
-
-const Products = ({ disableInsert, insert }) => {
+const Products = () => {
   /* ----- doc title ----- */
   document.title = "Le Bon Sens - Nos Produits";
 
@@ -32,18 +28,12 @@ const Products = ({ disableInsert, insert }) => {
   /* ----- getting products on mounting component, translate "?" into "€" on rerend on each changement of sortParams or searchParams ----- */
   useEffect(() => {
     getProducts(sortParam, searchParam).then((products) => {
-      products.forEach((product) => {
-        if (product.price) {
-          product.price = translateEuro(product.price);
-        }
-      });
       setListProducts(products);
     });
   }, [sortParam, searchParam]);
 
   return (
     <div className="container-products">
-      {insert && <InsertEvent disableInsert={disableInsert} />}
       <h1>Nos Produits</h1>
       <div className="container-search-bar">
         <label htmlFor="search">
@@ -58,28 +48,28 @@ const Products = ({ disableInsert, insert }) => {
       <div className="container-sort-products">
         <ul>
           <li
-            className={sortParam === "" && "filter-selected"}
+            className={sortParam === "" ? "filter-selected" : ""}
             onClick={() => setSortParam("")}
           >
             <img src={all} alt="all products" />
             <span>Tous les produits</span>
           </li>
           <li
-            className={sortParam === "meats" && "filter-selected"}
+            className={sortParam === "meats" ? "filter-selected" : ""}
             onClick={() => setSortParam("meats")}
           >
             <img src={meat} alt="meat" />
             <span>Viandes</span>
           </li>
           <li
-            className={sortParam === "vegetables" && "filter-selected"}
+            className={sortParam === "vegetables" ? "filter-selected" : ""}
             onClick={() => setSortParam("vegetables")}
           >
             <img src={vegetables} alt="vegetables" />
             <span>Légumes</span>
           </li>
           <li
-            className={sortParam === "dairy products" && "filter-selected"}
+            className={sortParam === "dairy products" ? "filter-selected" : ""}
             onClick={() => setSortParam("dairy products")}
           >
             <img src={dairyProducts} alt="dairy products" />
@@ -87,7 +77,7 @@ const Products = ({ disableInsert, insert }) => {
           </li>
           <li
             className={
-              sortParam === "other locals products" && "filter-selected"
+              sortParam === "other locals products" ? "filter-selected" : ""
             }
             onClick={() => setSortParam("other locals products")}
           >

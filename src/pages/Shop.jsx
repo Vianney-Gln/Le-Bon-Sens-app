@@ -1,12 +1,11 @@
 import React, { useContext } from "react";
 // styles
 import "../styles/shop.scss";
-// components
-import InsertEvent from "../components/InsertEvent";
+
 // context
 import { shopContext } from "../context/shop";
 
-const Shop = ({ insert, disableInsert }) => {
+const Shop = () => {
   // doc title
   document.title = "Le Bon Sens - Notre Magasin";
   // useContext
@@ -14,7 +13,6 @@ const Shop = ({ insert, disableInsert }) => {
 
   return (
     <div className="container-shop">
-      {insert && <InsertEvent disableInsert={disableInsert} />}
       <h1>Notre Magasin</h1>
       {ShopContext.infosShop.description1 && (
         <p className="description">{ShopContext.infosShop.description1}</p>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 // routing
 import { Route, Routes } from "react-router-dom";
+//components
 import Footer from "./components/Footer";
 // Pages
 import Header from "./components/Header";
@@ -14,6 +15,7 @@ import FindUs from "./pages/FindUs";
 import Recipes from "./pages/Recipes";
 //service
 import { getNamesProductors } from "./services/productors";
+import Admin from "./admin/Admin";
 
 const App = () => {
   /* ------ about Insert-event component ------- */
@@ -35,26 +37,20 @@ const App = () => {
 
   return (
     <div className="container-app">
-      <Header productors={productors} />
+      <Header
+        productors={productors}
+        insert={insert}
+        disableInsert={disableInsert}
+      />
       <Routes>
-        <Route
-          exact
-          path="products"
-          element={<Products disableInsert={disableInsert} insert={insert} />}
-        />
-        <Route
-          exact
-          path="/"
-          element={<Shop disableInsert={disableInsert} insert={insert} />}
-        />
-        <Route
-          exact
-          path="productors/:id"
-          element={<Productors disableInsert={disableInsert} insert={insert} />}
-        />
-        <Route exact path="events" element={<Events />} />
+        <Route exact path="products" element={<Products />} />
+        <Route exact path="/" element={<Shop />} />
+        <Route exact path="productors/:id" element={<Productors />} />
+        <Route exact path="events" element={<Events setInsert={setInsert} />} />
         <Route exact path="find-us" element={<FindUs />} />
         <Route exact path="recipes" element={<Recipes />} />
+        <Route exact path="admin" element={<Admin />} />
+        <Route exact path="admin/:operation" element={<Admin />} />
       </Routes>
       <Footer />
     </div>

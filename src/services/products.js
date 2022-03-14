@@ -17,4 +17,41 @@ const getProducts = (paramCategory, paramSearch) => {
   return axios.get(url).then((products) => products.data);
 };
 
+export const getOneProductById = (id) => {
+  return axios
+    .get(`http://localhost:3001/api/LeBonSens/products/${id}`)
+    .then((product) => product.data);
+};
+
+/**
+ * function creating a new product
+ * @param {object} dataProduct
+ * @returns object
+ */
+export const postOneProduct = (dataProduct) => {
+  return axios({
+    method: "post",
+    url: "http://localhost:3001/api/LeBonSens/products",
+    data: dataProduct,
+  });
+};
+
+/**
+ * function deleting one product by his id
+ * @param {number} id
+ * @returns
+ */
+
+export const deleteOneProduct = (id) => {
+  return axios.delete(`http://localhost:3001/api/LeBonSens/products/${id}`);
+};
+
+export const updateOneProduct = (dataProduct, id) => {
+  return axios({
+    method: "put",
+    url: `http://localhost:3001/api/LeBonSens/products/${id}`,
+    data: dataProduct,
+  });
+};
+
 export default getProducts;
