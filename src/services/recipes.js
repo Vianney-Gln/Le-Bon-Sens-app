@@ -14,6 +14,7 @@ const getRecipes = (paramSearch) => {
 };
 
 export const addRecipe = (dataRecipe) => {
+  let url = "http://localhost:3001/api/LeBonSens/recipes";
   return axios({
     method: "post",
     url: url,
