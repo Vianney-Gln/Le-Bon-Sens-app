@@ -1,11 +1,18 @@
 import React, { useEffect, useState } from "react";
 //service
-import getInfosShop from "../services/shop";
+import getInfosShop, { updateInfosShop } from "../services/shop";
+//routing
+import { useNavigate } from "react-router-dom";
 
 const FormShop = () => {
   /* -------- states ------- */
   const [dataShop, setDataShop] = useState({});
   const [dataShopToUpdate, setDataShopToUpdate] = useState({});
+  const [successMessage, setSuccessMessage] = useState("");
+  const [error, setError] = useState(false);
+
+  /* ------- navigate ------- */
+  const navigate = useNavigate();
 
   /**
    * function submitting the form
@@ -13,7 +20,23 @@ const FormShop = () => {
    */
   const handleFormShop = (e) => {
     e.preventDefault();
-    console.log(dataShopToUpdate);
+    updateInfosShop(dataShopToUpdate)
+      .then(() => {
+        setSuccessMessage("données mises à jour correctement");
+        setError(false);
+      })
+      .then(() => {
+        setTimeout(() => {
+          window.location.reload();
+        }, 3000);
+      })
+      .catch((err) => {
+        console.log(err);
+        setSuccessMessage(
+          "Il y a eu une erreur lors de la mise à jour des données"
+        );
+        setError(true);
+      });
   };
 
   /**
@@ -139,6 +162,9 @@ const FormShop = () => {
           ></input>
         </label>
         <button type="submit">Modifier</button>
+        {successMessage && (
+          <p className={!error ? "success" : "fail"}>{successMessage}</p>
+        )}
       </form>
     </div>
   );
