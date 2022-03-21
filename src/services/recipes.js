@@ -13,4 +13,12 @@ const getRecipes = (paramSearch) => {
   return axios.get(url).then((res) => res.data);
 };
 
+export const addRecipe = (dataRecipe) => {
+  return axios({
+    method: "post",
+    url: url,
+    data: dataRecipe,
+  });
+};
+
 export default getRecipes;
