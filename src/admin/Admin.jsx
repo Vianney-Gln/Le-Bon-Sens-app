@@ -9,6 +9,7 @@ import FormProduct from "./FormProduct";
 import ManageProduct from "./ManageProduct";
 import AddRecipe from "./AddRecipe";
 import FormShop from "./FormShop";
+import ManageRecipes from "./ManageRecipes";
 
 const Admin = () => {
   /* ----- doc title ----- */
@@ -42,7 +43,9 @@ const Admin = () => {
           <Link to="/admin/addRecipe">
             <li>Ajouter une recette</li>
           </Link>
-          <li>Supprimer une recette</li>
+          <Link to="/admin/manageRecipes">
+            <li>Gérer les recettes</li>
+          </Link>
           <li>Ajouter un producteur</li>
           <li>Modifier les infos d'un producteur</li>
           <li>Supprimer un producteur</li>
@@ -72,6 +75,7 @@ const Admin = () => {
           )}
           {param.operation === "addRecipe" && <AddRecipe />}
           {param.operation === "updateShop" && <FormShop />}
+          {param.operation === "manageRecipes" && <ManageRecipes />}
         </div>
       </div>
     </div>
