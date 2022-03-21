@@ -1,5 +1,6 @@
 import React from "react";
-
+//styles
+import "../styles/cardRecipes.scss";
 const CardRecipe = ({
   name,
   description,

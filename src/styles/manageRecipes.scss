@@ -1,0 +1,12 @@
+.container-manage-recipes {
+  width: 100%;
+
+  .container-recipes-to-manage {
+    width: 100%;
+    .container-list-recipes-to-manage {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+  }
+}

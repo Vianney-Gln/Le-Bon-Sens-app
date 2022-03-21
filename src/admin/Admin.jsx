@@ -4,6 +4,7 @@ import { Link, useParams } from "react-router-dom";
 //styles
 import "../styles/admin.scss";
 import "../styles/formAdmin.scss"; // all forms admin
+
 //components admin
 import FormProduct from "./FormProduct";
 import ManageProduct from "./ManageProduct";
