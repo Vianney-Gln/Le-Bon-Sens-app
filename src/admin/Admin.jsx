@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 //routing
 import { Link, useParams } from "react-router-dom";
-//style
+//styles
 import "../styles/admin.scss";
+import "../styles/formAdmin.scss"; // all forms admin
 //components admin
 import FormProduct from "./FormProduct";
 import ManageProduct from "./ManageProduct";
 import AddRecipe from "./AddRecipe";
+import FormShop from "./FormShop";
 
 const Admin = () => {
   /* ----- doc title ----- */
@@ -44,7 +46,9 @@ const Admin = () => {
           <li>Ajouter un producteur</li>
           <li>Modifier les infos d'un producteur</li>
           <li>Supprimer un producteur</li>
-          <li>Modifier les infos du magasin</li>
+          <Link to="/admin/updateShop">
+            <li>Modifier les infos du magasin</li>
+          </Link>
           <li>Ajouter un évènement</li>
           <li>Supprimer un évènement</li>
           <li>Déconnexion</li>
@@ -67,6 +71,7 @@ const Admin = () => {
             />
           )}
           {param.operation === "addRecipe" && <AddRecipe />}
+          {param.operation === "updateShop" && <FormShop />}
         </div>
       </div>
     </div>

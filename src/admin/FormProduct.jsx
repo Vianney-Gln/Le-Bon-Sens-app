@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-//style
-import "../styles/formProduct.scss";
+
 //service
 import {
   postOneProduct,
