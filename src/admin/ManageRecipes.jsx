@@ -34,6 +34,7 @@ const ManageRecipes = () => {
                 cookingTime={recipe.cookingTime}
                 preparationTime={recipe.preparationTime}
                 urlImage={recipe.urlImage}
+                manageRecipe={true}
               />
             ))}
         </ul>

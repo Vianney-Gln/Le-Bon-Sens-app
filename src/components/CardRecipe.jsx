@@ -7,6 +7,7 @@ const CardRecipe = ({
   cookingTime,
   preparationTime,
   urlImage,
+  manageRecipe,
 }) => (
   <div className="card-recipes">
     <h2>{name}</h2>
@@ -19,6 +20,17 @@ const CardRecipe = ({
         <span>temps de cuisson: {cookingTime + "min"}</span>
         <span>temps de préparation: {preparationTime + "min"}</span>
       </p>
+      {/* ------- only in admin panel --------- */}
+      {manageRecipe && (
+        <div className="container-buttons-managerecipe">
+          <button onClick={() => console.log("supprimer")} type="button">
+            supprimer
+          </button>
+          <button onClick={() => console.log("modifier")} type="button">
+            modifier
+          </button>
+        </div>
+      )}
     </div>
   </div>
 );
