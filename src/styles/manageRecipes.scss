@@ -3,10 +3,24 @@
 
   .container-recipes-to-manage {
     width: 100%;
+    display: flex;
+    justify-content: center;
     .container-list-recipes-to-manage {
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       flex-wrap: wrap;
+      width: 80%;
+
+      .card-recipes {
+        .container-description {
+          .detail-recipe {
+            span {
+              font-size: 0.8rem;
+              font-weight: bold;
+            }
+          }
+        }
+      }
     }
   }
 }
