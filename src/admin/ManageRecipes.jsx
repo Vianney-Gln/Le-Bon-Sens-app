@@ -10,11 +10,10 @@ import CardRecipe from "../components/CardRecipe";
 //routing
 import { useNavigate } from "react-router-dom";
 
-const ManageRecipes = () => {
+const ManageRecipes = ({ idRecipeToManage, setIdRecipeToManage }) => {
   /* ------- STATES ------- */
   const [listRecipes, setListRecipes] = useState([]);
   const [modalIsOpen, setIsOpen] = useState(false); //state Modal
-  const [idToManage, setIdToManage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
 
   /* ------- NAVIGATE ------- */
@@ -33,7 +32,7 @@ const ManageRecipes = () => {
    * function running the deleteOneRecipeById function from service
    */
   const runDeleteOneRecipe = () => {
-    deleteOneRecipeById(idToManage)
+    deleteOneRecipeById(idRecipeToManage)
       .then(() => {
         setSuccessMessage("suppression en cours, vous serez redirigé...");
         setTimeout(() => {
@@ -114,7 +113,7 @@ const ManageRecipes = () => {
                   urlImage={recipe.urlImage}
                   manageRecipe={true}
                   openModal={openModal}
-                  setIdToManage={setIdToManage}
+                  setIdRecipeToManage={setIdRecipeToManage}
                 />
               ))}
           </ul>

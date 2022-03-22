@@ -8,7 +8,7 @@ import "../styles/formAdmin.scss"; // all forms admin
 //components admin
 import FormProduct from "./FormProduct";
 import ManageProduct from "./ManageProduct";
-import AddRecipe from "./AddRecipe";
+import FormRecipe from "./FormRecipe";
 import FormShop from "./FormShop";
 import ManageRecipes from "./ManageRecipes";
 
@@ -22,6 +22,8 @@ const Admin = () => {
   /* ----- states -----*/
 
   const [idProductToManage, setIdProductToManage] = useState(""); // id product to manage
+  const [idRecipeToManage, setIdRecipeToManage] = useState(""); // id recipe to manage
+
   return (
     <div className="container-admin">
       <h1>Bienvenue dans votre espace admin</h1>
@@ -74,9 +76,17 @@ const Admin = () => {
               idProductToManage={idProductToManage}
             />
           )}
-          {param.operation === "addRecipe" && <AddRecipe />}
+          {param.operation === "addRecipe" && <FormRecipe />}
           {param.operation === "updateShop" && <FormShop />}
-          {param.operation === "manageRecipes" && <ManageRecipes />}
+          {param.operation === "manageRecipes" && (
+            <ManageRecipes
+              setIdRecipeToManage={setIdRecipeToManage}
+              idRecipeToManage={idRecipeToManage}
+            />
+          )}
+          {param.operation === "updateRecipe" && (
+            <FormRecipe operation={param.operation} />
+          )}
         </div>
       </div>
     </div>
