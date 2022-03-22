@@ -34,7 +34,7 @@ const FormRecipe = ({ operation }) => {
    * @param {*} e
    */
 
-  const handleFormRecipes = (e) => {
+  const handleFormPostRecipes = (e) => {
     e.preventDefault();
     addRecipe(dataRecipeToAdd)
       .then(() => {
@@ -56,6 +56,11 @@ const FormRecipe = ({ operation }) => {
         setError(true);
       });
   };
+
+  const handleFormUpdateRecipe = (e) => {
+    e.preventDefault();
+    console.log("update");
+  };
   return (
     <div className="container-addRecipe">
       {operation === "addRecipe" ? (
@@ -63,7 +68,13 @@ const FormRecipe = ({ operation }) => {
       ) : (
         <h3>Modifier une recette</h3>
       )}
-      <form onSubmit={handleFormRecipes}>
+      <form
+        onSubmit={
+          operation === "addRecipe"
+            ? handleFormPostRecipes
+            : handleFormUpdateRecipe
+        }
+      >
         <label htmlFor="name">
           <span>nom de la recette:</span>
           <input

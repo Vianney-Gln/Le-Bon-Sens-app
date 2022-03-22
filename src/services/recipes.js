@@ -27,10 +27,21 @@ export const addRecipe = (dataRecipe) => {
   });
 };
 
+/**
+ * function deleteting one recipe by his id
+ * @param {number} id
+ * @returns
+ */
 export const deleteOneRecipeById = (id) => {
   return axios({
     method: "delete",
     url: `http://localhost:3001/api/LeBonSens/recipes/${id}`,
   });
+};
+
+export const getOneRecipeById = (id) => {
+  return axios
+    .get(`http://localhost:3001/api/LeBonSens/recipes/${id}`)
+    .then((result) => result.data);
 };
 export default getRecipes;
