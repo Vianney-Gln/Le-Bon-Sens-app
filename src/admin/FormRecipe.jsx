@@ -1,13 +1,22 @@
 import React, { useState, useEffect } from "react";
+//routing
+import { useNavigate } from "react-router-dom";
 
 //service
-import { addRecipe, getOneRecipeById } from "../services/recipes";
+import {
+  addRecipe,
+  getOneRecipeById,
+  updateOneRecipeById,
+} from "../services/recipes";
 
 const FormRecipe = ({ operation, idRecipeToManage }) => {
   /* -------- states -------- */
   const [dataRecipe, setDataRecipe] = useState({});
   const [successMessage, setSuccessMessage] = useState("");
   const [error, setError] = useState(false);
+
+  /* ------- Navigate ------- */
+  const navigate = useNavigate();
 
   /**
    * function getting all infos from the form and turn them into an object
@@ -20,6 +29,9 @@ const FormRecipe = ({ operation, idRecipeToManage }) => {
     setDataRecipe(newData);
   };
 
+  /**
+   * function removing all fields
+   */
   const resetFields = () => {
     document.getElementById("name").value = "";
     document.getElementById("description").value = "";
@@ -47,7 +59,6 @@ const FormRecipe = ({ operation, idRecipeToManage }) => {
    * If not success, just update a failMessage
    * @param {*} e
    */
-
   const handleFormPostRecipes = (e) => {
     e.preventDefault();
     addRecipe(dataRecipe)
@@ -73,7 +84,24 @@ const FormRecipe = ({ operation, idRecipeToManage }) => {
 
   const handleFormUpdateRecipe = (e) => {
     e.preventDefault();
-    console.log("update");
+    updateOneRecipeById(dataRecipe, idRecipeToManage)
+      .then(() => {
+        setSuccessMessage(
+          "recette modifiée avec succès, vous allez être redirigé à la page admin d'accueil"
+        );
+        setError(false);
+      })
+      .then(() => {
+        setTimeout(() => {
+          navigate("/admin");
+        }, 3000);
+      })
+      .catch(() => {
+        setError(true);
+        setSuccessMessage(
+          "Il y a eu une erreur lors de la modification de la recette"
+        );
+      });
   };
   return (
     <div className="container-addRecipe">
