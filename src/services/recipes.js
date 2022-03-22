@@ -39,6 +39,12 @@ export const deleteOneRecipeById = (id) => {
   });
 };
 
+/**
+ * function getting all data for one recipe by id
+ * @param {number} id
+ * @returns object
+ */
+
 export const getOneRecipeById = (id) => {
   return axios
     .get(`http://localhost:3001/api/LeBonSens/recipes/${id}`)

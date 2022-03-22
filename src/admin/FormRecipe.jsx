@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 //service
-import { addRecipe } from "../services/recipes";
+import { addRecipe, getOneRecipeById } from "../services/recipes";
 
-const FormRecipe = ({ operation }) => {
+const FormRecipe = ({ operation, idRecipeToManage }) => {
   /* -------- states -------- */
-  const [dataRecipeToAdd, setDataRecipeToAdd] = useState({});
+  const [dataRecipe, setDataRecipe] = useState({});
   const [successMessage, setSuccessMessage] = useState("");
   const [error, setError] = useState(false);
 
@@ -15,9 +15,9 @@ const FormRecipe = ({ operation }) => {
    * @param {string} key
    */
   const getDataRecipeForm = (value, key) => {
-    const newData = dataRecipeToAdd;
+    const newData = dataRecipe;
     newData[key] = value;
-    setDataRecipeToAdd(newData);
+    setDataRecipe(newData);
   };
 
   const resetFields = () => {
@@ -28,6 +28,20 @@ const FormRecipe = ({ operation }) => {
     document.getElementById("urlImage").value = "";
   };
 
+  // getting all infos for a recipe by his id on component mounting (useEffect) if operation === updateRecipe
+
+  useEffect(() => {
+    if (operation === "updateRecipe") {
+      getOneRecipeById(idRecipeToManage)
+        .then((result) => {
+          setDataRecipe(result);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, []);
+
   /**
    * function running addRecipe, update a successMessage, remove dataRecipeToAdd and remove fields if success.
    * If not success, just update a failMessage
@@ -36,11 +50,11 @@ const FormRecipe = ({ operation }) => {
 
   const handleFormPostRecipes = (e) => {
     e.preventDefault();
-    addRecipe(dataRecipeToAdd)
+    addRecipe(dataRecipe)
       .then(() => {
         setSuccessMessage("recette postée avec succès");
         setError(false);
-        setDataRecipeToAdd({
+        setDataRecipe({
           name: "",
           description: "",
           cookingTime: "",
