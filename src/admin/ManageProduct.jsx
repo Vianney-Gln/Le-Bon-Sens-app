@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 //routing
 import { useNavigate } from "react-router-dom";
 //style
-import "../styles/deleteProduct.scss";
+import "../styles/manageProduct.scss";
 //service
 import getProducts, { deleteOneProduct } from "../services/products";
 //components
