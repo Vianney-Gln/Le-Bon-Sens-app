@@ -22,6 +22,13 @@ const ManageRecipes = () => {
       });
   }, []);
 
+  /**
+   * function running the deleteOneRecipeById function from service
+   */
+  const runDeleteOneRecipe = () => {
+    console.log("supprimer");
+  };
+
   /* ------ MODAL ------- */
   Modal.setAppElement("#root");
   const openModal = () => {
