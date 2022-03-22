@@ -76,7 +76,9 @@ const Admin = () => {
               idProductToManage={idProductToManage}
             />
           )}
-          {param.operation === "addRecipe" && <FormRecipe />}
+          {param.operation === "addRecipe" && (
+            <FormRecipe operation={param.operation} />
+          )}
           {param.operation === "updateShop" && <FormShop />}
           {param.operation === "manageRecipes" && (
             <ManageRecipes
@@ -85,7 +87,10 @@ const Admin = () => {
             />
           )}
           {param.operation === "updateRecipe" && (
-            <FormRecipe operation={param.operation} />
+            <FormRecipe
+              operation={param.operation}
+              idRecipeToManage={idRecipeToManage}
+            />
           )}
         </div>
       </div>

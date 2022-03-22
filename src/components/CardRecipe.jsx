@@ -42,7 +42,10 @@ const CardRecipe = ({
               supprimer
             </button>
             <button
-              onClick={() => navigate("/admin/updateRecipe")}
+              onClick={() => {
+                setIdRecipeToManage(id);
+                navigate("/admin/updateRecipe");
+              }}
               type="button"
             >
               modifier

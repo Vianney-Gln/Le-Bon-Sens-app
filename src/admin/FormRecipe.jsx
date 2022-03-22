@@ -3,7 +3,7 @@ import React, { useState } from "react";
 //service
 import { addRecipe } from "../services/recipes";
 
-const AddRecipe = () => {
+const FormRecipe = ({ operation }) => {
   /* -------- states -------- */
   const [dataRecipeToAdd, setDataRecipeToAdd] = useState({});
   const [successMessage, setSuccessMessage] = useState("");
@@ -58,7 +58,11 @@ const AddRecipe = () => {
   };
   return (
     <div className="container-addRecipe">
-      <h3>Ajouter une recette</h3>
+      {operation === "addRecipe" ? (
+        <h3>Ajouter une recette</h3>
+      ) : (
+        <h3>Modifier une recette</h3>
+      )}
       <form onSubmit={handleFormRecipes}>
         <label htmlFor="name">
           <span>nom de la recette:</span>
@@ -112,7 +116,11 @@ const AddRecipe = () => {
             onChange={(e) => getDataRecipeForm(e.target.value, "urlImage")}
           ></input>
         </label>
-        <button type="submit">Ajouter</button>
+        {operation === "addRecipe" ? (
+          <button type="submit">Ajouter</button>
+        ) : (
+          <button type="submit">Modifier</button>
+        )}
         {successMessage && (
           <p className={!error ? "success" : "fail"}>{successMessage}</p>
         )}
@@ -121,4 +129,4 @@ const AddRecipe = () => {
   );
 };
 
-export default AddRecipe;
+export default FormRecipe;
