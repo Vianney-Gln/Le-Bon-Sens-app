@@ -12,9 +12,12 @@ form {
   label {
     width: 60%;
     margin-top: 30px;
+    display: flex;
+    flex-direction: column;
 
     input,
-    select {
+    select,
+    textarea {
       width: 100%;
       background-color: #c4c4c4;
       border: none;

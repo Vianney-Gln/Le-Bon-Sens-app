@@ -4,11 +4,13 @@ import { Link, useParams } from "react-router-dom";
 //styles
 import "../styles/admin.scss";
 import "../styles/formAdmin.scss"; // all forms admin
+
 //components admin
 import FormProduct from "./FormProduct";
 import ManageProduct from "./ManageProduct";
-import AddRecipe from "./AddRecipe";
+import FormRecipe from "./FormRecipe";
 import FormShop from "./FormShop";
+import ManageRecipes from "./ManageRecipes";
 
 const Admin = () => {
   /* ----- doc title ----- */
@@ -20,6 +22,8 @@ const Admin = () => {
   /* ----- states -----*/
 
   const [idProductToManage, setIdProductToManage] = useState(""); // id product to manage
+  const [idRecipeToManage, setIdRecipeToManage] = useState(""); // id recipe to manage
+
   return (
     <div className="container-admin">
       <h1>Bienvenue dans votre espace admin</h1>
@@ -42,7 +46,9 @@ const Admin = () => {
           <Link to="/admin/addRecipe">
             <li>Ajouter une recette</li>
           </Link>
-          <li>Supprimer une recette</li>
+          <Link to="/admin/manageRecipes">
+            <li>Gérer les recettes</li>
+          </Link>
           <li>Ajouter un producteur</li>
           <li>Modifier les infos d'un producteur</li>
           <li>Supprimer un producteur</li>
@@ -70,8 +76,22 @@ const Admin = () => {
               idProductToManage={idProductToManage}
             />
           )}
-          {param.operation === "addRecipe" && <AddRecipe />}
+          {param.operation === "addRecipe" && (
+            <FormRecipe operation={param.operation} />
+          )}
           {param.operation === "updateShop" && <FormShop />}
+          {param.operation === "manageRecipes" && (
+            <ManageRecipes
+              setIdRecipeToManage={setIdRecipeToManage}
+              idRecipeToManage={idRecipeToManage}
+            />
+          )}
+          {param.operation === "updateRecipe" && (
+            <FormRecipe
+              operation={param.operation}
+              idRecipeToManage={idRecipeToManage}
+            />
+          )}
         </div>
       </div>
     </div>

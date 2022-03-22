@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 //service
 import getInfosShop, { updateInfosShop } from "../services/shop";
-//routing
-import { useNavigate } from "react-router-dom";
 
 const FormShop = () => {
   /* -------- states ------- */
@@ -10,9 +8,6 @@ const FormShop = () => {
   const [dataShopToUpdate, setDataShopToUpdate] = useState({});
   const [successMessage, setSuccessMessage] = useState("");
   const [error, setError] = useState(false);
-
-  /* ------- navigate ------- */
-  const navigate = useNavigate();
 
   /**
    * function submitting the form
