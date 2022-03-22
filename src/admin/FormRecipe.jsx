@@ -96,6 +96,7 @@ const FormRecipe = ({ operation, idRecipeToManage }) => {
             name="name"
             placeholder="nom de la recette"
             id="name"
+            defaultValue={operation === "updateRecipe" ? dataRecipe.name : ""}
             onChange={(e) => getDataRecipeForm(e.target.value, "name")}
           ></input>
         </label>
@@ -106,6 +107,9 @@ const FormRecipe = ({ operation, idRecipeToManage }) => {
             name="description"
             placeholder="description de la recette"
             id="description"
+            defaultValue={
+              operation === "updateRecipe" ? dataRecipe.description : ""
+            }
             onChange={(e) => getDataRecipeForm(e.target.value, "description")}
           ></textarea>
         </label>
@@ -116,6 +120,9 @@ const FormRecipe = ({ operation, idRecipeToManage }) => {
             placeholder="temps de cuisson"
             name="cooking time"
             id="cooking time"
+            defaultValue={
+              operation === "updateRecipe" ? dataRecipe.cookingTime : ""
+            }
             onChange={(e) => getDataRecipeForm(e.target.value, "cookingTime")}
           ></input>
         </label>
@@ -126,6 +133,9 @@ const FormRecipe = ({ operation, idRecipeToManage }) => {
             placeholder="temps de préparation"
             name="preparation time"
             id="preparation time"
+            defaultValue={
+              operation === "updateRecipe" ? dataRecipe.preparationTime : ""
+            }
             onChange={(e) =>
               getDataRecipeForm(e.target.value, "preparationTime")
             }
@@ -138,6 +148,9 @@ const FormRecipe = ({ operation, idRecipeToManage }) => {
             placeholder="url de l'image"
             name="urlImage"
             id="urlImage"
+            defaultValue={
+              operation === "updateRecipe" ? dataRecipe.urlImage : ""
+            }
             onChange={(e) => getDataRecipeForm(e.target.value, "urlImage")}
           ></input>
         </label>

@@ -50,4 +50,12 @@ export const getOneRecipeById = (id) => {
     .get(`http://localhost:3001/api/LeBonSens/recipes/${id}`)
     .then((result) => result.data);
 };
+
+export const updateOneRecipeById = (dataRecipe, id) => {
+  return axios({
+    method: "put",
+    url: `http://localhost:3001/api/LeBonSens/recipes/${id}`,
+    data: dataRecipe,
+  });
+};
 export default getRecipes;
