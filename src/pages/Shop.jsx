@@ -35,11 +35,11 @@ const Shop = () => {
           </div>
         )}
       </div>
-      {ShopContext.infosShop.description2 && (
-        <p className="description">{ShopContext.infosShop.description2}</p>
-      )}
+
+      <div className="charte">
+        <button type="button">Voir notre charte</button>
+      </div>
     </div>
   );
 };
-
 export default Shop;

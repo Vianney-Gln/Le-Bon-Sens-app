@@ -9,6 +9,7 @@ import getInfosShop from "../services/shop";
 import { shopContext } from "../context/shop";
 //components
 import InsertEvent from "./InsertEvent";
+import logo from "../images/logo-le-bon-sens.png";
 
 const Header = ({ productors, insert, disableInsert }) => {
   // useContext
@@ -26,7 +27,7 @@ const Header = ({ productors, insert, disableInsert }) => {
       <div className="container-nav">
         <div className="Logo-shop">
           <Link to="/">
-            <h2>Logo</h2>
+            <img src={logo} alt="le bon sens" />
           </Link>
         </div>
         <nav className="navigation-header">
