@@ -2,6 +2,7 @@ import React from "react";
 //styles
 import "../styles/cardRecipes.scss";
 const CardRecipe = ({
+  id,
   name,
   description,
   cookingTime,
@@ -9,6 +10,7 @@ const CardRecipe = ({
   urlImage,
   manageRecipe,
   openModal,
+  setIdToManage,
 }) => (
   <div className="card-recipes">
     <h2>{name}</h2>
@@ -24,7 +26,13 @@ const CardRecipe = ({
       {/* ------- only in admin panel --------- */}
       {manageRecipe && (
         <div className="container-buttons-managerecipe">
-          <button onClick={() => openModal()} type="button">
+          <button
+            onClick={() => {
+              openModal();
+              setIdToManage(id);
+            }}
+            type="button"
+          >
             supprimer
           </button>
           <button onClick={() => console.log("modifier")} type="button">
