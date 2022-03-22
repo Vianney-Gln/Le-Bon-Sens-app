@@ -8,6 +8,7 @@ const CardRecipe = ({
   preparationTime,
   urlImage,
   manageRecipe,
+  openModal,
 }) => (
   <div className="card-recipes">
     <h2>{name}</h2>
@@ -23,7 +24,7 @@ const CardRecipe = ({
       {/* ------- only in admin panel --------- */}
       {manageRecipe && (
         <div className="container-buttons-managerecipe">
-          <button onClick={() => console.log("supprimer")} type="button">
+          <button onClick={() => openModal()} type="button">
             supprimer
           </button>
           <button onClick={() => console.log("modifier")} type="button">
