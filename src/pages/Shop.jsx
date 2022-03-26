@@ -14,6 +14,7 @@ const Shop = () => {
   return (
     <div className="container-shop">
       <h1>Notre Magasin</h1>
+
       {ShopContext.infosShop.description1 && (
         <p className="description">{ShopContext.infosShop.description1}</p>
       )}
