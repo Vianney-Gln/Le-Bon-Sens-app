@@ -1,11 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
+// routing
+import { BrowserRouter } from "react-router-dom";
+import "./index.scss";
 import App from "./App";
+// context
+import { ShopProvider } from "./context/shop";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ShopProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </ShopProvider>
   </React.StrictMode>,
   // eslint-disable-next-line comma-dangle
   document.getElementById("root")

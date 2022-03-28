@@ -1,0 +1,30 @@
+footer {
+  height: 100px;
+  width: 100%;
+  font-family: "Patrick Hand", cursive;
+  background-image: url("../images/bg-bloc.jpg");
+  border-top: 1px solid white;
+
+  nav {
+    width: 100%;
+    height: 50%;
+
+    ul {
+      width: 100%;
+      height: 100%;
+      list-style-type: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      li {
+        margin-right: 2px;
+        margin-left: 2px;
+      }
+    }
+  }
+
+  .copyright {
+    text-align: center;
+  }
+}

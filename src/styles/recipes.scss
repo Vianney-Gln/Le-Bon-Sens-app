@@ -1,0 +1,40 @@
+.container-recipes {
+  width: 100%;
+  font-family: "Patrick Hand", cursive;
+
+  h1 {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  label {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    input {
+      width: 30%;
+      margin-top: 20px;
+      border-radius: 5px;
+      border: none;
+      background-color: #c4c4c4;
+      padding-top: 5px;
+      padding-bottom: 5px;
+    }
+  }
+  .container-center-cards-recipes {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    .container-cards-recipes {
+      width: 80%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+  }
+  ::-webkit-scrollbar {
+    /* Scrollbars */
+    display: none;
+  }
+}
