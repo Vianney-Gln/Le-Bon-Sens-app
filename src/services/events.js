@@ -1,7 +1,8 @@
 import axios from "axios";
 
-const url = "http://localhost:3001/api/LeBonSens/events";
+const baseUrl = "https://le-bon-sens.herokuapp.com";
 
-const getInfosEvents = () => axios.get(url).then((res) => res.data);
+const getInfosEvents = () =>
+  axios.get(`${baseUrl}/api/LeBonSens/events`).then((res) => res.data);
 
 export default getInfosEvents;

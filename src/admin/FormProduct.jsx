@@ -55,11 +55,12 @@ const FormProduct = ({ operation, idProductToManage }) => {
         });
         resetFields();
       })
-      .catch(() => {
+      .catch((err) => {
         setMessage(
           "il y a eu une erreur lors de l'envois, veuillez vérifier vos champs"
         );
         setError(true);
+        console.log(err);
       });
   };
 
@@ -150,10 +151,10 @@ const FormProduct = ({ operation, idProductToManage }) => {
               -catégories de produit-
             </option>
             <option value="1">Tous les produits</option>
-            <option value="2">Viandes</option>
-            <option value="3">Légumes</option>
-            <option value="4">Produits laitiers</option>
-            <option value="5">Produits locaux divers</option>
+            <option value="11">Viandes</option>
+            <option value="21">Légumes</option>
+            <option value="31">Produits laitiers</option>
+            <option value="41">Produits locaux divers</option>
           </select>
         </label>
         {operation === "addProduct" && <button type="submit">valider</button>}
