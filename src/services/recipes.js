@@ -1,12 +1,14 @@
 import axios from "axios";
 
+const baseUrl = "https://le-bon-sens.herokuapp.com";
+
 /**
  *function getting all recipes or recipes in terms of searchParams
  * @param {string} paramSearch
  * @returns array
  */
 const getRecipes = (paramSearch) => {
-  let url = "http://localhost:3001/api/LeBonSens/recipes";
+  let url = `${baseUrl}/api/LeBonSens/recipes`;
 
   if (paramSearch) url += `?name=${paramSearch}`;
 
@@ -19,7 +21,7 @@ const getRecipes = (paramSearch) => {
  * @returns
  */
 export const addRecipe = (dataRecipe) => {
-  let url = "http://localhost:3001/api/LeBonSens/recipes";
+  let url = `${baseUrl}/api/LeBonSens/recipes`;
   return axios({
     method: "post",
     url: url,
@@ -35,7 +37,7 @@ export const addRecipe = (dataRecipe) => {
 export const deleteOneRecipeById = (id) => {
   return axios({
     method: "delete",
-    url: `http://localhost:3001/api/LeBonSens/recipes/${id}`,
+    url: `${baseUrl}/api/LeBonSens/recipes/${id}`,
   });
 };
 
@@ -47,14 +49,14 @@ export const deleteOneRecipeById = (id) => {
 
 export const getOneRecipeById = (id) => {
   return axios
-    .get(`http://localhost:3001/api/LeBonSens/recipes/${id}`)
+    .get(`${baseUrl}/api/LeBonSens/recipes/${id}`)
     .then((result) => result.data);
 };
 
 export const updateOneRecipeById = (dataRecipe, id) => {
   return axios({
     method: "put",
-    url: `http://localhost:3001/api/LeBonSens/recipes/${id}`,
+    url: `${baseUrl}/api/LeBonSens/recipes/${id}`,
     data: dataRecipe,
   });
 };

@@ -1,10 +1,12 @@
 import axios from "axios";
 
-const url = "http://localhost:3001/api/LeBonSens/shop";
+const baseUrl = "https://le-bon-sens.herokuapp.com";
 
-const getInfosShop = () => axios.get(url).then((result) => result.data);
+const getInfosShop = () =>
+  axios.get(`${baseUrl}/api/LeBonSens/shop`).then((result) => result.data);
 
 export const updateInfosShop = (dataShopToUpdate) => {
+  let url = `${baseUrl}/api/LeBonSens/shop`;
   return axios({
     method: "put",
     data: dataShopToUpdate,
