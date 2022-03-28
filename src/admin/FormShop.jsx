@@ -76,15 +76,15 @@ const FormShop = () => {
             onChange={(e) => getDataShop(e.target.value, "description1")}
           ></input>
         </label>
-        <label htmlFor="description2">
-          <span>description2:</span>
-          <input
+        <label htmlFor="charte">
+          <span>charte:</span>
+          <textarea
             type="text"
-            name="description2"
-            placeholder="description2"
-            defaultValue={dataShop ? dataShop.description2 : ""}
-            onChange={(e) => getDataShop(e.target.value, "description2")}
-          ></input>
+            name="charte"
+            placeholder="charte"
+            defaultValue={dataShop ? dataShop.charte : ""}
+            onChange={(e) => getDataShop(e.target.value, "charte")}
+          ></textarea>
         </label>
         <label htmlFor="urlPhoto1">
           <span>urlPhoto1:</span>

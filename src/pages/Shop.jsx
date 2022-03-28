@@ -14,6 +14,7 @@ const Shop = () => {
   return (
     <div className="container-shop">
       <h1>Notre Magasin</h1>
+
       {ShopContext.infosShop.description1 && (
         <p className="description">{ShopContext.infosShop.description1}</p>
       )}
@@ -35,11 +36,11 @@ const Shop = () => {
           </div>
         )}
       </div>
-      {ShopContext.infosShop.description2 && (
-        <p className="description">{ShopContext.infosShop.description2}</p>
-      )}
+
+      <div className="charte">
+        <button type="button">Voir notre charte</button>
+      </div>
     </div>
   );
 };
-
 export default Shop;

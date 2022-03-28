@@ -8,6 +8,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
+  border-bottom: 1px solid white;
 
   .container-nav {
     font-size: 1.4rem;
@@ -19,11 +20,16 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 20%;
-
-      h2 {
-        cursor: pointer;
-        color: white;
+      width: 25%;
+      a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: initial;
+        img {
+          cursor: pointer;
+          width: 50%;
+        }
       }
     }
     .navigation-header {
