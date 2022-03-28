@@ -1,12 +1,13 @@
 import axios from "axios";
 
+const baseUrl = "https://le-bon-sens.herokuapp.com";
 /**
  * function calling api getting products infos in terms of params(category or name)
  * @param (string,string)
  * @returns array
  */
 const getProducts = (paramCategory, paramSearch) => {
-  let url = "http://localhost:3001/api/LeBonSens/products";
+  let url = `${baseUrl}/api/LeBonSens/products`;
   if (paramCategory && paramSearch) {
     url += `?category=${paramCategory}&name=${paramSearch}`;
   } else if (paramCategory) {
@@ -19,7 +20,7 @@ const getProducts = (paramCategory, paramSearch) => {
 
 export const getOneProductById = (id) => {
   return axios
-    .get(`http://localhost:3001/api/LeBonSens/products/${id}`)
+    .get(`${baseUrl}/api/LeBonSens/products/${id}`)
     .then((product) => product.data);
 };
 
@@ -29,9 +30,10 @@ export const getOneProductById = (id) => {
  * @returns object
  */
 export const postOneProduct = (dataProduct) => {
+  let url = `${baseUrl}/api/LeBonSens/products`;
   return axios({
     method: "post",
-    url: "http://localhost:3001/api/LeBonSens/products",
+    url: url,
     data: dataProduct,
   });
 };
@@ -43,13 +45,13 @@ export const postOneProduct = (dataProduct) => {
  */
 
 export const deleteOneProduct = (id) => {
-  return axios.delete(`http://localhost:3001/api/LeBonSens/products/${id}`);
+  return axios.delete(`${baseUrl}/api/LeBonSens/products/${id}`);
 };
 
 export const updateOneProduct = (dataProduct, id) => {
   return axios({
     method: "put",
-    url: `http://localhost:3001/api/LeBonSens/products/${id}`,
+    url: `${baseUrl}/api/LeBonSens/products/${id}`,
     data: dataProduct,
   });
 };
