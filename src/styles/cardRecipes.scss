@@ -1,5 +1,6 @@
 .card-recipes {
   width: 33%;
+  max-width: 400px;
   margin: 40px;
   background-color: #e3e7e3;
   height: 500px;
@@ -8,6 +9,7 @@
   align-items: center;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
   h2 {
     padding: 10px;
