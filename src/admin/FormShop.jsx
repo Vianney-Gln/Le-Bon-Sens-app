@@ -68,13 +68,13 @@ const FormShop = () => {
         </label>
         <label htmlFor="description1">
           <span>description1:</span>
-          <input
+          <textarea
             type="text"
             name="description1"
             placeholder="description1"
             defaultValue={dataShop ? dataShop.description1 : ""}
             onChange={(e) => getDataShop(e.target.value, "description1")}
-          ></input>
+          ></textarea>
         </label>
         <label htmlFor="charte">
           <span>charte:</span>
