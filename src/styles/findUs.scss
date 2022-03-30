@@ -1,16 +1,24 @@
 .container-find-us {
   width: 100%;
-  margin-top: 20px;
   font-family: "Patrick Hand", cursive;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   h1 {
-    text-align: center;
+    background-color: #c4c4c4;
+    position: absolute;
+    top: -22px;
+    padding: 0px 20px;
+    border: 1px solid white;
+    border-radius: 5px;
   }
   .container {
     width: 100%;
     display: flex;
     justify-content: space-around;
-    margin-top: 20px;
+    margin-top: 40px;
     h3 {
       span {
         margin-left: 10px;

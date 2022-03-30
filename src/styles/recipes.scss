@@ -1,16 +1,25 @@
 .container-recipes {
   width: 100%;
   font-family: "Patrick Hand", cursive;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   h1 {
-    text-align: center;
-    margin-top: 20px;
+    background-color: #c4c4c4;
+    position: absolute;
+    top: -22px;
+    padding: 0px 20px;
+    border: 1px solid white;
+    border-radius: 5px;
   }
 
   label {
     width: 100%;
     display: flex;
     justify-content: center;
+    margin-top: 40px;
 
     input {
       width: 30%;
@@ -18,8 +27,8 @@
       border-radius: 5px;
       border: none;
       background-color: #c4c4c4;
-      padding-top: 5px;
-      padding-bottom: 5px;
+      padding-top: 7px;
+      padding-bottom: 7px;
     }
   }
   .container-center-cards-recipes {

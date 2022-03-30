@@ -76,6 +76,7 @@
   .container-products {
     width: 100%;
     display: flex;
+    border-radius: 5px;
     justify-content: center;
     background-color: whitesmoke;
     margin-top: 20px;
@@ -99,9 +100,14 @@
         background-color: white;
         cursor: pointer;
         transition: all 0.5s ease;
+        border-radius: 5px;
 
         img {
           width: 150px;
+          height: 100px;
+          object-fit: cover;
+          border-top-left-radius: 5px;
+          border-top-right-radius: 5px;
         }
       }
       li:hover {

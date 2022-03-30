@@ -33,14 +33,15 @@ const Events = ({ setInsert }) => {
   }, []);
   return (
     <div className="container-events">
+      <h1>Evènements</h1>
       <div className="container-event-comming">
         {!isObjEmpty(currentEvent) ? (
           /* If there is a current event, display it */
           <>
-            <h1>Evènement à venir</h1>
+            <h2>Evènement à venir</h2>
             <h3>
               {currentEvent.name}
-              <span>{currentEvent.sortedDate}</span>
+              <span> le {currentEvent.sortedDate}</span>
             </h3>
             <img src={currentEvent.urlImage} alt={currentEvent.name} />
             <div className="description-event">
@@ -50,7 +51,7 @@ const Events = ({ setInsert }) => {
         ) : events.length ? (
           /* If not, display the last past event (first of the list) */
           <>
-            <h1>Dernier évènement</h1>
+            <h2>Dernier évènement</h2>
             <h3>
               {events[0].name}
               <span> du {events[0].sortedDate}</span>
@@ -65,7 +66,7 @@ const Events = ({ setInsert }) => {
         )}
       </div>
       <div className="container-past-event">
-        <h1>Evènements passés</h1>
+        <h2>Evènements passés</h2>
         {events &&
           events.map((eve) => {
             if (
