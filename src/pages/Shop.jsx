@@ -16,7 +16,18 @@ const Shop = () => {
       <h1>Notre Magasin</h1>
 
       {ShopContext.infosShop.description1 && (
-        <p className="description">{ShopContext.infosShop.description1}</p>
+        <p className="description">
+          {ShopContext.infosShop.description1
+            .split("\n")
+            .map((element, index) => {
+              return (
+                <span key={index}>
+                  {element}
+                  <br />
+                </span>
+              );
+            })}
+        </p>
       )}
       <div className="container-images">
         {ShopContext.infosShop.urlPhoto1 && (
