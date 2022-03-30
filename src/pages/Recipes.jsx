@@ -22,6 +22,7 @@ const Recipes = () => {
   return (
     <div className="container-recipes">
       <h1>Quelques recettes ...</h1>
+
       <label htmlFor="search-recipes">
         <input
           onChange={(e) => setSearchParam(e.target.value)}
