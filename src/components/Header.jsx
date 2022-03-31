@@ -26,6 +26,16 @@ const Header = ({ productors, insert, disableInsert }) => {
 
   //States
   const [isOpen, setOpen] = useState(false); // variable statement hamburger react
+  const [openProductors, setOpenProductors] = useState(false); // variable statement on click on productors( display the list of productors)
+
+  //function handling display of list productors on click
+  const handleListProductors = () => {
+    setOpenProductors(!openProductors);
+    console.log(openProductors);
+  };
+
+  window.onresize = () => setOpen(false);
+  window.addEventListener("scroll", () => setOpenProductors(false));
 
   return (
     <header className="container-header">
@@ -68,14 +78,58 @@ const Header = ({ productors, insert, disableInsert }) => {
           </ul>
         </nav>
       </div>
-      <div className="title-shop">
-        {ShopContext.infosShop.name && <h1>{ShopContext.infosShop.name}</h1>}
-      </div>
-      <div className="schedules">
-        {ShopContext.infosShop.schedule && (
-          <p>{ShopContext.infosShop.schedule}</p>
-        )}
-      </div>
+      {!isOpen ? (
+        <>
+          <div className="title-shop">
+            {ShopContext.infosShop.name && (
+              <h1>{ShopContext.infosShop.name}</h1>
+            )}
+          </div>
+          <div className="schedules">
+            {ShopContext.infosShop.schedule && (
+              <p>{ShopContext.infosShop.schedule}</p>
+            )}
+          </div>
+        </>
+      ) : (
+        <nav className="nav-mobil">
+          <ul className="list-top">
+            <Link to="products">
+              <li>Produits</li>
+            </Link>
+            <Link to="events">
+              <li>Evènements</li>
+            </Link>
+            <li
+              onClick={() => handleListProductors()}
+              className="tab-productor"
+            >
+              Producteurs
+              {openProductors && (
+                <ul className="list-productor">
+                  {productors &&
+                    productors.map((productor) => (
+                      <Link
+                        key={productor.id}
+                        to={`productors/${productor.id}`}
+                      >
+                        <li>{productor.name}</li>
+                      </Link>
+                    ))}
+                </ul>
+              )}
+            </li>
+          </ul>
+          <ul className="list-bottom">
+            <Link to="recipes">
+              <li>Recettes</li>
+            </Link>
+            <Link to="find-us">
+              <li>Nous trouver</li>
+            </Link>
+          </ul>
+        </nav>
+      )}
       {insert && <InsertEvent disableInsert={disableInsert} />}
     </header>
   );
