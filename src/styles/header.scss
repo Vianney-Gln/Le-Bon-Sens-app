@@ -107,3 +107,37 @@
     font-size: 1.2rem;
   }
 }
+
+
+/* ------ Mobile ------ */
+@media screen and (max-width:700px) {
+  .container-header {
+    height:200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    .container-nav {
+      height:auto;
+      .Logo-shop {
+        width:100%;
+        justify-content: flex-start;
+
+        a {
+          img{
+            width:70px;
+          }
+        }
+      }
+      .navigation-header{
+        display: none;
+        
+      }
+      
+    }
+    .schedules {
+      padding:0;
+    }
+  }
+}
