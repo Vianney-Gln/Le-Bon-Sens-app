@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useState } from "react";
 // routing
 import { Link } from "react-router-dom";
 // styles
@@ -10,6 +10,8 @@ import { shopContext } from "../context/shop";
 //components
 import InsertEvent from "./InsertEvent";
 import logo from "../images/logo-le-bon-sens.png";
+//Hamburger React
+import Hamburger from "hamburger-react";
 
 const Header = ({ productors, insert, disableInsert }) => {
   // useContext
@@ -22,6 +24,9 @@ const Header = ({ productors, insert, disableInsert }) => {
     });
   }, []);
 
+  //States
+  const [isOpen, setOpen] = useState(false); // variable statement hamburger react
+
   return (
     <header className="container-header">
       <div className="container-nav">
@@ -29,6 +34,9 @@ const Header = ({ productors, insert, disableInsert }) => {
           <Link to="/">
             <img src={logo} alt="le bon sens" />
           </Link>
+          <div className="hamburger-react">
+            <Hamburger toggled={isOpen} toggle={setOpen} />
+          </div>
         </div>
         <nav className="navigation-header">
           <ul className="container-list-header">
