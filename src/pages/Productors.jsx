@@ -69,6 +69,7 @@ const Productors = () => {
               </div>
             ))}
           </Slide>
+          <div className="container-buttons-mobile"></div>
         </div>
         <div className="container-description-productor">
           <h2>{infosProductor.name}</h2>
@@ -108,7 +109,6 @@ const Productors = () => {
         <img src={infosProductor.urlImage1} alt={infosProductor.name} />
         <div className="description-productor2">
           <div>
-            <h3>{infosProductor.titleDescription2}</h3>
             <p>{infosProductor.description2}</p>
           </div>
         </div>
