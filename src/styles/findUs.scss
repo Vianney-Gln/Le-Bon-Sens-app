@@ -122,3 +122,50 @@
     }
   }
 }
+
+/* ------ Mobile ------ */
+
+@media screen and (max-width: 700px) {
+  .container-find-us {
+    .container-iframe-form {
+      flex-direction: column-reverse;
+      align-items: center;
+      margin-top: 20px;
+
+      form {
+        width: 100%;
+        border-radius: 0px;
+        box-shadow: none;
+        border: none;
+
+        .container-name-firstname,
+        .container-email,
+        .container-message {
+          justify-content: flex-start;
+
+          p {
+            width: 80px;
+            text-align: center;
+          }
+          .input-firstname {
+            margin-left: 5px;
+          }
+        }
+      }
+      .container-iframe {
+        width: 100%;
+      }
+    }
+    .container-contact-information {
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+
+      h3 {
+        margin-left: 10px;
+        text-align: left;
+        margin-top: 5px;
+      }
+    }
+  }
+}

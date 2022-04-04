@@ -44,6 +44,7 @@ const FindUs = () => {
                 type="text"
                 name="firstname"
                 placeholder="prénom"
+                className="input-firstname"
                 required
               ></input>
             </label>
