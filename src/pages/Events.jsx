@@ -45,7 +45,16 @@ const Events = ({ setInsert }) => {
             </h3>
             <img src={currentEvent.urlImage} alt={currentEvent.name} />
             <div className="description-event">
-              <p>{currentEvent.description}</p>
+              <p>
+                {currentEvent.description.split("\n").map((element, index) => {
+                  return (
+                    <span key={index}>
+                      {element}
+                      <br />
+                    </span>
+                  );
+                })}
+              </p>
             </div>
           </>
         ) : events.length ? (
@@ -58,7 +67,18 @@ const Events = ({ setInsert }) => {
             </h3>
             <img src={events[0].urlImage} alt={events[0].name} />
             <div className="description-event">
-              <p>{events[events.length - 1].description}</p>
+              <p>
+                {events[events.length - 1].description
+                  .split("\n")
+                  .map((element, index) => {
+                    return (
+                      <span key={index}>
+                        {element}
+                        <br />
+                      </span>
+                    );
+                  })}
+              </p>
             </div>
           </>
         ) : (
@@ -79,7 +99,16 @@ const Events = ({ setInsert }) => {
                     {eve.name}
                     <span> le {eve.sortedDate}</span>
                   </h3>
-                  <p>{eve.description}</p>
+                  <p>
+                    {eve.description.split("\n").map((element, index) => {
+                      return (
+                        <span key={index}>
+                          {element}
+                          <br />
+                        </span>
+                      );
+                    })}
+                  </p>
                 </div>
               );
             }

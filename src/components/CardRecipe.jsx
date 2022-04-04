@@ -24,7 +24,16 @@ const CardRecipe = ({
         <img src={urlImage} alt={name} />
       </div>
       <div className="container-description">
-        <p className="description">{description}</p>
+        <p className="description">
+          {description.split("\n").map((element, index) => {
+            return (
+              <span key={index}>
+                {element}
+                <br />
+              </span>
+            );
+          })}
+        </p>
         <p className="detail-recipe">
           <span>temps de cuisson: {cookingTime + "min"}</span>
           <span>temps de préparation: {preparationTime + "min"}</span>

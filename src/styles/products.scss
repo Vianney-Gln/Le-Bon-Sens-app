@@ -120,3 +120,42 @@
     text-align: center;
   }
 }
+
+/* ------ Mobile ------ */
+
+@media screen and (max-width: 700px) {
+  .container-products {
+    padding: 0px;
+    .infos-price {
+      margin-top: 50px;
+    }
+
+    .container-products {
+      .container-list-products {
+        justify-content: center;
+
+        li {
+          transition: none;
+        }
+        li:hover {
+          transform: none;
+        }
+      }
+    }
+
+    .container-sort-products {
+      background-color: whitesmoke;
+    }
+    .container-search-bar {
+      margin: 20px 0px;
+      label {
+        width: 80%;
+      }
+    }
+  }
+  .container-sort-products {
+    ul {
+      align-items: flex-start;
+    }
+  }
+}

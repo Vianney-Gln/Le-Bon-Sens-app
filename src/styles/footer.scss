@@ -28,3 +28,20 @@ footer {
     text-align: center;
   }
 }
+
+@media screen and (max-width: 450px) {
+  footer {
+    height: 150px;
+    nav {
+      padding: 0px 10px;
+      ul {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+      }
+    }
+  }
+  .copyright {
+    text-align: left;
+    margin-top: 20px;
+  }
+}

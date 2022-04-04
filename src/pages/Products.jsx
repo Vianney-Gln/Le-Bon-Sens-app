@@ -35,16 +35,10 @@ const Products = () => {
   return (
     <div className="container-products">
       <h1>Nos Produits</h1>
-      <div className="container-search-bar">
-        <label htmlFor="search">
-          <input
-            onChange={(e) => setSearchParam(e.target.value)}
-            type="text"
-            name="search"
-            placeholder="search"
-          />
-        </label>
-      </div>
+      <p className="infos-price">
+        Les prix indiqués sont valables en boutique, il n&apos; y a pas
+        possibilité d&apos; acheter sur ce site.
+      </p>
       <div className="container-sort-products">
         <ul>
           <li
@@ -82,14 +76,20 @@ const Products = () => {
             onClick={() => setSortParam("other locals products")}
           >
             <img src={diversProducts} alt="other locals products" />
-            <span>Produits locaux divers</span>
+            <span>Produits divers</span>
           </li>
         </ul>
       </div>
-      <p className="infos-price">
-        Les prix indiqués sont valables en boutique, il n&apos; y a pas
-        possibilité d&apos; acheter sur ce site.
-      </p>
+      <div className="container-search-bar">
+        <label htmlFor="search">
+          <input
+            onChange={(e) => setSearchParam(e.target.value)}
+            type="text"
+            name="search"
+            placeholder="search"
+          />
+        </label>
+      </div>
       <div className="container-products">
         <ul className="container-list-products">
           {listProducts
