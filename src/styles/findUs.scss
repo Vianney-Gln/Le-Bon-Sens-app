@@ -14,11 +14,97 @@
     border: 1px solid white;
     border-radius: 5px;
   }
-  .container {
+  .container-iframe-form {
+    margin-top: 100px;
     width: 100%;
     display: flex;
     justify-content: space-around;
-    margin-top: 40px;
+    flex-direction: row-reverse;
+    form {
+      width: 40%;
+      border: 1px solid #c4c4c4;
+      border-radius: 5px;
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0px 10px;
+
+      label {
+        input {
+          background-color: white;
+          border: 1px solid #c4c4c4;
+        }
+        textarea {
+          background-color: white;
+          border: 1px solid #c4c4c4;
+        }
+      }
+      button {
+        background-color: #c4c4c4;
+      }
+      .container-name-firstname {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+
+        p {
+          font-size: 1.2rem;
+          width: 20%;
+          text-align: right;
+        }
+
+        label {
+          width: 35%;
+          input {
+            width: 100%;
+          }
+        }
+      }
+      .container-email {
+        width: 100%;
+        display: flex;
+        align-items: baseline;
+
+        p {
+          font-size: 1.2rem;
+          width: 20%;
+          text-align: right;
+        }
+        label {
+          margin-left: 5%;
+          width: 100%;
+        }
+      }
+      .container-message {
+        width: 100%;
+        display: flex;
+        align-items: baseline;
+        p {
+          font-size: 1.2rem;
+          width: 20%;
+          text-align: right;
+        }
+        label {
+          margin-left: 5%;
+          width: 100%;
+
+          textarea {
+            height: 200px;
+          }
+        }
+      }
+    }
+  }
+  .container-contact-information {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin: 40px 0px;
+    background-color: whitesmoke;
+    padding: 20px 0px;
     h3 {
       span {
         margin-left: 10px;
@@ -26,13 +112,60 @@
     }
   }
   .container-iframe {
-    width: 100%;
+    width: 40%;
     display: flex;
     justify-content: center;
     align-items: center;
     iframe {
       margin-top: 20px;
       border: none;
+    }
+  }
+}
+
+/* ------ Mobile ------ */
+
+@media screen and (max-width: 700px) {
+  .container-find-us {
+    .container-iframe-form {
+      flex-direction: column-reverse;
+      align-items: center;
+      margin-top: 20px;
+
+      form {
+        width: 100%;
+        border-radius: 0px;
+        box-shadow: none;
+        border: none;
+
+        .container-name-firstname,
+        .container-email,
+        .container-message {
+          justify-content: flex-start;
+
+          p {
+            width: 80px;
+            text-align: center;
+          }
+          .input-firstname {
+            margin-left: 5px;
+          }
+        }
+      }
+      .container-iframe {
+        width: 100%;
+      }
+    }
+    .container-contact-information {
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+
+      h3 {
+        margin-left: 10px;
+        text-align: left;
+        margin-top: 5px;
+      }
     }
   }
 }
