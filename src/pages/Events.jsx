@@ -68,16 +68,14 @@ const Events = ({ setInsert }) => {
             <img src={events[0].urlImage} alt={events[0].name} />
             <div className="description-event">
               <p>
-                {events[events.length - 1].description
-                  .split("\n")
-                  .map((element, index) => {
-                    return (
-                      <span key={index}>
-                        {element}
-                        <br />
-                      </span>
-                    );
-                  })}
+                {events[0].description.split("\n").map((element, index) => {
+                  return (
+                    <span key={index}>
+                      {element}
+                      <br />
+                    </span>
+                  );
+                })}
               </p>
             </div>
           </>
