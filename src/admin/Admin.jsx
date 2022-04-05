@@ -11,6 +11,8 @@ import ManageProduct from "./ManageProduct";
 import FormRecipe from "./FormRecipe";
 import FormShop from "./FormShop";
 import ManageRecipes from "./ManageRecipes";
+import FormEvents from "./FormEvents";
+import ManageEvents from "./ManageEvents";
 
 const Admin = () => {
   /* ----- doc title ----- */
@@ -50,13 +52,17 @@ const Admin = () => {
             <li>Gérer les recettes</li>
           </Link>
           <li>Ajouter un producteur</li>
-          <li>Modifier les infos d'un producteur</li>
+          <li>Gérer les producteurs</li>
           <li>Supprimer un producteur</li>
           <Link to="/admin/updateShop">
             <li>Modifier les infos du magasin</li>
           </Link>
-          <li>Ajouter un évènement</li>
-          <li>Supprimer un évènement</li>
+          <Link to="/admin/createEvent">
+            <li>Ajouter un évènement</li>
+          </Link>
+          <Link to="/admin/manageEvents">
+            <li>Gérer les évènements</li>
+          </Link>
           <li>Déconnexion</li>
         </ul>
 
@@ -92,6 +98,8 @@ const Admin = () => {
               idRecipeToManage={idRecipeToManage}
             />
           )}
+          {param.operation === "createEvent" && <FormEvents />}
+          {param.operation === "manageEvents" && <ManageEvents />}
         </div>
       </div>
     </div>
