@@ -29,4 +29,8 @@ export const createOneEvent = (dataEvents) => {
   }).then((res) => res);
 };
 
+export const deleteOneEventById = (id) => {
+  return axios.delete(`${baseUrl}/api/LeBonSens/events/${id}`);
+};
+
 export default getInfosEvents;
