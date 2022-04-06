@@ -12,6 +12,7 @@ const FormEvents = () => {
 
   /* ------ useNavigate ------ */
   const navigate = useNavigate();
+
   /**
    * function getting all infos from the form and turn them into an object in the state dataEvents
    * @param {string | number} value
@@ -29,7 +30,7 @@ const FormEvents = () => {
    * if fail, setup a failure Message
    * @param {*} e
    */
-  const handleFormEvents = (e) => {
+  const handleFormEventsPost = (e) => {
     e.preventDefault();
     createOneEvent(dataEvents)
       .then(() => {
@@ -41,7 +42,7 @@ const FormEvents = () => {
           navigate("/admin");
         }, 3000);
       })
-      .catch((err) => {
+      .catch(() => {
         setError(true);
         setSuccessMessage(
           "il y a eu une erreur lors de la creation de l'évent, veuillez vérifier vos champs svp"
@@ -51,7 +52,7 @@ const FormEvents = () => {
   return (
     <div className="container-formEvents">
       <h3>Ajouter des produits en stock</h3>
-      <form onSubmit={handleFormEvents}>
+      <form onSubmit={handleFormEventsPost}>
         <label htmlFor="name">
           <input
             type="text"

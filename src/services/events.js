@@ -6,11 +6,18 @@ const baseUrl = "http://localhost:3001";
  * function getting first 6 events
  * @returns {array}
  */
-const getInfosEvents = () =>
-  axios.get(`${baseUrl}/api/LeBonSens/events`).then((res) => res.data);
+const getInfosEvents = () => {
+  return axios.get(`${baseUrl}/api/LeBonSens/events`).then((res) => res.data);
+};
+
+export const getAllInfosEvents = () => {
+  return axios
+    .get(`${baseUrl}/api/LeBonSens/events/all`)
+    .then((res) => res.data);
+};
 
 /**
- * function creting an event
+ * function creating an event
  * @param {object} dataEvents
  * @returns
  */
