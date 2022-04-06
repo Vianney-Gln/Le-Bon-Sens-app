@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
 //service
 import { getAllInfosEvents } from "../services/events";
-
+//style
+import "../styles/manageEvents.scss";
+//font awesome
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashCan, faFile } from "@fortawesome/free-solid-svg-icons";
 const ManageEvents = () => {
   /* ------ states variables ------ */
   const [listEventsToManage, setListEventsToManage] = useState([]);
@@ -17,22 +21,35 @@ const ManageEvents = () => {
     <div className="container-manageEvents">
       <h3>ManageEvents</h3>
       <table>
+        <caption>Historique des évènements</caption>
         <thead>
-          <tr>
-            <th>Historique des évènements</th>
+          <tr align="center">
+            <th>Nom de l'event</th>
+            <th>Date de l'event</th>
+            <th>Status évènement</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Nom de l'event</td>
-            <td>Date de l'event</td>
-          </tr>
           {listEventsToManage &&
             listEventsToManage.map((element) => {
               return (
                 <tr key={element.id}>
-                  <td>{element.name}</td>
-                  <td>{element.sortedDate}</td>
+                  <td align="center">{element.name}</td>
+                  <td align="center">{element.sortedDate}</td>
+                  <td align="center">
+                    {element.isCurrent ? "en cours" : "passé"}
+                  </td>
+                  <td align center className="action">
+                    <span>
+                      <i title="supprimer">
+                        <FontAwesomeIcon icon={faTrashCan} />
+                      </i>
+                      <i title="modifier">
+                        <FontAwesomeIcon icon={faFile} />
+                      </i>
+                    </span>
+                  </td>
                 </tr>
               );
             })}
