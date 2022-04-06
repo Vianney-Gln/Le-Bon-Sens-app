@@ -1,8 +1,17 @@
 import React, { useState } from "react";
+//service
+import { createOneEvent } from "../services/events";
+//routing
+import { useNavigate } from "react-router-dom";
 
 const FormEvents = () => {
   /* ------ states variables ------ */
   const [dataEvents, setDataEvents] = useState({});
+  const [successMessage, setSuccessMessage] = useState("");
+  const [error, setError] = useState(false);
+
+  /* ------ useNavigate ------ */
+  const navigate = useNavigate();
   /**
    * function getting all infos from the form and turn them into an object in the state dataEvents
    * @param {string | number} value
@@ -14,9 +23,30 @@ const FormEvents = () => {
     setDataEvents(newData);
   };
 
+  /**
+   * function running the createOneEvent function
+   * if success setup a successMessage and redirect
+   * if fail, setup a failure Message
+   * @param {*} e
+   */
   const handleFormEvents = (e) => {
     e.preventDefault();
-    console.log(dataEvents);
+    createOneEvent(dataEvents)
+      .then(() => {
+        setSuccessMessage(
+          "l'évent a bien été créé, redirection à l'accueil admin..."
+        );
+        setError(false);
+        setTimeout(() => {
+          navigate("/admin");
+        }, 3000);
+      })
+      .catch((err) => {
+        setError(true);
+        setSuccessMessage(
+          "il y a eu une erreur lors de la creation de l'évent, veuillez vérifier vos champs svp"
+        );
+      });
   };
   return (
     <div className="container-formEvents">
@@ -33,7 +63,7 @@ const FormEvents = () => {
         <label htmlFor="description">
           <textarea
             name="description"
-            placeholder="nom de l'évènement"
+            placeholder="description de l'évènement"
             onChange={(e) => getDataEvents(e.target.value, "description")}
           ></textarea>
         </label>
@@ -53,6 +83,9 @@ const FormEvents = () => {
           ></input>
         </label>
         <button type="submit">valider</button>
+        {successMessage && (
+          <p className={!error ? "success" : "fail"}>{successMessage}</p>
+        )}
       </form>
     </div>
   );
