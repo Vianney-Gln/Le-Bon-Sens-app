@@ -45,7 +45,7 @@ const Events = ({ setInsert }) => {
             )}
             {currentEvents.map((element) => {
               return (
-                <>
+                <div key={element.id}>
                   <h3>
                     {element.name}
                     <span> le {element.sortedDate}</span>
@@ -63,7 +63,7 @@ const Events = ({ setInsert }) => {
                       })}
                     </p>
                   </div>
-                </>
+                </div>
               );
             })}
           </>

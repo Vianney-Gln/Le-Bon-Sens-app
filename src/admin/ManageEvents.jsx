@@ -40,9 +40,12 @@ const ManageEvents = () => {
                   <td align="center">
                     {element.isCurrent ? "en cours" : "passé"}
                   </td>
-                  <td align center className="action">
+                  <td align="center" className="action">
                     <span>
-                      <i title="supprimer">
+                      <i
+                        onClick={() => console.log(element.id + "supprimé")}
+                        title="supprimer"
+                      >
                         <FontAwesomeIcon icon={faTrashCan} />
                       </i>
                       <i title="modifier">
