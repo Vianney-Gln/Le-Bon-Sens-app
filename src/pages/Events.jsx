@@ -15,7 +15,7 @@ const Events = ({ setInsert }) => {
   document.title = "Le Bon Sens - Evènements";
 
   // variables statement
-  const [currentEvent, setCurrentEvent] = useState({}); // current event
+  const [currentEvents, setCurrentEvents] = useState([]); // currents events
   const [events, setEvents] = useState([]); // all other events
 
   // getting all infos about events on component mounting
@@ -25,9 +25,9 @@ const Events = ({ setInsert }) => {
     getInfosEvents().then((evts) => {
       evts.forEach((evt) => {
         if (evt.isCurrent === 1) {
-          setCurrentEvent(evt);
+          setCurrentEvents((oldEvents) => [...oldEvents, evt]); // "push" currents events
         }
-        setEvents((oldEvents) => [...oldEvents, evt]); // "push" events
+        setEvents((oldEvents) => [...oldEvents, evt]); // "push" past events
       });
     });
   }, []);
@@ -35,27 +35,37 @@ const Events = ({ setInsert }) => {
     <div className="container-events">
       <h1>Evènements</h1>
       <div className="container-event-comming">
-        {!isObjEmpty(currentEvent) ? (
-          /* If there is a current event, display it */
+        {currentEvents.length ? (
+          /* If there is one current event or more, display it */
           <>
-            <h2>Evènement à venir</h2>
-            <h3>
-              {currentEvent.name}
-              <span> le {currentEvent.sortedDate}</span>
-            </h3>
-            <img src={currentEvent.urlImage} alt={currentEvent.name} />
-            <div className="description-event">
-              <p>
-                {currentEvent.description.split("\n").map((element, index) => {
-                  return (
-                    <span key={index}>
-                      {element}
-                      <br />
-                    </span>
-                  );
-                })}
-              </p>
-            </div>
+            {currentEvents.length > 1 ? (
+              <h2>Evènements à venir</h2>
+            ) : (
+              <h2>Evènement à venir</h2>
+            )}
+            {currentEvents.map((element) => {
+              return (
+                <>
+                  <h3>
+                    {element.name}
+                    <span> le {element.sortedDate}</span>
+                  </h3>
+                  <img src={element.urlImage} alt={element.name} />
+                  <div className="description-event">
+                    <p>
+                      {element.description.split("\n").map((element, index) => {
+                        return (
+                          <span key={index}>
+                            {element}
+                            <br />
+                          </span>
+                        );
+                      })}
+                    </p>
+                  </div>
+                </>
+              );
+            })}
           </>
         ) : events.length ? (
           /* If not, display the last past event (first of the list) */
