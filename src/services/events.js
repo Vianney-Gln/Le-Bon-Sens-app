@@ -10,6 +10,21 @@ const getInfosEvents = () => {
   return axios.get(`${baseUrl}/api/LeBonSens/events`).then((res) => res.data);
 };
 
+/**
+ * function getting one event By id (for pre filling form admin update event)
+ * @param {number} id
+ * @returns {object}
+ */
+export const getOneEventById = (id) => {
+  return axios
+    .get(`${baseUrl}/api/LeBonSens/events/${id}`)
+    .then((res) => res.data);
+};
+
+/**
+ * function getting all events (for admin use)
+ * @returns {array}
+ */
 export const getAllInfosEvents = () => {
   return axios
     .get(`${baseUrl}/api/LeBonSens/events/all`)
