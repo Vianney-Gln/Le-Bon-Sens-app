@@ -48,7 +48,10 @@ const Events = ({ setInsert }) => {
                 <div key={element.id}>
                   <h3>
                     {element.name}
-                    <span> le {element.sortedDate}</span>
+                    <span>
+                      {" "}
+                      le {element.sortedDate} à {element.hour}
+                    </span>
                   </h3>
                   <img src={element.urlImage} alt={element.name} />
                   <div className="description-event">

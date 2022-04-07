@@ -100,9 +100,16 @@ const FormEvents = ({ operation, idEventToManage }) => {
         </label>
         <label htmlFor="date">
           <input
-            type="datetime-local"
+            type="date"
             name="date"
             onChange={(e) => getDataEvents(e.target.value, "date")}
+          ></input>
+        </label>
+        <label htmlFor="hour">
+          <input
+            type="time"
+            name="hour"
+            onChange={(e) => getDataEvents(e.target.value, "hour")}
           ></input>
         </label>
         <label htmlFor="urlImage">
