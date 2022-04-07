@@ -72,7 +72,7 @@ const Events = ({ setInsert }) => {
           </>
         ) : events.length ? (
           /* If not, display the last past event (first of the list) */
-          <>
+          <div className="last-event">
             <h2>Dernier évènement</h2>
             <h3>
               {events[0].name}
@@ -91,7 +91,7 @@ const Events = ({ setInsert }) => {
                 })}
               </p>
             </div>
-          </>
+          </div>
         ) : (
           ""
         )}
