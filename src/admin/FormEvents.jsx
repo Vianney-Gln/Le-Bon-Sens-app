@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 //service
-import { createOneEvent } from "../services/events";
+import { createOneEvent, getOneEventById } from "../services/events";
 //routing
 import { useNavigate } from "react-router-dom";
 
-const FormEvents = ({ operation }) => {
+const FormEvents = ({ operation, idEventToManage }) => {
   /* ------ states variables ------ */
   const [dataEvents, setDataEvents] = useState({});
   const [successMessage, setSuccessMessage] = useState("");
@@ -23,6 +23,19 @@ const FormEvents = ({ operation }) => {
     newData[key] = value;
     setDataEvents(newData);
   };
+  //function getting one event on component mounting IF we're in update mode
+  useEffect(() => {
+    if (operation === "updateEvent") {
+      getOneEventById(idEventToManage)
+        .then((result) => {
+          setDataEvents(result);
+          console.log(result);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, []);
 
   const handleFormEventUpdate = (e) => {
     e.preventDefault();
