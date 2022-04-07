@@ -85,6 +85,7 @@ const FormEvents = ({ operation, idEventToManage }) => {
             name="name"
             placeholder="nom de l'évènement"
             onChange={(e) => getDataEvents(e.target.value, "name")}
+            defaultValue={operation === "updateEvent" ? dataEvents.name : ""}
           ></input>
         </label>
         <label htmlFor="description">
@@ -92,6 +93,9 @@ const FormEvents = ({ operation, idEventToManage }) => {
             name="description"
             placeholder="description de l'évènement"
             onChange={(e) => getDataEvents(e.target.value, "description")}
+            defaultValue={
+              operation === "updateEvent" ? dataEvents.description : ""
+            }
           ></textarea>
         </label>
         <label htmlFor="date">
@@ -107,6 +111,9 @@ const FormEvents = ({ operation, idEventToManage }) => {
             name="urlImage"
             placeholder="url de l'image"
             onChange={(e) => getDataEvents(e.target.value, "urlImage")}
+            defaultValue={
+              operation === "updateEvent" ? dataEvents.urlImage : ""
+            }
           ></input>
         </label>
         <button type="submit">valider</button>
