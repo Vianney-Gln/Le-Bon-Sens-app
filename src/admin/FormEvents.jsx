@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 //service
 import { createOneEvent } from "../services/events";
 //routing
 import { useNavigate } from "react-router-dom";
 
-const FormEvents = () => {
+const FormEvents = ({ operation }) => {
   /* ------ states variables ------ */
   const [dataEvents, setDataEvents] = useState({});
   const [successMessage, setSuccessMessage] = useState("");
@@ -22,6 +22,11 @@ const FormEvents = () => {
     const newData = dataEvents;
     newData[key] = value;
     setDataEvents(newData);
+  };
+
+  const handleFormEventUpdate = (e) => {
+    e.preventDefault();
+    console.log("update");
   };
 
   /**
@@ -51,8 +56,16 @@ const FormEvents = () => {
   };
   return (
     <div className="container-formEvents">
-      <h3>Ajouter des produits en stock</h3>
-      <form onSubmit={handleFormEventsPost}>
+      {operation === "updateEvent" && <h3>Modifier un évènement</h3>}
+      {operation === "createEvent" && <h3>Créer un évènement</h3>}
+
+      <form
+        onSubmit={
+          operation === "createEvent"
+            ? handleFormEventsPost
+            : handleFormEventUpdate
+        }
+      >
         <label htmlFor="name">
           <input
             type="text"

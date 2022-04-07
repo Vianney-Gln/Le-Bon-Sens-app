@@ -99,7 +99,9 @@ const Admin = () => {
               idRecipeToManage={idRecipeToManage}
             />
           )}
-          {param.operation === "createEvent" && <FormEvents />}
+          {param.operation === "createEvent" && (
+            <FormEvents operation={param.operation} />
+          )}
           {param.operation === "manageEvents" && (
             <ManageEvents
               idEventToManage={idEventToManage}

@@ -46,7 +46,6 @@ const ManageEvents = ({ idEventToManage, setIdEventToManage }) => {
   useEffect(() => {
     getAllInfosEvents().then((result) => {
       setListEventsToManage(result);
-      console.log(result);
     });
   }, []);
 
