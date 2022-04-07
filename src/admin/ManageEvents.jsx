@@ -104,17 +104,28 @@ const ManageEvents = ({ idEventToManage, setIdEventToManage }) => {
             <tr align="center">
               <th>Nom de l'event</th>
               <th>Date de l'event</th>
+              <th>Heure de l'event</th>
               <th>Status évènement</th>
               <th>Action</th>
             </tr>
           </thead>
           <tbody>
+            {listEventsToManage.length < 1 && (
+              <tr align="center">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            )}
             {listEventsToManage &&
               listEventsToManage.map((element) => {
                 return (
                   <tr key={element.id}>
                     <td align="center">{element.name}</td>
                     <td align="center">{element.date}</td>
+                    <td align="center">{element.hour}</td>
                     <td align="center">
                       {element.isCurrent ? "en cours" : "passé"}
                     </td>
