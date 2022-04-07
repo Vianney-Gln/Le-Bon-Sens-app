@@ -103,6 +103,9 @@ const FormEvents = ({ operation, idEventToManage }) => {
             type="date"
             name="date"
             onChange={(e) => getDataEvents(e.target.value, "date")}
+            defaultValue={
+              operation === "updateEvent" ? dataEvents.sortedDate : ""
+            }
           ></input>
         </label>
         <label htmlFor="hour">
@@ -110,6 +113,7 @@ const FormEvents = ({ operation, idEventToManage }) => {
             type="time"
             name="hour"
             onChange={(e) => getDataEvents(e.target.value, "hour")}
+            defaultValue={operation === "updateEvent" ? dataEvents.hour : ""}
           ></input>
         </label>
         <label htmlFor="urlImage">
