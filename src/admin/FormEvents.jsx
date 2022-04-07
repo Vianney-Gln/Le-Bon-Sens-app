@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 //service
-import { createOneEvent, getOneEventById } from "../services/events";
+import {
+  createOneEvent,
+  getOneEventById,
+  updateOneEventById,
+} from "../services/events";
 //routing
 import { useNavigate } from "react-router-dom";
 
@@ -39,7 +43,22 @@ const FormEvents = ({ operation, idEventToManage }) => {
 
   const handleFormEventUpdate = (e) => {
     e.preventDefault();
-    console.log("update");
+    updateOneEventById(dataEvents, idEventToManage)
+      .then(() => {
+        setSuccessMessage(
+          "l'évent a bien été mis à jour, redirection à l'accueil admin..."
+        );
+        setError(false);
+        setTimeout(() => {
+          navigate("/admin");
+        }, 3000);
+      })
+      .catch(() => {
+        setError(true);
+        setSuccessMessage(
+          "il y a eu une erreur lors de la mise à jour de l'évent, veuillez vérifier vos champs svp"
+        );
+      });
   };
 
   /**
@@ -67,6 +86,7 @@ const FormEvents = ({ operation, idEventToManage }) => {
         );
       });
   };
+
   return (
     <div className="container-formEvents">
       {operation === "updateEvent" && <h3>Modifier un évènement</h3>}
@@ -103,9 +123,7 @@ const FormEvents = ({ operation, idEventToManage }) => {
             type="date"
             name="date"
             onChange={(e) => getDataEvents(e.target.value, "date")}
-            defaultValue={
-              operation === "updateEvent" ? dataEvents.sortedDate : ""
-            }
+            defaultValue={operation === "updateEvent" ? dataEvents.date : ""}
           ></input>
         </label>
         <label htmlFor="hour">

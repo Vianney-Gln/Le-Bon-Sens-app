@@ -114,7 +114,7 @@ const ManageEvents = ({ idEventToManage, setIdEventToManage }) => {
                 return (
                   <tr key={element.id}>
                     <td align="center">{element.name}</td>
-                    <td align="center">{element.sortedDate}</td>
+                    <td align="center">{element.date}</td>
                     <td align="center">
                       {element.isCurrent ? "en cours" : "passé"}
                     </td>

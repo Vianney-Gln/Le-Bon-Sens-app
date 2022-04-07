@@ -50,7 +50,7 @@ const Events = ({ setInsert }) => {
                     {element.name}
                     <span>
                       {" "}
-                      le {element.sortedDate} à {element.hour}
+                      le {element.date} à {element.hour}
                     </span>
                   </h3>
                   <img src={element.urlImage} alt={element.name} />
@@ -76,7 +76,7 @@ const Events = ({ setInsert }) => {
             <h2>Dernier évènement</h2>
             <h3>
               {events[0].name}
-              <span> du {events[0].sortedDate}</span>
+              <span> du {events[0].date}</span>
             </h3>
             <img src={events[0].urlImage} alt={events[0].name} />
             <div className="description-event">
@@ -100,15 +100,12 @@ const Events = ({ setInsert }) => {
         <h2>Evènements passés</h2>
         {events &&
           events.map((eve) => {
-            if (
-              eve.isCurrent === 0 &&
-              eve.sortedDate !== events[0].sortedDate
-            ) {
+            if (eve.isCurrent === 0 && eve.date !== events[0].date) {
               return (
-                <div key={eve.sortedDate} className="description-event">
+                <div key={eve.date} className="description-event">
                   <h3>
                     {eve.name}
-                    <span> le {eve.sortedDate}</span>
+                    <span> le {eve.date}</span>
                   </h3>
                   <p>
                     {eve.description.split("\n").map((element, index) => {
