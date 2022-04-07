@@ -10,12 +10,11 @@ import { faTrashCan, faFile } from "@fortawesome/free-solid-svg-icons";
 import Modal from "react-modal/lib/components/Modal";
 //Routing
 import { useNavigate } from "react-router-dom";
-const ManageEvents = () => {
+const ManageEvents = ({ idEventToManage, setIdEventToManage }) => {
   /* ------ states variables ------ */
   const [listEventsToManage, setListEventsToManage] = useState([]);
   const [modalIsOpen, setIsOpen] = useState(false); //state Modal
   const [successMessage, setSuccessMessage] = useState("");
-  const [idEventToManage, setIdEventToManage] = useState("");
 
   /* ------- Navigate ------- */
   const navigate = useNavigate();
@@ -51,6 +50,9 @@ const ManageEvents = () => {
     });
   }, []);
 
+  /**
+   * function running service deleteOneEventById
+   */
   const runDeleteOneEvent = () => {
     deleteOneEventById(idEventToManage)
       .then(() => {
@@ -128,7 +130,13 @@ const ManageEvents = () => {
                         >
                           <FontAwesomeIcon icon={faTrashCan} />
                         </i>
-                        <i title="modifier">
+                        <i
+                          onClick={() => {
+                            setIdEventToManage(element.id);
+                            navigate("/admin/updateEvent");
+                          }}
+                          title="modifier"
+                        >
                           <FontAwesomeIcon icon={faFile} />
                         </i>
                       </span>

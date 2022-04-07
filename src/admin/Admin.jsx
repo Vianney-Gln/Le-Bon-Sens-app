@@ -25,6 +25,7 @@ const Admin = () => {
 
   const [idProductToManage, setIdProductToManage] = useState(""); // id product to manage
   const [idRecipeToManage, setIdRecipeToManage] = useState(""); // id recipe to manage
+  const [idEventToManage, setIdEventToManage] = useState(""); // id event to manage
 
   return (
     <div className="container-admin">
@@ -99,7 +100,18 @@ const Admin = () => {
             />
           )}
           {param.operation === "createEvent" && <FormEvents />}
-          {param.operation === "manageEvents" && <ManageEvents />}
+          {param.operation === "manageEvents" && (
+            <ManageEvents
+              idEventToManage={idEventToManage}
+              setIdEventToManage={setIdEventToManage}
+            />
+          )}
+          {param.operation === "updateEvent" && (
+            <FormEvents
+              operation={param.operation}
+              idEventToManage={idEventToManage}
+            />
+          )}
         </div>
       </div>
     </div>
