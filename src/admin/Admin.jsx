@@ -11,6 +11,8 @@ import ManageProduct from "./ManageProduct";
 import FormRecipe from "./FormRecipe";
 import FormShop from "./FormShop";
 import ManageRecipes from "./ManageRecipes";
+import FormEvents from "./FormEvents";
+import ManageEvents from "./ManageEvents";
 
 const Admin = () => {
   /* ----- doc title ----- */
@@ -23,6 +25,7 @@ const Admin = () => {
 
   const [idProductToManage, setIdProductToManage] = useState(""); // id product to manage
   const [idRecipeToManage, setIdRecipeToManage] = useState(""); // id recipe to manage
+  const [idEventToManage, setIdEventToManage] = useState(""); // id event to manage
 
   return (
     <div className="container-admin">
@@ -50,13 +53,17 @@ const Admin = () => {
             <li>Gérer les recettes</li>
           </Link>
           <li>Ajouter un producteur</li>
-          <li>Modifier les infos d'un producteur</li>
+          <li>Gérer les producteurs</li>
           <li>Supprimer un producteur</li>
           <Link to="/admin/updateShop">
             <li>Modifier les infos du magasin</li>
           </Link>
-          <li>Ajouter un évènement</li>
-          <li>Supprimer un évènement</li>
+          <Link to="/admin/createEvent">
+            <li>Ajouter un évènement</li>
+          </Link>
+          <Link to="/admin/manageEvents">
+            <li>Gérer les évènements</li>
+          </Link>
           <li>Déconnexion</li>
         </ul>
 
@@ -90,6 +97,24 @@ const Admin = () => {
             <FormRecipe
               operation={param.operation}
               idRecipeToManage={idRecipeToManage}
+            />
+          )}
+          {param.operation === "createEvent" && (
+            <FormEvents
+              operation={param.operation}
+              idEventToManage={idEventToManage}
+            />
+          )}
+          {param.operation === "manageEvents" && (
+            <ManageEvents
+              idEventToManage={idEventToManage}
+              setIdEventToManage={setIdEventToManage}
+            />
+          )}
+          {param.operation === "updateEvent" && (
+            <FormEvents
+              operation={param.operation}
+              idEventToManage={idEventToManage}
             />
           )}
         </div>
