@@ -89,30 +89,6 @@
       justify-content: flex-start;
       margin-top: 30px;
       flex-wrap: wrap;
-
-      li {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        margin: 30px;
-        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-        background-color: white;
-        cursor: pointer;
-        transition: all 0.5s ease;
-        border-radius: 5px;
-
-        img {
-          width: 150px;
-          height: 100px;
-          object-fit: cover;
-          border-top-left-radius: 5px;
-          border-top-right-radius: 5px;
-        }
-      }
-      li:hover {
-        transform: translateY(-10px);
-      }
     }
   }
   .infos-price {
@@ -133,13 +109,6 @@
     .container-products {
       .container-list-products {
         justify-content: center;
-
-        li {
-          transition: none;
-        }
-        li:hover {
-          transform: none;
-        }
       }
     }
 

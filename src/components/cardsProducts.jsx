@@ -1,6 +1,8 @@
 import React from "react";
 //routing
 import { useNavigate } from "react-router-dom";
+//style
+import "../styles/cardProduct.scss";
 
 const CardsProducts = ({
   productName,
@@ -14,7 +16,7 @@ const CardsProducts = ({
   /* ----- navigate -----*/
   const navigate = useNavigate();
   return (
-    <li>
+    <li className="card">
       <img src={productImage} alt="product" />
       <span>{productName}</span>
       <span>{productPrice}</span>
