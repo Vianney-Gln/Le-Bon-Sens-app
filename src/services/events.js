@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = "http://localhost:3001";
+const baseUrl = "https://le-bon-sens.herokuapp.com";
 
 /**
  * function getting first 6 events
