@@ -15,7 +15,7 @@ const Events = ({ setInsert }) => {
   document.title = "Le Bon Sens - Evènements";
 
   // variables statement
-  const [currentEvent, setCurrentEvent] = useState({}); // current event
+  const [currentEvents, setCurrentEvents] = useState([]); // currents events
   const [events, setEvents] = useState([]); // all other events
 
   // getting all infos about events on component mounting
@@ -25,9 +25,9 @@ const Events = ({ setInsert }) => {
     getInfosEvents().then((evts) => {
       evts.forEach((evt) => {
         if (evt.isCurrent === 1) {
-          setCurrentEvent(evt);
+          setCurrentEvents((oldEvents) => [...oldEvents, evt]); // "push" currents events
         }
-        setEvents((oldEvents) => [...oldEvents, evt]); // "push" events
+        setEvents((oldEvents) => [...oldEvents, evt]); // "push" past events
       });
     });
   }, []);
@@ -35,18 +35,53 @@ const Events = ({ setInsert }) => {
     <div className="container-events">
       <h1>Evènements</h1>
       <div className="container-event-comming">
-        {!isObjEmpty(currentEvent) ? (
-          /* If there is a current event, display it */
+        {currentEvents.length ? (
+          /* If there is one current event or more, display it */
           <>
-            <h2>Evènement à venir</h2>
+            {currentEvents.length > 1 ? (
+              <h2>Evènements à venir</h2>
+            ) : (
+              <h2>Evènement à venir</h2>
+            )}
+            {currentEvents.map((element) => {
+              return (
+                <div key={element.id}>
+                  <h3>
+                    {element.name}
+                    <span>
+                      {" "}
+                      le {element.date} à {element.hour}
+                    </span>
+                  </h3>
+                  <img src={element.urlImage} alt={element.name} />
+                  <div className="description-event">
+                    <p>
+                      {element.description.split("\n").map((element, index) => {
+                        return (
+                          <span key={index}>
+                            {element}
+                            <br />
+                          </span>
+                        );
+                      })}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+          </>
+        ) : events.length ? (
+          /* If not, display the last past event (first of the list) */
+          <div className="last-event">
+            <h2>Dernier évènement</h2>
             <h3>
-              {currentEvent.name}
-              <span> le {currentEvent.sortedDate}</span>
+              {events[0].name}
+              <span> du {events[0].date}</span>
             </h3>
-            <img src={currentEvent.urlImage} alt={currentEvent.name} />
+            <img src={events[0].urlImage} alt={events[0].name} />
             <div className="description-event">
               <p>
-                {currentEvent.description.split("\n").map((element, index) => {
+                {events[0].description.split("\n").map((element, index) => {
                   return (
                     <span key={index}>
                       {element}
@@ -56,31 +91,7 @@ const Events = ({ setInsert }) => {
                 })}
               </p>
             </div>
-          </>
-        ) : events.length ? (
-          /* If not, display the last past event (first of the list) */
-          <>
-            <h2>Dernier évènement</h2>
-            <h3>
-              {events[0].name}
-              <span> du {events[0].sortedDate}</span>
-            </h3>
-            <img src={events[0].urlImage} alt={events[0].name} />
-            <div className="description-event">
-              <p>
-                {events[events.length - 1].description
-                  .split("\n")
-                  .map((element, index) => {
-                    return (
-                      <span key={index}>
-                        {element}
-                        <br />
-                      </span>
-                    );
-                  })}
-              </p>
-            </div>
-          </>
+          </div>
         ) : (
           ""
         )}
@@ -89,15 +100,12 @@ const Events = ({ setInsert }) => {
         <h2>Evènements passés</h2>
         {events &&
           events.map((eve) => {
-            if (
-              eve.isCurrent === 0 &&
-              eve.sortedDate !== events[0].sortedDate
-            ) {
+            if (eve.isCurrent === 0 && eve.date !== events[0].date) {
               return (
-                <div key={eve.sortedDate} className="description-event">
+                <div key={eve.date} className="description-event">
                   <h3>
                     {eve.name}
-                    <span> le {eve.sortedDate}</span>
+                    <span> le {eve.date}</span>
                   </h3>
                   <p>
                     {eve.description.split("\n").map((element, index) => {
