@@ -16,6 +16,8 @@ const ManageProduct = ({ setIdProductToManage, idProductToManage }) => {
   const [productsToManage, setProductsToManage] = useState([]); //array recieving result.data from service
   const [modalIsOpen, setIsOpen] = useState(false); //state Modal
   const [successMessage, setSuccessMessage] = useState("");
+  const [sortParam, setSortParam] = useState("");
+  const [searchParam, setSearchParam] = useState("");
   /* -----Modal -----*/
   Modal.setAppElement("#root");
   const openModal = () => {
@@ -41,10 +43,10 @@ const ManageProduct = ({ setIdProductToManage, idProductToManage }) => {
 
   /*----- getting all products on component mounting -----*/
   useEffect(() => {
-    getProducts().then((result) => {
+    getProducts(sortParam, searchParam).then((result) => {
       setProductsToManage(result);
     });
-  }, []);
+  }, [sortParam, searchParam]);
 
   const runDeleteOneProduct = () => {
     deleteOneProduct(idProductToManage)
@@ -92,8 +94,30 @@ const ManageProduct = ({ setIdProductToManage, idProductToManage }) => {
         {successMessage && <p>{successMessage}</p>}
       </Modal>
       <h3>Gérer les produits</h3>
-      <div className="container-products-to-delete">
-        <ul className="container-list-products-to-delete">
+      <div className="container-search-sort">
+        <label htmlFor="search">
+          <input
+            onChange={(e) => setSearchParam(e.target.value)}
+            type="text"
+            name="search"
+            placeholder="rechercher"
+          />
+        </label>
+        <label htmlFor="category">
+          <select
+            onChange={(e) => setSortParam(e.target.value)}
+            name="category"
+          >
+            <option value="">Tous les produits</option>
+            <option value="vegetables">légumes</option>
+            <option value="meats">viandes</option>
+            <option value="dairy products">produits laitiers</option>
+            <option value="other locals products">produits divers</option>
+          </select>
+        </label>
+      </div>
+      <div className="container-products-to-manage">
+        <ul className="container-list-products-to-manage">
           {productsToManage &&
             productsToManage.map((prod) => (
               <CardsProducts
