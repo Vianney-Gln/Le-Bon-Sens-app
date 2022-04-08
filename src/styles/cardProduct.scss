@@ -1,0 +1,59 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 30px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  background-color: white;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  border-radius: 5px;
+
+  span {
+    max-width: 150px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  img {
+    width: 150px;
+    height: 100px;
+    object-fit: cover;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+}
+.card:hover {
+  transform: translateY(-10px);
+}
+
+/* ------ Modal ------- */
+body > div > div > div > div.onDetailProduct {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  img {
+    width: 240px;
+    height: 160px;
+    object-fit: cover;
+    object-position: center;
+  }
+  span {
+    max-width: 240px;
+    text-align: center;
+    margin-top: 10px;
+  }
+}
+/* ------ Mobile ------ */
+@media screen and (max-width: 700px) {
+  .card {
+    transition: none;
+  }
+  .card:hover {
+    transform: none;
+  }
+}

@@ -86,7 +86,7 @@ const Products = () => {
             onChange={(e) => setSearchParam(e.target.value)}
             type="text"
             name="search"
-            placeholder="search"
+            placeholder="rechercher"
           />
         </label>
       </div>
