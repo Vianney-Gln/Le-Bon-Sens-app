@@ -1,14 +1,23 @@
 h3 {
   text-align: center;
 }
+.container-search-sort {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
 
-.container-products-to-delete {
+  label {
+    margin: 0px 10px;
+  }
+}
+.container-products-to-manage {
   width: 100%;
   display: flex;
   justify-content: center;
   max-height: 600px;
 
-  .container-list-products-to-delete {
+  .container-list-products-to-manage {
     list-style-type: none;
     width: 80%;
     display: flex;
