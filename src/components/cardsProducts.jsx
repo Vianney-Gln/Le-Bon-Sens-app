@@ -57,7 +57,7 @@ const CardsProducts = ({
           <span>{productPrice}</span>
         </div>
       </DetailProductModal>
-      <li onClick={!toManage && openDetailProductModal} className="card">
+      <li onClick={() => !toManage && openDetailProductModal} className="card">
         <img src={productImage} alt={productName} />
         <span>{productName}</span>
         <span>{productPrice}</span>

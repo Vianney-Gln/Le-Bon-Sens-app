@@ -6,7 +6,7 @@ import authentificate from "../services/auth";
 //style
 import "../styles/login.scss";
 
-const Login = ({ setInfosAdmin }) => {
+const Login = () => {
   //navigate
   const navigate = useNavigate();
   //states
@@ -23,7 +23,9 @@ const Login = ({ setInfosAdmin }) => {
     authentificate(creds)
       .then((result) => {
         setMessage("");
-        setInfosAdmin(result);
+        localStorage.setItem("uuid", result.uuid);
+        localStorage.setItem("name", result.name);
+        localStorage.setItem("firstname", result.firstname);
         navigate("/admin");
       })
       .catch(() => {
