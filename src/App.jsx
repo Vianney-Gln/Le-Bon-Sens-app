@@ -19,10 +19,12 @@ import Recipes from "./pages/Recipes";
 import { getNamesProductors } from "./services/productors";
 
 const App = () => {
+  /* ------ about authentication ------ */
+  //states
+  const [isAuth, setIsAuth] = useState(false); // state managin the auth
   /* ------ about Insert-event component ------- */
   // states
-  const [insert, setInsert] = useState(true);
-  const [isAuth, setIsAuth] = useState(true);
+  const [insert, setInsert] = useState(true); //state display the insert event
 
   // function disabling insert
   const disableInsert = () => {
@@ -51,7 +53,11 @@ const App = () => {
         <Route exact path="events" element={<Events setInsert={setInsert} />} />
         <Route exact path="find-us" element={<FindUs />} />
         <Route exact path="recipes" element={<Recipes />} />
-        <Route exact path="login" element={<Login />} />
+        <Route
+          exact
+          path="login"
+          element={<Login setIsAuth={setIsAuth} isAuth={isAuth} />}
+        />
         <Route
           exact
           path="admin"
