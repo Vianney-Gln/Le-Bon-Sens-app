@@ -22,6 +22,7 @@ const App = () => {
   /* ------ about authentication ------ */
   //states
   const [isAuth, setIsAuth] = useState(false); // state managin the auth
+  const [infosAdmin, setInfosAdmin] = useState({});
   /* ------ about Insert-event component ------- */
   // states
   const [insert, setInsert] = useState(true); //state display the insert event
@@ -56,12 +57,12 @@ const App = () => {
         <Route
           exact
           path="login"
-          element={<Login setIsAuth={setIsAuth} isAuth={isAuth} />}
+          element={<Login setInfosAdmin={setInfosAdmin} />}
         />
         <Route
           exact
           path="admin"
-          element={<ProtectedRoute isAuth={isAuth} />}
+          element={<ProtectedRoute infosAdmin={infosAdmin} />}
         />
         <Route
           exact
