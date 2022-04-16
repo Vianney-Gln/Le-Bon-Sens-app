@@ -23,9 +23,7 @@ const Login = () => {
     authentificate(creds)
       .then((result) => {
         setMessage("");
-        localStorage.setItem("uuid", result.uuid);
-        localStorage.setItem("name", result.name);
-        localStorage.setItem("firstname", result.firstname);
+        localStorage.setItem("token", result);
         navigate("/admin");
       })
       .catch(() => {
