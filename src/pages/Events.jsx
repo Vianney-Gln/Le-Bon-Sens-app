@@ -4,9 +4,6 @@ import React, { useState, useEffect } from "react";
 // style
 import "../styles/events.scss";
 
-// utility
-import { isObjEmpty } from "../utility/utility_functions";
-
 // service
 import getInfosEvents from "../services/events";
 
