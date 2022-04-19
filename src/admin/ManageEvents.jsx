@@ -45,7 +45,7 @@ const ManageEvents = ({ idEventToManage, setIdEventToManage }) => {
 
   //function getting all events on component mounting only connected as admin
   useEffect(() => {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("token_access_le_bon_sens");
     verifyToken(token).then((result) => {
       if (result.data) {
         getAllInfosEvents(token)
@@ -63,7 +63,7 @@ const ManageEvents = ({ idEventToManage, setIdEventToManage }) => {
    * function running service deleteOneEventById
    */
   const runDeleteOneEvent = () => {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("token_access_le_bon_sens");
     deleteOneEventById(idEventToManage, token)
       .then(() => {
         setSuccessMessage(

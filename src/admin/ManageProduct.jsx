@@ -44,7 +44,7 @@ const ManageProduct = ({ setIdProductToManage, idProductToManage }) => {
 
   /*----- getting all products on component mounting only connected as admin -----*/
   useEffect(() => {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("token_access_le_bon_sens");
     verifyToken(token).then((result) => {
       if (result.data) {
         getProducts(sortParam, searchParam)
@@ -61,7 +61,7 @@ const ManageProduct = ({ setIdProductToManage, idProductToManage }) => {
   }, [sortParam, searchParam]);
 
   const runDeleteOneProduct = () => {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("token_access_le_bon_sens");
     deleteOneProduct(idProductToManage, { token })
       .then(() => {
         setSuccessMessage(

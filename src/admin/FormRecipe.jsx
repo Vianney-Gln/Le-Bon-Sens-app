@@ -61,7 +61,7 @@ const FormRecipe = ({ operation, idRecipeToManage }) => {
    */
   const handleFormPostRecipes = (e) => {
     e.preventDefault();
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("token_access_le_bon_sens");
     addRecipe(dataRecipe, token)
       .then(() => {
         setSuccessMessage("recette postée avec succès");
@@ -85,7 +85,7 @@ const FormRecipe = ({ operation, idRecipeToManage }) => {
 
   const handleFormUpdateRecipe = (e) => {
     e.preventDefault();
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("token_access_le_bon_sens");
     updateOneRecipeById(dataRecipe, idRecipeToManage, token)
       .then(() => {
         setSuccessMessage(

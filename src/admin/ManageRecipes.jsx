@@ -32,7 +32,7 @@ const ManageRecipes = ({ idRecipeToManage, setIdRecipeToManage }) => {
    * function running the deleteOneRecipeById function from service
    */
   const runDeleteOneRecipe = () => {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("token_access_le_bon_sens");
     deleteOneRecipeById(idRecipeToManage, token)
       .then(() => {
         setSuccessMessage("suppression en cours, vous serez redirigé...");

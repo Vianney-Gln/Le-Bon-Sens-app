@@ -9,7 +9,7 @@ const ProtectedRoute = () => {
 
   useEffect(() => {
     setLoad(false);
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("token_access_le_bon_sens");
     verifyToken(token)
       .then((result) => {
         setResultToken(result.data);

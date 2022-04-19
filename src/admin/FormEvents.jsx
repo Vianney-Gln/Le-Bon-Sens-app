@@ -33,7 +33,6 @@ const FormEvents = ({ operation, idEventToManage }) => {
       getOneEventById(idEventToManage)
         .then((result) => {
           setDataEvents(result);
-          console.log(result);
         })
         .catch((err) => {
           console.log(err);
@@ -43,7 +42,7 @@ const FormEvents = ({ operation, idEventToManage }) => {
 
   const handleFormEventUpdate = (e) => {
     e.preventDefault();
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("token_access_le_bon_sens");
     updateOneEventById(dataEvents, idEventToManage, token)
       .then(() => {
         setSuccessMessage(
@@ -70,7 +69,7 @@ const FormEvents = ({ operation, idEventToManage }) => {
    */
   const handleFormEventsPost = (e) => {
     e.preventDefault();
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("token_access_le_bon_sens");
     createOneEvent(dataEvents, token)
       .then(() => {
         setSuccessMessage(

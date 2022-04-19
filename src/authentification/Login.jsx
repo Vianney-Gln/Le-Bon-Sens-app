@@ -31,7 +31,7 @@ const Login = () => {
     authentificate(creds)
       .then((result) => {
         setMessage("");
-        localStorage.setItem("token", result);
+        localStorage.setItem("token_access_le_bon_sens", result);
         navigate("/admin");
       })
       .catch(() => {

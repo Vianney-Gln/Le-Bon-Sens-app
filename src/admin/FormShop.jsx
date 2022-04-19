@@ -15,7 +15,7 @@ const FormShop = () => {
    */
   const handleFormShop = (e) => {
     e.preventDefault();
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("token_access_le_bon_sens");
     updateInfosShop(dataShopToUpdate, token)
       .then(() => {
         setSuccessMessage("données mises à jour correctement");

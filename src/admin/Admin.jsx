@@ -30,7 +30,7 @@ const Admin = () => {
   /* ----- useNavigate ------ */
   const navigate = useNavigate();
   const disconnect = () => {
-    localStorage.removeItem("token");
+    localStorage.removeItem("token_access_le_bon_sens");
     navigate("/");
   };
   return (

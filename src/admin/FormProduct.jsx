@@ -43,7 +43,7 @@ const FormProduct = ({ operation, idProductToManage }) => {
    */
   const handleFormPost = (e) => {
     e.preventDefault();
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("token_access_le_bon_sens");
     postOneProduct(dataProduct, token)
       .then(() => {
         setMessage("produit correctement ajouté");
@@ -80,7 +80,7 @@ const FormProduct = ({ operation, idProductToManage }) => {
    */
   const handleFormUpdate = (e) => {
     e.preventDefault();
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("token_access_le_bon_sens");
     updateOneProduct(dataProduct, idProductToManage, token)
       .then(() => {
         setMessage("produit correctement mis à jour");
