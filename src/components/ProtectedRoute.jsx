@@ -22,7 +22,6 @@ const ProtectedRoute = () => {
   }, []);
 
   if (load) {
-    console.log(resultToken);
     if (!resultToken) return <Navigate to="/login" />;
     else {
       return <Admin />;
