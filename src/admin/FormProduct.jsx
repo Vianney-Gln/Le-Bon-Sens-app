@@ -80,7 +80,8 @@ const FormProduct = ({ operation, idProductToManage }) => {
    */
   const handleFormUpdate = (e) => {
     e.preventDefault();
-    updateOneProduct(dataProduct, idProductToManage)
+    const token = localStorage.getItem("token");
+    updateOneProduct(dataProduct, idProductToManage, token)
       .then(() => {
         setMessage("produit correctement mis à jour");
         setError(false);

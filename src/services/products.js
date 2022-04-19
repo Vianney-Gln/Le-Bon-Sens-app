@@ -39,7 +39,7 @@ export const postOneProduct = (dataProduct, token) => {
 };
 
 /**
- * function deleting one product by his id only connected as admin
+ * function deleting one product by his id only connected as admin http://localhost:3001/api/LeBonSens/product/{id}
  * @param {number} id
  * @param {string} token
  * @returns
@@ -49,11 +49,18 @@ export const deleteOneProduct = (id, token) => {
   return axios.post(`${baseUrl}/api/LeBonSens/products/${id}`, token);
 };
 
-export const updateOneProduct = (dataProduct, id) => {
+/**
+ * function updating one product by his id , only for admin connected -- http://localhost:3001/api/LeBonSens/product/{id}
+ * @param {object} dataProduct
+ * @param {number} id
+ * @param {string} token
+ * @returns
+ */
+export const updateOneProduct = (dataProduct, id, token) => {
   return axios({
     method: "put",
     url: `${baseUrl}/api/LeBonSens/products/${id}`,
-    data: dataProduct,
+    data: { dataProduct, token },
   });
 };
 
