@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Admin from "../admin/Admin";
 import { Navigate } from "react-router-dom";
-import axios from "axios";
+import { verifyToken } from "../services/auth";
 
 const ProtectedRoute = () => {
   const [resultToken, setResultToken] = useState(false);
@@ -10,11 +10,7 @@ const ProtectedRoute = () => {
   useEffect(() => {
     setLoad(false);
     const token = localStorage.getItem("token");
-    axios({
-      url: "http://localhost:3001/api/LeBonSens/verifyToken",
-      data: { token: token },
-      method: "post",
-    })
+    verifyToken(token)
       .then((result) => {
         setResultToken(result.data);
         setLoad(true);
