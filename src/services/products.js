@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = "https://le-bon-sens.herokuapp.com";
+const baseUrl = "http://localhost:3001";
 /**
  * function calling api getting products infos in terms of params(category or name)
  * @param (string,string)

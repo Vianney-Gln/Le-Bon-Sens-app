@@ -9,6 +9,7 @@ import getProducts, { deleteOneProduct } from "../services/products";
 import CardsProducts from "../components/cardsProducts";
 //Modal
 import Modal from "react-modal";
+import { verifyToken } from "../services/auth";
 const ManageProduct = ({ setIdProductToManage, idProductToManage }) => {
   /* -----navigate -----*/
   const navigate = useNavigate();
@@ -41,10 +42,21 @@ const ManageProduct = ({ setIdProductToManage, idProductToManage }) => {
     },
   };
 
-  /*----- getting all products on component mounting -----*/
+  /*----- getting all products on component mounting only connected as admin -----*/
   useEffect(() => {
-    getProducts(sortParam, searchParam).then((result) => {
-      setProductsToManage(result);
+    const token = localStorage.getItem("token");
+    verifyToken(token).then((result) => {
+      if (result.data) {
+        getProducts(sortParam, searchParam)
+          .then((result) => {
+            setProductsToManage(result);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      } else {
+        navigate("/login");
+      }
     });
   }, [sortParam, searchParam]);
 
