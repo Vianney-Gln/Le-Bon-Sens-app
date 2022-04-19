@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = "http://localhost:3001";
+const baseUrl = "https://shielded-sea-56340.herokuapp.com";
 
 /**
  * function taking email and password to connect the user
@@ -22,7 +22,7 @@ const authentificate = (credentials) => {
  */
 export const verifyToken = (token) => {
   return axios({
-    url: "http://localhost:3001/api/LeBonSens/verifyToken",
+    url: `${baseUrl}/api/LeBonSens/verifyToken`,
     data: { token: token },
     method: "post",
   });

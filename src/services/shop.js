@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = "http://localhost:3001";
+const baseUrl = "https://shielded-sea-56340.herokuapp.com";
 
 const getInfosShop = () =>
   axios.get(`${baseUrl}/api/LeBonSens/shop`).then((result) => result.data);
