@@ -61,7 +61,8 @@ const FormRecipe = ({ operation, idRecipeToManage }) => {
    */
   const handleFormPostRecipes = (e) => {
     e.preventDefault();
-    addRecipe(dataRecipe)
+    const token = localStorage.getItem("token");
+    addRecipe(dataRecipe, token)
       .then(() => {
         setSuccessMessage("recette postée avec succès");
         setError(false);
@@ -84,7 +85,8 @@ const FormRecipe = ({ operation, idRecipeToManage }) => {
 
   const handleFormUpdateRecipe = (e) => {
     e.preventDefault();
-    updateOneRecipeById(dataRecipe, idRecipeToManage)
+    const token = localStorage.getItem("token");
+    updateOneRecipeById(dataRecipe, idRecipeToManage, token)
       .then(() => {
         setSuccessMessage(
           "recette modifiée avec succès, vous allez être redirigé à la page admin d'accueil"
