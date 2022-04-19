@@ -61,7 +61,8 @@ const ManageProduct = ({ setIdProductToManage, idProductToManage }) => {
   }, [sortParam, searchParam]);
 
   const runDeleteOneProduct = () => {
-    deleteOneProduct(idProductToManage)
+    const token = localStorage.getItem("token");
+    deleteOneProduct(idProductToManage, { token })
       .then(() => {
         setSuccessMessage(
           "produit supprimé avec succès! vous serez redirigé..."

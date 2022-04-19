@@ -39,13 +39,14 @@ export const postOneProduct = (dataProduct, token) => {
 };
 
 /**
- * function deleting one product by his id
+ * function deleting one product by his id only connected as admin
  * @param {number} id
+ * @param {string} token
  * @returns
  */
 
-export const deleteOneProduct = (id) => {
-  return axios.delete(`${baseUrl}/api/LeBonSens/products/${id}`);
+export const deleteOneProduct = (id, token) => {
+  return axios.post(`${baseUrl}/api/LeBonSens/products/${id}`, token);
 };
 
 export const updateOneProduct = (dataProduct, id) => {
