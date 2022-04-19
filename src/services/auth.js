@@ -3,9 +3,9 @@ import axios from "axios";
 const baseUrl = "http://localhost:3001";
 
 /**
- *
+ * function taking email and password to connect the user
  * @param {object} credentials
- * @returns {object}
+ * @returns {string}
  */
 const authentificate = (credentials) => {
   return axios({
@@ -15,6 +15,11 @@ const authentificate = (credentials) => {
   }).then((result) => result.data);
 };
 
+/**
+ * function verifying if a user is connected by sending a token to the back
+ * @param {string} token
+ * @returns {boolean}
+ */
 export const verifyToken = (token) => {
   return axios({
     url: "http://localhost:3001/api/LeBonSens/verifyToken",

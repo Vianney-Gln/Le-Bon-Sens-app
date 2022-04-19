@@ -12,12 +12,20 @@ const Login = () => {
   //states
   const [creds, setCreds] = useState({});
   const [message, setMessage] = useState("");
-
+  /**
+   * function getting credentials from inputs
+   * @param {*} value
+   * @param {string} type
+   */
   const getCredentialsFromInput = (value, type) => {
     const newCreds = creds;
     creds[type] = value;
     setCreds(newCreds);
   };
+  /**
+   * function running authentificate from service and store the token in the localstorage
+   * @param {*} e
+   */
   const runAuthentificate = (e) => {
     e.preventDefault();
     authentificate(creds)

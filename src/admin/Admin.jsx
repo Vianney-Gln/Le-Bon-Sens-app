@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 //routing
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 //styles
 import "../styles/admin.scss";
 import "../styles/formAdmin.scss"; // all forms admin
@@ -27,6 +27,12 @@ const Admin = () => {
   const [idRecipeToManage, setIdRecipeToManage] = useState(""); // id recipe to manage
   const [idEventToManage, setIdEventToManage] = useState(""); // id event to manage
 
+  /* ----- useNavigate ------ */
+  const navigate = useNavigate();
+  const disconnect = () => {
+    localStorage.removeItem("token");
+    navigate("/");
+  };
   return (
     <div className="container-admin">
       <h1>Bienvenue dans votre espace admin</h1>
@@ -64,7 +70,9 @@ const Admin = () => {
           <Link to="/admin/manageEvents">
             <li>Gérer les évènements</li>
           </Link>
-          <li>Déconnexion</li>
+          <li role={"presentation"} onClick={() => disconnect()}>
+            Déconnexion
+          </li>
         </ul>
 
         <div className="container-rubric">
