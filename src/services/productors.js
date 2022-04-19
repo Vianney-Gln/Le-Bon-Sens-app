@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = "https://le-bon-sens.herokuapp.com";
+const baseUrl = "https://shielded-sea-56340.herokuapp.com";
 
 /**
  * function getting only name and id for productors

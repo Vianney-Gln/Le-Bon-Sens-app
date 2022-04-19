@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = "https://le-bon-sens.herokuapp.com";
+const baseUrl = "https://shielded-sea-56340.herokuapp.com";
 /**
  * function calling api getting products infos in terms of params(category or name)
  * @param (string,string)
@@ -29,30 +29,38 @@ export const getOneProductById = (id) => {
  * @param {object} dataProduct
  * @returns object
  */
-export const postOneProduct = (dataProduct) => {
+export const postOneProduct = (dataProduct, token) => {
   let url = `${baseUrl}/api/LeBonSens/products`;
   return axios({
     method: "post",
     url: url,
-    data: dataProduct,
+    data: { dataProduct, token },
   });
 };
 
 /**
- * function deleting one product by his id
+ * function deleting one product by his id only connected as admin http://localhost:3001/api/LeBonSens/product/{id}
  * @param {number} id
+ * @param {string} token
  * @returns
  */
 
-export const deleteOneProduct = (id) => {
-  return axios.delete(`${baseUrl}/api/LeBonSens/products/${id}`);
+export const deleteOneProduct = (id, token) => {
+  return axios.post(`${baseUrl}/api/LeBonSens/products/${id}`, token);
 };
 
-export const updateOneProduct = (dataProduct, id) => {
+/**
+ * function updating one product by his id , only for admin connected -- http://localhost:3001/api/LeBonSens/product/{id}
+ * @param {object} dataProduct
+ * @param {number} id
+ * @param {string} token
+ * @returns
+ */
+export const updateOneProduct = (dataProduct, id, token) => {
   return axios({
     method: "put",
     url: `${baseUrl}/api/LeBonSens/products/${id}`,
-    data: dataProduct,
+    data: { dataProduct, token },
   });
 };
 

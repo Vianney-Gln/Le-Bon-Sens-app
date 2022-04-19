@@ -10,6 +10,7 @@ import { faTrashCan, faFile } from "@fortawesome/free-solid-svg-icons";
 import Modal from "react-modal/lib/components/Modal";
 //Routing
 import { useNavigate } from "react-router-dom";
+import { verifyToken } from "../services/auth";
 const ManageEvents = ({ idEventToManage, setIdEventToManage }) => {
   /* ------ states variables ------ */
   const [listEventsToManage, setListEventsToManage] = useState([]);
@@ -42,10 +43,19 @@ const ManageEvents = ({ idEventToManage, setIdEventToManage }) => {
     },
   };
 
-  //function getting all events on component mounting
+  //function getting all events on component mounting only connected as admin
   useEffect(() => {
-    getAllInfosEvents().then((result) => {
-      setListEventsToManage(result);
+    const token = localStorage.getItem("token_access_le_bon_sens");
+    verifyToken(token).then((result) => {
+      if (result.data) {
+        getAllInfosEvents(token)
+          .then((result) => {
+            setListEventsToManage(result);
+          })
+          .catch((err) => console.log(err));
+      } else {
+        navigate("/login");
+      }
     });
   }, []);
 
@@ -53,7 +63,8 @@ const ManageEvents = ({ idEventToManage, setIdEventToManage }) => {
    * function running service deleteOneEventById
    */
   const runDeleteOneEvent = () => {
-    deleteOneEventById(idEventToManage)
+    const token = localStorage.getItem("token_access_le_bon_sens");
+    deleteOneEventById(idEventToManage, token)
       .then(() => {
         setSuccessMessage(
           "suppression de l'event en cours, vous serez redirigé à l'accueil admin ...."

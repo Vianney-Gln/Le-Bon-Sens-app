@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = "https://le-bon-sens.herokuapp.com";
+const baseUrl = "https://shielded-sea-56340.herokuapp.com";
 
 /**
  * function getting first 6 events
@@ -25,22 +25,22 @@ export const getOneEventById = (id) => {
  * function getting all events (for admin use)
  * @returns {array}
  */
-export const getAllInfosEvents = () => {
+export const getAllInfosEvents = (token) => {
   return axios
-    .get(`${baseUrl}/api/LeBonSens/events/all`)
+    .post(`${baseUrl}/api/LeBonSens/events/all`, { token: token })
     .then((res) => res.data);
 };
 
 /**
- * function creating an event
+ * function creating an event (for admin use)
  * @param {object} dataEvents
  * @returns
  */
-export const createOneEvent = (dataEvents) => {
+export const createOneEvent = (dataEvents, token) => {
   return axios({
     method: "post",
     url: `${baseUrl}/api/LeBonSens/events`,
-    data: dataEvents,
+    data: { dataEvents, token: token },
   }).then((res) => res);
 };
 
@@ -49,15 +49,17 @@ export const createOneEvent = (dataEvents) => {
  * @param {number} id
  * @returns
  */
-export const deleteOneEventById = (id) => {
-  return axios.delete(`${baseUrl}/api/LeBonSens/events/${id}`);
+export const deleteOneEventById = (id, token) => {
+  return axios.post(`${baseUrl}/api/LeBonSens/events/${id}`, {
+    token: token,
+  });
 };
 
-export const updateOneEventById = (dataEventToUpdate, id) => {
+export const updateOneEventById = (dataEventToUpdate, id, token) => {
   return axios({
     method: "put",
     url: `${baseUrl}/api/LeBonSens/events/${id}`,
-    data: dataEventToUpdate,
+    data: { dataEventToUpdate, token },
   });
 };
 
