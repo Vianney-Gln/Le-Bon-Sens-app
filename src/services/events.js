@@ -25,9 +25,9 @@ export const getOneEventById = (id) => {
  * function getting all events (for admin use)
  * @returns {array}
  */
-export const getAllInfosEvents = () => {
+export const getAllInfosEvents = (token) => {
   return axios
-    .get(`${baseUrl}/api/LeBonSens/events/all`)
+    .post(`${baseUrl}/api/LeBonSens/events/all`, { token: token })
     .then((res) => res.data);
 };
 

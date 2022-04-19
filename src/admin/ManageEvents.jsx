@@ -48,7 +48,7 @@ const ManageEvents = ({ idEventToManage, setIdEventToManage }) => {
     const token = localStorage.getItem("token");
     verifyToken(token).then((result) => {
       if (result.data) {
-        getAllInfosEvents()
+        getAllInfosEvents(token)
           .then((result) => {
             setListEventsToManage(result);
           })
