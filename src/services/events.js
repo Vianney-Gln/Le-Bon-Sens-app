@@ -32,15 +32,15 @@ export const getAllInfosEvents = (token) => {
 };
 
 /**
- * function creating an event
+ * function creating an event (for admin use)
  * @param {object} dataEvents
  * @returns
  */
-export const createOneEvent = (dataEvents) => {
+export const createOneEvent = (dataEvents, token) => {
   return axios({
     method: "post",
     url: `${baseUrl}/api/LeBonSens/events`,
-    data: dataEvents,
+    data: { dataEvents, token: token },
   }).then((res) => res);
 };
 

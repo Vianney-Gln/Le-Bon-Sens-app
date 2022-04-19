@@ -69,7 +69,8 @@ const FormEvents = ({ operation, idEventToManage }) => {
    */
   const handleFormEventsPost = (e) => {
     e.preventDefault();
-    createOneEvent(dataEvents)
+    const token = localStorage.getItem("token");
+    createOneEvent(dataEvents, token)
       .then(() => {
         setSuccessMessage(
           "l'évent a bien été créé, redirection à l'accueil admin..."
