@@ -29,12 +29,12 @@ export const getOneProductById = (id) => {
  * @param {object} dataProduct
  * @returns object
  */
-export const postOneProduct = (dataProduct) => {
+export const postOneProduct = (dataProduct, token) => {
   let url = `${baseUrl}/api/LeBonSens/products`;
   return axios({
     method: "post",
     url: url,
-    data: dataProduct,
+    data: { dataProduct, token },
   });
 };
 

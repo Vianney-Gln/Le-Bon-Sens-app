@@ -43,7 +43,8 @@ const FormProduct = ({ operation, idProductToManage }) => {
    */
   const handleFormPost = (e) => {
     e.preventDefault();
-    postOneProduct(dataProduct)
+    const token = localStorage.getItem("token");
+    postOneProduct(dataProduct, token)
       .then(() => {
         setMessage("produit correctement ajouté");
         setError(false);
