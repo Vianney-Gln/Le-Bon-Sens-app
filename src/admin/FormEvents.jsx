@@ -43,7 +43,8 @@ const FormEvents = ({ operation, idEventToManage }) => {
 
   const handleFormEventUpdate = (e) => {
     e.preventDefault();
-    updateOneEventById(dataEvents, idEventToManage)
+    const token = localStorage.getItem("token");
+    updateOneEventById(dataEvents, idEventToManage, token)
       .then(() => {
         setSuccessMessage(
           "l'évent a bien été mis à jour, redirection à l'accueil admin..."

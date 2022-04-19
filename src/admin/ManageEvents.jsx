@@ -63,7 +63,8 @@ const ManageEvents = ({ idEventToManage, setIdEventToManage }) => {
    * function running service deleteOneEventById
    */
   const runDeleteOneEvent = () => {
-    deleteOneEventById(idEventToManage)
+    const token = localStorage.getItem("token");
+    deleteOneEventById(idEventToManage, token)
       .then(() => {
         setSuccessMessage(
           "suppression de l'event en cours, vous serez redirigé à l'accueil admin ...."

@@ -49,15 +49,17 @@ export const createOneEvent = (dataEvents, token) => {
  * @param {number} id
  * @returns
  */
-export const deleteOneEventById = (id) => {
-  return axios.delete(`${baseUrl}/api/LeBonSens/events/${id}`);
+export const deleteOneEventById = (id, token) => {
+  return axios.post(`${baseUrl}/api/LeBonSens/events/${id}`, {
+    token: token,
+  });
 };
 
-export const updateOneEventById = (dataEventToUpdate, id) => {
+export const updateOneEventById = (dataEventToUpdate, id, token) => {
   return axios({
     method: "put",
     url: `${baseUrl}/api/LeBonSens/events/${id}`,
-    data: dataEventToUpdate,
+    data: { dataEventToUpdate, token },
   });
 };
 
