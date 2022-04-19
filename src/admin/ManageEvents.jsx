@@ -10,6 +10,7 @@ import { faTrashCan, faFile } from "@fortawesome/free-solid-svg-icons";
 import Modal from "react-modal/lib/components/Modal";
 //Routing
 import { useNavigate } from "react-router-dom";
+import { verifyToken } from "../services/auth";
 const ManageEvents = ({ idEventToManage, setIdEventToManage }) => {
   /* ------ states variables ------ */
   const [listEventsToManage, setListEventsToManage] = useState([]);
@@ -42,10 +43,19 @@ const ManageEvents = ({ idEventToManage, setIdEventToManage }) => {
     },
   };
 
-  //function getting all events on component mounting
+  //function getting all events on component mounting only connected as admin
   useEffect(() => {
-    getAllInfosEvents().then((result) => {
-      setListEventsToManage(result);
+    const token = localStorage.getItem("token");
+    verifyToken(token).then((result) => {
+      if (result.data) {
+        getAllInfosEvents()
+          .then((result) => {
+            setListEventsToManage(result);
+          })
+          .catch((err) => console.log(err));
+      } else {
+        navigate("/login");
+      }
     });
   }, []);
 
