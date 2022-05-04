@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 //service
+import authentificate, { changePasswordRequest } from "../services/auth";
+import { updatePassword } from "../services/auth";
 //Routing
 import { Link, useNavigate } from "react-router-dom";
-import authentificate, { changePasswordRequest } from "../services/auth";
 import { useSearchParams } from "react-router-dom";
 //style
 import "../styles/login.scss";
@@ -17,15 +18,20 @@ const Login = ({ passwordForget, changePassword }) => {
   const [creds, setCreds] = useState({});
   const [message, setMessage] = useState("");
   const [error, setError] = useState(false);
+  const [confirmPassword, setConfirmPassword] = useState("");
   /**
    * function getting credentials from inputs
    * @param {*} value
    * @param {string} type
    */
   const getCredentialsFromInput = (value, type) => {
+    if (tempUuid) {
+      creds.tempUuid = tempUuid;
+    }
     const newCreds = creds;
     creds[type] = value;
     setCreds(newCreds);
+    console.log(creds);
   };
   /**
    * function running authentificate from service and store the token in the localstorage
@@ -66,6 +72,30 @@ const Login = ({ passwordForget, changePassword }) => {
     setMessage("");
   }, [passwordForget, changePassword]);
 
+  /**
+   * function running the service updatePassword, setMessages
+   */
+  const runUpdatePassword = (e) => {
+    e.preventDefault();
+    if (creds.hashedPassword === confirmPassword) {
+      updatePassword(creds)
+        .then(() => {
+          setMessage(
+            "votre mot de passe à bien été réinitialisé, vous allez être redirigé sur la page login"
+          );
+          setTimeout(() => {
+            navigate("/login");
+          }, 4000);
+        })
+        .catch((err) => {
+          console.log(err);
+          setMessage("Le mot de passe n'a pas pu être réinitialisé");
+        });
+    } else {
+      setMessage("les deux mots de passes saisis doivent être identiques");
+    }
+  };
+
   return (
     <div className="container-login">
       <h1>
@@ -74,7 +104,11 @@ const Login = ({ passwordForget, changePassword }) => {
 
       <form
         onSubmit={
-          !passwordForget ? runAuthentificate : runChangePasswordRequest
+          passwordForget
+            ? runChangePasswordRequest
+            : tempUuid
+            ? runUpdatePassword
+            : runAuthentificate
         }
       >
         <p>
@@ -97,11 +131,17 @@ const Login = ({ passwordForget, changePassword }) => {
         )}
         {!passwordForget && (
           <label htmlFor="password">
-            <span>Votre mot de passe:</span>
+            <span>
+              {tempUuid ? "Votre nouveau mot de passe:" : "Votre mot de passe"}
+            </span>
             <input
-              onChange={(e) =>
-                getCredentialsFromInput(e.target.value, "password")
-              }
+              onChange={(e) => {
+                if (tempUuid) {
+                  getCredentialsFromInput(e.target.value, "hashedPassword");
+                } else {
+                  getCredentialsFromInput(e.target.value, "password");
+                }
+              }}
               type="password"
               name="password"
               placeholder="mot de passe"
@@ -110,11 +150,9 @@ const Login = ({ passwordForget, changePassword }) => {
         )}
         {changePassword && (
           <label htmlFor="confirmpassword">
-            <span>confirmez votre mot de passe:</span>
+            <span>confirmez votre nouveau mot de passe:</span>
             <input
-              onChange={(e) =>
-                getCredentialsFromInput(e.target.value, "confirmpassword")
-              }
+              onChange={(e) => setConfirmPassword(e.target.value)}
               type="password"
               name="confirmpassword"
               placeholder="mot de passe"
