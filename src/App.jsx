@@ -51,6 +51,11 @@ const App = () => {
         <Route exact path="find-us" element={<FindUs />} />
         <Route exact path="recipes" element={<Recipes />} />
         <Route exact path="login" element={<Login />} />
+        <Route
+          exact
+          path="changePassword"
+          element={<Login passwordForget={true} />}
+        />
         <Route exact path="admin" element={<ProtectedRoute />} />
         <Route exact path="admin/:operation" element={<ProtectedRoute />} />
       </Routes>

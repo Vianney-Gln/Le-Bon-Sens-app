@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 //service
 //Routing
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import authentificate from "../services/auth";
 //style
 import "../styles/login.scss";
 
-const Login = () => {
+const Login = ({ passwordForget }) => {
   //navigate
   const navigate = useNavigate();
   //states
@@ -40,8 +40,17 @@ const Login = () => {
   };
   return (
     <div className="container-login">
-      <h1>Login</h1>
-      <form onSubmit={runAuthentificate}>
+      <h1>
+        {!passwordForget ? "Se connecter" : "Réinitialisation du mot de passe"}
+      </h1>
+
+      <form onSubmit={!passwordForget && runAuthentificate}>
+        {passwordForget && (
+          <p>
+            Veuillez entrer votre adresse email, un lien de réinitialisation de
+            votre mot de passe vous sera envoyer
+          </p>
+        )}
         <label html="email">
           <span>Votre adresse mail:</span>
           <input
@@ -51,18 +60,27 @@ const Login = () => {
             placeholder="email"
           />
         </label>
-        <label htmlFor="password">
-          <span>Votre mot de passe:</span>
-          <input
-            onChange={(e) =>
-              getCredentialsFromInput(e.target.value, "password")
-            }
-            type="password"
-            name="password"
-            placeholder="password"
-          />
-        </label>
-        <button type="submit">se connecter</button>
+        {!passwordForget && (
+          <label htmlFor="password">
+            <span>Votre mot de passe:</span>
+            <input
+              onChange={(e) =>
+                getCredentialsFromInput(e.target.value, "password")
+              }
+              type="password"
+              name="password"
+              placeholder="password"
+            />
+          </label>
+        )}
+        <button type="submit">
+          {!passwordForget ? "se connecter" : "envoyer"}
+        </button>
+        {!passwordForget && (
+          <p>
+            <Link to="/changePassword">j'ai oublié mon mot de passe</Link>
+          </p>
+        )}
         {message && <p className="fail">{message}</p>}
       </form>
     </div>
