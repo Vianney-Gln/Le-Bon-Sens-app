@@ -36,4 +36,12 @@ export const changePasswordRequest = (email) => {
   });
 };
 
+export const updatePassword = (creds) => {
+  return axios({
+    url: "http://localhost:3001/api/LeBonSens/auth/changePassword",
+    data: creds,
+    method: "put",
+  });
+};
+
 export default authentificate;
