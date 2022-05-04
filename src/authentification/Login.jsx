@@ -6,7 +6,7 @@ import authentificate, { changePasswordRequest } from "../services/auth";
 //style
 import "../styles/login.scss";
 
-const Login = ({ passwordForget }) => {
+const Login = ({ passwordForget, changePassword }) => {
   //navigate
   const navigate = useNavigate();
   //states
@@ -67,21 +67,24 @@ const Login = ({ passwordForget }) => {
           !passwordForget ? runAuthentificate : runChangePasswordRequest
         }
       >
-        {passwordForget && (
-          <p>
-            Veuillez entrer votre adresse email, un lien de réinitialisation de
-            votre mot de passe vous sera envoyer
-          </p>
+        <p>
+          {passwordForget
+            ? "Veuillez entrer votre adresse email, un lien de réinitialisation de votre mot de passe vous sera envoyer"
+            : changePassword
+            ? "Veuillez entrer votre nouveau mot de passe et le confirmer"
+            : ""}
+        </p>
+        {!changePassword && (
+          <label html="email">
+            <span>Votre adresse mail:</span>
+            <input
+              onChange={(e) => getCredentialsFromInput(e.target.value, "email")}
+              type="email"
+              name="email"
+              placeholder="email"
+            />
+          </label>
         )}
-        <label html="email">
-          <span>Votre adresse mail:</span>
-          <input
-            onChange={(e) => getCredentialsFromInput(e.target.value, "email")}
-            type="email"
-            name="email"
-            placeholder="email"
-          />
-        </label>
         {!passwordForget && (
           <label htmlFor="password">
             <span>Votre mot de passe:</span>
@@ -91,16 +94,33 @@ const Login = ({ passwordForget }) => {
               }
               type="password"
               name="password"
-              placeholder="password"
+              placeholder="mot de passe"
+            />
+          </label>
+        )}
+        {changePassword && (
+          <label htmlFor="confirmpassword">
+            <span>confirmez votre mot de passe:</span>
+            <input
+              onChange={(e) =>
+                getCredentialsFromInput(e.target.value, "confirmpassword")
+              }
+              type="password"
+              name="confirmpassword"
+              placeholder="mot de passe"
             />
           </label>
         )}
         <button type="submit">
-          {!passwordForget ? "se connecter" : "envoyer"}
+          {!passwordForget && changePassword
+            ? "valider"
+            : !passwordForget
+            ? "se connecter"
+            : "envoyer"}
         </button>
-        {!passwordForget && (
+        {!passwordForget && !changePassword && (
           <p>
-            <Link to="/changePassword">j'ai oublié mon mot de passe</Link>
+            <Link to="/resetPassword">j'ai oublié mon mot de passe</Link>
           </p>
         )}
         {message && <p className={error ? "fail" : "success"}>{message}</p>}

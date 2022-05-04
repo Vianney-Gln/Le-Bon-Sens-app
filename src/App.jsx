@@ -53,8 +53,13 @@ const App = () => {
         <Route exact path="login" element={<Login />} />
         <Route
           exact
-          path="changePassword"
+          path="resetPassword"
           element={<Login passwordForget={true} />}
+        />
+        <Route
+          exact
+          path="changePassword"
+          element={<Login changePassword={true} />}
         />
         <Route exact path="admin" element={<ProtectedRoute />} />
         <Route exact path="admin/:operation" element={<ProtectedRoute />} />
