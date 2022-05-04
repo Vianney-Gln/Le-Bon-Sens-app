@@ -32,7 +32,7 @@ export const changePasswordRequest = (email) => {
   return axios({
     url: "http://localhost:3001/api/LeBonSens/auth/changepassword",
     data: email,
-    method: "post",
+    method: "put",
   });
 };
 
