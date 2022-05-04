@@ -28,4 +28,12 @@ export const verifyToken = (token) => {
   });
 };
 
+export const changePasswordRequest = (email) => {
+  return axios({
+    url: "http://localhost:3001/api/LeBonSens/auth/changepassword",
+    data: email,
+    method: "post",
+  });
+};
+
 export default authentificate;

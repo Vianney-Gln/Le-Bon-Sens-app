@@ -2,7 +2,7 @@ import React, { useState } from "react";
 //service
 //Routing
 import { Link, useNavigate } from "react-router-dom";
-import authentificate from "../services/auth";
+import authentificate, { changePasswordRequest } from "../services/auth";
 //style
 import "../styles/login.scss";
 
@@ -12,6 +12,7 @@ const Login = ({ passwordForget }) => {
   //states
   const [creds, setCreds] = useState({});
   const [message, setMessage] = useState("");
+  const [error, setError] = useState(false);
   /**
    * function getting credentials from inputs
    * @param {*} value
@@ -38,13 +39,34 @@ const Login = ({ passwordForget }) => {
         setMessage("mot de passe ou email incorrect");
       });
   };
+  /**
+   * function running the service function changePasswordRequest tests
+   * @param {*} e
+   */
+  const runChangePasswordRequest = (e) => {
+    e.preventDefault();
+    changePasswordRequest(creds)
+      .then(() => {
+        setMessage("un lien de réinitialisation vous a été envoyer");
+        setError(false);
+      })
+      .catch(() => {
+        setMessage("l'adresse email saisie n'existe pas");
+        setError(true);
+      });
+  };
+
   return (
     <div className="container-login">
       <h1>
         {!passwordForget ? "Se connecter" : "Réinitialisation du mot de passe"}
       </h1>
 
-      <form onSubmit={!passwordForget && runAuthentificate}>
+      <form
+        onSubmit={
+          !passwordForget ? runAuthentificate : runChangePasswordRequest
+        }
+      >
         {passwordForget && (
           <p>
             Veuillez entrer votre adresse email, un lien de réinitialisation de
@@ -81,7 +103,7 @@ const Login = ({ passwordForget }) => {
             <Link to="/changePassword">j'ai oublié mon mot de passe</Link>
           </p>
         )}
-        {message && <p className="fail">{message}</p>}
+        {message && <p className={error ? "fail" : "success"}>{message}</p>}
       </form>
     </div>
   );
