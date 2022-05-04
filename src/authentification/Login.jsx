@@ -3,12 +3,16 @@ import React, { useState } from "react";
 //Routing
 import { Link, useNavigate } from "react-router-dom";
 import authentificate, { changePasswordRequest } from "../services/auth";
+import { useSearchParams } from "react-router-dom";
 //style
 import "../styles/login.scss";
 
 const Login = ({ passwordForget, changePassword }) => {
   //navigate
   const navigate = useNavigate();
+  //useSearchParams
+  const [searchParams] = useSearchParams();
+  const tempUuid = searchParams.get("tempUuid");
   //states
   const [creds, setCreds] = useState({});
   const [message, setMessage] = useState("");
