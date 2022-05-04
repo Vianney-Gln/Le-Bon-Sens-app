@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 //service
 //Routing
 import { Link, useNavigate } from "react-router-dom";
@@ -36,11 +36,13 @@ const Login = ({ passwordForget, changePassword }) => {
     authentificate(creds)
       .then((result) => {
         setMessage("");
+        setError(false);
         localStorage.setItem("token_access_le_bon_sens", result);
         navigate("/admin");
       })
       .catch(() => {
         setMessage("mot de passe ou email incorrect");
+        setError(true);
       });
   };
   /**
@@ -59,6 +61,10 @@ const Login = ({ passwordForget, changePassword }) => {
         setError(true);
       });
   };
+  //function deleting success message or failed message on componant mount
+  useEffect(() => {
+    setMessage("");
+  }, [passwordForget, changePassword]);
 
   return (
     <div className="container-login">

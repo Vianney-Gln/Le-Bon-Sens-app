@@ -30,7 +30,7 @@ export const verifyToken = (token) => {
 
 export const changePasswordRequest = (email) => {
   return axios({
-    url: "http://localhost:3001/api/LeBonSens/auth/changepassword",
+    url: "http://localhost:3001/api/LeBonSens/auth/lostpassword",
     data: email,
     method: "put",
   });
