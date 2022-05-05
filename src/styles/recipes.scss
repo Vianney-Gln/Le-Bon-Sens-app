@@ -61,6 +61,9 @@
 
 @media screen and (max-width: 700px) {
   .container-recipes {
+    h1 {
+      font-size: 24px;
+    }
     label {
       input {
         width: 80%;

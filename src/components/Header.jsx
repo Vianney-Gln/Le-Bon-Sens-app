@@ -125,7 +125,7 @@ const Header = ({ productors, insert, disableInsert }) => {
               <li>Recettes</li>
             </Link>
             <Link to="find-us">
-              <li>Nous trouver</li>
+              <li>Nous contacter</li>
             </Link>
           </ul>
         </nav>

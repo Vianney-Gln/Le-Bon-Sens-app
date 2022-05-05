@@ -90,7 +90,6 @@ const Login = () => {
           }, 4000);
         })
         .catch((err) => {
-          console.log(err.message);
           setError(true);
           if (err.message === "Request failed with status code 401") {
             setMessage(
