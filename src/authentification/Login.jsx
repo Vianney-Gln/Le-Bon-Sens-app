@@ -191,7 +191,7 @@ const Login = () => {
             : "valider"}
         </button>
         {!param.operation && (
-          <p>
+          <p className="forget-password">
             <Link to="/login/forgetPassword">j'ai oublié mon mot de passe</Link>
           </p>
         )}
