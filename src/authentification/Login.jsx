@@ -4,16 +4,18 @@ import authentificate, { changePasswordRequest } from "../services/auth";
 import { updatePassword } from "../services/auth";
 //Routing
 import { Link, useNavigate } from "react-router-dom";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useParams } from "react-router-dom";
 //style
 import "../styles/login.scss";
 
-const Login = ({ passwordForget, changePassword }) => {
+const Login = () => {
   //navigate
   const navigate = useNavigate();
   //useSearchParams
   const [searchParams] = useSearchParams();
   const tempUuid = searchParams.get("tempUuid");
+  //useParams
+  const param = useParams();
   //states
   const [creds, setCreds] = useState({});
   const [message, setMessage] = useState("");
@@ -25,13 +27,12 @@ const Login = ({ passwordForget, changePassword }) => {
    * @param {string} type
    */
   const getCredentialsFromInput = (value, type) => {
-    if (tempUuid) {
+    if (tempUuid && param.operation === "resetPassword") {
       creds.tempUuid = tempUuid;
     }
     const newCreds = creds;
     creds[type] = value;
     setCreds(newCreds);
-    console.log(creds);
   };
   /**
    * function running authentificate from service and store the token in the localstorage
@@ -70,7 +71,7 @@ const Login = ({ passwordForget, changePassword }) => {
   //function deleting success message or failed message on componant mount
   useEffect(() => {
     setMessage("");
-  }, [passwordForget, changePassword]);
+  }, [param.operation]);
 
   /**
    * function running the service updatePassword, setMessages
@@ -99,27 +100,28 @@ const Login = ({ passwordForget, changePassword }) => {
   return (
     <div className="container-login">
       <h1>
-        {!passwordForget ? "Se connecter" : "Réinitialisation du mot de passe"}
+        {param.operation === "forgetPassword"
+          ? "Réinitialisation du mot de passe"
+          : "Se connecter"}
       </h1>
-
       <form
         onSubmit={
-          passwordForget
+          param.operation === "forgetPassword"
             ? runChangePasswordRequest
-            : tempUuid
+            : param.operation === "resetPassword"
             ? runUpdatePassword
             : runAuthentificate
         }
       >
         <p>
-          {passwordForget
-            ? "Veuillez entrer votre adresse email, un lien de réinitialisation de votre mot de passe vous sera envoyer"
-            : changePassword
+          {param.operation === "forgetPassword"
+            ? "Pour réinitialiser votre mot de passe, veuillez entrer votre adresse email svp"
+            : param.operation === "resetPassword"
             ? "Veuillez entrer votre nouveau mot de passe et le confirmer"
             : ""}
         </p>
-        {!changePassword && (
-          <label html="email">
+        {!param.operation || param.operation === "forgetPassword" ? (
+          <label htmlFor="email">
             <span>Votre adresse mail:</span>
             <input
               onChange={(e) => getCredentialsFromInput(e.target.value, "email")}
@@ -128,11 +130,15 @@ const Login = ({ passwordForget, changePassword }) => {
               placeholder="email"
             />
           </label>
+        ) : (
+          ""
         )}
-        {!passwordForget && (
+        {!param.operation || param.operation === "resetPassword" ? (
           <label htmlFor="password">
             <span>
-              {tempUuid ? "Votre nouveau mot de passe:" : "Votre mot de passe"}
+              {param.operation === "resetPassword"
+                ? "Votre nouveau mot de passe:"
+                : "Votre mot de passe"}
             </span>
             <input
               onChange={(e) => {
@@ -147,8 +153,10 @@ const Login = ({ passwordForget, changePassword }) => {
               placeholder="mot de passe"
             />
           </label>
+        ) : (
+          ""
         )}
-        {changePassword && (
+        {param.operation === "resetPassword" && (
           <label htmlFor="confirmpassword">
             <span>confirmez votre nouveau mot de passe:</span>
             <input
@@ -160,15 +168,15 @@ const Login = ({ passwordForget, changePassword }) => {
           </label>
         )}
         <button type="submit">
-          {!passwordForget && changePassword
-            ? "valider"
-            : !passwordForget
+          {!param.operation
             ? "se connecter"
-            : "envoyer"}
+            : param.operation === "forgetPassword"
+            ? "envoyer"
+            : "valider"}
         </button>
-        {!passwordForget && !changePassword && (
+        {!param.operation && (
           <p>
-            <Link to="/resetPassword">j'ai oublié mon mot de passe</Link>
+            <Link to="/login/forgetPassword">j'ai oublié mon mot de passe</Link>
           </p>
         )}
         {message && <p className={error ? "fail" : "success"}>{message}</p>}
