@@ -90,9 +90,19 @@ const Login = () => {
           }, 4000);
         })
         .catch((err) => {
-          console.log(err);
+          console.log(err.message);
           setError(true);
-          setMessage("Le mot de passe n'a pas pu être réinitialisé");
+          if (err.message === "Request failed with status code 401") {
+            setMessage(
+              "le mot de passe doit comporter entre 8 et 20 caractères"
+            );
+          } else if (err.message === "Request failed with status code 404") {
+            setMessage("votre demande de réinitialisation à expiré");
+          } else {
+            setMessage(
+              "il y eu une erreur lors de la requête, veuillez réesayer"
+            );
+          }
         });
     } else if (creds.password === confirmPassword) {
       setError(true);
