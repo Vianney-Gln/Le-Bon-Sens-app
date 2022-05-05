@@ -81,6 +81,7 @@ const Login = () => {
     if (creds.hashedPassword === confirmPassword) {
       updatePassword(creds)
         .then(() => {
+          setError(false);
           setMessage(
             "votre mot de passe à bien été réinitialisé, vous allez être redirigé sur la page login"
           );
@@ -90,9 +91,14 @@ const Login = () => {
         })
         .catch((err) => {
           console.log(err);
+          setError(true);
           setMessage("Le mot de passe n'a pas pu être réinitialisé");
         });
+    } else if (creds.password === confirmPassword) {
+      setError(true);
+      setMessage("Le mot de passe n'a pas pu être réinitialisé");
     } else {
+      setError(true);
       setMessage("les deux mots de passes saisis doivent être identiques");
     }
   };
@@ -142,7 +148,7 @@ const Login = () => {
             </span>
             <input
               onChange={(e) => {
-                if (tempUuid) {
+                if (tempUuid && param.operation === "resetPassword") {
                   getCredentialsFromInput(e.target.value, "hashedPassword");
                 } else {
                   getCredentialsFromInput(e.target.value, "password");
