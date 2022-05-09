@@ -94,13 +94,12 @@
       width: 33.3%;
       object-fit: cover;
     }
-    .description-productor2 {
-      width: 33.3%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      div {
-        width: 70%;
+    .container-iframe {
+      width: 100%;
+
+      iframe {
+        width: 100%;
+        height: 300px;
       }
     }
   }
@@ -214,13 +213,18 @@
       img {
         width: 100%;
       }
-      .description-productor2 {
+      .container-iframe {
         width: 100%;
-
+        height: 300px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         div {
           width: 100%;
-          p {
-            padding: 50px 20px;
+          height: 80%;
+          iframe {
+            width: 100%;
+            height: 100%;
           }
         }
       }
