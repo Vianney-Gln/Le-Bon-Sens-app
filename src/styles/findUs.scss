@@ -127,6 +127,9 @@
 
 @media screen and (max-width: 700px) {
   .container-find-us {
+    h1 {
+      font-size: 24px;
+    }
     .container-iframe-form {
       flex-direction: column-reverse;
       align-items: center;
