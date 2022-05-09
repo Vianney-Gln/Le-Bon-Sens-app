@@ -28,4 +28,20 @@ export const verifyToken = (token) => {
   });
 };
 
+export const changePasswordRequest = (email) => {
+  return axios({
+    url: `${baseUrl}/api/LeBonSens/auth/lostpassword`,
+    data: email,
+    method: "put",
+  });
+};
+
+export const updatePassword = (creds) => {
+  return axios({
+    url: `${baseUrl}/api/LeBonSens/auth/changePassword`,
+    data: creds,
+    method: "put",
+  });
+};
+
 export default authentificate;

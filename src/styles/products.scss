@@ -102,6 +102,9 @@
 @media screen and (max-width: 700px) {
   .container-products {
     padding: 0px;
+    h1 {
+      font-size: 24px;
+    }
     .infos-price {
       margin-top: 50px;
     }
