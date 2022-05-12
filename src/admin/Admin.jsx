@@ -14,6 +14,7 @@ import ManageRecipes from "./ManageRecipes";
 import FormEvents from "./FormEvents";
 import ManageEvents from "./ManageEvents";
 import FormProductors from "./FormProductors";
+import ManageProductors from "./ManageProductors";
 
 const Admin = () => {
   /* ----- doc title ----- */
@@ -27,6 +28,7 @@ const Admin = () => {
   const [idProductToManage, setIdProductToManage] = useState(""); // id product to manage
   const [idRecipeToManage, setIdRecipeToManage] = useState(""); // id recipe to manage
   const [idEventToManage, setIdEventToManage] = useState(""); // id event to manage
+  const [idProductorToManage, setIdProductorToManage] = useState(""); // id productor to manage
 
   /* ----- useNavigate ------ */
   const navigate = useNavigate();
@@ -62,7 +64,9 @@ const Admin = () => {
           <Link to="/admin/addProductor">
             <li>Ajouter un producteur</li>
           </Link>
-          <li>Gérer les producteurs</li>
+          <Link to="/admin/manageProductors">
+            <li>Gérer les producteurs</li>
+          </Link>
           <Link to="/admin/updateShop">
             <li>Modifier les infos du magasin</li>
           </Link>
@@ -129,6 +133,12 @@ const Admin = () => {
           )}
           {param.operation === "addProductor" && (
             <FormProductors operation={param.operation} />
+          )}
+          {param.operation === "manageProductors" && (
+            <ManageProductors
+              idProductorToManage={idProductorToManage}
+              setIdProductorToManage={setIdProductorToManage}
+            />
           )}
         </div>
       </div>
