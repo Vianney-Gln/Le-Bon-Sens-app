@@ -64,10 +64,25 @@ const updateProductorById = (dataProductor, token, id) => {
   });
 };
 
+/**
+ * function deletting oneProductor by his id (only if user authentificated)
+ * @param {Number} id
+ * @param {String} token
+ * @returns {Promise}
+ */
+const deleteOneProductorById = (id, token) => {
+  return axios({
+    method: "post",
+    url: `http://localhost:3001/api/LeBonSens/productors/${id}`,
+    data: { token },
+  });
+};
+
 export {
   getNamesProductors,
   getInfosProductors,
   getCarrouselProductor,
   addProductor,
   updateProductorById,
+  deleteOneProductorById,
 };
