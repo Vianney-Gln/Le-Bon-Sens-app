@@ -28,7 +28,8 @@ const FormProductors = ({ operation }) => {
             setMessage,
             setError,
             dataProductor,
-            navigate
+            navigate,
+            operation
           )
         }
       >
