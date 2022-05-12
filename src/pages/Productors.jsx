@@ -36,22 +36,6 @@ const Productors = () => {
     );
   }, [param.id]);
 
-  // carrousel
-  const slideImages = [
-    {
-      url: carrou1,
-      caption: "Slide 1",
-    },
-    {
-      url: carrou2,
-      caption: "Slide 2",
-    },
-    {
-      url: carrou3,
-      caption: "Slide 3",
-    },
-  ];
-
   return (
     <div className="container-productors">
       <h1>Nos producteurs associés</h1>
