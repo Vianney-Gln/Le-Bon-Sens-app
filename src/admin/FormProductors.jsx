@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 //Helper
 import getDataInput, { handleForm } from "../helpers/form"; //function getting input items
 //Service
-import { addProductor } from "../services/productors";
+import { addProductor, getInfosProductors } from "../services/productors";
 //Routing
 import { useNavigate } from "react-router-dom";
 
-const FormProductors = ({ operation }) => {
+const FormProductors = ({ operation, idProductorToManage }) => {
   //States
   const [dataProductor, setDataProductor] = useState({});
   const [message, setMessage] = useState("");
@@ -14,6 +14,21 @@ const FormProductors = ({ operation }) => {
 
   //Navigate
   const navigate = useNavigate();
+
+  //function getting infos from one productor by id on component mounting (only if operation === updateProductor)
+
+  useEffect(() => {
+    if (operation === "updateProductor") {
+      getInfosProductors(idProductorToManage)
+        .then((infosProductor) => {
+          setDataProductor(infosProductor);
+        })
+        .catch((err) => {
+          console.log(err);
+          setDataProductor({});
+        });
+    }
+  }, []);
 
   return (
     <div className="container-addProductors">
@@ -38,6 +53,9 @@ const FormProductors = ({ operation }) => {
             type="text"
             name="name"
             placeholder="nom du producteur"
+            defaultValue={
+              operation === "updateProductor" ? dataProductor.name : ""
+            }
             onChange={(e) => {
               getDataInput(
                 dataProductor,
@@ -52,6 +70,9 @@ const FormProductors = ({ operation }) => {
           <textarea
             name="description1"
             placeholder="description du producteur"
+            defaultValue={
+              operation === "updateProductor" ? dataProductor.description1 : ""
+            }
             onChange={(e) =>
               getDataInput(
                 dataProductor,
@@ -67,6 +88,9 @@ const FormProductors = ({ operation }) => {
             type="text"
             name="urlGoogleMap"
             placeholder="entrez l'url google map"
+            defaultValue={
+              operation === "updateProductor" ? dataProductor.urlGoogleMap : ""
+            }
             onChange={(e) =>
               getDataInput(
                 dataProductor,
@@ -82,6 +106,9 @@ const FormProductors = ({ operation }) => {
             type="text"
             name="urlWebsite"
             placeholder="entrez l'url du site web du producteur"
+            defaultValue={
+              operation === "updateProductor" ? dataProductor.urlWebsite : ""
+            }
             onChange={(e) =>
               getDataInput(
                 dataProductor,
@@ -97,6 +124,9 @@ const FormProductors = ({ operation }) => {
             type="text"
             name="urlImage1"
             placeholder="entrez l'url de votre image 1"
+            defaultValue={
+              operation === "updateProductor" ? dataProductor.urlImage1 : ""
+            }
             onChange={(e) =>
               getDataInput(
                 dataProductor,
@@ -112,6 +142,9 @@ const FormProductors = ({ operation }) => {
             type="text"
             name="urlImage2"
             placeholder="entrez l'url de votre image 2"
+            defaultValue={
+              operation === "updateProductor" ? dataProductor.urlImage2 : ""
+            }
             onChange={(e) =>
               getDataInput(
                 dataProductor,
@@ -122,11 +155,14 @@ const FormProductors = ({ operation }) => {
             }
           />
         </label>
-        <label htmlFor="urlFaceBook">
+        <label htmlFor="urlFacebook">
           <input
             type="text"
-            name="urlFaceBook"
-            placeholder="entrez l'url du urlFaceBook"
+            name="urlFacebook"
+            placeholder="entrez l'url du Facebook"
+            defaultValue={
+              operation === "updateProductor" ? dataProductor.urlFacebook : ""
+            }
             onChange={(e) =>
               getDataInput(
                 dataProductor,
@@ -142,6 +178,9 @@ const FormProductors = ({ operation }) => {
             type="text"
             name="urlTwitter"
             placeholder="entrez l'url du twitter"
+            defaultValue={
+              operation === "updateProductor" ? dataProductor.urlTwitter : ""
+            }
             onChange={(e) =>
               getDataInput(
                 dataProductor,

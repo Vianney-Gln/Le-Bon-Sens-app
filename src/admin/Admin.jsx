@@ -131,6 +131,12 @@ const Admin = () => {
               idEventToManage={idEventToManage}
             />
           )}
+          {param.operation === "updateProductor" && (
+            <FormProductors
+              operation={param.operation}
+              idProductorToManage={idProductorToManage}
+            />
+          )}
           {param.operation === "addProductor" && (
             <FormProductors operation={param.operation} />
           )}

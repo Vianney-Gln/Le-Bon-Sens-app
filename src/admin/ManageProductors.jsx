@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+//Routing
+import { useNavigate } from "react-router-dom";
 //Font awesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan, faFile } from "@fortawesome/free-solid-svg-icons";
@@ -7,9 +9,12 @@ import { getNamesProductors } from "../services/productors";
 //style
 import "../styles/manageProductors.scss";
 
-const ManageProductors = (idProductorToManage, setIdProductorToManage) => {
+const ManageProductors = ({ idProductorToManage, setIdProductorToManage }) => {
   //States
   const [listProductorsToManage, setListProductorsToManage] = useState([]);
+
+  //useNavigate
+  const navigate = useNavigate();
 
   //Function getting names and id from productors on component mounting
   useEffect(() => {
@@ -45,7 +50,7 @@ const ManageProductors = (idProductorToManage, setIdProductorToManage) => {
                       <i
                         onClick={() => {
                           openModal();
-                          setIdEventToManage(listProductor.id);
+                          setIdProductorToManage(listProductor.id);
                         }}
                         title="supprimer"
                       >
@@ -53,8 +58,8 @@ const ManageProductors = (idProductorToManage, setIdProductorToManage) => {
                       </i>
                       <i
                         onClick={() => {
-                          setIdEventToManage(listProductor.id);
-                          navigate("/admin/updateEvent");
+                          setIdProductorToManage(listProductor.id);
+                          navigate("/admin/updateProductor");
                         }}
                         title="modifier"
                       >
