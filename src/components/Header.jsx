@@ -7,15 +7,17 @@ import "../styles/header.scss";
 import getInfosShop from "../services/shop";
 // context
 import { shopContext } from "../context/shop";
+import { productorsContext } from "../context/productors";
 //components
 import InsertEvent from "./InsertEvent";
 import logo from "../images/logo-le-bon-sens.png";
 //Hamburger React
 import Hamburger from "hamburger-react";
 
-const Header = ({ productors, insert, disableInsert }) => {
+const Header = ({ insert, disableInsert }) => {
   // useContext
   const ShopContext = useContext(shopContext);
+  const ProductorsContext = useContext(productorsContext);
 
   // getting infos shop and store them in te shop context
   useEffect(() => {
@@ -60,8 +62,8 @@ const Header = ({ productors, insert, disableInsert }) => {
             <li className="tab-productor">
               Producteurs
               <ul className="list-productor">
-                {productors &&
-                  productors.map((productor) => (
+                {ProductorsContext.productors &&
+                  ProductorsContext.productors.map((productor) => (
                     <Link key={productor.id} to={`productors/${productor.id}`}>
                       <li>{productor.name}</li>
                     </Link>
