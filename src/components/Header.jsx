@@ -109,8 +109,8 @@ const Header = ({ insert, disableInsert }) => {
               Producteurs
               {openProductors && (
                 <ul className="list-productor">
-                  {productors &&
-                    productors.map((productor) => (
+                  {ProductorsContext.productors &&
+                    ProductorsContext.productors.map((productor) => (
                       <Link
                         key={productor.id}
                         to={`productors/${productor.id}`}
