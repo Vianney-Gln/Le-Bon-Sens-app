@@ -70,6 +70,11 @@ const manageSuccessMessage = (operation, setMessage) => {
   }
 };
 
+/**
+ * function managing the content of error messages
+ * @param {Function} setMessage
+ * @param {String} messageError
+ */
 const manageErrorMessage = (setMessage, messageError) => {
   switch (messageError) {
     case "Request failed with status code 401":
