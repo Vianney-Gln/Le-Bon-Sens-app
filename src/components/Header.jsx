@@ -33,7 +33,6 @@ const Header = ({ insert, disableInsert }) => {
   //function handling display of list productors on click
   const handleListProductors = () => {
     setOpenProductors(!openProductors);
-    console.log(openProductors);
   };
 
   window.onresize = () => setOpen(false);
