@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
+//Helper
+import getDataInput from "../helpers/form"; //function getting input items
 
 const FormProductors = ({ operation }) => {
+  const [dataProductor, setDataProductor] = useState({});
+
   return (
     <div className="container-addProductors">
       {operation === "updateProductor" && <h3>Modifier un producteur</h3>}
@@ -8,12 +12,32 @@ const FormProductors = ({ operation }) => {
 
       <form>
         <label htmlFor="name">
-          <input type="text" name="name" placeholder="nom du producteur" />
+          <input
+            type="text"
+            name="name"
+            placeholder="nom du producteur"
+            onChange={(e) => {
+              getDataInput(
+                dataProductor,
+                setDataProductor,
+                e.target.value,
+                "name"
+              );
+            }}
+          />
         </label>
-        <label htmlFor="name">
+        <label htmlFor="description1">
           <textarea
-            name="description"
+            name="description1"
             placeholder="description du producteur"
+            onChange={(e) =>
+              getDataInput(
+                dataProductor,
+                setDataProductor,
+                e.target.value,
+                "description1"
+              )
+            }
           />
         </label>
         <label htmlFor="urlGoogleMap">
@@ -21,6 +45,14 @@ const FormProductors = ({ operation }) => {
             type="text"
             name="urlGoogleMap"
             placeholder="entrez l'url google map"
+            onChange={(e) =>
+              getDataInput(
+                dataProductor,
+                setDataProductor,
+                e.target.value,
+                "urlGoogleMap"
+              )
+            }
           />
         </label>
         <label htmlFor="urlWebsite">
@@ -28,6 +60,14 @@ const FormProductors = ({ operation }) => {
             type="text"
             name="urlWebsite"
             placeholder="entrez l'url du site web du producteur"
+            onChange={(e) =>
+              getDataInput(
+                dataProductor,
+                setDataProductor,
+                e.target.value,
+                "urlWebsite"
+              )
+            }
           />
         </label>
         <label htmlFor="urlImage1">
@@ -35,6 +75,14 @@ const FormProductors = ({ operation }) => {
             type="text"
             name="urlImage1"
             placeholder="entrez l'url de votre image 1"
+            onChange={(e) =>
+              getDataInput(
+                dataProductor,
+                setDataProductor,
+                e.target.value,
+                "urlImage1"
+              )
+            }
           />
         </label>
         <label htmlFor="urlImage2">
@@ -42,6 +90,14 @@ const FormProductors = ({ operation }) => {
             type="text"
             name="urlImage2"
             placeholder="entrez l'url de votre image 2"
+            onChange={(e) =>
+              getDataInput(
+                dataProductor,
+                setDataProductor,
+                e.target.value,
+                "urlImage2"
+              )
+            }
           />
         </label>
         <label htmlFor="urlFaceBook">
@@ -49,6 +105,14 @@ const FormProductors = ({ operation }) => {
             type="text"
             name="urlFaceBook"
             placeholder="entrez l'url du urlFaceBook"
+            onChange={(e) =>
+              getDataInput(
+                dataProductor,
+                setDataProductor,
+                e.target.value,
+                "urlFaceBook"
+              )
+            }
           />
         </label>
         <label htmlFor="urlTwitter">
@@ -56,6 +120,14 @@ const FormProductors = ({ operation }) => {
             type="text"
             name="urlTwitter"
             placeholder="entrez l'url du twitter"
+            onChange={(e) =>
+              getDataInput(
+                dataProductor,
+                setDataProductor,
+                e.target.value,
+                "urlTwitter"
+              )
+            }
           />
         </label>
         <button type="submit">Valider</button>
