@@ -1,13 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 //Font awesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan, faFile } from "@fortawesome/free-solid-svg-icons";
+//Service
+import { getNamesProductors } from "../services/productors";
+//style
+import "../styles/manageProductors.scss";
 
-const ManageProductors = () => {
+const ManageProductors = (idProductorToManage, setIdProductorToManage) => {
   //States
   const [listProductorsToManage, setListProductorsToManage] = useState([]);
+
+  //Function getting names and id from productors on component mounting
+  useEffect(() => {
+    getNamesProductors().then((productors) => {
+      setListProductorsToManage(productors);
+    });
+  }, []);
   return (
-    <div className="container-manageProductor">
+    <div className="container-manageProductors">
       <h3>ManageProductors</h3>
       <table>
         <caption>Gestion des producteurs</caption>
@@ -27,14 +38,14 @@ const ManageProductors = () => {
           {listProductorsToManage &&
             listProductorsToManage.map((listProductor) => {
               return (
-                <tr key={element.id}>
+                <tr key={listProductor.id}>
                   <td align="center">{listProductor.name}</td>
                   <td align="center" className="action">
                     <span>
                       <i
                         onClick={() => {
                           openModal();
-                          setIdEventToManage(element.id);
+                          setIdEventToManage(listProductor.id);
                         }}
                         title="supprimer"
                       >
@@ -42,7 +53,7 @@ const ManageProductors = () => {
                       </i>
                       <i
                         onClick={() => {
-                          setIdEventToManage(element.id);
+                          setIdEventToManage(listProductor.id);
                           navigate("/admin/updateEvent");
                         }}
                         title="modifier"
