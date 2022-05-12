@@ -34,7 +34,7 @@ const Productors = () => {
     getCarrouselProductor(param.id).then((result) =>
       setCarrouselProductor(result)
     );
-  }, []);
+  }, [param.id]);
 
   // carrousel
   const slideImages = [
