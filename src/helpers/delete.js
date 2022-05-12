@@ -10,6 +10,7 @@ const deleteOneThing = (id, serviceFunction, token, navigate, setMessage) => {
     })
     .catch((err) => {
       console.log(err);
+      setMessage("erreur lors de la suppression");
     });
 };
 
