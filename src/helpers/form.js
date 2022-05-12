@@ -20,6 +20,7 @@ const getDataInput = (state, setState, value, key) => {
  * @param {Object} dataInputs
  * @param {Function} nav
  * @param {String} operation
+ * @param {Number | undefined} idProductor
  */
 export const handleForm = (
   e,
@@ -28,11 +29,12 @@ export const handleForm = (
   setError,
   dataInputs,
   nav,
-  operation
+  operation,
+  idProductor = undefined
 ) => {
   e.preventDefault();
   const token = localStorage.getItem("token_access_le_bon_sens");
-  serviceFunction(dataInputs, token)
+  serviceFunction(dataInputs, token, idProductor)
     .then(() => {
       manageSuccessMessage(operation, setMessage);
       setError(false);

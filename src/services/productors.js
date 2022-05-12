@@ -49,9 +49,25 @@ const addProductor = (dataProductor, token) => {
   });
 };
 
+/**
+ *
+ * @param {Object} dataProductor
+ * @param {String} token
+ * @param {Number} id
+ * @returns {Promise}
+ */
+const updateProductorById = (dataProductor, token, id) => {
+  return axios({
+    method: "put",
+    url: `http://localhost:3001/api/LeBonSens/productors/${id}`,
+    data: { dataProductor, token },
+  });
+};
+
 export {
   getNamesProductors,
   getInfosProductors,
   getCarrouselProductor,
   addProductor,
+  updateProductorById,
 };

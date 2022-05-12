@@ -2,7 +2,11 @@ import React, { useState, useEffect } from "react";
 //Helper
 import getDataInput, { handleForm } from "../helpers/form"; //function getting input items
 //Service
-import { addProductor, getInfosProductors } from "../services/productors";
+import {
+  addProductor,
+  getInfosProductors,
+  updateProductorById,
+} from "../services/productors";
 //Routing
 import { useNavigate } from "react-router-dom";
 
@@ -36,17 +40,32 @@ const FormProductors = ({ operation, idProductorToManage }) => {
       {operation === "addProductor" && <h3>Créer un producteur</h3>}
 
       <form
-        onSubmit={(e) =>
-          handleForm(
-            e,
-            addProductor,
-            setMessage,
-            setError,
-            dataProductor,
-            navigate,
-            operation
-          )
-        }
+        onSubmit={(e) => {
+          if (operation === "addProductor") {
+            handleForm(
+              e,
+              addProductor,
+              setMessage,
+              setError,
+              dataProductor,
+              navigate,
+              operation
+            );
+          } else if (operation === "updateProductor") {
+            //temporaire
+            e.preventDefault();
+            handleForm(
+              e,
+              updateProductorById,
+              setMessage,
+              setError,
+              dataProductor,
+              navigate,
+              operation,
+              idProductorToManage
+            );
+          }
+        }}
       >
         <label htmlFor="name">
           <input
@@ -191,7 +210,9 @@ const FormProductors = ({ operation, idProductorToManage }) => {
             }
           />
         </label>
-        <button type="submit">Valider</button>
+        <button type="submit">
+          {operation === "addProductor" ? "Valider" : "modifier"}
+        </button>
         {message && <p className={!error ? "success" : "fail"}>{message}</p>}
       </form>
     </div>
