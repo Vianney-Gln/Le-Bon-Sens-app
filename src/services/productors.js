@@ -34,4 +34,24 @@ const getCarrouselProductor = (id) => {
     .then((result) => result.data);
 };
 
-export { getNamesProductors, getInfosProductors, getCarrouselProductor };
+/**
+ * function service adding a productor in database if authentificated
+ * @param {Object} dataProductor
+ * @param {String} token
+ * @returns {Promise}
+ */
+
+const addProductor = (dataProductor, token) => {
+  return axios({
+    method: "post",
+    url: "http://localhost:3001/api/LeBonSens/productors",
+    data: { dataProductor, token },
+  });
+};
+
+export {
+  getNamesProductors,
+  getInfosProductors,
+  getCarrouselProductor,
+  addProductor,
+};

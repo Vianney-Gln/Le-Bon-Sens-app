@@ -1,16 +1,37 @@
 import React, { useState } from "react";
 //Helper
-import getDataInput from "../helpers/form"; //function getting input items
+import getDataInput, { handleForm } from "../helpers/form"; //function getting input items
+//Service
+import { addProductor } from "../services/productors";
+//Routing
+import { useNavigate } from "react-router-dom";
 
 const FormProductors = ({ operation }) => {
+  //States
   const [dataProductor, setDataProductor] = useState({});
+  const [message, setMessage] = useState("");
+  const [error, setError] = useState(false);
+
+  //Navigate
+  const navigate = useNavigate();
 
   return (
     <div className="container-addProductors">
       {operation === "updateProductor" && <h3>Modifier un producteur</h3>}
       {operation === "addProductor" && <h3>Créer un producteur</h3>}
 
-      <form>
+      <form
+        onSubmit={(e) =>
+          handleForm(
+            e,
+            addProductor,
+            setMessage,
+            setError,
+            dataProductor,
+            navigate
+          )
+        }
+      >
         <label htmlFor="name">
           <input
             type="text"
@@ -131,6 +152,7 @@ const FormProductors = ({ operation }) => {
           />
         </label>
         <button type="submit">Valider</button>
+        {message && <p className={!error ? "success" : "fail"}>{message}</p>}
       </form>
     </div>
   );
