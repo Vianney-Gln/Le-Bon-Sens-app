@@ -147,7 +147,7 @@ const Admin = () => {
               setIdProductorToManage={setIdProductorToManage}
             />
           )}
-          {param.operation === "updateCarrouselProductor" && (
+          {param.operation === "manageCarrouselProductor" && (
             <FormCarrouselProductors
               operation={param.operation}
               idProductorToManage={idProductorToManage}

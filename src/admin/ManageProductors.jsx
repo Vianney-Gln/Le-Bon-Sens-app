@@ -135,9 +135,9 @@ const ManageProductors = ({ idProductorToManage, setIdProductorToManage }) => {
                         <i
                           onClick={() => {
                             setIdProductorToManage(listProductor.id);
-                            navigate("/admin/updateCarrouselProductor");
+                            navigate("/admin/manageCarrouselProductor");
                           }}
-                          title="modifier carrousel"
+                          title="gérer carrousel"
                         >
                           <FontAwesomeIcon icon={faImage} />
                         </i>

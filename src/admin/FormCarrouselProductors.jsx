@@ -1,17 +1,29 @@
-import React from "react";
-//style
+import React, { useState } from "react";
+//Style
 import "../styles/formCarrouselProductors.scss";
+//Helper
+import getDataInput from "../helpers/form";
 
 const FormCarrouselProductors = ({ idProductorToManage }) => {
+  //States
+  const [dataCarrousel, setDataCarrousel] = useState({});
   return (
     <div className="container-formCarrouselProductor">
-      <h3>Gestion des images du carrousel</h3>
+      <h3>Ajouter des images au carrousel</h3>
       <form>
         <label htmlFor="urlImageCarrousel">
           <input
             type="text"
             name="urlImageCarrousel"
             placeholder="saisissez ici l'url de l'image"
+            onChange={(e) => {
+              getDataInput(
+                dataCarrousel,
+                setDataCarrousel,
+                e.target.value,
+                "urlImageCarrousel"
+              );
+            }}
           ></input>
         </label>
         <button type="submit">Valider</button>
