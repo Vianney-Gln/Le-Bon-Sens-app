@@ -78,6 +78,12 @@ const deleteOneProductorById = (id, token) => {
   });
 };
 
+/**
+ * function adding one item in the carrousel for one productor
+ * @param {Object} dataCarrouselProductor
+ * @param {String} token
+ * @returns {Promise}
+ */
 const addOneCarrouselItem = (dataCarrouselProductor, token) => {
   return axios({
     method: "post",
