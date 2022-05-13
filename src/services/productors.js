@@ -84,11 +84,11 @@ const deleteOneProductorById = (id, token) => {
  * @param {String} token
  * @returns {Promise}
  */
-const addOneCarrouselItem = (dataCarrouselProductor, token) => {
+const addOneCarrouselItem = (dataCarrousel, token) => {
   return axios({
     method: "post",
     url: `http://localhost:3001/api/LeBonSens/productors/carrouselProductor`,
-    data: { dataCarrouselProductor, token },
+    data: { dataCarrousel, token },
   });
 };
 

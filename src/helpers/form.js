@@ -20,7 +20,7 @@ const getDataInput = (state, setState, value, key) => {
  * @param {Object} dataInputs
  * @param {Function} nav
  * @param {String} operation
- * @param {Number | undefined} idProductor
+ * @param {Number | undefined} [idToManage=undefined]
  */
 export const handleForm = (
   e,
@@ -30,11 +30,11 @@ export const handleForm = (
   dataInputs,
   nav,
   operation,
-  idProductor = undefined
+  idToManage = undefined
 ) => {
   e.preventDefault();
   const token = localStorage.getItem("token_access_le_bon_sens");
-  serviceFunction(dataInputs, token, idProductor)
+  serviceFunction(dataInputs, token, idToManage)
     .then(() => {
       manageSuccessMessage(operation, setMessage);
       setError(false);
@@ -58,16 +58,19 @@ const manageSuccessMessage = (operation, setMessage) => {
   const baseMessage = "avec succés, vous allez être redirigé à l'accueil admin";
   switch (operation) {
     case "addProductor":
-      setMessage(`producteur ajouté ${baseMessage}`);
+      setMessage(`Producteur ajouté ${baseMessage}`);
       break;
     case "addRecipe":
-      setMessage(`recette ajoutée ${baseMessage}`);
+      setMessage(`Recette ajoutée ${baseMessage}`);
       break;
     case "addProduct":
-      setMessage(`produit ajouté ${baseMessage}`);
+      setMessage(`Produit ajouté ${baseMessage}`);
       break;
     case "createEvent":
-      setMessage(`événement créé ${baseMessage}`);
+      setMessage(`Evénement créé ${baseMessage}`);
+      break;
+    case "manageCarrouselProductor":
+      setMessage(`Image ajoutée ${baseMessage}`);
       break;
   }
 };
