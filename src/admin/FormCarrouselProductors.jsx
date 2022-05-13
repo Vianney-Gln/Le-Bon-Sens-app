@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 //Routing
 import { useNavigate } from "react-router-dom";
 //Style
@@ -7,7 +7,10 @@ import "../styles/formCarrouselProductors.scss";
 import getDataInput from "../helpers/form";
 import { handleForm } from "../helpers/form";
 //Service
-import { addOneCarrouselItem } from "../services/productors";
+import {
+  addOneCarrouselItem,
+  getInfosProductors,
+} from "../services/productors";
 
 const FormCarrouselProductors = ({ idProductorToManage, operation }) => {
   //States
@@ -16,9 +19,28 @@ const FormCarrouselProductors = ({ idProductorToManage, operation }) => {
   });
   const [message, setMessage] = useState("");
   const [error, setError] = useState(false);
+  const [carrousel, setCarrousel] = useState([]);
 
   //useNavigate
   const navigate = useNavigate();
+
+  //Function getting carrousel infos from one productor on component mounting (only if operation === manageCarrouselProductor)
+  //If the user refresh the page, redirect to /admin to escape errors
+
+  useEffect(() => {
+    if (operation === "manageCarrouselProductor") {
+      getInfosProductors(idProductorToManage)
+        .then((result) => {
+          if (result.carrousel.length) {
+            setCarrousel(result.carrousel);
+          }
+        })
+        .catch(() => {
+          navigate("/admin"); //redirect in case of refresh
+        });
+    }
+  }, []);
+
   return (
     <div className="container-formCarrouselProductor">
       <h3>Ajouter des images au carrousel</h3>
@@ -47,7 +69,6 @@ const FormCarrouselProductors = ({ idProductorToManage, operation }) => {
                 e.target.value,
                 "urlImageCarrousel"
               );
-              console.log(dataCarrousel);
             }}
           ></input>
         </label>
@@ -56,6 +77,16 @@ const FormCarrouselProductors = ({ idProductorToManage, operation }) => {
       </form>
       <div className="container-preview-image">
         <h3>Aperçu des images du carrousel</h3>
+        <ul className="list-image-carrousel-to-manage">
+          {carrousel.length &&
+            carrousel.map((image) => {
+              return (
+                <li className="card-carrousel" key={image.id}>
+                  <img src={image.urlImageCarrousel} alt="producteur" />
+                </li>
+              );
+            })}
+        </ul>
       </div>
     </div>
   );
