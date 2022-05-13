@@ -7,9 +7,6 @@ import "react-slideshow-image/dist/styles.css";
 import { Slide } from "react-slideshow-image";
 import iconFaceBook from "../images/icone-fb.jpg";
 import iconTwitter from "../images/icone-twitter.png";
-import carrou1 from "../images/carrou1.jpg";
-import carrou2 from "../images/carrou2.jpg";
-import carrou3 from "../images/carrou3.jpg";
 
 //service
 import {
