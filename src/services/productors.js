@@ -78,6 +78,14 @@ const deleteOneProductorById = (id, token) => {
   });
 };
 
+const addOneCarrouselItem = (dataCarrouselProductor, token) => {
+  return axios({
+    method: "post",
+    url: `http://localhost:3001/api/LeBonSens/productors/carrouselProductor`,
+    data: { dataCarrouselProductor, token },
+  });
+};
+
 export {
   getNamesProductors,
   getInfosProductors,
@@ -85,4 +93,5 @@ export {
   addProductor,
   updateProductorById,
   deleteOneProductorById,
+  addOneCarrouselItem,
 };
