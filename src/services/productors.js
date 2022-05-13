@@ -19,18 +19,7 @@ const getNamesProductors = () => {
  */
 const getInfosProductors = (id) => {
   return axios
-    .get(`${baseUrl}/api/LeBonSens/productors/${id}`)
-    .then((result) => result.data);
-};
-
-/**
- *function getting carrousel from one productor by his id
- * @param {number} id
- * @returns array
- */
-const getCarrouselProductor = (id) => {
-  return axios
-    .get(`${baseUrl}/api/LeBonSens/productors/getCarrousel/${id}`)
+    .get(`http://localhost:3001/api/LeBonSens/productors/${id}`)
     .then((result) => result.data);
 };
 
@@ -95,7 +84,6 @@ const addOneCarrouselItem = (dataCarrousel, token) => {
 export {
   getNamesProductors,
   getInfosProductors,
-  getCarrouselProductor,
   addProductor,
   updateProductorById,
   deleteOneProductorById,

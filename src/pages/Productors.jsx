@@ -23,14 +23,16 @@ const Productors = () => {
 
   /* ----- states ----- */
   const [infosProductor, setInfosProductor] = useState({});
-  const [carrouselProductor, setCarrouselProductor] = useState([]);
+  const [carrousel, setCarrousel] = useState([]);
 
   /* ----- getting infos productor by id on component mounting ----- */
   useEffect(() => {
-    getInfosProductors(param.id).then((result) => setInfosProductor(result));
-    getCarrouselProductor(param.id).then((result) =>
-      setCarrouselProductor(result)
-    );
+    getInfosProductors(param.id).then((result) => {
+      setInfosProductor(result);
+      if (result.carrousel) {
+        setCarrousel(result.carrousel);
+      }
+    });
   }, [param.id]);
 
   return (
@@ -39,16 +41,17 @@ const Productors = () => {
       <div className="container-top">
         <div className="container-carrousel">
           <Slide>
-            {carrouselProductor.map((slideImage) => (
-              <div className="each-slide" key={slideImage.urlImageCarrousel}>
-                <div
-                  className="slide"
-                  style={{
-                    backgroundImage: `url(${slideImage.urlImageCarrousel})`,
-                  }}
-                />
-              </div>
-            ))}
+            {carrousel.length &&
+              carrousel.map((slideImage) => (
+                <div className="each-slide" key={slideImage.urlImageCarrousel}>
+                  <div
+                    className="slide"
+                    style={{
+                      backgroundImage: `url(${slideImage.urlImageCarrousel})`,
+                    }}
+                  />
+                </div>
+              ))}
           </Slide>
           <div className="container-buttons-mobile"></div>
         </div>
