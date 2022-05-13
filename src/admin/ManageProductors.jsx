@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 //Font awesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrashCan, faFile } from "@fortawesome/free-solid-svg-icons";
+import { faTrashCan, faFile, faImage } from "@fortawesome/free-solid-svg-icons";
 //Modal
 import Modal from "react-modal/lib/components/Modal";
 //Helper
@@ -131,6 +131,15 @@ const ManageProductors = ({ idProductorToManage, setIdProductorToManage }) => {
                           title="modifier"
                         >
                           <FontAwesomeIcon icon={faFile} />
+                        </i>
+                        <i
+                          onClick={() => {
+                            setIdProductorToManage(listProductor.id);
+                            navigate("/admin/updateCarrouselProductor");
+                          }}
+                          title="modifier carrousel"
+                        >
+                          <FontAwesomeIcon icon={faImage} />
                         </i>
                       </span>
                     </td>

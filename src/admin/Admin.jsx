@@ -15,6 +15,7 @@ import FormEvents from "./FormEvents";
 import ManageEvents from "./ManageEvents";
 import FormProductors from "./FormProductors";
 import ManageProductors from "./ManageProductors";
+import FormCarrouselProductors from "./FormCarrouselProductors";
 
 const Admin = () => {
   /* ----- doc title ----- */
@@ -144,6 +145,12 @@ const Admin = () => {
             <ManageProductors
               idProductorToManage={idProductorToManage}
               setIdProductorToManage={setIdProductorToManage}
+            />
+          )}
+          {param.operation === "updateCarrouselProductor" && (
+            <FormCarrouselProductors
+              operation={param.operation}
+              idProductorToManage={idProductorToManage}
             />
           )}
         </div>
