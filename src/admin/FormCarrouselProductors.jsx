@@ -75,8 +75,8 @@ const FormCarrouselProductors = ({ idProductorToManage, operation }) => {
         <button type="submit">Valider</button>
         {message && <p className={!error ? "success" : "fail"}>{message}</p>}
       </form>
+      <h3>Aperçu des images du carrousel</h3>
       <div className="container-preview-image">
-        <h3>Aperçu des images du carrousel</h3>
         <ul className="list-image-carrousel-to-manage">
           {carrousel.length &&
             carrousel.map((image) => {
