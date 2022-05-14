@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 //Routing
 import { useNavigate } from "react-router-dom";
+//Component
+import Modal1 from "../components/Modal";
 //Style
 import "../styles/formCarrouselProductors.scss";
 //Helper
@@ -17,10 +19,19 @@ const FormCarrouselProductors = ({ idProductorToManage, operation }) => {
   const [dataCarrousel, setDataCarrousel] = useState({
     id_productors: idProductorToManage,
   });
-  const [message, setMessage] = useState("");
-  const [error, setError] = useState(false);
-  const [carrousel, setCarrousel] = useState([]);
+  const [message, setMessage] = useState(""); // state text message
+  const [error, setError] = useState(false); // state managing color of message (true = red / false = green, depend of a css class)
+  const [carrousel, setCarrousel] = useState([]); // state containing data carrousel
+  const [modalIsOpen, setIsOpen] = useState(false); //state Modal
 
+  //Functions running Modal
+  const openModal = () => {
+    setIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
+  };
   //useNavigate
   const navigate = useNavigate();
 
@@ -43,6 +54,11 @@ const FormCarrouselProductors = ({ idProductorToManage, operation }) => {
 
   return (
     <div className="container-formCarrouselProductor">
+      <Modal1
+        closeModal={closeModal}
+        modalIsOpen={modalIsOpen}
+        message={message}
+      />
       <h3>Ajouter des images au carrousel</h3>
       <form
         onSubmit={(e) =>
@@ -83,7 +99,9 @@ const FormCarrouselProductors = ({ idProductorToManage, operation }) => {
               return (
                 <li className="card-carrousel" key={image.id}>
                   <img src={image.urlImageCarrousel} alt="producteur" />
-                  <button type="button">Supprimer</button>
+                  <button onClick={() => openModal()} type="button">
+                    Supprimer
+                  </button>
                 </li>
               );
             })}
