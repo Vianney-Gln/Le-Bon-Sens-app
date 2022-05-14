@@ -75,7 +75,7 @@ const FormCarrouselProductors = ({ idProductorToManage, operation }) => {
         <button type="submit">Valider</button>
         {message && <p className={!error ? "success" : "fail"}>{message}</p>}
       </form>
-      <h3>Aperçu des images du carrousel</h3>
+      <h3>Gestion et aperçu des images du carrousel</h3>
       <div className="container-preview-image">
         <ul className="list-image-carrousel-to-manage">
           {carrousel.length &&
@@ -83,6 +83,7 @@ const FormCarrouselProductors = ({ idProductorToManage, operation }) => {
               return (
                 <li className="card-carrousel" key={image.id}>
                   <img src={image.urlImageCarrousel} alt="producteur" />
+                  <button type="button">Supprimer</button>
                 </li>
               );
             })}
