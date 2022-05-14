@@ -14,7 +14,12 @@ import {
   getInfosProductors,
 } from "../services/productors";
 
-const FormCarrouselProductors = ({ idProductorToManage, operation }) => {
+const FormCarrouselProductors = ({
+  idProductorToManage,
+  operation,
+  setIdCarrouselItemToManage,
+  idCarrouselItemToManage,
+}) => {
   //States
   const [dataCarrousel, setDataCarrousel] = useState({
     id_productors: idProductorToManage,
@@ -58,6 +63,8 @@ const FormCarrouselProductors = ({ idProductorToManage, operation }) => {
         closeModal={closeModal}
         modalIsOpen={modalIsOpen}
         message={message}
+        setMessage={setMessage}
+        idCarrouselItemToManage={idCarrouselItemToManage}
       />
       <h3>Ajouter des images au carrousel</h3>
       <form
@@ -99,7 +106,13 @@ const FormCarrouselProductors = ({ idProductorToManage, operation }) => {
               return (
                 <li className="card-carrousel" key={image.id}>
                   <img src={image.urlImageCarrousel} alt="producteur" />
-                  <button onClick={() => openModal()} type="button">
+                  <button
+                    onClick={() => {
+                      setIdCarrouselItemToManage(image.id);
+                      openModal();
+                    }}
+                    type="button"
+                  >
                     Supprimer
                   </button>
                 </li>

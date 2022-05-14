@@ -81,6 +81,22 @@ const addOneCarrouselItem = (dataCarrousel, token) => {
   });
 };
 
+/**
+ * function deleting one item from carrousel by his id
+ * @param {Number} id
+ * @param {String} [token=undefined]
+ * @returns {Promise}
+ */
+const deleteOneItemCarrouselById = (id, token) => {
+  return axios({
+    method: "post",
+    url: `http://localhost:3001/api/LeBonSens/productors/carrouselProductor/${id}`,
+    data: { token },
+  })
+    .then((result) => result.data)
+    .catch((err) => console.log(err));
+};
+
 export {
   getNamesProductors,
   getInfosProductors,
@@ -88,4 +104,5 @@ export {
   updateProductorById,
   deleteOneProductorById,
   addOneCarrouselItem,
+  deleteOneItemCarrouselById,
 };

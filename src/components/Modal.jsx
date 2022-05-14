@@ -1,8 +1,21 @@
 import React from "react";
 //Modal
 import Modal from "react-modal";
+//Service
+import { deleteOneItemCarrouselById } from "../services/productors";
+//Helper
+import deleteOneThing from "../helpers/delete";
+//Routing
+import { useNavigate } from "react-router-dom";
 
-const Modal1 = ({ closeModal, modalIsOpen, message }) => {
+const Modal1 = ({
+  closeModal,
+  modalIsOpen,
+  message,
+  setMessage,
+  idCarrouselItemToManage,
+}) => {
+  const token = localStorage.getItem("token_access_le_bon_sens");
   /* -----Modal -----*/
   Modal.setAppElement("#root");
 
@@ -19,6 +32,9 @@ const Modal1 = ({ closeModal, modalIsOpen, message }) => {
       height: "160px",
     },
   };
+
+  //UseNavigate
+  const navigate = useNavigate();
   return (
     <div className="modal">
       <Modal
@@ -30,7 +46,18 @@ const Modal1 = ({ closeModal, modalIsOpen, message }) => {
         {!message && <p>Etes vous sûr de vouloir supprimer ce produit?</p>}
         {!message && (
           <div className="container-buttons-modal">
-            <button type="button" onClick={() => closeModal()}>
+            <button
+              type="button"
+              onClick={() => {
+                deleteOneThing(
+                  idCarrouselItemToManage,
+                  deleteOneItemCarrouselById,
+                  token,
+                  navigate,
+                  setMessage
+                );
+              }}
+            >
               oui
             </button>
             <button type="button" onClick={() => closeModal()}>

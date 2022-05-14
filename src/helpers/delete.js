@@ -14,7 +14,8 @@ const deleteOneThing = (
   setMessage
 ) => {
   serviceFunction(id, token)
-    .then(() => {
+    .then((result) => {
+      console.log(result);
       setMessage(
         "élément supprimé, vous allez être redirigé à l'accueil admin"
       );

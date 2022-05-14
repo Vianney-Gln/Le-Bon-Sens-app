@@ -30,6 +30,7 @@ const Admin = () => {
   const [idRecipeToManage, setIdRecipeToManage] = useState(""); // id recipe to manage
   const [idEventToManage, setIdEventToManage] = useState(""); // id event to manage
   const [idProductorToManage, setIdProductorToManage] = useState(""); // id productor to manage
+  const [idCarrouselItemToManage, setIdCarrouselItemToManage] = useState(""); // id item carrousel to manage
 
   /* ----- useNavigate ------ */
   const navigate = useNavigate();
@@ -151,6 +152,8 @@ const Admin = () => {
             <FormCarrouselProductors
               operation={param.operation}
               idProductorToManage={idProductorToManage}
+              idCarrouselItemToManage={idCarrouselItemToManage}
+              setIdCarrouselItemToManage={setIdCarrouselItemToManage}
             />
           )}
         </div>
