@@ -15,8 +15,6 @@ import Events from "./pages/Events";
 import "./styles/App.scss";
 import FindUs from "./pages/FindUs";
 import Recipes from "./pages/Recipes";
-//service
-import { getNamesProductors } from "./services/productors";
 
 const App = () => {
   /* ------ about Insert-event component ------- */
@@ -28,21 +26,9 @@ const App = () => {
     setInsert(!insert);
   };
 
-  /* ------ about productors ------*/
-  //states
-  const [productors, setProductor] = useState([]);
-  //getting infos on component mounting
-  useEffect(() => {
-    getNamesProductors().then((result) => setProductor(result));
-  }, []);
-
   return (
     <div className="container-app">
-      <Header
-        productors={productors}
-        insert={insert}
-        disableInsert={disableInsert}
-      />
+      <Header insert={insert} disableInsert={disableInsert} />
       <Routes>
         <Route exact path="products" element={<Products />} />
         <Route exact path="/" element={<Shop />} />

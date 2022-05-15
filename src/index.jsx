@@ -6,13 +6,16 @@ import "./index.scss";
 import App from "./App";
 // context
 import { ShopProvider } from "./context/shop";
+import { ProductorsProvider } from "./context/productors";
 
 ReactDOM.render(
   <React.StrictMode>
     <ShopProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <ProductorsProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </ProductorsProvider>
     </ShopProvider>
   </React.StrictMode>,
   // eslint-disable-next-line comma-dangle
