@@ -19,7 +19,7 @@ const getNamesProductors = () => {
  */
 const getInfosProductors = (id) => {
   return axios
-    .get(`http://localhost:3001/api/LeBonSens/productors/${id}`)
+    .get(`${baseUrl}/api/LeBonSens/productors/${id}`)
     .then((result) => result.data);
 };
 
@@ -33,7 +33,7 @@ const getInfosProductors = (id) => {
 const addProductor = (dataProductor, token) => {
   return axios({
     method: "post",
-    url: "http://localhost:3001/api/LeBonSens/productors",
+    url: `${baseUrl}/api/LeBonSens/productors`,
     data: { dataProductor, token },
   });
 };
@@ -48,7 +48,7 @@ const addProductor = (dataProductor, token) => {
 const updateProductorById = (dataProductor, token, id) => {
   return axios({
     method: "put",
-    url: `http://localhost:3001/api/LeBonSens/productors/${id}`,
+    url: `${baseUrl}/api/LeBonSens/productors/${id}`,
     data: { dataProductor, token },
   });
 };
@@ -62,7 +62,7 @@ const updateProductorById = (dataProductor, token, id) => {
 const deleteOneProductorById = (id, token) => {
   return axios({
     method: "post",
-    url: `http://localhost:3001/api/LeBonSens/productors/${id}`,
+    url: `${baseUrl}/api/LeBonSens/productors/${id}`,
     data: { token },
   });
 };
@@ -76,7 +76,7 @@ const deleteOneProductorById = (id, token) => {
 const addOneCarrouselItem = (dataCarrousel, token) => {
   return axios({
     method: "post",
-    url: `http://localhost:3001/api/LeBonSens/productors/carrouselProductor`,
+    url: `${baseUrl}/api/LeBonSens/productors/carrouselProductor`,
     data: { dataCarrousel, token },
   });
 };
@@ -90,7 +90,7 @@ const addOneCarrouselItem = (dataCarrousel, token) => {
 const deleteOneItemCarrouselById = (id, token) => {
   return axios({
     method: "post",
-    url: `http://localhost:3001/api/LeBonSens/productors/carrouselProductor/${id}`,
+    url: `${baseUrl}/api/LeBonSens/productors/carrouselProductor/${id}`,
     data: { token },
   })
     .then((result) => result.data)
