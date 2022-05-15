@@ -8,7 +8,7 @@ const baseUrl = "https://shielded-sea-56340.herokuapp.com";
  */
 const getNamesProductors = () => {
   return axios
-    .get(`http://localhost:3001/api/LeBonSens/productors`)
+    .get(`${baseUrl}/api/LeBonSens/productors`)
     .then((result) => result.data);
 };
 
@@ -33,7 +33,7 @@ const getInfosProductors = (id) => {
 const addProductor = (dataProductor, token) => {
   return axios({
     method: "post",
-    url: `http://localhost:3001/api/LeBonSens/productors`,
+    url: `${baseUrl}/api/LeBonSens/productors`,
     data: { dataProductor, token },
   });
 };
@@ -48,7 +48,7 @@ const addProductor = (dataProductor, token) => {
 const updateProductorById = (dataProductor, token, id) => {
   return axios({
     method: "put",
-    url: `http://localhost:3001/api/LeBonSens/productors/${id}`,
+    url: `${baseUrl}/api/LeBonSens/productors/${id}`,
     data: { dataProductor, token },
   });
 };
