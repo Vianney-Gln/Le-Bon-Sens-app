@@ -86,9 +86,7 @@ const manageErrorMessage = (setMessage, messageError) => {
       setMessage("Vous devez remplir tous les champs obligatoires");
       break;
     default:
-      setMessage(
-        "Il y eu erreur lors de l'ajout du producteur, veuillez réessayer plus tard"
-      );
+      setMessage("Il y eu erreur , veuillez réessayer plus tard");
   }
 };
 

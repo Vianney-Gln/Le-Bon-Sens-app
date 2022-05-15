@@ -47,11 +47,12 @@ const FormCarrouselProductors = ({
     if (operation === "manageCarrouselProductor") {
       getInfosProductors(idProductorToManage)
         .then((result) => {
-          if (result.carrousel.length) {
+          if (result.carrousel) {
             setCarrousel(result.carrousel);
           }
         })
-        .catch(() => {
+        .catch((err) => {
+          console.log(err);
           navigate("/admin"); //redirect in case of refresh
         });
     }
@@ -101,7 +102,7 @@ const FormCarrouselProductors = ({
       <h3>Gestion et aperçu des images du carrousel</h3>
       <div className="container-preview-image">
         <ul className="list-image-carrousel-to-manage">
-          {carrousel.length &&
+          {carrousel.length ? (
             carrousel.map((image) => {
               return (
                 <li className="card-carrousel" key={image.id}>
@@ -117,7 +118,12 @@ const FormCarrouselProductors = ({
                   </button>
                 </li>
               );
-            })}
+            })
+          ) : (
+            <p className="no-image">
+              Il n'y a pas encore d'image disponible dans ce carrousel
+            </p>
+          )}
         </ul>
       </div>
     </div>

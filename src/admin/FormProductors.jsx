@@ -25,6 +25,7 @@ const FormProductors = ({ operation, idProductorToManage }) => {
     if (operation === "updateProductor") {
       getInfosProductors(idProductorToManage)
         .then((infosProductor) => {
+          console.log(infosProductor);
           setDataProductor(infosProductor);
         })
         .catch((err) => {
@@ -52,8 +53,6 @@ const FormProductors = ({ operation, idProductorToManage }) => {
               operation
             );
           } else if (operation === "updateProductor") {
-            //temporaire
-            e.preventDefault();
             handleForm(
               e,
               updateProductorById,
@@ -187,7 +186,7 @@ const FormProductors = ({ operation, idProductorToManage }) => {
                 dataProductor,
                 setDataProductor,
                 e.target.value,
-                "urlFaceBook"
+                "urlFacebook"
               )
             }
           />
@@ -210,6 +209,26 @@ const FormProductors = ({ operation, idProductorToManage }) => {
             }
           />
         </label>
+        {operation === "updateProductor" && (
+          <label htmlFor="visibility">
+            <select
+              name="visibility"
+              placeholder="gérer la visibilité"
+              onChange={(e) => {
+                getDataInput(
+                  dataProductor,
+                  setDataProductor,
+                  e.target.value,
+                  "isPublic"
+                );
+              }}
+            >
+              <option>Choix visibilité</option>
+              <option value={0}>Admin </option>
+              <option value={1}>Publique </option>
+            </select>
+          </label>
+        )}
         <button type="submit">
           {operation === "addProductor" ? "Valider" : "modifier"}
         </button>

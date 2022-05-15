@@ -33,7 +33,7 @@ const getInfosProductors = (id) => {
 const addProductor = (dataProductor, token) => {
   return axios({
     method: "post",
-    url: `${baseUrl}/api/LeBonSens/productors`,
+    url: `http://localhost:3001/api/LeBonSens/productors`,
     data: { dataProductor, token },
   });
 };
@@ -48,7 +48,7 @@ const addProductor = (dataProductor, token) => {
 const updateProductorById = (dataProductor, token, id) => {
   return axios({
     method: "put",
-    url: `${baseUrl}/api/LeBonSens/productors/${id}`,
+    url: `http://localhost:3001/api/LeBonSens/productors/${id}`,
     data: { dataProductor, token },
   });
 };
