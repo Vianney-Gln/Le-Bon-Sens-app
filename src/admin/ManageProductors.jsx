@@ -18,7 +18,6 @@ const ManageProductors = ({ idProductorToManage, setIdProductorToManage }) => {
   //States
   const [listProductorsToManage, setListProductorsToManage] = useState([]);
   const [modalIsOpen, setIsOpen] = useState(false); //state Modal
-  const [message, setMessage] = useState("");
 
   //useNavigate
   const navigate = useNavigate();
@@ -45,8 +44,6 @@ const ManageProductors = ({ idProductorToManage, setIdProductorToManage }) => {
         modalIsOpen={modalIsOpen}
         closeModal={closeModal}
         idProductorToManage={idProductorToManage}
-        message={message}
-        setMessage={setMessage}
       />
       <div className="container-manageProductors">
         <h3>ManageProductors</h3>

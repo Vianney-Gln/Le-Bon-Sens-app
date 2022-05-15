@@ -13,10 +13,6 @@ const ManageRecipes = ({ idRecipeToManage, setIdRecipeToManage }) => {
   /* ------- STATES ------- */
   const [listRecipes, setListRecipes] = useState([]);
   const [modalIsOpen, setIsOpen] = useState(false); //state Modal
-  const [message, setMessage] = useState("");
-
-  /* ------- NAVIGATE ------- */
-  const navigate = useNavigate();
 
   /* ------- getting data recipes on component mounting ------- */
   useEffect(() => {
@@ -42,8 +38,6 @@ const ManageRecipes = ({ idRecipeToManage, setIdRecipeToManage }) => {
       <Modal1
         modalIsOpen={modalIsOpen}
         closeModal={closeModal}
-        message={message}
-        setMessage={setMessage}
         idRecipeToManage={idRecipeToManage}
       />
 

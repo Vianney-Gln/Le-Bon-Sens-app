@@ -24,10 +24,11 @@ const FormCarrouselProductors = ({
   const [dataCarrousel, setDataCarrousel] = useState({
     id_productors: idProductorToManage,
   });
-  const [message, setMessage] = useState(""); // state text message
+
   const [error, setError] = useState(false); // state managing color of message (true = red / false = green, depend of a css class)
   const [carrousel, setCarrousel] = useState([]); // state containing data carrousel
   const [modalIsOpen, setIsOpen] = useState(false); //state Modal
+  const [message, setMessage] = useState("");
 
   //Functions running Modal
   const openModal = () => {
@@ -63,8 +64,6 @@ const FormCarrouselProductors = ({
       <Modal1
         closeModal={closeModal}
         modalIsOpen={modalIsOpen}
-        message={message}
-        setMessage={setMessage}
         idCarrouselItemToManage={idCarrouselItemToManage}
       />
       <h3>Ajouter des images au carrousel</h3>

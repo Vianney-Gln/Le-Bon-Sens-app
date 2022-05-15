@@ -15,7 +15,6 @@ const ManageProduct = ({ setIdProductToManage, idProductToManage }) => {
   /*----- states -----*/
   const [productsToManage, setProductsToManage] = useState([]); //array recieving result.data from service
   const [modalIsOpen, setIsOpen] = useState(false); //state Modal
-  const [message, setMessage] = useState("");
   const [sortParam, setSortParam] = useState("");
   const [searchParam, setSearchParam] = useState("");
   /* -----functions running Modal -----*/
@@ -51,8 +50,6 @@ const ManageProduct = ({ setIdProductToManage, idProductToManage }) => {
       <Modal1
         modalIsOpen={modalIsOpen}
         closeModal={closeModal}
-        message={message}
-        setMessage={setMessage}
         idProductToManage={idProductToManage}
       />
 

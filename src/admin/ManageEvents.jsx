@@ -15,7 +15,6 @@ const ManageEvents = ({ idEventToManage, setIdEventToManage }) => {
   /* ------ states variables ------ */
   const [listEventsToManage, setListEventsToManage] = useState([]);
   const [modalIsOpen, setIsOpen] = useState(false); //state Modal
-  const [message, setMessage] = useState("");
 
   /* ------- Navigate ------- */
   const navigate = useNavigate();
@@ -51,8 +50,6 @@ const ManageEvents = ({ idEventToManage, setIdEventToManage }) => {
       <Modal1
         modalIsOpen={modalIsOpen}
         closeModal={closeModal}
-        message={message}
-        setMessage={setMessage}
         idEventToManage={idEventToManage}
       />
 

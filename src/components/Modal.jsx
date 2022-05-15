@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 //Modal
 import Modal from "react-modal";
 //Services
@@ -15,14 +15,14 @@ import { useNavigate, useParams } from "react-router-dom";
 const Modal1 = ({
   closeModal,
   modalIsOpen,
-  message,
-  setMessage,
   idCarrouselItemToManage,
   idProductToManage,
   idEventToManage,
   idRecipeToManage,
   idProductorToManage,
 }) => {
+  //States
+  const [message, setMessage] = useState(""); //states for messages modals
   // getting connexion Token
   const token = localStorage.getItem("token_access_le_bon_sens");
   //getting param
