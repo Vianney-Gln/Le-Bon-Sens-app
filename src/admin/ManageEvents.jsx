@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 //service
-import { getAllInfosEvents, deleteOneEventById } from "../services/events";
+import { getAllInfosEvents } from "../services/events";
 //style
 import "../styles/manageEvents.scss";
 //font awesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan, faFile } from "@fortawesome/free-solid-svg-icons";
-//Modal
-import Modal from "react-modal/lib/components/Modal";
+//Components
+import Modal1 from "../components/Modal";
 //Routing
 import { useNavigate } from "react-router-dom";
 import { verifyToken } from "../services/auth";
@@ -15,32 +15,19 @@ const ManageEvents = ({ idEventToManage, setIdEventToManage }) => {
   /* ------ states variables ------ */
   const [listEventsToManage, setListEventsToManage] = useState([]);
   const [modalIsOpen, setIsOpen] = useState(false); //state Modal
-  const [successMessage, setSuccessMessage] = useState("");
+  const [message, setMessage] = useState("");
 
   /* ------- Navigate ------- */
   const navigate = useNavigate();
 
-  /* ------ Modal ------ */
-  Modal.setAppElement("#root");
+  /* ------ functions running Modal ------ */
+
   const openModal = () => {
     setIsOpen(true);
   };
 
   const closeModal = () => {
     setIsOpen(false);
-  };
-  //style Modal
-  const customStyles = {
-    content: {
-      top: "50%",
-      left: "50%",
-      right: "auto",
-      bottom: "auto",
-      marginRight: "-50%",
-      transform: "translate(-50%, -50%)",
-      width: "240px",
-      height: "160px",
-    },
   };
 
   //function getting all events on component mounting only connected as admin
@@ -59,54 +46,16 @@ const ManageEvents = ({ idEventToManage, setIdEventToManage }) => {
     });
   }, []);
 
-  /**
-   * function running service deleteOneEventById
-   */
-  const runDeleteOneEvent = () => {
-    const token = localStorage.getItem("token_access_le_bon_sens");
-    deleteOneEventById(idEventToManage, token)
-      .then(() => {
-        setSuccessMessage(
-          "suppression de l'event en cours, vous serez redirigé à l'accueil admin ...."
-        );
-        setTimeout(() => {
-          navigate("/admin");
-        }, 3000);
-      })
-      .catch(() => {
-        setSuccessMessage(
-          "il y a eu une erreur lors de la suppression de l'évent, vous serez redirigé à l'accueil admin...."
-        );
-        setTimeout(() => {
-          navigate("/admin");
-        }, 3000);
-      });
-  };
   return (
     <>
-      <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
-        style={customStyles}
-        contentLabel="Example Modal"
-      >
-        {!successMessage ? (
-          <>
-            <p>Etes vous sûr de vouloir supprimer ce produit?</p>
+      <Modal1
+        modalIsOpen={modalIsOpen}
+        closeModal={closeModal}
+        message={message}
+        setMessage={setMessage}
+        idEventToManage={idEventToManage}
+      />
 
-            <div className="container-buttons-modal">
-              <button type="button" onClick={() => runDeleteOneEvent()}>
-                oui
-              </button>
-              <button type="button" onClick={() => closeModal()}>
-                non
-              </button>
-            </div>
-          </>
-        ) : (
-          <p>{successMessage}</p>
-        )}
-      </Modal>
       <div className="container-manageEvents">
         <h3>ManageEvents</h3>
         <table>
