@@ -7,9 +7,6 @@ import "react-slideshow-image/dist/styles.css";
 import { Slide } from "react-slideshow-image";
 import iconFaceBook from "../images/icone-fb.jpg";
 import iconTwitter from "../images/icone-twitter.png";
-import carrou1 from "../images/carrou1.jpg";
-import carrou2 from "../images/carrou2.jpg";
-import carrou3 from "../images/carrou3.jpg";
 
 //service
 import {
@@ -26,31 +23,17 @@ const Productors = () => {
 
   /* ----- states ----- */
   const [infosProductor, setInfosProductor] = useState({});
-  const [carrouselProductor, setCarrouselProductor] = useState([]);
+  const [carrousel, setCarrousel] = useState([]);
 
   /* ----- getting infos productor by id on component mounting ----- */
   useEffect(() => {
-    getInfosProductors(param.id).then((result) => setInfosProductor(result));
-    getCarrouselProductor(param.id).then((result) =>
-      setCarrouselProductor(result)
-    );
-  }, []);
-
-  // carrousel
-  const slideImages = [
-    {
-      url: carrou1,
-      caption: "Slide 1",
-    },
-    {
-      url: carrou2,
-      caption: "Slide 2",
-    },
-    {
-      url: carrou3,
-      caption: "Slide 3",
-    },
-  ];
+    getInfosProductors(param.id).then((result) => {
+      setInfosProductor(result);
+      if (result.carrousel) {
+        setCarrousel(result.carrousel);
+      }
+    });
+  }, [param.id]);
 
   return (
     <div className="container-productors">
@@ -58,16 +41,17 @@ const Productors = () => {
       <div className="container-top">
         <div className="container-carrousel">
           <Slide>
-            {carrouselProductor.map((slideImage) => (
-              <div className="each-slide" key={slideImage.urlImageCarrousel}>
-                <div
-                  className="slide"
-                  style={{
-                    backgroundImage: `url(${slideImage.urlImageCarrousel})`,
-                  }}
-                />
-              </div>
-            ))}
+            {carrousel.length &&
+              carrousel.map((slideImage) => (
+                <div className="each-slide" key={slideImage.urlImageCarrousel}>
+                  <div
+                    className="slide"
+                    style={{
+                      backgroundImage: `url(${slideImage.urlImageCarrousel})`,
+                    }}
+                  />
+                </div>
+              ))}
           </Slide>
           <div className="container-buttons-mobile"></div>
         </div>
@@ -107,9 +91,16 @@ const Productors = () => {
       </div>
       <div className="container-bottom">
         <img src={infosProductor.urlImage1} alt={infosProductor.name} />
-        <div className="description-productor2">
+        <div className="container-iframe">
           <div>
-            <p>{infosProductor.description2}</p>
+            <iframe
+              title="location Le Bon Sens"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2702.053648826712!2d-1.2235271845005193!3d47.371871379169725!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x480603f0e515c905%3A0x8d19d704011726e5!2zTmF0dXInw6lsZXZhZ2UgZGUgU2FpbnQtR8OpcsOpb24!5e0!3m2!1sfr!2sfr!4v1645537785093!5m2!1sfr!2sfr"
+              width="auto"
+              height="auto"
+              allowFullScreen=""
+              loading="lazy"
+            />
           </div>
         </div>
         <img src={infosProductor.urlImage2} alt={infosProductor.name} />

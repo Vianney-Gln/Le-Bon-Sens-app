@@ -13,6 +13,9 @@ import FormShop from "./FormShop";
 import ManageRecipes from "./ManageRecipes";
 import FormEvents from "./FormEvents";
 import ManageEvents from "./ManageEvents";
+import FormProductors from "./FormProductors";
+import ManageProductors from "./ManageProductors";
+import FormCarrouselProductors from "./FormCarrouselProductors";
 
 const Admin = () => {
   /* ----- doc title ----- */
@@ -26,6 +29,8 @@ const Admin = () => {
   const [idProductToManage, setIdProductToManage] = useState(""); // id product to manage
   const [idRecipeToManage, setIdRecipeToManage] = useState(""); // id recipe to manage
   const [idEventToManage, setIdEventToManage] = useState(""); // id event to manage
+  const [idProductorToManage, setIdProductorToManage] = useState(""); // id productor to manage
+  const [idCarrouselItemToManage, setIdCarrouselItemToManage] = useState(""); // id item carrousel to manage
 
   /* ----- useNavigate ------ */
   const navigate = useNavigate();
@@ -58,9 +63,12 @@ const Admin = () => {
           <Link to="/admin/manageRecipes">
             <li>Gérer les recettes</li>
           </Link>
-          <li>Ajouter un producteur</li>
-          <li>Gérer les producteurs</li>
-          <li>Supprimer un producteur</li>
+          <Link to="/admin/addProductor">
+            <li>Ajouter un producteur</li>
+          </Link>
+          <Link to="/admin/manageProductors">
+            <li>Gérer les producteurs</li>
+          </Link>
           <Link to="/admin/updateShop">
             <li>Modifier les infos du magasin</li>
           </Link>
@@ -123,6 +131,29 @@ const Admin = () => {
             <FormEvents
               operation={param.operation}
               idEventToManage={idEventToManage}
+            />
+          )}
+          {param.operation === "updateProductor" && (
+            <FormProductors
+              operation={param.operation}
+              idProductorToManage={idProductorToManage}
+            />
+          )}
+          {param.operation === "addProductor" && (
+            <FormProductors operation={param.operation} />
+          )}
+          {param.operation === "manageProductors" && (
+            <ManageProductors
+              idProductorToManage={idProductorToManage}
+              setIdProductorToManage={setIdProductorToManage}
+            />
+          )}
+          {param.operation === "manageCarrouselProductor" && (
+            <FormCarrouselProductors
+              operation={param.operation}
+              idProductorToManage={idProductorToManage}
+              idCarrouselItemToManage={idCarrouselItemToManage}
+              setIdCarrouselItemToManage={setIdCarrouselItemToManage}
             />
           )}
         </div>
