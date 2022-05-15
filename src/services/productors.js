@@ -3,8 +3,8 @@ import axios from "axios";
 const baseUrl = "https://shielded-sea-56340.herokuapp.com";
 
 /**
- * function getting only name and id for productors
- * @returns array
+ * function getting name, id, status for productors
+ * @returns {Promise}
  */
 const getNamesProductors = () => {
   return axios
