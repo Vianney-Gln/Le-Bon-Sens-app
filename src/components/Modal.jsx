@@ -3,10 +3,11 @@ import React from "react";
 import Modal from "react-modal";
 //Service
 import { deleteOneItemCarrouselById } from "../services/productors";
+import { deleteOneProduct } from "../services/products";
 //Helper
 import deleteOneThing from "../helpers/delete";
 //Routing
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const Modal1 = ({
   closeModal,
@@ -14,8 +15,35 @@ const Modal1 = ({
   message,
   setMessage,
   idCarrouselItemToManage,
+  idProductToManage,
 }) => {
   const token = localStorage.getItem("token_access_le_bon_sens");
+
+  const param = useParams();
+
+  const runDeleteFunctions = () => {
+    switch (param.operation) {
+      case "manageProduct":
+        deleteOneThing(
+          idProductToManage,
+          deleteOneProduct,
+          token,
+          navigate,
+          setMessage
+        );
+        break;
+      case "manageCarrouselProductor":
+        deleteOneThing(
+          idCarrouselItemToManage,
+          deleteOneItemCarrouselById,
+          token,
+          navigate,
+          setMessage
+        );
+        break;
+    }
+  };
+
   /* -----Modal -----*/
   Modal.setAppElement("#root");
 
@@ -43,19 +71,18 @@ const Modal1 = ({
         style={customStyles}
         contentLabel="Example Modal"
       >
-        {!message && <p>Etes vous sûr de vouloir supprimer ce produit?</p>}
+        {!message && param.operation === "manageProduct" && (
+          <p>Etes vous sûr de vouloir supprimer ce produit?</p>
+        )}
+        {!message && param.operation === "manageCarrouselProductor" && (
+          <p>Etes vous sûr de vouloir supprimer cette image?</p>
+        )}
         {!message && (
           <div className="container-buttons-modal">
             <button
               type="button"
               onClick={() => {
-                deleteOneThing(
-                  idCarrouselItemToManage,
-                  deleteOneItemCarrouselById,
-                  token,
-                  navigate,
-                  setMessage
-                );
+                runDeleteFunctions();
               }}
             >
               oui

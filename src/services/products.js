@@ -46,7 +46,7 @@ export const postOneProduct = (dataProduct, token) => {
  */
 
 export const deleteOneProduct = (id, token) => {
-  return axios.post(`${baseUrl}/api/LeBonSens/products/${id}`, token);
+  return axios.post(`${baseUrl}/api/LeBonSens/products/${id}`, { token });
 };
 
 /**

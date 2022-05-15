@@ -21,7 +21,7 @@ const CardsProducts = ({
   /* ----- States variables ------ */
   const [detailProductModalIsOpen, setDetailProductIsOpen] = useState(false); //state Modal
 
-  /* -----Modal -----*/
+  /* -----Modal for more detail products -----*/
   DetailProductModal.setAppElement("#root");
   const openDetailProductModal = () => {
     setDetailProductIsOpen(true);
