@@ -3,12 +3,12 @@ import axios from "axios";
 const baseUrl = "https://shielded-sea-56340.herokuapp.com";
 
 /**
- * function getting only name and id for productors
- * @returns array
+ * function getting name, id, status for productors
+ * @returns {Promise}
  */
 const getNamesProductors = () => {
   return axios
-    .get(`${baseUrl}/api/LeBonSens/productors`)
+    .get(`http://localhost:3001/api/LeBonSens/productors`)
     .then((result) => result.data);
 };
 
