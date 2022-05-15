@@ -1,10 +1,11 @@
 import React from "react";
 //Modal
 import Modal from "react-modal";
-//Service
+//Services
 import { deleteOneItemCarrouselById } from "../services/productors";
 import { deleteOneProduct } from "../services/products";
 import { deleteOneEventById } from "../services/events";
+import { deleteOneRecipeById } from "../services/recipes";
 //Helper
 import deleteOneThing from "../helpers/delete";
 //Routing
@@ -18,6 +19,7 @@ const Modal1 = ({
   idCarrouselItemToManage,
   idProductToManage,
   idEventToManage,
+  idRecipeToManage,
 }) => {
   // getting connexion Token
   const token = localStorage.getItem("token_access_le_bon_sens");
@@ -48,6 +50,15 @@ const Modal1 = ({
         deleteOneThing(
           idEventToManage,
           deleteOneEventById,
+          token,
+          navigate,
+          setMessage
+        );
+        break;
+      case "manageRecipes":
+        deleteOneThing(
+          idRecipeToManage,
+          deleteOneRecipeById,
           token,
           navigate,
           setMessage
@@ -91,6 +102,9 @@ const Modal1 = ({
         )}
         {!message && param.operation === "manageEvents" && (
           <p>Etes vous sûr de vouloir supprimer cet événement?</p>
+        )}
+        {!message && param.operation === "manageRecipes" && (
+          <p>Etes vous sûr de vouloir supprimer cette recette?</p>
         )}
         {!message && (
           <div className="container-buttons-modal">
