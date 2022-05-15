@@ -72,6 +72,9 @@ const manageSuccessMessage = (operation, setMessage) => {
     case "manageCarrouselProductor":
       setMessage(`Image ajoutée ${baseMessage}`);
       break;
+    case "updateProductor":
+      setMessage(`mise à jour effectuée ${baseMessage}`);
+      break;
   }
 };
 
@@ -86,7 +89,7 @@ const manageErrorMessage = (setMessage, messageError) => {
       setMessage("Vous devez remplir tous les champs obligatoires");
       break;
     default:
-      setMessage("Il y eu erreur , veuillez réessayer plus tard");
+      setMessage("Une erreur s'est produite , veuillez réessayer plus tard");
   }
 };
 
