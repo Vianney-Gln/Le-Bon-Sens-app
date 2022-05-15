@@ -25,8 +25,9 @@ const FormProductors = ({ operation, idProductorToManage }) => {
     if (operation === "updateProductor") {
       getInfosProductors(idProductorToManage)
         .then((infosProductor) => {
-          console.log(infosProductor);
+          delete infosProductor.carrousel; //delete carrousel from the result
           setDataProductor(infosProductor);
+          console.log(infosProductor.isPublic);
         })
         .catch((err) => {
           console.log(err);
@@ -209,11 +210,13 @@ const FormProductors = ({ operation, idProductorToManage }) => {
             }
           />
         </label>
-        {operation === "updateProductor" && (
+        {(operation === "updateProductor" && dataProductor.isPublic === 0) ||
+        dataProductor.isPublic === 1 ? (
           <label htmlFor="visibility">
             <select
               name="visibility"
               placeholder="gérer la visibilité"
+              defaultValue={dataProductor.isPublic}
               onChange={(e) => {
                 getDataInput(
                   dataProductor,
@@ -223,11 +226,12 @@ const FormProductors = ({ operation, idProductorToManage }) => {
                 );
               }}
             >
-              <option>Choix visibilité</option>
-              <option value={0}>Admin </option>
-              <option value={1}>Publique </option>
+              <option value={0}>Admin</option>
+              <option value={1}>Publique</option>
             </select>
           </label>
+        ) : (
+          ""
         )}
         <button type="submit">
           {operation === "addProductor" ? "Valider" : "modifier"}
