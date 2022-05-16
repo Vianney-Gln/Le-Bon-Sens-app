@@ -36,6 +36,7 @@ export const handleForm = (
   const token = localStorage.getItem("token_access_le_bon_sens");
   serviceFunction(dataInputs, token, idToManage)
     .then(() => {
+      console.log("ok!");
       manageSuccessMessage(operation, setMessage);
       setError(false);
       setTimeout(() => {
@@ -73,6 +74,9 @@ const manageSuccessMessage = (operation, setMessage) => {
       setMessage(`Image ajoutée ${baseMessage}`);
       break;
     case "updateProductor":
+      setMessage(`mise à jour effectuée ${baseMessage}`);
+      break;
+    case "updateEvent":
       setMessage(`mise à jour effectuée ${baseMessage}`);
       break;
   }

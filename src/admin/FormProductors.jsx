@@ -27,7 +27,6 @@ const FormProductors = ({ operation, idProductorToManage }) => {
         .then((infosProductor) => {
           delete infosProductor.carrousel; //delete carrousel from the result
           setDataProductor(infosProductor);
-          console.log(infosProductor.isPublic);
         })
         .catch((err) => {
           console.log(err);

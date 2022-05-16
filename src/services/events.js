@@ -40,7 +40,7 @@ export const createOneEvent = (dataEvents, token) => {
   return axios({
     method: "post",
     url: `${baseUrl}/api/LeBonSens/events`,
-    data: { dataEvents, token: token },
+    data: { dataEvents, token },
   }).then((res) => res);
 };
 
@@ -55,10 +55,10 @@ export const deleteOneEventById = (id, token) => {
   });
 };
 
-export const updateOneEventById = (dataEventToUpdate, id, token) => {
+export const updateOneEventById = (dataEventToUpdate, token, id) => {
   return axios({
     method: "put",
-    url: `${baseUrl}/api/LeBonSens/events/${id}`,
+    url: `http://localhost:3001/api/LeBonSens/events/${id}`,
     data: { dataEventToUpdate, token },
   });
 };
