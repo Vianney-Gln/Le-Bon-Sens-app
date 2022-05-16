@@ -3,8 +3,6 @@ import React, { useEffect, useContext, useState } from "react";
 import { Link } from "react-router-dom";
 // styles
 import "../styles/header.scss";
-// service
-import getInfosShop from "../services/shop";
 // context
 import { shopContext } from "../context/shop";
 import { productorsContext } from "../context/productors";
@@ -18,13 +16,6 @@ const Header = ({ insert, disableInsert }) => {
   // useContext
   const ShopContext = useContext(shopContext);
   const ProductorsContext = useContext(productorsContext);
-
-  // getting infos shop and store them in te shop context
-  useEffect(() => {
-    getInfosShop().then((res) => {
-      ShopContext.setInfosShop(res);
-    });
-  }, []);
 
   //States
   const [isOpen, setOpen] = useState(false); // variable statement hamburger react
