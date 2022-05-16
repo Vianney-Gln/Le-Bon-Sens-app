@@ -3,17 +3,17 @@ import axios from "axios";
 const baseUrl = "https://shielded-sea-56340.herokuapp.com";
 
 /**
- * function getting first 6 events
- * @returns {array}
+ * Function getting first 6 events
+ * @returns {Promise}
  */
 const getInfosEvents = () => {
   return axios.get(`${baseUrl}/api/LeBonSens/events`).then((res) => res.data);
 };
 
 /**
- * function getting one event By id (for pre filling form admin update event)
- * @param {number} id
- * @returns {object}
+ * Function getting one event By id (for pre filling form admin update event)
+ * @param {Number} id
+ * @returns {Promise}
  */
 export const getOneEventById = (id) => {
   return axios
@@ -22,8 +22,8 @@ export const getOneEventById = (id) => {
 };
 
 /**
- * function getting all events (for admin use)
- * @returns {array}
+ * Function getting all events (for admin use)
+ * @returns {Promise}
  */
 export const getAllInfosEvents = (token) => {
   return axios
@@ -32,9 +32,10 @@ export const getAllInfosEvents = (token) => {
 };
 
 /**
- * function creating an event (for admin use)
- * @param {object} dataEvents
- * @returns
+ * Function creating an event (for admin use)
+ * @param {Object} dataEvents
+ * @param {String} token
+ * @returns {Promise}
  */
 export const createOneEvent = (dataEvents, token) => {
   return axios({
@@ -45,9 +46,10 @@ export const createOneEvent = (dataEvents, token) => {
 };
 
 /**
- * function deleting one event by his id
- * @param {number} id
- * @returns
+ * Function deleting one event by his id only admin
+ * @param {Number} id
+ * @param {String} token
+ * @returns {Promise}
  */
 export const deleteOneEventById = (id, token) => {
   return axios.post(`${baseUrl}/api/LeBonSens/events/${id}`, {
@@ -55,10 +57,17 @@ export const deleteOneEventById = (id, token) => {
   });
 };
 
+/**
+ * Function updating one event by id only for admin
+ * @param {Object} dataEventToUpdate
+ * @param {String} token
+ * @param {Number} id
+ * @returns {Promise}
+ */
 export const updateOneEventById = (dataEventToUpdate, token, id) => {
   return axios({
     method: "put",
-    url: `http://localhost:3001/api/LeBonSens/events/${id}`,
+    url: `${baseUrl}/api/LeBonSens/events/${id}`,
     data: { dataEventToUpdate, token },
   });
 };

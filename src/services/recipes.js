@@ -3,22 +3,21 @@ import axios from "axios";
 const baseUrl = "https://shielded-sea-56340.herokuapp.com";
 
 /**
- *function getting all recipes or recipes in terms of searchParams
+ * Function getting all recipes or recipes in terms of searchParams
  * @param {string} paramSearch
- * @returns array
+ * @returns {Promise}
  */
 const getRecipes = (paramSearch) => {
   let url = `${baseUrl}/api/LeBonSens/recipes`;
-
   if (paramSearch) url += `?name=${paramSearch}`;
-
   return axios.get(url).then((res) => res.data);
 };
 
 /**
- * function posting a new recipe
+ * Function posting a new recipe
  * @param {object} dataRecipe
- * @returns
+ * @param {String} token
+ * @returns {Pomise}
  */
 export const addRecipe = (dataRecipe, token) => {
   let url = `${baseUrl}/api/LeBonSens/recipes`;
@@ -30,9 +29,10 @@ export const addRecipe = (dataRecipe, token) => {
 };
 
 /**
- * function deleteting one recipe by his id
+ * Function deleteting one recipe by his id
  * @param {number} id
- * @returns
+ * @param {String} token
+ * @returns {Promise}
  */
 export const deleteOneRecipeById = (id, token) => {
   return axios({
@@ -43,9 +43,9 @@ export const deleteOneRecipeById = (id, token) => {
 };
 
 /**
- * function getting all data for one recipe by id
- * @param {number} id
- * @returns object
+ * Function getting all data for one recipe by id
+ * @param {Number} id
+ * @returns {Promise}
  */
 
 export const getOneRecipeById = (id) => {
@@ -54,6 +54,13 @@ export const getOneRecipeById = (id) => {
     .then((result) => result.data);
 };
 
+/**
+ * Function updtating one recipe by is
+ * @param {Object} dataRecipe
+ * @param {String} token
+ * @param {Number} id
+ * @returns {Promise}
+ */
 export const updateOneRecipeById = (dataRecipe, token, id) => {
   return axios({
     method: "put",
