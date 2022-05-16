@@ -1,5 +1,5 @@
 /**
- *
+ * Function used to run all deletes functions from services
  * @param {Number} id
  * @param {Function} serviceFunction
  * @param {(String | Undefined)} [token=udefined]

@@ -11,7 +11,7 @@ const Shop = () => {
   document.title = "Le Bon Sens - Notre Magasin";
   // UseContext
   const ShopContext = useContext(shopContext);
-  //UseNavigate
+  // UseNavigate
   const navigate = useNavigate();
 
   return (

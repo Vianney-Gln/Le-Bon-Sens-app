@@ -1,5 +1,5 @@
 /**
- * function getting all inputs items
+ * Function getting all inputs items
  * @param {Object} state
  * @param {Function} setState
  * @param {String | Number} value
@@ -12,7 +12,7 @@ const getDataInput = (state, setState, value, key) => {
 };
 
 /**
- * function calling service function, manage error or success messages and redirect to admin
+ * Function calling services post or update functions, manage error or success messages and redirect to admin
  * @param {Event} e
  * @param {Function} serviceFunction
  * @param {Function} setMessage
@@ -51,7 +51,7 @@ export const handleForm = (
 };
 
 /**
- * function managing the content of success messages
+ * Function managing the content of success messages
  * @param {String} operation
  * @param {Function} setMessage
  */
@@ -92,7 +92,7 @@ const manageSuccessMessage = (operation, setMessage) => {
 };
 
 /**
- * function managing the content of error messages
+ * Function managing the content of error messages
  * @param {Function} setMessage
  * @param {String} messageError
  */

@@ -1,21 +1,17 @@
-/* eslint-disable operator-linebreak */
-/* eslint-disable no-nested-ternary */
 import React, { useState, useEffect } from "react";
-// style
+// Style
 import "../styles/events.scss";
-
-// service
+// Service
 import getInfosEvents from "../services/events";
 
 const Events = ({ setInsert }) => {
-  // doc title
+  // Doc title
   document.title = "Le Bon Sens - Evènements";
-
-  // variables statement
+  // Variables statement
   const [currentEvents, setCurrentEvents] = useState([]); // currents events
   const [events, setEvents] = useState([]); // all other events
 
-  // getting all infos about events on component mounting
+  // Getting all infos about events on component mounting
   useEffect(() => {
     /* ------ disable insert event ------*/
     setInsert(false);

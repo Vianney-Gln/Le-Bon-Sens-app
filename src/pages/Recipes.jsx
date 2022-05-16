@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from "react";
-// style
+// Style
 import "../styles/recipes.scss";
-// service
+// Service
 import getRecipes from "../services/recipes";
-// component
+// Component
 import CardRecipe from "../components/CardRecipe";
 
 const Recipes = () => {
-  /* ----- doc title -----*/
+  /* ----- Doc title -----*/
   document.title = "Le Bon Sens - Recettes";
 
-  /* ----- variables statement -----*/
+  /* ----- Variables statement -----*/
   const [recipes, setRecipes] = useState([]);
   const [searchParam, setSearchParam] = useState("");
 
-  /* ----- getting all recipes on mounting componant or recipes in terms of searchParams -----*/
+  /* ----- Getting all recipes on mounting componant or recipes in terms of searchParams -----*/
   useEffect(() => {
     getRecipes(searchParam).then((rcp) => setRecipes(rcp));
   }, [searchParam]);
