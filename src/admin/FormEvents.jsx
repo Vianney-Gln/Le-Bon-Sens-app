@@ -5,6 +5,7 @@ import {
   getOneEventById,
   updateOneEventById,
 } from "../services/events";
+import getDataInput from "../helpers/form";
 //routing
 import { useNavigate } from "react-router-dom";
 
@@ -17,16 +18,6 @@ const FormEvents = ({ operation, idEventToManage }) => {
   /* ------ useNavigate ------ */
   const navigate = useNavigate();
 
-  /**
-   * function getting all infos from the form and turn them into an object in the state dataEvents
-   * @param {string | number} value
-   * @param {string} key
-   */
-  const getDataEvents = (value, key) => {
-    const newData = dataEvents;
-    newData[key] = value;
-    setDataEvents(newData);
-  };
   //function getting one event on component mounting IF we're in update mode
   useEffect(() => {
     if (operation === "updateEvent") {
@@ -105,7 +96,9 @@ const FormEvents = ({ operation, idEventToManage }) => {
             type="text"
             name="name"
             placeholder="nom de l'évènement"
-            onChange={(e) => getDataEvents(e.target.value, "name")}
+            onChange={(e) =>
+              getDataInput(dataEvents, setDataEvents, e.target.value, "name")
+            }
             defaultValue={operation === "updateEvent" ? dataEvents.name : ""}
           ></input>
         </label>
@@ -113,7 +106,14 @@ const FormEvents = ({ operation, idEventToManage }) => {
           <textarea
             name="description"
             placeholder="description de l'évènement"
-            onChange={(e) => getDataEvents(e.target.value, "description")}
+            onChange={(e) =>
+              getDataInput(
+                dataEvents,
+                setDataEvents,
+                e.target.value,
+                "description"
+              )
+            }
             defaultValue={
               operation === "updateEvent" ? dataEvents.description : ""
             }
@@ -123,7 +123,9 @@ const FormEvents = ({ operation, idEventToManage }) => {
           <input
             type="date"
             name="date"
-            onChange={(e) => getDataEvents(e.target.value, "date")}
+            onChange={(e) =>
+              getDataInput(dataEvents, setDataEvents, e.target.value, "date")
+            }
             defaultValue={operation === "updateEvent" ? dataEvents.date : ""}
           ></input>
         </label>
@@ -131,7 +133,9 @@ const FormEvents = ({ operation, idEventToManage }) => {
           <input
             type="time"
             name="hour"
-            onChange={(e) => getDataEvents(e.target.value, "hour")}
+            onChange={(e) =>
+              getDataInput(dataEvents, setDataEvents, e.target.value, "hour")
+            }
             defaultValue={operation === "updateEvent" ? dataEvents.hour : ""}
           ></input>
         </label>
@@ -140,7 +144,14 @@ const FormEvents = ({ operation, idEventToManage }) => {
             type="text"
             name="urlImage"
             placeholder="url de l'image"
-            onChange={(e) => getDataEvents(e.target.value, "urlImage")}
+            onChange={(e) =>
+              getDataInput(
+                dataEvents,
+                setDataEvents,
+                e.target.value,
+                "urlImage"
+              )
+            }
             defaultValue={
               operation === "updateEvent" ? dataEvents.urlImage : ""
             }
