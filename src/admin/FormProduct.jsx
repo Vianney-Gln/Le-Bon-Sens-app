@@ -8,7 +8,7 @@ import {
 //Routing
 import { useNavigate } from "react-router-dom";
 //Helper
-import getDataInput from "../helpers/form";
+import getDataInput, { handleForm } from "../helpers/form";
 
 const FormProduct = ({ operation, idProductToManage }) => {
   /* -----Navigate----- */
@@ -17,43 +17,6 @@ const FormProduct = ({ operation, idProductToManage }) => {
   const [dataProduct, setDataProduct] = useState({});
   const [error, setError] = useState(false); // state true if error while sending post request- Manage the color of the message
   const [message, setMessage] = useState(""); // message success or fail depending to the request
-
-  /**
-   * function removing all fields after success request
-   */
-  const resetFields = () => {
-    document.getElementById("name").value = "";
-    document.getElementById("price").value = "";
-    document.getElementById("urlImage").value = "";
-    document.getElementById("category").value = "";
-  };
-
-  /**
-   * function running the PostOneProduct from service and manage errors after submit form
-   */
-  const handleFormPost = (e) => {
-    e.preventDefault();
-    const token = localStorage.getItem("token_access_le_bon_sens");
-    postOneProduct(dataProduct, token)
-      .then(() => {
-        setMessage("produit correctement ajouté");
-        setError(false);
-        setDataProduct({
-          name: "",
-          price: "",
-          urlImage: "",
-          id_categoryProducts: "",
-        });
-        resetFields();
-      })
-      .catch((err) => {
-        setMessage(
-          "il y a eu une erreur lors de l'envois, veuillez vérifier vos champs"
-        );
-        setError(true);
-        console.log(err);
-      });
-  };
 
   //getting all infos for one product on component mounting IF operation === updateProduct
   useEffect(() => {
@@ -64,38 +27,35 @@ const FormProduct = ({ operation, idProductToManage }) => {
     }
   }, []);
 
-  /**
-   * function running handleFormUpdate
-   * @param {*} e
-   */
-  const handleFormUpdate = (e) => {
-    e.preventDefault();
-    const token = localStorage.getItem("token_access_le_bon_sens");
-    updateOneProduct(dataProduct, idProductToManage, token)
-      .then(() => {
-        setMessage("produit correctement mis à jour");
-        setError(false);
-      })
-      .then(() => {
-        setTimeout(() => {
-          navigate("/admin/addProduct");
-        }, 3000);
-      })
-      .catch(() => {
-        setMessage(
-          "il y a eu une erreur lors de la mise à jour, veuillez vérifier vos champs"
-        );
-        setError(true);
-      });
-  };
   return (
     <>
       {operation === "addProduct" && <h3>Ajouter des produits en stock</h3>}
       {operation === "updateProduct" && <h3>Modifier un produit en stock</h3>}
       <form
-        onSubmit={
-          operation === "addProduct" ? handleFormPost : handleFormUpdate
-        }
+        onSubmit={(e) => {
+          if (operation === "addProduct") {
+            handleForm(
+              e,
+              postOneProduct,
+              setMessage,
+              setError,
+              dataProduct,
+              navigate,
+              operation
+            );
+          } else if (operation === "updateProduct") {
+            handleForm(
+              e,
+              updateOneProduct,
+              setMessage,
+              setError,
+              dataProduct,
+              navigate,
+              operation,
+              idProductToManage
+            );
+          }
+        }}
       >
         <label htmlFor="name">
           <input

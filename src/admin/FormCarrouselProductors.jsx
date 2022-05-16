@@ -6,9 +6,8 @@ import Modal1 from "../components/Modal";
 //Style
 import "../styles/formCarrouselProductors.scss";
 //Helper
-import getDataInput from "../helpers/form";
-import { handleForm } from "../helpers/form";
-//Service
+import getDataInput, { handleForm } from "../helpers/form";
+//Services
 import {
   addOneCarrouselItem,
   getInfosProductors,
@@ -38,7 +37,7 @@ const FormCarrouselProductors = ({
   const closeModal = () => {
     setIsOpen(false);
   };
-  //useNavigate
+  //UseNavigate
   const navigate = useNavigate();
 
   //Function getting carrousel infos from one productor on component mounting (only if operation === manageCarrouselProductor)

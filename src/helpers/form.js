@@ -67,6 +67,9 @@ const manageSuccessMessage = (operation, setMessage) => {
     case "addProduct":
       setMessage(`Produit ajouté ${baseMessage}`);
       break;
+    case "updateProduct":
+      setMessage(`mise à jour effectuée ${baseMessage}`);
+      break;
     case "createEvent":
       setMessage(`Evénement créé ${baseMessage}`);
       break;

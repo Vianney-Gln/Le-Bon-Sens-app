@@ -56,7 +56,7 @@ export const deleteOneProduct = (id, token) => {
  * @param {string} token
  * @returns
  */
-export const updateOneProduct = (dataProduct, id, token) => {
+export const updateOneProduct = (dataProduct, token, id) => {
   return axios({
     method: "put",
     url: `${baseUrl}/api/LeBonSens/products/${id}`,
