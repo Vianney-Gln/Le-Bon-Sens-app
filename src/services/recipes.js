@@ -54,7 +54,7 @@ export const getOneRecipeById = (id) => {
     .then((result) => result.data);
 };
 
-export const updateOneRecipeById = (dataRecipe, id, token) => {
+export const updateOneRecipeById = (dataRecipe, token, id) => {
   return axios({
     method: "put",
     url: `${baseUrl}/api/LeBonSens/recipes/${id}`,
