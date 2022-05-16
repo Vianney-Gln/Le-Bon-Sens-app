@@ -1,32 +1,22 @@
 import React, { useState, useEffect } from "react";
-
-//service
+//Service
 import {
   postOneProduct,
   getOneProductById,
   updateOneProduct,
 } from "../services/products";
-
+//Routing
 import { useNavigate } from "react-router-dom";
+//Helper
+import getDataInput from "../helpers/form";
 
 const FormProduct = ({ operation, idProductToManage }) => {
   /* -----Navigate----- */
   const navigate = useNavigate();
-  /* -----states-----*/
+  /* -----States-----*/
   const [dataProduct, setDataProduct] = useState({});
   const [error, setError] = useState(false); // state true if error while sending post request- Manage the color of the message
   const [message, setMessage] = useState(""); // message success or fail depending to the request
-
-  /**
-   * function getting all infos from the form and turn them into an object in the state dataProduct
-   * @param {string | number} value
-   * @param {string} key
-   */
-  const getDataProduct = (value, key) => {
-    const newData = dataProduct;
-    newData[key] = value;
-    setDataProduct(newData);
-  };
 
   /**
    * function removing all fields after success request
@@ -114,7 +104,9 @@ const FormProduct = ({ operation, idProductToManage }) => {
             id="name"
             placeholder="nom du produit"
             defaultValue={operation === "updateProduct" ? dataProduct.name : ""}
-            onChange={(e) => getDataProduct(e.target.value, "name")}
+            onChange={(e) =>
+              getDataInput(dataProduct, setDataProduct, e.target.value, "name")
+            }
           ></input>
         </label>
         <label htmlFor="price">
@@ -126,7 +118,9 @@ const FormProduct = ({ operation, idProductToManage }) => {
             defaultValue={
               operation === "updateProduct" ? dataProduct.price : ""
             }
-            onChange={(e) => getDataProduct(e.target.value, "price")}
+            onChange={(e) =>
+              getDataInput(dataProduct, setDataProduct, e.target.value, "price")
+            }
           ></input>
         </label>
         <label htmlFor="urlImage">
@@ -138,7 +132,14 @@ const FormProduct = ({ operation, idProductToManage }) => {
             defaultValue={
               operation === "updateProduct" ? dataProduct.urlImage : ""
             }
-            onChange={(e) => getDataProduct(e.target.value, "urlImage")}
+            onChange={(e) =>
+              getDataInput(
+                dataProduct,
+                setDataProduct,
+                e.target.value,
+                "urlImage"
+              )
+            }
           ></input>
         </label>
         <label htmlFor="category">
@@ -146,7 +147,12 @@ const FormProduct = ({ operation, idProductToManage }) => {
             name="category"
             id="category"
             onChange={(e) =>
-              getDataProduct(Number(e.target.value), "id_categoryProducts")
+              getDataInput(
+                dataProduct,
+                setDataProduct,
+                Number(e.target.value),
+                "id_categoryProducts"
+              )
             }
           >
             <option value="" className="option-fake">
