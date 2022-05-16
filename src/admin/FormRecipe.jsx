@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
-//routing
+//Routing
 import { useNavigate } from "react-router-dom";
-
-//service
+//Service
 import {
   addRecipe,
   getOneRecipeById,
   updateOneRecipeById,
 } from "../services/recipes";
+//Helper
+import getDataInput from "../helpers/form";
 
 const FormRecipe = ({ operation, idRecipeToManage }) => {
   /* -------- states -------- */
@@ -17,17 +18,6 @@ const FormRecipe = ({ operation, idRecipeToManage }) => {
 
   /* ------- Navigate ------- */
   const navigate = useNavigate();
-
-  /**
-   * function getting all infos from the form and turn them into an object
-   * @param {string || number} value
-   * @param {string} key
-   */
-  const getDataRecipeForm = (value, key) => {
-    const newData = dataRecipe;
-    newData[key] = value;
-    setDataRecipe(newData);
-  };
 
   /**
    * function removing all fields
@@ -127,7 +117,9 @@ const FormRecipe = ({ operation, idRecipeToManage }) => {
             placeholder="nom de la recette"
             id="name"
             defaultValue={operation === "updateRecipe" ? dataRecipe.name : ""}
-            onChange={(e) => getDataRecipeForm(e.target.value, "name")}
+            onChange={(e) =>
+              getDataInput(dataRecipe, setDataRecipe, e.target.value, "name")
+            }
           ></input>
         </label>
         <label htmlFor="description">
@@ -140,7 +132,14 @@ const FormRecipe = ({ operation, idRecipeToManage }) => {
             defaultValue={
               operation === "updateRecipe" ? dataRecipe.description : ""
             }
-            onChange={(e) => getDataRecipeForm(e.target.value, "description")}
+            onChange={(e) =>
+              getDataInput(
+                dataRecipe,
+                setDataRecipe,
+                e.target.value,
+                "description"
+              )
+            }
           ></textarea>
         </label>
         <label htmlFor="cooking time">
@@ -153,7 +152,14 @@ const FormRecipe = ({ operation, idRecipeToManage }) => {
             defaultValue={
               operation === "updateRecipe" ? dataRecipe.cookingTime : ""
             }
-            onChange={(e) => getDataRecipeForm(e.target.value, "cookingTime")}
+            onChange={(e) =>
+              getDataInput(
+                dataRecipe,
+                setDataRecipe,
+                e.target.value,
+                "cookingTime"
+              )
+            }
           ></input>
         </label>
         <label htmlFor="preparation time">
@@ -167,7 +173,12 @@ const FormRecipe = ({ operation, idRecipeToManage }) => {
               operation === "updateRecipe" ? dataRecipe.preparationTime : ""
             }
             onChange={(e) =>
-              getDataRecipeForm(e.target.value, "preparationTime")
+              getDataInput(
+                dataRecipe,
+                setDataRecipe,
+                e.target.value,
+                "preparationTime"
+              )
             }
           ></input>
         </label>
@@ -181,7 +192,14 @@ const FormRecipe = ({ operation, idRecipeToManage }) => {
             defaultValue={
               operation === "updateRecipe" ? dataRecipe.urlImage : ""
             }
-            onChange={(e) => getDataRecipeForm(e.target.value, "urlImage")}
+            onChange={(e) =>
+              getDataInput(
+                dataRecipe,
+                setDataRecipe,
+                e.target.value,
+                "urlImage"
+              )
+            }
           ></input>
         </label>
         {operation === "addRecipe" ? (
