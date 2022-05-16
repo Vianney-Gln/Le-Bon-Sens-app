@@ -2,42 +2,24 @@ import React, { useEffect, useState } from "react";
 //Services
 import getInfosShop, { updateInfosShop } from "../services/shop";
 //Helper
-import getDataInput from "../helpers/form";
+import getDataInput, { handleForm } from "../helpers/form";
+//Routing
+import { useNavigate, useParams } from "react-router-dom";
 
 const FormShop = () => {
-  /* -------- states ------- */
+  /* -------- States ------- */
   const [dataShop, setDataShop] = useState({});
   const [dataShopToUpdate, setDataShopToUpdate] = useState({});
-  const [successMessage, setSuccessMessage] = useState("");
+  const [message, setMessage] = useState("");
   const [error, setError] = useState(false);
 
-  /**
-   * function submitting the form
-   * @param {*} e
-   */
-  const handleFormShop = (e) => {
-    e.preventDefault();
-    const token = localStorage.getItem("token_access_le_bon_sens");
-    updateInfosShop(dataShopToUpdate, token)
-      .then(() => {
-        setSuccessMessage("données mises à jour correctement");
-        setError(false);
-      })
-      .then(() => {
-        setTimeout(() => {
-          window.location.reload();
-        }, 3000);
-      })
-      .catch((err) => {
-        console.log(err);
-        setSuccessMessage(
-          "Il y a eu une erreur lors de la mise à jour des données"
-        );
-        setError(true);
-      });
-  };
+  /* ----- UseNavigate ------*/
+  const navigate = useNavigate();
 
-  /* -------- getting data shop on component mounting ------- */
+  /* ----- UseParams ----- */
+  const { operation } = useParams();
+
+  /* -------- Getting data shop on component mounting ------- */
   useEffect(() => {
     getInfosShop()
       .then((result) => setDataShop(result))
@@ -47,7 +29,19 @@ const FormShop = () => {
   return (
     <div className="container-update-infos-shop">
       <h3>Modification des infos du magasin</h3>
-      <form onSubmit={handleFormShop}>
+      <form
+        onSubmit={(e) => {
+          handleForm(
+            e,
+            updateInfosShop,
+            setMessage,
+            setError,
+            dataShopToUpdate,
+            navigate,
+            operation
+          );
+        }}
+      >
         <label htmlFor="name">
           <span>nom du magasin:</span>
           <input
@@ -219,9 +213,7 @@ const FormShop = () => {
           ></input>
         </label>
         <button type="submit">Modifier</button>
-        {successMessage && (
-          <p className={!error ? "success" : "fail"}>{successMessage}</p>
-        )}
+        {message && <p className={!error ? "success" : "fail"}>{message}</p>}
       </form>
     </div>
   );
