@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
-//service
+//Services
 import getInfosShop, { updateInfosShop } from "../services/shop";
+//Helper
+import getDataInput from "../helpers/form";
 
 const FormShop = () => {
   /* -------- states ------- */
@@ -35,17 +37,6 @@ const FormShop = () => {
       });
   };
 
-  /**
-   * function getting all infos from the form and turn them into an object in the state dataShop
-   * @param {string | number} value
-   * @param {string} key
-   */
-  const getDataShop = (value, key) => {
-    const newData = dataShopToUpdate;
-    newData[key] = value;
-    setDataShopToUpdate(newData);
-  };
-
   /* -------- getting data shop on component mounting ------- */
   useEffect(() => {
     getInfosShop()
@@ -64,7 +55,14 @@ const FormShop = () => {
             name="name"
             placeholder="nom du magasin"
             defaultValue={dataShop ? dataShop.name : ""}
-            onChange={(e) => getDataShop(e.target.value, "name")}
+            onChange={(e) =>
+              getDataInput(
+                dataShopToUpdate,
+                setDataShopToUpdate,
+                e.target.value,
+                "name"
+              )
+            }
           ></input>
         </label>
         <label htmlFor="description1">
@@ -74,7 +72,14 @@ const FormShop = () => {
             name="description1"
             placeholder="description1"
             defaultValue={dataShop ? dataShop.description1 : ""}
-            onChange={(e) => getDataShop(e.target.value, "description1")}
+            onChange={(e) =>
+              getDataInput(
+                dataShopToUpdate,
+                setDataShopToUpdate,
+                e.target.value,
+                "description1"
+              )
+            }
           ></textarea>
         </label>
         <label htmlFor="charte">
@@ -84,7 +89,14 @@ const FormShop = () => {
             name="charte"
             placeholder="charte"
             defaultValue={dataShop ? dataShop.charte : ""}
-            onChange={(e) => getDataShop(e.target.value, "charte")}
+            onChange={(e) =>
+              getDataInput(
+                dataShopToUpdate,
+                setDataShopToUpdate,
+                e.target.value,
+                "charte"
+              )
+            }
           ></textarea>
         </label>
         <label htmlFor="urlPhoto1">
@@ -94,7 +106,14 @@ const FormShop = () => {
             name="urlPhoto1"
             placeholder="urlPhoto1"
             defaultValue={dataShop ? dataShop.urlPhoto1 : ""}
-            onChange={(e) => getDataShop(e.target.value, "urlPhoto1")}
+            onChange={(e) =>
+              getDataInput(
+                dataShopToUpdate,
+                setDataShopToUpdate,
+                e.target.value,
+                "urlPhoto1"
+              )
+            }
           ></input>
         </label>
         <label htmlFor="urlPhoto2">
@@ -104,7 +123,14 @@ const FormShop = () => {
             name="urlPhoto2"
             placeholder="urlPhoto2"
             defaultValue={dataShop ? dataShop.urlPhoto2 : ""}
-            onChange={(e) => getDataShop(e.target.value, "urlPhoto2")}
+            onChange={(e) =>
+              getDataInput(
+                dataShopToUpdate,
+                setDataShopToUpdate,
+                e.target.value,
+                "urlPhoto2"
+              )
+            }
           ></input>
         </label>
         <label htmlFor="urlPhoto3">
@@ -114,7 +140,14 @@ const FormShop = () => {
             name="urlPhoto3"
             placeholder="urlPhoto3"
             defaultValue={dataShop ? dataShop.urlPhoto3 : ""}
-            onChange={(e) => getDataShop(e.target.value, "urlPhoto3")}
+            onChange={(e) =>
+              getDataInput(
+                dataShopToUpdate,
+                setDataShopToUpdate,
+                e.target.value,
+                "urlPhoto3"
+              )
+            }
           ></input>
         </label>
         <label htmlFor="adress">
@@ -124,7 +157,14 @@ const FormShop = () => {
             name="adress"
             placeholder="nouvelle adresse"
             defaultValue={dataShop ? dataShop.address : ""}
-            onChange={(e) => getDataShop(e.target.value, "address")}
+            onChange={(e) =>
+              getDataInput(
+                dataShopToUpdate,
+                setDataShopToUpdate,
+                e.target.value,
+                "address"
+              )
+            }
           ></input>
         </label>
         <label htmlFor="phone">
@@ -134,7 +174,14 @@ const FormShop = () => {
             name="phone"
             placeholder="nouveau numéro de téléphone"
             defaultValue={dataShop ? dataShop.phone : ""}
-            onChange={(e) => getDataShop(e.target.value, "phone")}
+            onChange={(e) =>
+              getDataInput(
+                dataShopToUpdate,
+                setDataShopToUpdate,
+                e.target.value,
+                "phone"
+              )
+            }
           ></input>
         </label>
         <label htmlFor="email">
@@ -144,7 +191,14 @@ const FormShop = () => {
             name="email"
             placeholder="nouvelle adresse email"
             defaultValue={dataShop ? dataShop.email : ""}
-            onChange={(e) => getDataShop(e.target.value, "email")}
+            onChange={(e) =>
+              getDataInput(
+                dataShopToUpdate,
+                setDataShopToUpdate,
+                e.target.value,
+                "email"
+              )
+            }
           ></input>
         </label>
         <label htmlFor="schedule">
@@ -154,7 +208,14 @@ const FormShop = () => {
             name="schedule"
             placeholder="nouveaux horaires"
             defaultValue={dataShop ? dataShop.schedule : ""}
-            onChange={(e) => getDataShop(e.target.value, "schedule")}
+            onChange={(e) =>
+              getDataInput(
+                dataShopToUpdate,
+                setDataShopToUpdate,
+                e.target.value,
+                "schedule"
+              )
+            }
           ></input>
         </label>
         <button type="submit">Modifier</button>
