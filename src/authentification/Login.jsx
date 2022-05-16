@@ -1,30 +1,37 @@
 import React, { useState, useEffect } from "react";
-//service
-import authentificate, { changePasswordRequest } from "../services/auth";
-import { updatePassword } from "../services/auth";
-//Routing
-import { Link, useNavigate } from "react-router-dom";
-import { useSearchParams, useParams } from "react-router-dom";
-//style
+// Services
+import authentificate, {
+  changePasswordRequest,
+  updatePassword,
+} from "../services/auth";
+// Routing
+import {
+  Link,
+  useNavigate,
+  useSearchParams,
+  useParams,
+} from "react-router-dom";
+
+// Style
 import "../styles/login.scss";
 
 const Login = () => {
-  //navigate
+  // Navigate
   const navigate = useNavigate();
-  //useSearchParams
+  // UseSearchParams
   const [searchParams] = useSearchParams();
   const tempUuid = searchParams.get("tempUuid");
-  //useParams
+  // UseParams
   const param = useParams();
-  //states
+  // States
   const [creds, setCreds] = useState({});
   const [message, setMessage] = useState("");
   const [error, setError] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState("");
   /**
-   * function getting credentials from inputs
-   * @param {*} value
-   * @param {string} type
+   * Function getting credentials from inputs
+   * @param {String} value
+   * @param {String} type
    */
   const getCredentialsFromInput = (value, type) => {
     if (tempUuid && param.operation === "resetPassword") {
@@ -35,8 +42,8 @@ const Login = () => {
     setCreds(newCreds);
   };
   /**
-   * function running authentificate from service and store the token in the localstorage
-   * @param {*} e
+   * Function running authentificate from service, store the token in the localstorage and redirect to /admin
+   * @param {Event} e
    */
   const runAuthentificate = (e) => {
     e.preventDefault();
@@ -53,8 +60,8 @@ const Login = () => {
       });
   };
   /**
-   * function running the service function changePasswordRequest tests
-   * @param {*} e
+   * Function running the service function changePasswordRequest tests
+   * @param {Event} e
    */
   const runChangePasswordRequest = (e) => {
     e.preventDefault();
@@ -68,13 +75,14 @@ const Login = () => {
         setError(true);
       });
   };
-  //function deleting success message or failed message on componant mount
+  // Function deleting success message or failed message on componant mount
   useEffect(() => {
     setMessage("");
   }, [param.operation]);
 
   /**
-   * function running the service updatePassword, setMessages
+   * Function running the service updatePassword, setMessages
+   * @param {Event} e
    */
   const runUpdatePassword = (e) => {
     e.preventDefault();

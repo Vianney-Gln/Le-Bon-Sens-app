@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-//Services
+// Services
 import getInfosShop, { updateInfosShop } from "../services/shop";
-//Helper
+// Helper
 import getDataInput, { handleForm } from "../helpers/form";
-//Routing
+// Routing
 import { useNavigate, useParams } from "react-router-dom";
 
 const FormShop = () => {

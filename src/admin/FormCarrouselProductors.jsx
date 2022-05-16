@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
-//Routing
+// Routing
 import { useNavigate } from "react-router-dom";
-//Component
+// Component
 import Modal1 from "../components/Modal";
-//Style
+// Style
 import "../styles/formCarrouselProductors.scss";
-//Helper
+// Helper
 import getDataInput, { handleForm } from "../helpers/form";
-//Services
+// Services
 import {
   addOneCarrouselItem,
   getInfosProductors,
@@ -19,7 +19,7 @@ const FormCarrouselProductors = ({
   setIdCarrouselItemToManage,
   idCarrouselItemToManage,
 }) => {
-  //States
+  // States
   const [dataCarrousel, setDataCarrousel] = useState({
     id_productors: idProductorToManage,
   });
@@ -29,7 +29,7 @@ const FormCarrouselProductors = ({
   const [modalIsOpen, setIsOpen] = useState(false); //state Modal
   const [message, setMessage] = useState("");
 
-  //Functions running Modal
+  // Functions running Modal
   const openModal = () => {
     setIsOpen(true);
   };
@@ -37,11 +37,11 @@ const FormCarrouselProductors = ({
   const closeModal = () => {
     setIsOpen(false);
   };
-  //UseNavigate
+  // UseNavigate
   const navigate = useNavigate();
 
-  //Function getting carrousel infos from one productor on component mounting (only if operation === manageCarrouselProductor)
-  //If the user refresh the page, redirect to /admin to escape errors
+  // Function getting carrousel infos from one productor on component mounting (only if operation === manageCarrouselProductor)
+  // If the user refresh the page, redirect to /admin to escape errors
 
   useEffect(() => {
     if (operation === "manageCarrouselProductor") {

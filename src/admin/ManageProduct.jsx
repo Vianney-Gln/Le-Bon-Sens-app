@@ -1,23 +1,23 @@
 import React, { useState, useEffect } from "react";
-//routing
+// Routing
 import { useNavigate } from "react-router-dom";
-//style
+// Style
 import "../styles/manageProduct.scss";
-//service
-import getProducts, { deleteOneProduct } from "../services/products";
-//components
+// Service
+import getProducts from "../services/products";
+// Components
 import CardsProducts from "../components/cardsProducts";
 import Modal1 from "../components/Modal";
 import { verifyToken } from "../services/auth";
 const ManageProduct = ({ setIdProductToManage, idProductToManage }) => {
-  /* -----navigate -----*/
+  /* -----Navigate -----*/
   const navigate = useNavigate();
-  /*----- states -----*/
+  /*----- States -----*/
   const [productsToManage, setProductsToManage] = useState([]); //array recieving result.data from service
   const [modalIsOpen, setIsOpen] = useState(false); //state Modal
   const [sortParam, setSortParam] = useState("");
   const [searchParam, setSearchParam] = useState("");
-  /* -----functions running Modal -----*/
+  /* -----Functions running Modal -----*/
 
   const openModal = () => {
     setIsOpen(true);
@@ -27,7 +27,7 @@ const ManageProduct = ({ setIdProductToManage, idProductToManage }) => {
     setIsOpen(false);
   };
 
-  /*----- getting all products on component mounting only connected as admin -----*/
+  /*----- Getting all products on component mounting only connected as admin -----*/
   useEffect(() => {
     const token = localStorage.getItem("token_access_le_bon_sens");
     verifyToken(token).then((result) => {

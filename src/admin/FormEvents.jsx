@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
-//Services
+// Services
 import {
   createOneEvent,
   getOneEventById,
   updateOneEventById,
 } from "../services/events";
-//Helpers
+// Helpers
 import getDataInput, { handleForm } from "../helpers/form";
-//Routing
+// Routing
 import { useNavigate } from "react-router-dom";
 
 const FormEvents = ({ operation, idEventToManage }) => {
@@ -19,7 +19,7 @@ const FormEvents = ({ operation, idEventToManage }) => {
   /* ------ UseNavigate ------ */
   const navigate = useNavigate();
 
-  //Function getting one event on component mounting IF we're in update mode
+  // Function getting one event on component mounting IF we're in update mode
   useEffect(() => {
     if (operation === "updateEvent") {
       getOneEventById(idEventToManage)

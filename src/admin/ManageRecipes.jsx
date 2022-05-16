@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
-//service
-import getRecipes, { deleteOneRecipeById } from "../services/recipes";
-//styles
+// Services
+import getRecipes from "../services/recipes";
+// Style
 import "../styles/manageRecipes.scss";
-//components
+// Components
 import Modal1 from "../components/Modal";
 import CardRecipe from "../components/CardRecipe";
-//routing
-import { useNavigate } from "react-router-dom";
 
 const ManageRecipes = ({ idRecipeToManage, setIdRecipeToManage }) => {
   /* ------- STATES ------- */
@@ -23,7 +21,7 @@ const ManageRecipes = ({ idRecipeToManage, setIdRecipeToManage }) => {
       });
   }, []);
 
-  /* ------ functions running Modal ------- */
+  /* ------ Functions running Modal ------- */
 
   const openModal = () => {
     setIsOpen(true);

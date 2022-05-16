@@ -1,25 +1,25 @@
 import React, { useState, useEffect } from "react";
-//Helper
+// Helper
 import getDataInput, { handleForm } from "../helpers/form"; //function getting input items
-//Service
+// Services
 import {
   addProductor,
   getInfosProductors,
   updateProductorById,
 } from "../services/productors";
-//Routing
+// Routing
 import { useNavigate } from "react-router-dom";
 
 const FormProductors = ({ operation, idProductorToManage }) => {
-  //States
+  // States
   const [dataProductor, setDataProductor] = useState({});
   const [message, setMessage] = useState("");
   const [error, setError] = useState(false);
 
-  //Navigate
+  // Navigate
   const navigate = useNavigate();
 
-  //function getting infos from one productor by id on component mounting (only if operation === updateProductor)
+  // Function getting infos from one productor by id on component mounting (only if operation === updateProductor)
 
   useEffect(() => {
     if (operation === "updateProductor") {

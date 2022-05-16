@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
-//Routing
+// Routing
 import { useNavigate } from "react-router-dom";
-//Service
+// Services
 import {
   addRecipe,
   getOneRecipeById,
   updateOneRecipeById,
 } from "../services/recipes";
-//Helper
+// Helper
 import getDataInput, { handleForm } from "../helpers/form";
 
 const FormRecipe = ({ operation, idRecipeToManage }) => {

@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
-//Service
+// Services
 import {
   postOneProduct,
   getOneProductById,
   updateOneProduct,
 } from "../services/products";
-//Routing
+// Routing
 import { useNavigate } from "react-router-dom";
-//Helper
+// Helper
 import getDataInput, { handleForm } from "../helpers/form";
 
 const FormProduct = ({ operation, idProductToManage }) => {
@@ -18,7 +18,7 @@ const FormProduct = ({ operation, idProductToManage }) => {
   const [error, setError] = useState(false); // state true if error while sending post request- Manage the color of the message
   const [message, setMessage] = useState(""); // message success or fail depending to the request
 
-  //getting all infos for one product on component mounting IF operation === updateProduct
+  // Getting all infos for one product on component mounting IF operation === updateProduct
   useEffect(() => {
     if (operation === "updateProduct") {
       getOneProductById(idProductToManage)

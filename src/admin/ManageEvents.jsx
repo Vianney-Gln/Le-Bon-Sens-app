@@ -1,25 +1,25 @@
 import React, { useState, useEffect } from "react";
-//service
+// Service
 import { getAllInfosEvents } from "../services/events";
-//style
+// Style
 import "../styles/manageEvents.scss";
-//font awesome
+// Font awesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan, faFile } from "@fortawesome/free-solid-svg-icons";
-//Components
+// Components
 import Modal1 from "../components/Modal";
-//Routing
+// Routing
 import { useNavigate } from "react-router-dom";
 import { verifyToken } from "../services/auth";
 const ManageEvents = ({ idEventToManage, setIdEventToManage }) => {
-  /* ------ states variables ------ */
+  /* ------ States variables ------ */
   const [listEventsToManage, setListEventsToManage] = useState([]);
   const [modalIsOpen, setIsOpen] = useState(false); //state Modal
 
   /* ------- Navigate ------- */
   const navigate = useNavigate();
 
-  /* ------ functions running Modal ------ */
+  /* ------ Functions running Modal ------ */
 
   const openModal = () => {
     setIsOpen(true);
@@ -29,7 +29,7 @@ const ManageEvents = ({ idEventToManage, setIdEventToManage }) => {
     setIsOpen(false);
   };
 
-  //function getting all events on component mounting only connected as admin
+  // Function getting all events on component mounting only connected as admin
   useEffect(() => {
     const token = localStorage.getItem("token_access_le_bon_sens");
     verifyToken(token).then((result) => {

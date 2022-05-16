@@ -1,28 +1,25 @@
 import React, { useState, useEffect } from "react";
-//Routing
+// Routing
 import { useNavigate } from "react-router-dom";
-//Font awesome
+// Font awesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan, faFile, faImage } from "@fortawesome/free-solid-svg-icons";
-//Component
+// Component
 import Modal1 from "../components/Modal";
-//Service
-import {
-  getNamesProductors,
-  deleteOneProductorById,
-} from "../services/productors";
-//style
+// Services
+import { getNamesProductors } from "../services/productors";
+// Style
 import "../styles/manageProductors.scss";
 
 const ManageProductors = ({ idProductorToManage, setIdProductorToManage }) => {
-  //States
+  // States
   const [listProductorsToManage, setListProductorsToManage] = useState([]);
   const [modalIsOpen, setIsOpen] = useState(false); //state Modal
 
-  //useNavigate
+  // UseNavigate
   const navigate = useNavigate();
 
-  /* ------ functions running Modal ------ */
+  /* ------ Functions running Modal ------ */
 
   const openModal = () => {
     setIsOpen(true);
@@ -32,7 +29,7 @@ const ManageProductors = ({ idProductorToManage, setIdProductorToManage }) => {
     setIsOpen(false);
   };
 
-  //Function getting names and id from productors on component mounting
+  // Function getting names and id from productors on component mounting
   useEffect(() => {
     getNamesProductors().then((productors) => {
       setListProductorsToManage(productors);
