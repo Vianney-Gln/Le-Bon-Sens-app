@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-//Modal
+// Modal
 import Modal from "react-modal";
-//Services
+// Services
 import { deleteOneItemCarrouselById } from "../services/productors";
 import { deleteOneProduct } from "../services/products";
 import { deleteOneEventById } from "../services/events";
 import { deleteOneRecipeById } from "../services/recipes";
 import { deleteOneProductorById } from "../services/productors";
-//Helper
+// Helper
 import deleteOneThing from "../helpers/delete";
-//Routing
+// Routing
 import { useNavigate, useParams } from "react-router-dom";
 
 const Modal1 = ({
@@ -21,13 +21,18 @@ const Modal1 = ({
   idRecipeToManage,
   idProductorToManage,
 }) => {
-  //States
+  // States
   const [message, setMessage] = useState(""); //states for messages modals
-  // getting connexion Token
+  // Getting connexion Token
   const token = localStorage.getItem("token_access_le_bon_sens");
-  //getting param
+  // Getting param
   const param = useParams();
+  //UseNavigate
+  const navigate = useNavigate();
 
+  /**
+   * Function managing params of deleteOneThing() in order to the value of param.operation
+   */
   const runDeleteFunctions = () => {
     switch (param.operation) {
       case "manageProduct":
@@ -81,7 +86,7 @@ const Modal1 = ({
   /* -----Modal -----*/
   Modal.setAppElement("#root");
 
-  //style Modal
+  // Style Modal
   const customStyles = {
     content: {
       top: "50%",
@@ -95,8 +100,6 @@ const Modal1 = ({
     },
   };
 
-  //UseNavigate
-  const navigate = useNavigate();
   return (
     <div className="modal">
       <Modal
@@ -105,6 +108,8 @@ const Modal1 = ({
         style={customStyles}
         contentLabel="Example Modal"
       >
+        {/* Manage message in the Modal */}
+
         {!message && param.operation === "manageProduct" && (
           <p>Etes vous sûr de vouloir supprimer ce produit?</p>
         )}

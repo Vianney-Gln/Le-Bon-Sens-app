@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-//routing
+// Routing
 import { useNavigate } from "react-router-dom";
-//style
+// Style
 import "../styles/cardProduct.scss";
-//modal
+// Modal
 import DetailProductModal from "react-modal/lib/components/Modal";
 
 const CardsProducts = ({
@@ -15,7 +15,7 @@ const CardsProducts = ({
   setIdProductToManage,
   productId,
 }) => {
-  /* ----- navigate -----*/
+  /* ----- Navigate -----*/
   const navigate = useNavigate();
 
   /* ----- States variables ------ */
@@ -23,6 +23,7 @@ const CardsProducts = ({
 
   /* -----Modal for more detail products -----*/
   DetailProductModal.setAppElement("#root");
+  // Functions opening or closing Modal
   const openDetailProductModal = () => {
     setDetailProductIsOpen(true);
   };
@@ -30,7 +31,7 @@ const CardsProducts = ({
   const closeDetailProductModal = () => {
     setDetailProductIsOpen(false);
   };
-  //style Modal
+  // style Modal
   const customStyles = {
     content: {
       top: "50%",

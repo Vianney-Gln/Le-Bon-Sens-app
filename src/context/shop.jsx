@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect } from "react";
-// service
+// Service
 import getInfosShop from "../services/shop";
 
 const shopContext = createContext(null);

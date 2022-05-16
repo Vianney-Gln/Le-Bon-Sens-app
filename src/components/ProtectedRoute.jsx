@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
+// Component
 import Admin from "../admin/Admin";
+// Routing
 import { Navigate } from "react-router-dom";
+// Service
 import { verifyToken } from "../services/auth";
 
 const ProtectedRoute = () => {

@@ -1,7 +1,7 @@
 import React from "react";
-//styles
+// Styles
 import "../styles/cardRecipes.scss";
-//routing
+// Routing
 import { useNavigate } from "react-router-dom";
 const CardRecipe = ({
   id,
@@ -14,7 +14,7 @@ const CardRecipe = ({
   openModal,
   setIdRecipeToManage,
 }) => {
-  /* ------- navigate ------- */
+  /* ------- Navigate ------- */
   const navigate = useNavigate();
 
   return (
