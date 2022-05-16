@@ -1,15 +1,18 @@
 import React, { useContext } from "react";
-// styles
+// Styles
 import "../styles/shop.scss";
-
-// context
+//Routing
+import { useNavigate } from "react-router-dom";
+// Context
 import { shopContext } from "../context/shop";
 
 const Shop = () => {
-  // doc title
+  // Doc title
   document.title = "Le Bon Sens - Notre Magasin";
-  // useContext
+  // UseContext
   const ShopContext = useContext(shopContext);
+  //UseNavigate
+  const navigate = useNavigate();
 
   return (
     <div className="container-shop">
@@ -49,7 +52,9 @@ const Shop = () => {
       </div>
 
       <div className="charte">
-        <button type="button">Voir notre charte</button>
+        <button type="button" onClick={() => navigate("/find-us")}>
+          Contactez nous!
+        </button>
       </div>
     </div>
   );
