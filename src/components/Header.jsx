@@ -11,8 +11,10 @@ import InsertEvent from "./InsertEvent";
 import logo from "../images/logo-le-bon-sens.png";
 // Hamburger React
 import Hamburger from "hamburger-react";
+// Service
+import getInfosEvents from "../services/events";
 
-const Header = ({ insert, disableInsert }) => {
+const Header = () => {
   // UseContext
   const ShopContext = useContext(shopContext);
   const ProductorsContext = useContext(productorsContext);
@@ -20,6 +22,7 @@ const Header = ({ insert, disableInsert }) => {
   // States
   const [isOpen, setOpen] = useState(false); // variable statement hamburger react
   const [openProductors, setOpenProductors] = useState(false); // variable statement on click on productors( display the list of productors)
+  const [currEvents, setCurrEvents] = useState([]); // state managing the display of insert event
 
   // Function handling display of list productors on click
   const handleListProductors = () => {
@@ -28,6 +31,15 @@ const Header = ({ insert, disableInsert }) => {
 
   window.onresize = () => setOpen(false); // If user change the size of the viewport ===> close burger
   window.addEventListener("scroll", () => setOpenProductors(false)); // If the user is scrolling ====> close burger
+
+  // Useffect ---> called service event to check if there is current events
+
+  useEffect(() => {
+    getInfosEvents().then((result) => {
+      const currentsEvents = result.filter((curr) => curr.isCurrent);
+      setCurrEvents(currentsEvents);
+    });
+  }, []);
 
   return (
     <header className="container-header">
@@ -122,7 +134,7 @@ const Header = ({ insert, disableInsert }) => {
           </ul>
         </nav>
       )}
-      {insert && <InsertEvent disableInsert={disableInsert} />}
+      {currEvents.length ? <InsertEvent setCurrEvents={setCurrEvents} /> : ""}
     </header>
   );
 };
