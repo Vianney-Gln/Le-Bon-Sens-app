@@ -4,7 +4,7 @@ import "../styles/events.scss";
 // Service
 import getInfosEvents from "../services/events";
 
-const Events = ({ setInsert }) => {
+const Events = () => {
   // Doc title
   document.title = "Le Bon Sens - Evènements";
   // Variables statement
@@ -13,8 +13,6 @@ const Events = ({ setInsert }) => {
 
   // Getting all infos about events on component mounting
   useEffect(() => {
-    /* ------ disable insert event ------*/
-    setInsert(false);
     getInfosEvents().then((evts) => {
       evts.forEach((evt) => {
         if (evt.isCurrent === 1) {
