@@ -1,47 +1,25 @@
 import React, { useState, useEffect } from "react";
-//routing
+// Routing
 import { useNavigate } from "react-router-dom";
-
-//service
+// Services
 import {
   addRecipe,
   getOneRecipeById,
   updateOneRecipeById,
 } from "../services/recipes";
+// Helper
+import getDataInput, { handleForm } from "../helpers/form";
 
 const FormRecipe = ({ operation, idRecipeToManage }) => {
-  /* -------- states -------- */
+  /* -------- States -------- */
   const [dataRecipe, setDataRecipe] = useState({});
-  const [successMessage, setSuccessMessage] = useState("");
+  const [message, setMessage] = useState("");
   const [error, setError] = useState(false);
 
-  /* ------- Navigate ------- */
+  /* ------- UseNavigate ------- */
   const navigate = useNavigate();
 
-  /**
-   * function getting all infos from the form and turn them into an object
-   * @param {string || number} value
-   * @param {string} key
-   */
-  const getDataRecipeForm = (value, key) => {
-    const newData = dataRecipe;
-    newData[key] = value;
-    setDataRecipe(newData);
-  };
-
-  /**
-   * function removing all fields
-   */
-  const resetFields = () => {
-    document.getElementById("name").value = "";
-    document.getElementById("description").value = "";
-    document.getElementById("cooking time").value = "";
-    document.getElementById("preparation time").value = "";
-    document.getElementById("urlImage").value = "";
-  };
-
-  // getting all infos for a recipe by his id on component mounting (useEffect) if operation === updateRecipe
-
+  // Getting all infos for a recipe by his id on component mounting (useEffect) if operation === updateRecipe
   useEffect(() => {
     if (operation === "updateRecipe") {
       getOneRecipeById(idRecipeToManage)
@@ -54,57 +32,6 @@ const FormRecipe = ({ operation, idRecipeToManage }) => {
     }
   }, []);
 
-  /**
-   * function running addRecipe, update a successMessage, remove dataRecipeToAdd and remove fields if success.
-   * If not success, just update a failMessage
-   * @param {*} e
-   */
-  const handleFormPostRecipes = (e) => {
-    e.preventDefault();
-    const token = localStorage.getItem("token_access_le_bon_sens");
-    addRecipe(dataRecipe, token)
-      .then(() => {
-        setSuccessMessage("recette postée avec succès");
-        setError(false);
-        setDataRecipe({
-          name: "",
-          description: "",
-          cookingTime: "",
-          preparationTime: "",
-          urlImage: "",
-        });
-        setTimeout(() => {
-          resetFields();
-        }, 2000);
-      })
-      .catch(() => {
-        setSuccessMessage("erreur d'envois de la recette");
-        setError(true);
-      });
-  };
-
-  const handleFormUpdateRecipe = (e) => {
-    e.preventDefault();
-    const token = localStorage.getItem("token_access_le_bon_sens");
-    updateOneRecipeById(dataRecipe, idRecipeToManage, token)
-      .then(() => {
-        setSuccessMessage(
-          "recette modifiée avec succès, vous allez être redirigé à la page admin d'accueil"
-        );
-        setError(false);
-      })
-      .then(() => {
-        setTimeout(() => {
-          navigate("/admin");
-        }, 3000);
-      })
-      .catch(() => {
-        setError(true);
-        setSuccessMessage(
-          "Il y a eu une erreur lors de la modification de la recette"
-        );
-      });
-  };
   return (
     <div className="container-addRecipe">
       {operation === "addRecipe" ? (
@@ -113,11 +40,30 @@ const FormRecipe = ({ operation, idRecipeToManage }) => {
         <h3>Modifier une recette</h3>
       )}
       <form
-        onSubmit={
-          operation === "addRecipe"
-            ? handleFormPostRecipes
-            : handleFormUpdateRecipe
-        }
+        onSubmit={(e) => {
+          if (operation === "addRecipe") {
+            handleForm(
+              e,
+              addRecipe,
+              setMessage,
+              setError,
+              dataRecipe,
+              navigate,
+              operation
+            );
+          } else if (operation === "updateRecipe") {
+            handleForm(
+              e,
+              updateOneRecipeById,
+              setMessage,
+              setError,
+              dataRecipe,
+              navigate,
+              operation,
+              idRecipeToManage
+            );
+          }
+        }}
       >
         <label htmlFor="name">
           <span>nom de la recette:</span>
@@ -127,7 +73,9 @@ const FormRecipe = ({ operation, idRecipeToManage }) => {
             placeholder="nom de la recette"
             id="name"
             defaultValue={operation === "updateRecipe" ? dataRecipe.name : ""}
-            onChange={(e) => getDataRecipeForm(e.target.value, "name")}
+            onChange={(e) =>
+              getDataInput(dataRecipe, setDataRecipe, e.target.value, "name")
+            }
           ></input>
         </label>
         <label htmlFor="description">
@@ -140,7 +88,14 @@ const FormRecipe = ({ operation, idRecipeToManage }) => {
             defaultValue={
               operation === "updateRecipe" ? dataRecipe.description : ""
             }
-            onChange={(e) => getDataRecipeForm(e.target.value, "description")}
+            onChange={(e) =>
+              getDataInput(
+                dataRecipe,
+                setDataRecipe,
+                e.target.value,
+                "description"
+              )
+            }
           ></textarea>
         </label>
         <label htmlFor="cooking time">
@@ -153,7 +108,14 @@ const FormRecipe = ({ operation, idRecipeToManage }) => {
             defaultValue={
               operation === "updateRecipe" ? dataRecipe.cookingTime : ""
             }
-            onChange={(e) => getDataRecipeForm(e.target.value, "cookingTime")}
+            onChange={(e) =>
+              getDataInput(
+                dataRecipe,
+                setDataRecipe,
+                e.target.value,
+                "cookingTime"
+              )
+            }
           ></input>
         </label>
         <label htmlFor="preparation time">
@@ -167,7 +129,12 @@ const FormRecipe = ({ operation, idRecipeToManage }) => {
               operation === "updateRecipe" ? dataRecipe.preparationTime : ""
             }
             onChange={(e) =>
-              getDataRecipeForm(e.target.value, "preparationTime")
+              getDataInput(
+                dataRecipe,
+                setDataRecipe,
+                e.target.value,
+                "preparationTime"
+              )
             }
           ></input>
         </label>
@@ -181,7 +148,14 @@ const FormRecipe = ({ operation, idRecipeToManage }) => {
             defaultValue={
               operation === "updateRecipe" ? dataRecipe.urlImage : ""
             }
-            onChange={(e) => getDataRecipeForm(e.target.value, "urlImage")}
+            onChange={(e) =>
+              getDataInput(
+                dataRecipe,
+                setDataRecipe,
+                e.target.value,
+                "urlImage"
+              )
+            }
           ></input>
         </label>
         {operation === "addRecipe" ? (
@@ -189,9 +163,7 @@ const FormRecipe = ({ operation, idRecipeToManage }) => {
         ) : (
           <button type="submit">Modifier</button>
         )}
-        {successMessage && (
-          <p className={!error ? "success" : "fail"}>{successMessage}</p>
-        )}
+        {message && <p className={!error ? "success" : "fail"}>{message}</p>}
       </form>
     </div>
   );

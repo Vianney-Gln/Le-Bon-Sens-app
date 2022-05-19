@@ -1,42 +1,33 @@
 import React, { useEffect, useContext, useState } from "react";
-// routing
+// Routing
 import { Link } from "react-router-dom";
-// styles
+// Style
 import "../styles/header.scss";
-// service
-import getInfosShop from "../services/shop";
-// context
+// Context
 import { shopContext } from "../context/shop";
 import { productorsContext } from "../context/productors";
-//components
+// Components
 import InsertEvent from "./InsertEvent";
 import logo from "../images/logo-le-bon-sens.png";
-//Hamburger React
+// Hamburger React
 import Hamburger from "hamburger-react";
 
 const Header = ({ insert, disableInsert }) => {
-  // useContext
+  // UseContext
   const ShopContext = useContext(shopContext);
   const ProductorsContext = useContext(productorsContext);
 
-  // getting infos shop and store them in te shop context
-  useEffect(() => {
-    getInfosShop().then((res) => {
-      ShopContext.setInfosShop(res);
-    });
-  }, []);
-
-  //States
+  // States
   const [isOpen, setOpen] = useState(false); // variable statement hamburger react
   const [openProductors, setOpenProductors] = useState(false); // variable statement on click on productors( display the list of productors)
 
-  //function handling display of list productors on click
+  // Function handling display of list productors on click
   const handleListProductors = () => {
     setOpenProductors(!openProductors);
   };
 
-  window.onresize = () => setOpen(false);
-  window.addEventListener("scroll", () => setOpenProductors(false));
+  window.onresize = () => setOpen(false); // If user change the size of the viewport ===> close burger
+  window.addEventListener("scroll", () => setOpenProductors(false)); // If the user is scrolling ====> close burger
 
   return (
     <header className="container-header">

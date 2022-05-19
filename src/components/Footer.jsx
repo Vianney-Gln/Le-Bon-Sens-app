@@ -1,5 +1,5 @@
 import React from "react";
-// styles
+// Styles
 import "../styles/footer.scss";
 
 const Footer = () => (
@@ -9,8 +9,7 @@ const Footer = () => (
         <li>Le Magasin |</li>
         <li>Nos Produits |</li>
         <li>Nos Producteurs associés |</li>
-        <li>Recettes |</li>
-        <li>Plan de Site</li>
+        <li>Recettes</li>
       </ul>
     </nav>
     <p className="copyright">

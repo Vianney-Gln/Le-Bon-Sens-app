@@ -1,31 +1,27 @@
-/* eslint-disable indent */
-
-/* eslint-disable no-param-reassign */
 import React, { useEffect, useState } from "react";
+// Style
 import "../styles/products.scss";
-
-// icons sort
+// Icons sort
 import all from "../images/all-products.jpg";
 import meat from "../images/meat.jpg";
 import vegetables from "../images/vegetables.jpg";
 import dairyProducts from "../images/dairy-products.png";
 import diversProducts from "../images/divers-products.jpg";
-// components
+// Component
 import CardsProducts from "../components/cardsProducts";
-
-// services
+// Service
 import getProducts from "../services/products";
 
 const Products = () => {
-  /* ----- doc title ----- */
+  /* ----- Doc title ----- */
   document.title = "Le Bon Sens - Nos Produits";
 
-  /* ----- variables statement -----*/
+  /* ----- Variables statement -----*/
   const [listProducts, setListProducts] = useState([]);
   const [sortParam, setSortParam] = useState("");
   const [searchParam, setSearchParam] = useState("");
 
-  /* ----- getting products on mounting component, translate "?" into "€" on rerend on each changement of sortParams or searchParams ----- */
+  /* ----- Getting products on mounting component, translate "?" into "€" on rerend on each changement of sortParams or searchParams ----- */
   useEffect(() => {
     getProducts(sortParam, searchParam).then((products) => {
       setListProducts(products);

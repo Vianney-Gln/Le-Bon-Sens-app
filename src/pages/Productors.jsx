@@ -1,31 +1,29 @@
 import React, { useState, useEffect } from "react";
+//Routing
 import { useParams } from "react-router-dom";
-// style
+// Style
 import "../styles/productors.scss";
-import "react-slideshow-image/dist/styles.css";
-// images
+//React Slideshow
 import { Slide } from "react-slideshow-image";
+import "react-slideshow-image/dist/styles.css";
+// Images
 import iconFaceBook from "../images/icone-fb.jpg";
 import iconTwitter from "../images/icone-twitter.png";
-
-//service
-import {
-  getInfosProductors,
-  getCarrouselProductor,
-} from "../services/productors";
+//Services
+import { getInfosProductors } from "../services/productors";
 
 const Productors = () => {
-  /* ----- doc title ----- */
+  /* ----- Doc title ----- */
   document.title = "Le Bon Sens - Nos Producteurs associés";
 
-  /* ----- param ----- */
+  /* ----- UseParam ----- */
   const param = useParams();
 
-  /* ----- states ----- */
+  /* ----- States ----- */
   const [infosProductor, setInfosProductor] = useState({});
   const [carrousel, setCarrousel] = useState([]);
 
-  /* ----- getting infos productor by id on component mounting ----- */
+  /* ----- Getting infos productor by id on component mounting ----- */
   useEffect(() => {
     getInfosProductors(param.id).then((result) => {
       setInfosProductor(result);

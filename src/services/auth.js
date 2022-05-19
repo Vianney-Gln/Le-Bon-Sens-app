@@ -3,9 +3,9 @@ import axios from "axios";
 const baseUrl = "https://shielded-sea-56340.herokuapp.com";
 
 /**
- * function taking email and password to connect the user
- * @param {object} credentials
- * @returns {string}
+ * Function taking email and password and generate a token
+ * @param {Object} credentials
+ * @returns {Promise}
  */
 const authentificate = (credentials) => {
   return axios({
@@ -16,9 +16,9 @@ const authentificate = (credentials) => {
 };
 
 /**
- * function verifying if a user is connected by sending a token to the back
- * @param {string} token
- * @returns {boolean}
+ * Function verifying if a user is connected by sending a token to the back
+ * @param {String} token
+ * @returns {Promise}
  */
 export const verifyToken = (token) => {
   return axios({
@@ -27,7 +27,11 @@ export const verifyToken = (token) => {
     method: "post",
   });
 };
-
+/**
+ * Function running a change password request by sending an email
+ * @param {String} email
+ * @returns {Promise}
+ */
 export const changePasswordRequest = (email) => {
   return axios({
     url: `${baseUrl}/api/LeBonSens/auth/lostpassword`,
@@ -36,6 +40,11 @@ export const changePasswordRequest = (email) => {
   });
 };
 
+/**
+ * Function updating the user's password
+ * @param {Object} creds
+ * @returns {Promise}
+ */
 export const updatePassword = (creds) => {
   return axios({
     url: `${baseUrl}/api/LeBonSens/auth/changePassword`,

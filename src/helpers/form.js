@@ -1,5 +1,5 @@
 /**
- * function getting all inputs items
+ * Function getting all inputs items
  * @param {Object} state
  * @param {Function} setState
  * @param {String | Number} value
@@ -12,7 +12,7 @@ const getDataInput = (state, setState, value, key) => {
 };
 
 /**
- * function calling service function, manage error or success messages and redirect to admin
+ * Function calling services post or update functions, manage error or success messages and redirect to admin
  * @param {Event} e
  * @param {Function} serviceFunction
  * @param {Function} setMessage
@@ -36,6 +36,7 @@ export const handleForm = (
   const token = localStorage.getItem("token_access_le_bon_sens");
   serviceFunction(dataInputs, token, idToManage)
     .then(() => {
+      console.log("ok!");
       manageSuccessMessage(operation, setMessage);
       setError(false);
       setTimeout(() => {
@@ -50,7 +51,7 @@ export const handleForm = (
 };
 
 /**
- * function managing the content of success messages
+ * Function managing the content of success messages
  * @param {String} operation
  * @param {Function} setMessage
  */
@@ -63,8 +64,14 @@ const manageSuccessMessage = (operation, setMessage) => {
     case "addRecipe":
       setMessage(`Recette ajoutée ${baseMessage}`);
       break;
+    case "updateRecipe":
+      setMessage(`mise à jour effectuée ${baseMessage}`);
+      break;
     case "addProduct":
       setMessage(`Produit ajouté ${baseMessage}`);
+      break;
+    case "updateProduct":
+      setMessage(`mise à jour effectuée ${baseMessage}`);
       break;
     case "createEvent":
       setMessage(`Evénement créé ${baseMessage}`);
@@ -75,11 +82,17 @@ const manageSuccessMessage = (operation, setMessage) => {
     case "updateProductor":
       setMessage(`mise à jour effectuée ${baseMessage}`);
       break;
+    case "updateEvent":
+      setMessage(`mise à jour effectuée ${baseMessage}`);
+      break;
+    case "updateShop":
+      setMessage(`mise à jour effectuée ${baseMessage}`);
+      break;
   }
 };
 
 /**
- * function managing the content of error messages
+ * Function managing the content of error messages
  * @param {Function} setMessage
  * @param {String} messageError
  */
