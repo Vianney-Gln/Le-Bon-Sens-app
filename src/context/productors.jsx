@@ -1,15 +1,15 @@
 import React, { createContext, useEffect, useState } from "react";
-//service
+// Services
 import { getNamesProductors } from "../services/productors";
 import { verifyToken } from "../services/auth";
 
 const productorsContext = createContext(null);
 
 const ProductorsProvider = ({ children }) => {
-  //states
+  // States
   const [productors, setProductors] = useState([]);
 
-  /*getting infos on component mounting
+  /*Getting infos on component mounting
   if user authentificated ---> getting all infos
   else ---> getting only infos with isPublic status to true */
   useEffect(() => {

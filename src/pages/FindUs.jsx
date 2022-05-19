@@ -1,20 +1,21 @@
 import React, { useContext } from "react";
 // style
 import "../styles/findUs.scss";
+//Font awesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faLocationDot,
   faPhone,
   faEnvelope,
 } from "@fortawesome/free-solid-svg-icons";
-// context
+// Context
 import { shopContext } from "../context/shop";
 
 const FindUs = () => {
-  // doc title
+  // Doc title
   document.title = "Le Bon Sens - Nous trouver";
 
-  // useContext
+  // UseContext
   const ShopContext = useContext(shopContext);
   return (
     <div className="container-find-us">

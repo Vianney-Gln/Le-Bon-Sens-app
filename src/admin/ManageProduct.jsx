@@ -1,26 +1,24 @@
 import React, { useState, useEffect } from "react";
-//routing
+// Routing
 import { useNavigate } from "react-router-dom";
-//style
+// Style
 import "../styles/manageProduct.scss";
-//service
-import getProducts, { deleteOneProduct } from "../services/products";
-//components
+// Service
+import getProducts from "../services/products";
+// Components
 import CardsProducts from "../components/cardsProducts";
-//Modal
-import Modal from "react-modal";
+import Modal1 from "../components/Modal";
 import { verifyToken } from "../services/auth";
 const ManageProduct = ({ setIdProductToManage, idProductToManage }) => {
-  /* -----navigate -----*/
+  /* -----Navigate -----*/
   const navigate = useNavigate();
-  /*----- states -----*/
+  /*----- States -----*/
   const [productsToManage, setProductsToManage] = useState([]); //array recieving result.data from service
   const [modalIsOpen, setIsOpen] = useState(false); //state Modal
-  const [successMessage, setSuccessMessage] = useState("");
   const [sortParam, setSortParam] = useState("");
   const [searchParam, setSearchParam] = useState("");
-  /* -----Modal -----*/
-  Modal.setAppElement("#root");
+  /* -----Functions running Modal -----*/
+
   const openModal = () => {
     setIsOpen(true);
   };
@@ -28,21 +26,8 @@ const ManageProduct = ({ setIdProductToManage, idProductToManage }) => {
   const closeModal = () => {
     setIsOpen(false);
   };
-  //style Modal
-  const customStyles = {
-    content: {
-      top: "50%",
-      left: "50%",
-      right: "auto",
-      bottom: "auto",
-      marginRight: "-50%",
-      transform: "translate(-50%, -50%)",
-      width: "240px",
-      height: "160px",
-    },
-  };
 
-  /*----- getting all products on component mounting only connected as admin -----*/
+  /*----- Getting all products on component mounting only connected as admin -----*/
   useEffect(() => {
     const token = localStorage.getItem("token_access_le_bon_sens");
     verifyToken(token).then((result) => {
@@ -60,52 +45,14 @@ const ManageProduct = ({ setIdProductToManage, idProductToManage }) => {
     });
   }, [sortParam, searchParam]);
 
-  const runDeleteOneProduct = () => {
-    const token = localStorage.getItem("token_access_le_bon_sens");
-    deleteOneProduct(idProductToManage, { token })
-      .then(() => {
-        setSuccessMessage(
-          "produit supprimé avec succès! vous serez redirigé..."
-        );
-        setTimeout(() => {
-          closeModal();
-          navigate("/admin");
-        }, 3000);
-      })
-      .catch(() => {
-        setSuccessMessage(
-          "il y a eu une erreur lors de la suppression du produit, vous serez redirigé..."
-        );
-        setTimeout(() => {
-          closeModal();
-          navigate("/admin");
-        }, 3000);
-      });
-  };
-
   return (
     <>
-      <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
-        style={customStyles}
-        contentLabel="Example Modal"
-      >
-        {!successMessage && (
-          <p>Etes vous sûr de vouloir supprimer ce produit?</p>
-        )}
-        {!successMessage && (
-          <div className="container-buttons-modal">
-            <button type="button" onClick={() => runDeleteOneProduct()}>
-              oui
-            </button>
-            <button type="button" onClick={() => closeModal()}>
-              non
-            </button>
-          </div>
-        )}
-        {successMessage && <p>{successMessage}</p>}
-      </Modal>
+      <Modal1
+        modalIsOpen={modalIsOpen}
+        closeModal={closeModal}
+        idProductToManage={idProductToManage}
+      />
+
       <h3>Gérer les produits</h3>
       <div className="container-search-sort">
         <label htmlFor="search">

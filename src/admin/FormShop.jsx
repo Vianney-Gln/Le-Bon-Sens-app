@@ -1,52 +1,25 @@
 import React, { useEffect, useState } from "react";
-//service
+// Services
 import getInfosShop, { updateInfosShop } from "../services/shop";
+// Helper
+import getDataInput, { handleForm } from "../helpers/form";
+// Routing
+import { useNavigate, useParams } from "react-router-dom";
 
 const FormShop = () => {
-  /* -------- states ------- */
+  /* -------- States ------- */
   const [dataShop, setDataShop] = useState({});
   const [dataShopToUpdate, setDataShopToUpdate] = useState({});
-  const [successMessage, setSuccessMessage] = useState("");
+  const [message, setMessage] = useState("");
   const [error, setError] = useState(false);
 
-  /**
-   * function submitting the form
-   * @param {*} e
-   */
-  const handleFormShop = (e) => {
-    e.preventDefault();
-    const token = localStorage.getItem("token_access_le_bon_sens");
-    updateInfosShop(dataShopToUpdate, token)
-      .then(() => {
-        setSuccessMessage("données mises à jour correctement");
-        setError(false);
-      })
-      .then(() => {
-        setTimeout(() => {
-          window.location.reload();
-        }, 3000);
-      })
-      .catch((err) => {
-        console.log(err);
-        setSuccessMessage(
-          "Il y a eu une erreur lors de la mise à jour des données"
-        );
-        setError(true);
-      });
-  };
+  /* ----- UseNavigate ------*/
+  const navigate = useNavigate();
 
-  /**
-   * function getting all infos from the form and turn them into an object in the state dataShop
-   * @param {string | number} value
-   * @param {string} key
-   */
-  const getDataShop = (value, key) => {
-    const newData = dataShopToUpdate;
-    newData[key] = value;
-    setDataShopToUpdate(newData);
-  };
+  /* ----- UseParams ----- */
+  const { operation } = useParams();
 
-  /* -------- getting data shop on component mounting ------- */
+  /* -------- Getting data shop on component mounting ------- */
   useEffect(() => {
     getInfosShop()
       .then((result) => setDataShop(result))
@@ -56,7 +29,19 @@ const FormShop = () => {
   return (
     <div className="container-update-infos-shop">
       <h3>Modification des infos du magasin</h3>
-      <form onSubmit={handleFormShop}>
+      <form
+        onSubmit={(e) => {
+          handleForm(
+            e,
+            updateInfosShop,
+            setMessage,
+            setError,
+            dataShopToUpdate,
+            navigate,
+            operation
+          );
+        }}
+      >
         <label htmlFor="name">
           <span>nom du magasin:</span>
           <input
@@ -64,7 +49,14 @@ const FormShop = () => {
             name="name"
             placeholder="nom du magasin"
             defaultValue={dataShop ? dataShop.name : ""}
-            onChange={(e) => getDataShop(e.target.value, "name")}
+            onChange={(e) =>
+              getDataInput(
+                dataShopToUpdate,
+                setDataShopToUpdate,
+                e.target.value,
+                "name"
+              )
+            }
           ></input>
         </label>
         <label htmlFor="description1">
@@ -74,7 +66,14 @@ const FormShop = () => {
             name="description1"
             placeholder="description1"
             defaultValue={dataShop ? dataShop.description1 : ""}
-            onChange={(e) => getDataShop(e.target.value, "description1")}
+            onChange={(e) =>
+              getDataInput(
+                dataShopToUpdate,
+                setDataShopToUpdate,
+                e.target.value,
+                "description1"
+              )
+            }
           ></textarea>
         </label>
         <label htmlFor="charte">
@@ -84,7 +83,14 @@ const FormShop = () => {
             name="charte"
             placeholder="charte"
             defaultValue={dataShop ? dataShop.charte : ""}
-            onChange={(e) => getDataShop(e.target.value, "charte")}
+            onChange={(e) =>
+              getDataInput(
+                dataShopToUpdate,
+                setDataShopToUpdate,
+                e.target.value,
+                "charte"
+              )
+            }
           ></textarea>
         </label>
         <label htmlFor="urlPhoto1">
@@ -94,7 +100,14 @@ const FormShop = () => {
             name="urlPhoto1"
             placeholder="urlPhoto1"
             defaultValue={dataShop ? dataShop.urlPhoto1 : ""}
-            onChange={(e) => getDataShop(e.target.value, "urlPhoto1")}
+            onChange={(e) =>
+              getDataInput(
+                dataShopToUpdate,
+                setDataShopToUpdate,
+                e.target.value,
+                "urlPhoto1"
+              )
+            }
           ></input>
         </label>
         <label htmlFor="urlPhoto2">
@@ -104,7 +117,14 @@ const FormShop = () => {
             name="urlPhoto2"
             placeholder="urlPhoto2"
             defaultValue={dataShop ? dataShop.urlPhoto2 : ""}
-            onChange={(e) => getDataShop(e.target.value, "urlPhoto2")}
+            onChange={(e) =>
+              getDataInput(
+                dataShopToUpdate,
+                setDataShopToUpdate,
+                e.target.value,
+                "urlPhoto2"
+              )
+            }
           ></input>
         </label>
         <label htmlFor="urlPhoto3">
@@ -114,7 +134,14 @@ const FormShop = () => {
             name="urlPhoto3"
             placeholder="urlPhoto3"
             defaultValue={dataShop ? dataShop.urlPhoto3 : ""}
-            onChange={(e) => getDataShop(e.target.value, "urlPhoto3")}
+            onChange={(e) =>
+              getDataInput(
+                dataShopToUpdate,
+                setDataShopToUpdate,
+                e.target.value,
+                "urlPhoto3"
+              )
+            }
           ></input>
         </label>
         <label htmlFor="adress">
@@ -124,7 +151,14 @@ const FormShop = () => {
             name="adress"
             placeholder="nouvelle adresse"
             defaultValue={dataShop ? dataShop.address : ""}
-            onChange={(e) => getDataShop(e.target.value, "address")}
+            onChange={(e) =>
+              getDataInput(
+                dataShopToUpdate,
+                setDataShopToUpdate,
+                e.target.value,
+                "address"
+              )
+            }
           ></input>
         </label>
         <label htmlFor="phone">
@@ -134,7 +168,14 @@ const FormShop = () => {
             name="phone"
             placeholder="nouveau numéro de téléphone"
             defaultValue={dataShop ? dataShop.phone : ""}
-            onChange={(e) => getDataShop(e.target.value, "phone")}
+            onChange={(e) =>
+              getDataInput(
+                dataShopToUpdate,
+                setDataShopToUpdate,
+                e.target.value,
+                "phone"
+              )
+            }
           ></input>
         </label>
         <label htmlFor="email">
@@ -144,7 +185,14 @@ const FormShop = () => {
             name="email"
             placeholder="nouvelle adresse email"
             defaultValue={dataShop ? dataShop.email : ""}
-            onChange={(e) => getDataShop(e.target.value, "email")}
+            onChange={(e) =>
+              getDataInput(
+                dataShopToUpdate,
+                setDataShopToUpdate,
+                e.target.value,
+                "email"
+              )
+            }
           ></input>
         </label>
         <label htmlFor="schedule">
@@ -154,13 +202,18 @@ const FormShop = () => {
             name="schedule"
             placeholder="nouveaux horaires"
             defaultValue={dataShop ? dataShop.schedule : ""}
-            onChange={(e) => getDataShop(e.target.value, "schedule")}
+            onChange={(e) =>
+              getDataInput(
+                dataShopToUpdate,
+                setDataShopToUpdate,
+                e.target.value,
+                "schedule"
+              )
+            }
           ></input>
         </label>
         <button type="submit">Modifier</button>
-        {successMessage && (
-          <p className={!error ? "success" : "fail"}>{successMessage}</p>
-        )}
+        {message && <p className={!error ? "success" : "fail"}>{message}</p>}
       </form>
     </div>
   );

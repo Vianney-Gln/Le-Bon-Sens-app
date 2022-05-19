@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-//routing
+// Routing
 import { Link, useNavigate, useParams } from "react-router-dom";
-//styles
+// Styles
 import "../styles/admin.scss";
 import "../styles/formAdmin.scss"; // all forms admin
 
-//components admin
+// Components admin
 import FormProduct from "./FormProduct";
 import ManageProduct from "./ManageProduct";
 import FormRecipe from "./FormRecipe";
@@ -18,13 +18,13 @@ import ManageProductors from "./ManageProductors";
 import FormCarrouselProductors from "./FormCarrouselProductors";
 
 const Admin = () => {
-  /* ----- doc title ----- */
+  /* ----- Doc title ----- */
   document.title = "Le Bon Sens - Admin";
 
-  /* ----- params ----- */
+  /* ----- UseParams ----- */
   const param = useParams();
 
-  /* ----- states -----*/
+  /* ----- States -----*/
 
   const [idProductToManage, setIdProductToManage] = useState(""); // id product to manage
   const [idRecipeToManage, setIdRecipeToManage] = useState(""); // id recipe to manage
@@ -32,7 +32,7 @@ const Admin = () => {
   const [idProductorToManage, setIdProductorToManage] = useState(""); // id productor to manage
   const [idCarrouselItemToManage, setIdCarrouselItemToManage] = useState(""); // id item carrousel to manage
 
-  /* ----- useNavigate ------ */
+  /* ----- UseNavigate ------ */
   const navigate = useNavigate();
   const disconnect = () => {
     localStorage.removeItem("token_access_le_bon_sens");

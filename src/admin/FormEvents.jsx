@@ -1,33 +1,25 @@
 import React, { useState, useEffect } from "react";
-//service
+// Services
 import {
   createOneEvent,
   getOneEventById,
   updateOneEventById,
 } from "../services/events";
-//routing
+// Helpers
+import getDataInput, { handleForm } from "../helpers/form";
+// Routing
 import { useNavigate } from "react-router-dom";
 
 const FormEvents = ({ operation, idEventToManage }) => {
-  /* ------ states variables ------ */
+  /* ------ States variables ------ */
   const [dataEvents, setDataEvents] = useState({});
-  const [successMessage, setSuccessMessage] = useState("");
+  const [message, setMessage] = useState("");
   const [error, setError] = useState(false);
 
-  /* ------ useNavigate ------ */
+  /* ------ UseNavigate ------ */
   const navigate = useNavigate();
 
-  /**
-   * function getting all infos from the form and turn them into an object in the state dataEvents
-   * @param {string | number} value
-   * @param {string} key
-   */
-  const getDataEvents = (value, key) => {
-    const newData = dataEvents;
-    newData[key] = value;
-    setDataEvents(newData);
-  };
-  //function getting one event on component mounting IF we're in update mode
+  // Function getting one event on component mounting IF we're in update mode
   useEffect(() => {
     if (operation === "updateEvent") {
       getOneEventById(idEventToManage)
@@ -40,72 +32,45 @@ const FormEvents = ({ operation, idEventToManage }) => {
     }
   }, []);
 
-  const handleFormEventUpdate = (e) => {
-    e.preventDefault();
-    const token = localStorage.getItem("token_access_le_bon_sens");
-    updateOneEventById(dataEvents, idEventToManage, token)
-      .then(() => {
-        setSuccessMessage(
-          "l'évent a bien été mis à jour, redirection à l'accueil admin..."
-        );
-        setError(false);
-        setTimeout(() => {
-          navigate("/admin");
-        }, 3000);
-      })
-      .catch(() => {
-        setError(true);
-        setSuccessMessage(
-          "il y a eu une erreur lors de la mise à jour de l'évent, veuillez vérifier vos champs svp"
-        );
-      });
-  };
-
-  /**
-   * function running the createOneEvent function
-   * if success setup a successMessage and redirect
-   * if fail, setup a failure Message
-   * @param {*} e
-   */
-  const handleFormEventsPost = (e) => {
-    e.preventDefault();
-    const token = localStorage.getItem("token_access_le_bon_sens");
-    createOneEvent(dataEvents, token)
-      .then(() => {
-        setSuccessMessage(
-          "l'évent a bien été créé, redirection à l'accueil admin..."
-        );
-        setError(false);
-        setTimeout(() => {
-          navigate("/admin");
-        }, 3000);
-      })
-      .catch(() => {
-        setError(true);
-        setSuccessMessage(
-          "il y a eu une erreur lors de la creation de l'évent, veuillez vérifier vos champs svp"
-        );
-      });
-  };
-
   return (
     <div className="container-formEvents">
       {operation === "updateEvent" && <h3>Modifier un évènement</h3>}
       {operation === "createEvent" && <h3>Créer un évènement</h3>}
 
       <form
-        onSubmit={
-          operation === "createEvent"
-            ? handleFormEventsPost
-            : handleFormEventUpdate
-        }
+        onSubmit={(e) => {
+          if (operation === "createEvent") {
+            handleForm(
+              e,
+              createOneEvent,
+              setMessage,
+              setError,
+              dataEvents,
+              navigate,
+              operation
+            );
+          } else if (operation === "updateEvent") {
+            handleForm(
+              e,
+              updateOneEventById,
+              setMessage,
+              setError,
+              dataEvents,
+              navigate,
+              operation,
+              idEventToManage
+            );
+          }
+        }}
       >
         <label htmlFor="name">
           <input
             type="text"
             name="name"
             placeholder="nom de l'évènement"
-            onChange={(e) => getDataEvents(e.target.value, "name")}
+            onChange={(e) =>
+              getDataInput(dataEvents, setDataEvents, e.target.value, "name")
+            }
             defaultValue={operation === "updateEvent" ? dataEvents.name : ""}
           ></input>
         </label>
@@ -113,7 +78,14 @@ const FormEvents = ({ operation, idEventToManage }) => {
           <textarea
             name="description"
             placeholder="description de l'évènement"
-            onChange={(e) => getDataEvents(e.target.value, "description")}
+            onChange={(e) =>
+              getDataInput(
+                dataEvents,
+                setDataEvents,
+                e.target.value,
+                "description"
+              )
+            }
             defaultValue={
               operation === "updateEvent" ? dataEvents.description : ""
             }
@@ -123,7 +95,9 @@ const FormEvents = ({ operation, idEventToManage }) => {
           <input
             type="date"
             name="date"
-            onChange={(e) => getDataEvents(e.target.value, "date")}
+            onChange={(e) =>
+              getDataInput(dataEvents, setDataEvents, e.target.value, "date")
+            }
             defaultValue={operation === "updateEvent" ? dataEvents.date : ""}
           ></input>
         </label>
@@ -131,7 +105,9 @@ const FormEvents = ({ operation, idEventToManage }) => {
           <input
             type="time"
             name="hour"
-            onChange={(e) => getDataEvents(e.target.value, "hour")}
+            onChange={(e) =>
+              getDataInput(dataEvents, setDataEvents, e.target.value, "hour")
+            }
             defaultValue={operation === "updateEvent" ? dataEvents.hour : ""}
           ></input>
         </label>
@@ -140,16 +116,21 @@ const FormEvents = ({ operation, idEventToManage }) => {
             type="text"
             name="urlImage"
             placeholder="url de l'image"
-            onChange={(e) => getDataEvents(e.target.value, "urlImage")}
+            onChange={(e) =>
+              getDataInput(
+                dataEvents,
+                setDataEvents,
+                e.target.value,
+                "urlImage"
+              )
+            }
             defaultValue={
               operation === "updateEvent" ? dataEvents.urlImage : ""
             }
           ></input>
         </label>
         <button type="submit">valider</button>
-        {successMessage && (
-          <p className={!error ? "success" : "fail"}>{successMessage}</p>
-        )}
+        {message && <p className={!error ? "success" : "fail"}>{message}</p>}
       </form>
     </div>
   );
