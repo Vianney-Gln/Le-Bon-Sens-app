@@ -134,7 +134,7 @@ const Header = () => {
           </ul>
         </nav>
       )}
-      {currEvents.length && <InsertEvent setCurrEvents={setCurrEvents} />}
+      {currEvents.length ? <InsertEvent setCurrEvents={setCurrEvents} /> : ""}
     </header>
   );
 };
