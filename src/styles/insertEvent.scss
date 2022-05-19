@@ -6,7 +6,7 @@
   border-radius: 100%;
   padding: 10px;
   position: absolute;
-  top: 220px;
+  top: 150px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -36,7 +36,7 @@
 
 /* ------ Mobile ------ */
 
-@media screen and (max-width:700px) {
+@media screen and (max-width: 700px) {
   .insert-event {
     display: none;
   }
