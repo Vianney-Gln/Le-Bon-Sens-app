@@ -1,11 +1,15 @@
 import React from "react";
-// style
+// Style
 import "../styles/insertEvent.scss";
+// Routing
+import { Link } from "react-router-dom";
 
-const InsertEvent = ({ disableInsert }) => (
+const InsertEvent = ({ setCurrEvents }) => (
   <div className="insert-event">
-    <p>Nouvel évènement disponible!</p>
-    <button type="button" onClick={() => disableInsert()}>
+    <Link to="/events">
+      <p>Nouvel évènement disponible!</p>
+    </Link>
+    <button type="button" onClick={() => setCurrEvents([])}>
       fermer
     </button>
   </div>
