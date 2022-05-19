@@ -15,6 +15,7 @@ import Events from "./pages/Events";
 import "./styles/App.scss";
 import FindUs from "./pages/FindUs";
 import Recipes from "./pages/Recipes";
+import Page404 from "./pages/Page404";
 
 const App = () => {
   /* ------ about Insert-event component ------- */
@@ -40,6 +41,7 @@ const App = () => {
         <Route exact path="login/:operation" element={<Login />} />
         <Route exact path="admin" element={<ProtectedRoute />} />
         <Route exact path="admin/:operation" element={<ProtectedRoute />} />
+        <Route path="*" element={<Page404 />} />
       </Routes>
       <Footer />
     </div>
