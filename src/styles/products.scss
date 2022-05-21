@@ -40,7 +40,8 @@
   }
   .container-sort-products {
     width: 100%;
-    margin-top: 40px;
+    margin-top: 80px;
+    background-color: whitesmoke;
     ul {
       width: 100%;
       display: flex;
@@ -112,7 +113,7 @@
       font-size: 24px;
     }
     .infos-price {
-      margin-top: 50px;
+      margin-top: 5px;
     }
 
     .container-products {
@@ -123,6 +124,11 @@
 
     .container-sort-products {
       background-color: whitesmoke;
+      margin-top: 40px;
+
+      ul {
+        margin: 0;
+      }
     }
     .container-search-bar {
       margin: 20px 0px;

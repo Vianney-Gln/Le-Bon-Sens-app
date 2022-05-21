@@ -31,10 +31,6 @@ const Products = () => {
   return (
     <div className="container-products">
       <h1>Nos Produits</h1>
-      <p className="infos-price">
-        Les prix indiqués sont valables en boutique, il n&apos; y a pas
-        possibilité d&apos; acheter sur ce site.
-      </p>
       <div className="container-sort-products">
         <ul>
           <li
@@ -86,6 +82,10 @@ const Products = () => {
           />
         </label>
       </div>
+      <p className="infos-price">
+        Les prix indiqués sont valables en boutique, il n&apos; y a pas
+        possibilité d&apos; acheter sur ce site.
+      </p>
       <div className="container-products">
         <ul className="container-list-products">
           {listProducts.length ? (
