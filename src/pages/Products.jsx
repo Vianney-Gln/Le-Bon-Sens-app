@@ -31,6 +31,16 @@ const Products = () => {
   return (
     <div className="container-products">
       <h1>Nos Produits</h1>
+      <div className="container-search-bar">
+        <label htmlFor="search">
+          <input
+            onChange={(e) => setSearchParam(e.target.value)}
+            type="text"
+            name="search"
+            placeholder="rechercher un produit"
+          />
+        </label>
+      </div>
       <div className="container-sort-products">
         <ul>
           <li
@@ -71,16 +81,6 @@ const Products = () => {
             <span>Produits divers</span>
           </li>
         </ul>
-      </div>
-      <div className="container-search-bar">
-        <label htmlFor="search">
-          <input
-            onChange={(e) => setSearchParam(e.target.value)}
-            type="text"
-            name="search"
-            placeholder="rechercher"
-          />
-        </label>
       </div>
       <p className="infos-price">
         Les prix indiqués sont valables en boutique, il n&apos; y a pas
