@@ -75,6 +75,7 @@
   }
   .container-products {
     width: 100%;
+    min-height: 100px;
     display: flex;
     border-radius: 5px;
     justify-content: center;
@@ -89,6 +90,11 @@
       justify-content: flex-start;
       margin-top: 30px;
       flex-wrap: wrap;
+
+      .no-results {
+        text-align: center;
+        width: 100%;
+      }
     }
   }
   .infos-price {

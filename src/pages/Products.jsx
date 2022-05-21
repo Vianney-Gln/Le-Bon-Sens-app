@@ -88,17 +88,19 @@ const Products = () => {
       </div>
       <div className="container-products">
         <ul className="container-list-products">
-          {listProducts
-            ? listProducts.map((prod) => (
-                <CardsProducts
-                  key={prod.id}
-                  productName={prod.name}
-                  productPrice={prod.price}
-                  productImage={prod.urlImage}
-                  productCategory={prod.category}
-                />
-              ))
-            : ""}
+          {listProducts.length ? (
+            listProducts.map((prod) => (
+              <CardsProducts
+                key={prod.id}
+                productName={prod.name}
+                productPrice={prod.price}
+                productImage={prod.urlImage}
+                productCategory={prod.category}
+              />
+            ))
+          ) : (
+            <p className="no-results">Pas de résultats pour cette recherche</p>
+          )}
         </ul>
       </div>
     </div>
