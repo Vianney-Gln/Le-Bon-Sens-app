@@ -17,13 +17,14 @@
   .container-event-comming {
     width: 100%;
     margin-top: 40px;
-    background-color: whitesmoke;
     padding-bottom: 20px;
     h2 {
       background-color: white;
       width: 100%;
       text-align: center;
-      padding-bottom: 20px;
+      margin-top: 40px;
+      padding: 10px 0px;
+      background-color: #c4c4c4;
     }
     div {
       display: flex;
@@ -62,7 +63,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: whitesmoke;
     padding-bottom: 50px;
     padding-top: 20px;
 
@@ -70,7 +70,8 @@
       background-color: white;
       width: 100%;
       text-align: center;
-      padding: 20px 0px;
+      padding: 10px 0px;
+      background-color: #c4c4c4;
     }
     h3 {
       padding-bottom: 20px;
@@ -87,6 +88,15 @@
       p {
         text-align: left;
         padding: 0px 10px;
+        width: 100%;
+
+        img {
+          width: 200px;
+          height: 150px;
+          object-fit: cover;
+          object-position: center;
+          float: right;
+        }
       }
     }
   }
@@ -100,19 +110,33 @@
       font-size: 24px;
     }
     .container-event-comming {
+      background-color: white;
+      margin-top: 0;
+      h2 {
+        padding: 10px 0px;
+        background-color: #c4c4c4;
+      }
       div {
         .description-event {
           width: 100%;
           padding: 20px;
           border-radius: 0px;
+          box-shadow: none;
         }
       }
     }
     .container-past-event {
+      background-color: white;
+      h2 {
+        padding: 10px 0px;
+        background-color: #c4c4c4;
+      }
       .description-event {
         width: 100%;
         padding: 20px;
         border-radius: 0px;
+        box-shadow: none;
+        margin-top: 0px;
       }
     }
   }

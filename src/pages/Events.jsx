@@ -99,6 +99,7 @@ const Events = () => {
                     <span> le {eve.date}</span>
                   </h3>
                   <p>
+                    <img src={eve.urlImage} alt={eve.name} />
                     {eve.description.split("\n").map((element, index) => {
                       return (
                         <span key={index}>
