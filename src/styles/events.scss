@@ -117,6 +117,10 @@
         background-color: #c4c4c4;
       }
       div {
+        h3 {
+          font-size: 18px;
+          padding: 0;
+        }
         .description-event {
           width: 100%;
           padding: 20px;
@@ -131,12 +135,31 @@
         padding: 10px 0px;
         background-color: #c4c4c4;
       }
+      h3 {
+        font-size: 18px;
+        padding: 0;
+        background-color: whitesmoke;
+      }
       .description-event {
         width: 100%;
         padding: 20px;
         border-radius: 0px;
         box-shadow: none;
         margin-top: 0px;
+
+        p {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          img {
+            float: none;
+            width: 120px;
+            height: 80px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+          }
+        }
       }
     }
   }
