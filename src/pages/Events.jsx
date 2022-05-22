@@ -103,11 +103,7 @@ const Events = () => {
         {events.length > 1 ? <h2>Evénements passés</h2> : ""}
         {events &&
           events.map((eve) => {
-            if (
-              eve.isCurrent === 0 &&
-              events.length > 1 &&
-              eve.date !== events[0].date
-            ) {
+            if (eve.isCurrent === 0 && !currentEvents.includes(eve.id)) {
               return (
                 <div key={eve.date} className="description-event">
                   <h3>
