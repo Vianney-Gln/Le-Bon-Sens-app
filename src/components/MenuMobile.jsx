@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 // Menu Burger React
 import { slide as Menu } from "react-burger-menu";
 // Style
 import "../styles/menu-mobile.scss";
+// Routing
+import { Link } from "react-router-dom";
 
-const MenuMobile = ({ right, width, isOpen, setOpen }) => {
+const MenuMobile = () => {
+  // States
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const closeMenu = () => {
+    setMenuOpen(false);
+  };
   const styles = {
     bmBurgerButton: {
       position: "fixed",
@@ -53,16 +61,32 @@ const MenuMobile = ({ right, width, isOpen, setOpen }) => {
   return (
     <Menu
       styles={styles}
-      right={right}
-      width={width}
-      isOpen={isOpen}
-      setOpen={setOpen}
+      right
+      width={"100%"}
+      isOpen={menuOpen}
+      onStateChange={(state) => setMenuOpen(state.isOpen)}
     >
       <ul className="list-tabs">
-        <li className="menu-item">Produits</li>
-        <li className="menu-item">Evénements</li>
-        <li className="menu-item">Recettes</li>
-        <li className="menu-item">Nous contacter</li>
+        <li className="menu-item">
+          <Link onClick={() => closeMenu()} to="/products">
+            Produits
+          </Link>
+        </li>
+        <li className="menu-item">
+          <Link onClick={() => closeMenu()} to="/events">
+            Evénements
+          </Link>
+        </li>
+        <li className="menu-item">
+          <Link onClick={() => closeMenu()} to="/recipes">
+            Recettes
+          </Link>
+        </li>
+        <li className="menu-item">
+          <Link onClick={() => closeMenu()} to="/find-us">
+            Nous contacter
+          </Link>
+        </li>
         <li className="menu-item">Producteurs</li>
       </ul>
     </Menu>

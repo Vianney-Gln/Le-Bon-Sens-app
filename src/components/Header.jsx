@@ -10,8 +10,7 @@ import { productorsContext } from "../context/productors";
 import InsertEvent from "./InsertEvent";
 import logo from "../images/logo-le-bon-sens.png";
 import MenuMobile from "./MenuMobile";
-// Hamburger React
-import Hamburger from "hamburger-react";
+
 // Service
 import getInfosEvents from "../services/events";
 
@@ -21,7 +20,7 @@ const Header = () => {
   const ProductorsContext = useContext(productorsContext);
 
   // States
-  const [isOpen, setOpen] = useState(false); // variable statement hamburger react
+
   const [openProductors, setOpenProductors] = useState(false); // variable statement on click on productors( display the list of productors)
   const [currEvents, setCurrEvents] = useState([]); // state managing the display of insert event
 
@@ -44,16 +43,7 @@ const Header = () => {
 
   return (
     <header className="container-header">
-      <div className="burger-menu">
-        {
-          <MenuMobile
-            right={true}
-            width={"100%"}
-            isOpen={isOpen}
-            setOpen={setOpen}
-          />
-        }
-      </div>
+      <div className="burger-menu">{<MenuMobile />}</div>
       <div className="container-nav">
         <div className="Logo-shop">
           <Link to="/">
@@ -90,22 +80,15 @@ const Header = () => {
           </ul>
         </nav>
       </div>
-      {!isOpen ? (
-        <>
-          <div className="title-shop">
-            {ShopContext.infosShop.name && (
-              <h1>{ShopContext.infosShop.name}</h1>
-            )}
-          </div>
-          <div className="schedules">
-            {ShopContext.infosShop.schedule && (
-              <p>{ShopContext.infosShop.schedule}</p>
-            )}
-          </div>
-        </>
-      ) : (
-        ""
-      )}
+
+      <div className="title-shop">
+        {ShopContext.infosShop.name && <h1>{ShopContext.infosShop.name}</h1>}
+      </div>
+      <div className="schedules">
+        {ShopContext.infosShop.schedule && (
+          <p>{ShopContext.infosShop.schedule}</p>
+        )}
+      </div>
 
       {currEvents.length ? <InsertEvent setCurrEvents={setCurrEvents} /> : ""}
     </header>
