@@ -10,6 +10,7 @@ const Events = () => {
   // Variables statement
   const [currentEvents, setCurrentEvents] = useState([]); // currents events
   const [events, setEvents] = useState([]); // all other events
+  const [lastEvent, setLastEvent] = useState({}); // the last event past
 
   // Getting all infos about events on component mounting
   useEffect(() => {
@@ -19,6 +20,7 @@ const Events = () => {
           setCurrentEvents((oldEvents) => [...oldEvents, evt]); // "push" currents events
         } else {
           setEvents((oldEvents) => [...oldEvents, evt]); // "push" past events
+          setLastEvent(evts[0]);
         }
       });
     });
@@ -73,18 +75,18 @@ const Events = () => {
               );
             })}
           </>
-        ) : events.length ? (
+        ) : lastEvent && Object.keys(lastEvent).length ? (
           /* If not, display the last past event (first of the list) */
           <div className="last-event">
             <h2>Dernier événement</h2>
             <h3>
-              {events[0].name}
-              <span> du {events[0].date}</span>
+              {lastEvent.name}
+              <span> du {lastEvent.date}</span>
             </h3>
-            <img src={events[0].urlImage} alt={events[0].name} />
+            <img src={lastEvent.urlImage} alt={lastEvent.name} />
             <div className="description-event">
               <p>
-                {events[0].description.split("\n").map((element, index) => {
+                {lastEvent.description.split("\n").map((element, index) => {
                   return (
                     <span key={index}>
                       {element}
@@ -102,8 +104,8 @@ const Events = () => {
       <div className="container-past-event">
         {events.length > 1 ? <h2>Evénements passés</h2> : ""}
         {events &&
-          events.map((eve) => {
-            if (eve.isCurrent === 0 && !currentEvents.includes(eve.id)) {
+          events.map((eve, index) => {
+            if (eve.isCurrent === 0 && index !== 0) {
               return (
                 <div key={eve.date} className="description-event">
                   <h3>
