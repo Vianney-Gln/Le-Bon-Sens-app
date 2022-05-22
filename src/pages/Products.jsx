@@ -29,7 +29,7 @@ const Products = () => {
   }, [sortParam, searchParam]);
 
   return (
-    <div className="container-products">
+    <div className="container-pageProducts">
       <h1>Nos Produits</h1>
       <div className="container-search-bar">
         <label htmlFor="search">
