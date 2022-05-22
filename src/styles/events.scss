@@ -141,15 +141,16 @@
 
 @media screen and (max-width: 700px) {
   .container-events {
+    background-image: url("../images/paysage.jpg");
+    background-size: cover;
     h1 {
       font-size: 24px;
     }
     .container-event-comming {
-      background-color: white;
       margin-top: 0;
+      padding: 0;
       h2 {
         padding: 10px 0px;
-        background-color: #c4c4c4;
       }
       div {
         h3 {
@@ -165,15 +166,13 @@
       }
     }
     .container-past-event {
-      background-color: white;
+      padding: 0;
       h2 {
-        padding: 10px 0px;
-        background-color: #c4c4c4;
+        padding: 20px 0px;
       }
       h3 {
         font-size: 18px;
         padding: 0;
-        background-color: whitesmoke;
       }
       .description-event {
         width: 100%;
