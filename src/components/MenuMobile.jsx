@@ -104,7 +104,16 @@ const MenuMobile = () => {
             {listProductors &&
               ProductorsContext.productors &&
               ProductorsContext.productors.map((productor) => {
-                return <li className="productor-item">{productor.name}</li>;
+                return (
+                  <li className="productor-item">
+                    <Link
+                      to={`/productors/${productor.id}`}
+                      onClick={() => closeMenu()}
+                    >
+                      {productor.name}
+                    </Link>
+                  </li>
+                );
               })}
           </ul>
         </li>
