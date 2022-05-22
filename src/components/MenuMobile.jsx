@@ -1,6 +1,8 @@
 import React from "react";
 // Menu Burger React
 import { slide as Menu } from "react-burger-menu";
+// Style
+import "../styles/menu-mobile.scss";
 
 const MenuMobile = ({ right, width, isOpen, setOpen }) => {
   const styles = {
@@ -49,23 +51,21 @@ const MenuMobile = ({ right, width, isOpen, setOpen }) => {
   };
 
   return (
-    <div className="menu-mobile">
-      <Menu
-        styles={styles}
-        right={right}
-        width={width}
-        isOpen={isOpen}
-        setOpen={setOpen}
-      >
-        <ul>
-          <li className="menu-item">Produits</li>
-          <li>Evénements</li>
-          <li>Producteurs</li>
-          <li>Recettes</li>
-          <li>Nous contacter</li>
-        </ul>
-      </Menu>
-    </div>
+    <Menu
+      styles={styles}
+      right={right}
+      width={width}
+      isOpen={isOpen}
+      setOpen={setOpen}
+    >
+      <ul className="list-tabs">
+        <li className="menu-item">Produits</li>
+        <li className="menu-item">Evénements</li>
+        <li className="menu-item">Recettes</li>
+        <li className="menu-item">Nous contacter</li>
+        <li className="menu-item">Producteurs</li>
+      </ul>
+    </Menu>
   );
 };
 
