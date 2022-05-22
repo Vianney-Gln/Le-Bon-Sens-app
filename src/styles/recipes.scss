@@ -25,8 +25,7 @@
       width: 30%;
       margin-top: 20px;
       border-radius: 5px;
-      border: none;
-      background-color: #c4c4c4;
+      border: 1px solid #c4c4c4;
       padding-top: 7px;
       padding-bottom: 7px;
     }
@@ -38,8 +37,10 @@
     .container-cards-recipes {
       width: 80%;
       display: flex;
+      margin-top: 20px;
       flex-wrap: wrap;
       justify-content: space-between;
+      background-image: url("../images/fond-bois.jpg");
     }
   }
 
@@ -74,6 +75,8 @@
       background-color: whitesmoke;
       .container-cards-recipes {
         background-color: whitesmoke;
+        background-image: none;
+        width: 100%;
       }
     }
   }
