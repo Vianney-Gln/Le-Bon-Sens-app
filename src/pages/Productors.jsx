@@ -25,7 +25,6 @@ const Productors = () => {
 
   /* ----- Getting infos productor by id on component mounting ----- */
   useEffect(() => {
-    console.log(param.id);
     getInfosProductors(param.id).then((result) => {
       setInfosProductor(result);
       if (result.carrousel) {
