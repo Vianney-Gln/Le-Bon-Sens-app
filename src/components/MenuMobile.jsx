@@ -1,15 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 // Menu Burger React
 import { slide as Menu } from "react-burger-menu";
 // Style
 import "../styles/menu-mobile.scss";
 // Routing
 import { Link } from "react-router-dom";
+// Context
+import { productorsContext } from "../context/productors";
 
 const MenuMobile = () => {
   // States
   const [menuOpen, setMenuOpen] = useState(false);
+  const [listProductors, setListProductors] = useState(false);
 
+  // Function handling list productors
+
+  const handleListProductors = () => {
+    setListProductors(!listProductors);
+  };
+
+  // UseContext
+  const ProductorsContext = useContext(productorsContext);
   const closeMenu = () => {
     setMenuOpen(false);
   };
@@ -87,7 +98,16 @@ const MenuMobile = () => {
             Nous contacter
           </Link>
         </li>
-        <li className="menu-item">Producteurs</li>
+        <li onClick={() => handleListProductors()} className="menu-item">
+          Producteurs
+          <ul className="productor-list">
+            {listProductors &&
+              ProductorsContext.productors &&
+              ProductorsContext.productors.map((productor) => {
+                return <li className="productor-item">{productor.name}</li>;
+              })}
+          </ul>
+        </li>
       </ul>
     </Menu>
   );

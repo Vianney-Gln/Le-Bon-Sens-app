@@ -70,7 +70,6 @@ const Header = () => {
                   ))}
               </ul>
             </li>
-
             <Link to="recipes">
               <li>Recettes</li>
             </Link>

@@ -13,5 +13,36 @@
       text-decoration: none;
       color: #b8b7ad;
     }
+
+    .productor-list {
+      list-style: none;
+      color: black;
+      margin-top: 20px;
+      border-radius: 5px;
+      padding: 5px;
+
+      li {
+        text-shadow: none;
+        border-top: 1px solid black;
+        border-bottom: 1px solid black;
+        color: black;
+        font-size: 1rem;
+        padding: 20px 0px;
+        animation-name: growth;
+        animation-duration: 0.5s;
+        background-color: white;
+      }
+    }
+  }
+}
+
+// Anim css
+
+@keyframes growth {
+  from {
+    padding: 0px 0px;
+  }
+  to {
+    padding: 20px 0px;
   }
 }
