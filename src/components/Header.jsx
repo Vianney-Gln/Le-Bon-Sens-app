@@ -24,12 +24,6 @@ const Header = () => {
   const [openProductors, setOpenProductors] = useState(false); // variable statement on click on productors( display the list of productors)
   const [currEvents, setCurrEvents] = useState([]); // state managing the display of insert event
 
-  // Function handling display of list productors on click
-  const handleListProductors = () => {
-    setOpenProductors(!openProductors);
-  };
-
-  window.onresize = () => setOpen(false); // If user change the size of the viewport ===> close burger
   window.addEventListener("scroll", () => setOpenProductors(false)); // If the user is scrolling ====> close burger
 
   // Useffect ---> called service event to check if there is current events
@@ -64,7 +58,7 @@ const Header = () => {
               <ul className="list-productor">
                 {ProductorsContext.productors &&
                   ProductorsContext.productors.map((productor) => (
-                    <Link key={productor.id} to={`productors/${productor.id}`}>
+                    <Link to={`productors/${productor.id}`} key={productor.id}>
                       <li>{productor.name}</li>
                     </Link>
                   ))}
