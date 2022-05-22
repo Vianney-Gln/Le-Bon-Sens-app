@@ -113,12 +113,14 @@ const Header = () => {
                 <ul className="list-productor">
                   {ProductorsContext.productors &&
                     ProductorsContext.productors.map((productor) => {
-                      <Link
-                        key={productor.id}
-                        to={`productors/${productor.id}`}
-                      >
-                        <li>{productor.name}</li>
-                      </Link>;
+                      return (
+                        <Link
+                          key={productor.id}
+                          to={`productors/${productor.id}`}
+                        >
+                          <li>{productor.name}</li>
+                        </Link>
+                      );
                     })}
                 </ul>
               )}
