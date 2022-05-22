@@ -35,7 +35,7 @@ const Productors = () => {
 
   return (
     <div className="container-productors">
-      <h1>Nos producteurs associés</h1>
+      <h1>Nos producteurs</h1>
       <div className="container-top">
         <div className="container-carrousel">
           <Slide>
