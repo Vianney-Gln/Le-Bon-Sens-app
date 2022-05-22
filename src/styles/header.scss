@@ -9,6 +9,9 @@
   background-size: cover;
   position: relative;
   border-bottom: 1px solid white;
+  .burger-menu {
+    display: none;
+  }
 
   .container-nav {
     font-size: 1.4rem;
@@ -30,9 +33,6 @@
           cursor: pointer;
           width: 50%;
         }
-      }
-      .hamburger-react {
-        display: none;
       }
     }
     .navigation-header {
@@ -119,6 +119,9 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    .burger-menu {
+      display: block;
+    }
 
     .container-nav {
       height: auto;
@@ -130,9 +133,6 @@
           img {
             width: 70px;
           }
-        }
-        .hamburger-react {
-          display: block;
         }
       }
       .navigation-header {

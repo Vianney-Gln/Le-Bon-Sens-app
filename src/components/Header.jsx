@@ -9,6 +9,7 @@ import { productorsContext } from "../context/productors";
 // Components
 import InsertEvent from "./InsertEvent";
 import logo from "../images/logo-le-bon-sens.png";
+import MenuMobile from "./MenuMobile";
 // Hamburger React
 import Hamburger from "hamburger-react";
 // Service
@@ -43,14 +44,21 @@ const Header = () => {
 
   return (
     <header className="container-header">
+      <div className="burger-menu">
+        {
+          <MenuMobile
+            right={true}
+            width={"100%"}
+            isOpen={isOpen}
+            setOpen={setOpen}
+          />
+        }
+      </div>
       <div className="container-nav">
         <div className="Logo-shop">
           <Link to="/">
             <img src={logo} alt="le bon sens" />
           </Link>
-          <div className="hamburger-react">
-            <Hamburger toggled={isOpen} toggle={setOpen} />
-          </div>
         </div>
         <nav className="navigation-header">
           <ul className="container-list-header">
@@ -96,46 +104,9 @@ const Header = () => {
           </div>
         </>
       ) : (
-        <nav className="nav-mobil">
-          <ul className="list-top">
-            <Link to="products">
-              <li>Produits</li>
-            </Link>
-            <Link to="events">
-              <li>Evènements</li>
-            </Link>
-            <li
-              onClick={() => handleListProductors()}
-              className="tab-productor"
-            >
-              Producteurs
-              {openProductors && (
-                <ul className="list-productor">
-                  {ProductorsContext.productors &&
-                    ProductorsContext.productors.map((productor) => {
-                      return (
-                        <Link
-                          key={productor.id}
-                          to={`productors/${productor.id}`}
-                        >
-                          <li>{productor.name}</li>
-                        </Link>
-                      );
-                    })}
-                </ul>
-              )}
-            </li>
-          </ul>
-          <ul className="list-bottom">
-            <Link to="recipes">
-              <li>Recettes</li>
-            </Link>
-            <Link to="find-us">
-              <li>Nous contacter</li>
-            </Link>
-          </ul>
-        </nav>
+        ""
       )}
+
       {currEvents.length ? <InsertEvent setCurrEvents={setCurrEvents} /> : ""}
     </header>
   );
