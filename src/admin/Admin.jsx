@@ -53,34 +53,52 @@ const Admin = () => {
           <li className="tab-products">
             produits
             <ul className="menu-products">
-              <li className="addProducts">Ajouter des produits</li>
-              <li className="manageProducts">Gérer les produits</li>
+              <li className="addProducts">
+                <Link to="/admin/addProduct">Ajouter des produits</Link>
+              </li>
+              <li className="manageProducts">
+                <Link to="/admin/manageProduct">Gérer les produits</Link>
+              </li>
             </ul>
           </li>
           <li>|</li>
           <li className="tab-recipes">
             Recettes
             <ul className="menu-recipes">
-              <li className="addRecipes">Ajouter des recettes</li>
-              <li className="manageRecipes">Gérer les recettes</li>
+              <li className="addRecipes">
+                <Link to="/admin/addRecipe">Ajouter des recettes</Link>
+              </li>
+              <li className="manageRecipes">
+                <Link to="/admin/manageRecipes">Gérer les recettes</Link>
+              </li>
             </ul>
           </li>
           <li>|</li>
           <li className="tab-events">
             Evénements
             <ul className="menu-events">
-              <li className="addEvents">Ajouter des événements</li>
-              <li className="manageEvents">Gérer les événements</li>
+              <li className="addEvents">
+                <Link to="/admin/createEvent">Ajouter des événements</Link>
+              </li>
+              <li className="manageEvents">
+                <Link to="/admin/manageEvents">Gérer les événements</Link>
+              </li>
             </ul>
           </li>
           <li>|</li>
-          <li className="tab-shop">Magasin</li>
+          <li className="tab-shop">
+            <Link to="/admin/updateShop">Magasin</Link>
+          </li>
           <li>|</li>
           <li className="tab-productors">
             Producteurs
             <ul className="menu-productors">
-              <li className="addProductors">Ajouter un producteur</li>
-              <li className="manageProductors">Gérer les producteurs</li>
+              <li className="addProductors">
+                <Link to="/admin/addProductor">Ajouter un producteur</Link>
+              </li>
+              <li className="manageProductors">
+                <Link to="/admin/manageProductors">Gérer les producteurs</Link>
+              </li>
             </ul>
           </li>
           <li>|</li>
