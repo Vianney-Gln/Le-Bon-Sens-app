@@ -40,7 +40,9 @@ const Admin = () => {
   };
   return (
     <div className="container-admin">
-      <h1>Bienvenue dans votre espace admin</h1>
+      <div className="container-title">
+        <h1>Espace admin</h1>
+      </div>
       <div className="admin-description">
         <p>
           Ici vous avez la possibilité de gérer le contenu des différentes pages
@@ -50,10 +52,12 @@ const Admin = () => {
       </div>
       <div className="container-rubrics-form">
         <ul className="container-list-rubrics">
+          <Link to="/admin">
+            <li>Accueil</li>
+          </Link>
           <Link to="/admin/addProduct">
             <li>Ajouter des produits en stock</li>
           </Link>
-
           <Link to="/admin/manageProduct">
             <li>Gérer les produits</li>
           </Link>
