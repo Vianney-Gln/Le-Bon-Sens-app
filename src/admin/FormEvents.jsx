@@ -5,6 +5,8 @@ import {
   getOneEventById,
   updateOneEventById,
 } from "../services/events";
+// Style
+import "../styles/formEvents.scss";
 // Helpers
 import getDataInput, { handleForm } from "../helpers/form";
 // Routing
@@ -34,10 +36,8 @@ const FormEvents = ({ operation, idEventToManage }) => {
 
   return (
     <div className="container-formEvents">
-      {operation === "updateEvent" && <h3>Modifier un évènement</h3>}
-      {operation === "createEvent" && <h3>Créer un évènement</h3>}
-
       <form
+        className="formEvents"
         onSubmit={(e) => {
           if (operation === "createEvent") {
             handleForm(
@@ -63,6 +63,8 @@ const FormEvents = ({ operation, idEventToManage }) => {
           }
         }}
       >
+        {operation === "updateEvent" && <h3>Modifier un évènement</h3>}
+        {operation === "createEvent" && <h3>Créer un évènement</h3>}
         <label htmlFor="name">
           <input
             type="text"
@@ -91,26 +93,28 @@ const FormEvents = ({ operation, idEventToManage }) => {
             }
           ></textarea>
         </label>
-        <label htmlFor="date">
-          <input
-            type="date"
-            name="date"
-            onChange={(e) =>
-              getDataInput(dataEvents, setDataEvents, e.target.value, "date")
-            }
-            defaultValue={operation === "updateEvent" ? dataEvents.date : ""}
-          ></input>
-        </label>
-        <label htmlFor="hour">
-          <input
-            type="time"
-            name="hour"
-            onChange={(e) =>
-              getDataInput(dataEvents, setDataEvents, e.target.value, "hour")
-            }
-            defaultValue={operation === "updateEvent" ? dataEvents.hour : ""}
-          ></input>
-        </label>
+        <div className="container-fields-date-hour">
+          <label htmlFor="date">
+            <input
+              type="date"
+              name="date"
+              onChange={(e) =>
+                getDataInput(dataEvents, setDataEvents, e.target.value, "date")
+              }
+              defaultValue={operation === "updateEvent" ? dataEvents.date : ""}
+            ></input>
+          </label>
+          <label htmlFor="hour">
+            <input
+              type="time"
+              name="hour"
+              onChange={(e) =>
+                getDataInput(dataEvents, setDataEvents, e.target.value, "hour")
+              }
+              defaultValue={operation === "updateEvent" ? dataEvents.hour : ""}
+            ></input>
+          </label>
+        </div>
         <label htmlFor="urlImage">
           <input
             type="text"
@@ -130,7 +134,7 @@ const FormEvents = ({ operation, idEventToManage }) => {
           ></input>
         </label>
         <button type="submit">valider</button>
-        {message && <p className={!error ? "success" : "fail"}>{message}</p>}
+        {<p className={!error ? "success" : "fail"}>{message && message}</p>}
       </form>
     </div>
   );
