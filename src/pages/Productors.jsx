@@ -9,6 +9,9 @@ import "react-slideshow-image/dist/styles.css";
 // Images
 import iconFaceBook from "../images/icone-fb.jpg";
 import iconTwitter from "../images/icone-twitter.png";
+import std1 from "../images/leaf.png";
+import std2 from "../images/leaf2.png";
+import std3 from "../images/leaf3.png";
 //Services
 import { getInfosProductors } from "../services/productors";
 
@@ -22,6 +25,9 @@ const Productors = () => {
   /* ----- States ----- */
   const [infosProductor, setInfosProductor] = useState({});
   const [carrousel, setCarrousel] = useState([]);
+
+  /* ----- Standards carrousel image ------*/
+  const stdImages = [std1, std2, std3];
 
   /* ----- Getting infos productor by id on component mounting ----- */
   useEffect(() => {
@@ -41,17 +47,32 @@ const Productors = () => {
       <div className="container-top">
         <div className="container-carrousel">
           <Slide>
-            {carrousel.length &&
-              carrousel.map((slideImage) => (
-                <div className="each-slide" key={slideImage.urlImageCarrousel}>
+            {carrousel.length
+              ? carrousel.map((slideImage) => (
                   <div
-                    className="slide"
-                    style={{
-                      backgroundImage: `url(${slideImage.urlImageCarrousel})`,
-                    }}
-                  />
-                </div>
-              ))}
+                    className="each-slide"
+                    key={slideImage.urlImageCarrousel}
+                  >
+                    <div
+                      className="slide"
+                      style={{
+                        backgroundImage: `url(${slideImage.urlImageCarrousel})`,
+                      }}
+                    />
+                  </div>
+                ))
+              : stdImages.map((img) => {
+                  return (
+                    <div className="each-slide">
+                      <div
+                        className="slide-standard"
+                        style={{
+                          backgroundImage: `url(${img})`,
+                        }}
+                      />
+                    </div>
+                  );
+                })}
           </Slide>
           <div className="container-buttons-mobile"></div>
         </div>
