@@ -29,6 +29,10 @@
       padding: 0;
       padding-inline-start: 0;
 
+      .current-tab {
+        background-color: #f1f0f0;
+      }
+
       li {
         background-color: #d7d5d5;
         font-size: 1.4rem;
@@ -52,6 +56,7 @@
           }
         }
       }
+
       li:hover {
         background-color: #f1f0f0;
       }
