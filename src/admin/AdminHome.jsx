@@ -7,6 +7,7 @@ const AdminHome = () => {
     <div className="container-adminHome">
       <p>
         Bienvenue sur l'espace admin!<br></br>
+        <span>C'est ici que vous pouvez gérer le contenu du site.</span>
       </p>
     </div>
   );

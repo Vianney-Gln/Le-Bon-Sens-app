@@ -46,10 +46,38 @@ const Admin = () => {
       </div>
       <div className="container-rubrics-form">
         <ul className="container-list-rubrics">
-          <Link to="/admin">
-            <li title="accueil">Accueil</li>
-          </Link>
-          <Link to="/admin/addProduct">
+          <li>
+            <Link to="/admin">Accueil</Link>
+          </li>
+          <li>|</li>
+          <li className="tab-products">
+            produits
+            <ul className="menu-products">
+              <li className="addProducts">Ajouter des produits</li>
+              <li className="manageProducts">Gérer les produits</li>
+            </ul>
+          </li>
+          <li>|</li>
+          <li className="tab-recipes">
+            Recettes
+            <ul className="menu-recipes">
+              <li className="addRecipes">Ajouter des recettes</li>
+              <li className="manageRecipes">Gérer les recettes</li>
+            </ul>
+          </li>
+          <li>|</li>
+          <li className="tab-shop">Magasin</li>
+          <li>|</li>
+          <li className="tab-productors">Producteurs</li>
+          <li>|</li>
+          <li
+            role={"presentation"}
+            onClick={() => disconnect()}
+            className="tab-deconnexion"
+          >
+            Déconnexion
+          </li>
+          {/* <Link to="/admin/addProduct">
             <li title="Ajouter des produits en stock">
               Ajouter des produits en stock
             </li>
@@ -87,7 +115,7 @@ const Admin = () => {
             onClick={() => disconnect()}
           >
             Déconnexion
-          </li>
+          </li> */}
         </ul>
         <div className="container-rubric">
           {!param.operation && <AdminHome />}

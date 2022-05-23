@@ -25,53 +25,40 @@
       list-style: none;
       display: flex;
       justify-content: center;
-      background-color: #d7d5d5;
       margin: 0;
       padding: 0;
       padding-inline-start: 0;
 
-      a {
-        white-space: nowrap;
-        overflow: hidden;
-
-        li {
-          background-color: #d7d5d5;
-          font-size: 1rem;
-          padding: 4px 8px;
-          cursor: pointer;
-          transition: all 0.5s ease;
-          position: relative;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-        }
-
-        li:after {
-          content: "|";
-          position: absolute;
-          font-size: 1.2rem;
-          right: 0;
-        }
-      }
-
-      .deconnexion {
+      li {
         background-color: #d7d5d5;
-        font-size: 1rem;
+        font-size: 1.4rem;
         padding: 4px 8px;
         cursor: pointer;
         transition: all 0.5s ease;
-        position: relative;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-      }
 
-      .deconnexion::after {
-        content: "";
+        .menu-products,
+        .menu-recipes {
+          position: absolute;
+          top: 79px;
+          background-color: #c4c4c4;
+          display: none;
+          li {
+            font-size: 1rem;
+          }
+        }
       }
-
       li:hover {
-        background-color: #ebeaea;
+        background-color: #f1f0f0;
+      }
+
+      .tab-products:hover .menu-products {
+        display: block;
+      }
+      .tab-recipes:hover .menu-recipes {
+        display: block;
       }
     }
     .container-rubric {
