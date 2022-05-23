@@ -25,6 +25,10 @@
       list-style: none;
       display: flex;
       justify-content: center;
+      background-color: #d7d5d5;
+      margin: 0;
+      padding: 0;
+      padding-inline-start: 0;
 
       a {
         white-space: nowrap;
@@ -72,11 +76,7 @@
     }
     .container-rubric {
       margin-top: 15px;
-      width: 70%;
-      height: auto;
-
-      border: 1px solid black;
-
+      width: 100%;
       h3 {
         text-align: center;
         margin-top: 20px;

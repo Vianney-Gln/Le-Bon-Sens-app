@@ -16,6 +16,7 @@ import ManageEvents from "./ManageEvents";
 import FormProductors from "./FormProductors";
 import ManageProductors from "./ManageProductors";
 import FormCarrouselProductors from "./FormCarrouselProductors";
+import AdminHome from "./AdminHome";
 
 const Admin = () => {
   /* ----- Doc title ----- */
@@ -88,8 +89,8 @@ const Admin = () => {
             Déconnexion
           </li>
         </ul>
-
         <div className="container-rubric">
+          {!param.operation && <AdminHome />}
           {param.operation === "addProduct" && (
             <FormProduct operation={param.operation} />
           )}
