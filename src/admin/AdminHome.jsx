@@ -1,14 +1,14 @@
 import React from "react";
 // Style
 import "../styles/adminHome.scss";
+// Image
+import engrenages from "../images/engrenages.png";
 
 const AdminHome = () => {
   return (
     <div className="container-adminHome">
-      <p>
-        Bienvenue sur l'espace admin!<br></br>
-        <span>C'est ici que vous pouvez gérer le contenu du site.</span>
-      </p>
+      <p>Bienvenue dans l'espace admin!</p>
+      <img src={engrenages} alt="engrenages" />
     </div>
   );
 };

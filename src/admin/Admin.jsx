@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 // Routing
 import { Link, useNavigate, useParams } from "react-router-dom";
 // Styles
@@ -32,6 +32,25 @@ const Admin = () => {
   const [idEventToManage, setIdEventToManage] = useState(""); // id event to manage
   const [idProductorToManage, setIdProductorToManage] = useState(""); // id productor to manage
   const [idCarrouselItemToManage, setIdCarrouselItemToManage] = useState(""); // id item carrousel to manage
+  const [arrayParam, setArrayParam] = useState([]);
+
+  // Array with all possible param.operation
+  const paramOperation = [
+    "addProduct",
+    "manageProduct",
+    "updateProduct",
+    "addRecipe",
+    "updateShop",
+    "manageRecipes",
+    "updateRecipe",
+    "createEvent",
+    "manageEvents",
+    "updateEvent",
+    "updateProductor",
+    "addProductor",
+    "manageProductors",
+    "manageCarrouselProductor",
+  ];
 
   /* ----- UseNavigate ------ */
   const navigate = useNavigate();
@@ -109,48 +128,14 @@ const Admin = () => {
           >
             Déconnexion
           </li>
-          {/* <Link to="/admin/addProduct">
-            <li title="Ajouter des produits en stock">
-              Ajouter des produits en stock
-            </li>
-          </Link>
-          <Link to="/admin/manageProduct">
-            <li title="Gérer les produits">Gérer les produits</li>
-          </Link>
-          <Link to="/admin/addRecipe">
-            <li title="Ajouter une recette">Ajouter une recette</li>
-          </Link>
-          <Link to="/admin/manageRecipes">
-            <li title="Gérer les recettes">Gérer les recettes</li>
-          </Link>
-          <Link to="/admin/addProductor">
-            <li title="Ajouter un producteur">Ajouter un producteur</li>
-          </Link>
-          <Link to="/admin/manageProductors">
-            <li title="Gérer les producteurs">Gérer les producteurs</li>
-          </Link>
-          <Link to="/admin/updateShop">
-            <li title="Modifier les infos du magasin">
-              Modifier les infos du magasin
-            </li>
-          </Link>
-          <Link to="/admin/createEvent">
-            <li title="Ajouter un événement">Ajouter un événement</li>
-          </Link>
-          <Link to="/admin/manageEvents">
-            <li title="Gérer les événements">Gérer les événements</li>
-          </Link>
-          <li
-            title="Déconnexion"
-            className="deconnexion"
-            role={"presentation"}
-            onClick={() => disconnect()}
-          >
-            Déconnexion
-          </li> */}
         </ul>
         <div className="container-rubric">
           {!param.operation && <AdminHome />}
+
+          {param.operation && paramOperation.indexOf(param.operation) === -1 ? (
+            <AdminHome />
+          ) : null}
+
           {param.operation === "addProduct" && (
             <FormProduct operation={param.operation} />
           )}
