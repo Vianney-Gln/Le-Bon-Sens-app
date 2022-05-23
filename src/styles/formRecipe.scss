@@ -1,10 +1,11 @@
-.container-formProduct {
+.container-addRecipe {
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  .formProducts {
+
+  .formRecipe {
     width: 60%;
     border: 1px solid #c4c4c4;
     border-radius: 5px;
@@ -17,12 +18,32 @@
     margin-top: 60px;
     margin-bottom: 40px;
     position: relative;
+
+    .container-fields-cooking-preparation {
+      display: flex;
+      justify-content: space-between;
+      width: 60%;
+
+      label {
+        margin: 0;
+        margin-top: 30px;
+        width: 100%;
+        input {
+          width: 99%;
+        }
+      }
+    }
     label {
       input,
       textarea,
       select {
         background-color: white;
         border: 1px solid #c4c4c4;
+      }
+
+      textarea {
+        height: 200px;
+        width: 100%;
       }
     }
     button {

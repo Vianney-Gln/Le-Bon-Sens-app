@@ -9,6 +9,8 @@ import {
 } from "../services/recipes";
 // Helper
 import getDataInput, { handleForm } from "../helpers/form";
+// Style
+import "../styles/formRecipe.scss";
 
 const FormRecipe = ({ operation, idRecipeToManage }) => {
   /* -------- States -------- */
@@ -34,12 +36,8 @@ const FormRecipe = ({ operation, idRecipeToManage }) => {
 
   return (
     <div className="container-addRecipe">
-      {operation === "addRecipe" ? (
-        <h3>Ajouter une recette</h3>
-      ) : (
-        <h3>Modifier une recette</h3>
-      )}
       <form
+        className="formRecipe"
         onSubmit={(e) => {
           if (operation === "addRecipe") {
             handleForm(
@@ -65,8 +63,12 @@ const FormRecipe = ({ operation, idRecipeToManage }) => {
           }
         }}
       >
+        {operation === "addRecipe" ? (
+          <h3>Ajouter une recette</h3>
+        ) : (
+          <h3>Modifier une recette</h3>
+        )}
         <label htmlFor="name">
-          <span>nom de la recette:</span>
           <input
             type="text"
             name="name"
@@ -79,7 +81,6 @@ const FormRecipe = ({ operation, idRecipeToManage }) => {
           ></input>
         </label>
         <label htmlFor="description">
-          <span>description de la recette</span>
           <textarea
             type="text"
             name="description"
@@ -98,48 +99,47 @@ const FormRecipe = ({ operation, idRecipeToManage }) => {
             }
           ></textarea>
         </label>
-        <label htmlFor="cooking time">
-          <span>temps de cuisson:</span>
-          <input
-            type="number"
-            placeholder="temps de cuisson"
-            name="cooking time"
-            id="cooking time"
-            defaultValue={
-              operation === "updateRecipe" ? dataRecipe.cookingTime : ""
-            }
-            onChange={(e) =>
-              getDataInput(
-                dataRecipe,
-                setDataRecipe,
-                e.target.value,
-                "cookingTime"
-              )
-            }
-          ></input>
-        </label>
-        <label htmlFor="preparation time">
-          <span>temps de préparation</span>
-          <input
-            type="number"
-            placeholder="temps de préparation"
-            name="preparation time"
-            id="preparation time"
-            defaultValue={
-              operation === "updateRecipe" ? dataRecipe.preparationTime : ""
-            }
-            onChange={(e) =>
-              getDataInput(
-                dataRecipe,
-                setDataRecipe,
-                e.target.value,
-                "preparationTime"
-              )
-            }
-          ></input>
-        </label>
+        <div className="container-fields-cooking-preparation">
+          <label htmlFor="cooking time">
+            <input
+              type="number"
+              placeholder="temps de cuisson"
+              name="cooking time"
+              id="cooking time"
+              defaultValue={
+                operation === "updateRecipe" ? dataRecipe.cookingTime : ""
+              }
+              onChange={(e) =>
+                getDataInput(
+                  dataRecipe,
+                  setDataRecipe,
+                  e.target.value,
+                  "cookingTime"
+                )
+              }
+            ></input>
+          </label>
+          <label htmlFor="preparation time">
+            <input
+              type="number"
+              placeholder="temps de préparation"
+              name="preparation time"
+              id="preparation time"
+              defaultValue={
+                operation === "updateRecipe" ? dataRecipe.preparationTime : ""
+              }
+              onChange={(e) =>
+                getDataInput(
+                  dataRecipe,
+                  setDataRecipe,
+                  e.target.value,
+                  "preparationTime"
+                )
+              }
+            ></input>
+          </label>
+        </div>
         <label htmlFor="urlImage">
-          <span>url de l'image</span>
           <input
             type="text"
             placeholder="url de l'image"
@@ -163,7 +163,7 @@ const FormRecipe = ({ operation, idRecipeToManage }) => {
         ) : (
           <button type="submit">Modifier</button>
         )}
-        {message && <p className={!error ? "success" : "fail"}>{message}</p>}
+        {<p className={!error ? "success" : "fail"}>{message && message}</p>}
       </form>
     </div>
   );
