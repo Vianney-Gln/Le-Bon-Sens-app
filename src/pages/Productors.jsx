@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 //Routing
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 // Style
 import "../styles/productors.scss";
 //React Slideshow
@@ -22,6 +22,9 @@ const Productors = () => {
   /* ----- UseParam ----- */
   const param = useParams();
 
+  /* ----- UseNavigate ------ */
+  const navigate = useNavigate();
+
   /* ----- States ----- */
   const [infosProductor, setInfosProductor] = useState({});
   const [carrousel, setCarrousel] = useState([]);
@@ -31,14 +34,18 @@ const Productors = () => {
 
   /* ----- Getting infos productor by id on component mounting ----- */
   useEffect(() => {
-    getInfosProductors(param.id).then((result) => {
-      setInfosProductor(result);
-      if (result.carrousel) {
-        setCarrousel(result.carrousel);
-      } else {
-        setCarrousel([]);
-      }
-    });
+    getInfosProductors(param.id)
+      .then((result) => {
+        setInfosProductor(result);
+        if (result.carrousel) {
+          setCarrousel(result.carrousel);
+        } else {
+          setCarrousel([]);
+        }
+      })
+      .catch(() => {
+        navigate("/*");
+      });
   }, [param.id]);
 
   return (
@@ -63,7 +70,7 @@ const Productors = () => {
                 ))
               : stdImages.map((img) => {
                   return (
-                    <div className="each-slide">
+                    <div className="each-slide" key={img}>
                       <div
                         className="slide-standard"
                         style={{
