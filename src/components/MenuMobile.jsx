@@ -26,7 +26,7 @@ const MenuMobile = () => {
   };
   const styles = {
     bmBurgerButton: {
-      position: "fixed",
+      position: "absolute",
       width: "36px",
       height: "30px",
       right: "20px",

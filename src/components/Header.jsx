@@ -20,11 +20,7 @@ const Header = () => {
   const ProductorsContext = useContext(productorsContext);
 
   // States
-
-  const [openProductors, setOpenProductors] = useState(false); // variable statement on click on productors( display the list of productors)
   const [currEvents, setCurrEvents] = useState([]); // state managing the display of insert event
-
-  window.addEventListener("scroll", () => setOpenProductors(false)); // If the user is scrolling ====> close burger
 
   // Useffect ---> called service event to check if there is current events
 
