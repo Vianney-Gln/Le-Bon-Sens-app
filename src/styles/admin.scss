@@ -33,6 +33,10 @@
         background-color: #f1f0f0;
       }
 
+      .stick:hover {
+        background-color: #d7d5d5;
+      }
+
       li {
         background-color: #d7d5d5;
         font-size: 1.4rem;
@@ -83,5 +87,12 @@
         font-size: 1.4rem;
       }
     }
+  }
+}
+
+/* ----- Mobile ------ */
+@media screen and (max-width: 700px) {
+  .stick {
+    display: none;
   }
 }

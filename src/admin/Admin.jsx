@@ -68,7 +68,7 @@ const Admin = () => {
           <li className={!param.operation ? "current-tab" : ""}>
             <Link to="/admin">Accueil</Link>
           </li>
-          <li>|</li>
+          <li className="stick">|</li>
           <li
             className={
               param.operation === "addProduct" ||
@@ -88,7 +88,7 @@ const Admin = () => {
               </li>
             </ul>
           </li>
-          <li>|</li>
+          <li className="stick">|</li>
           <li
             className={
               param.operation === "addRecipe" ||
@@ -108,7 +108,7 @@ const Admin = () => {
               </li>
             </ul>
           </li>
-          <li>|</li>
+          <li className="stick">|</li>
           <li
             className={
               param.operation === "createEvent" ||
@@ -128,7 +128,7 @@ const Admin = () => {
               </li>
             </ul>
           </li>
-          <li>|</li>
+          <li className="stick">|</li>
           <li
             className={
               param.operation === "updateShop"
@@ -138,7 +138,7 @@ const Admin = () => {
           >
             <Link to="/admin/updateShop">Magasin</Link>
           </li>
-          <li>|</li>
+          <li className="stick">|</li>
           <li
             className={
               param.operation === "addProductor" ||
@@ -159,7 +159,7 @@ const Admin = () => {
               </li>
             </ul>
           </li>
-          <li>|</li>
+          <li className="stick">|</li>
           <li
             role={"presentation"}
             onClick={() => disconnect()}
