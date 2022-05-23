@@ -40,7 +40,9 @@
         text-overflow: ellipsis;
 
         .menu-products,
-        .menu-recipes {
+        .menu-recipes,
+        .menu-events,
+        .menu-productors {
           position: absolute;
           top: 79px;
           background-color: #c4c4c4;
@@ -58,6 +60,12 @@
         display: block;
       }
       .tab-recipes:hover .menu-recipes {
+        display: block;
+      }
+      .tab-events:hover .menu-events {
+        display: block;
+      }
+      .tab-productors:hover .menu-productors {
         display: block;
       }
     }

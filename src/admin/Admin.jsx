@@ -66,9 +66,23 @@ const Admin = () => {
             </ul>
           </li>
           <li>|</li>
+          <li className="tab-events">
+            Evénements
+            <ul className="menu-events">
+              <li className="addEvents">Ajouter des événements</li>
+              <li className="manageEvents">Gérer les événements</li>
+            </ul>
+          </li>
+          <li>|</li>
           <li className="tab-shop">Magasin</li>
           <li>|</li>
-          <li className="tab-productors">Producteurs</li>
+          <li className="tab-productors">
+            Producteurs
+            <ul className="menu-productors">
+              <li className="addProductors">Ajouter un producteur</li>
+              <li className="manageProductors">Gérer les producteurs</li>
+            </ul>
+          </li>
           <li>|</li>
           <li
             role={"presentation"}
