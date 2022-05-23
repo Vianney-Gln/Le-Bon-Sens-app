@@ -43,46 +43,48 @@ const Admin = () => {
       <div className="container-title">
         <h1>Espace admin</h1>
       </div>
-      <div className="admin-description">
-        <p>
-          Ici vous avez la possibilité de gérer le contenu des différentes pages
-          qui composent le site web en cliquant sur l’une des rubriques ci
-          dessous.
-        </p>
-      </div>
       <div className="container-rubrics-form">
         <ul className="container-list-rubrics">
           <Link to="/admin">
-            <li>Accueil</li>
+            <li title="accueil">Accueil</li>
           </Link>
           <Link to="/admin/addProduct">
-            <li>Ajouter des produits en stock</li>
+            <li title="Ajouter des produits en stock">
+              Ajouter des produits en stock
+            </li>
           </Link>
           <Link to="/admin/manageProduct">
-            <li>Gérer les produits</li>
+            <li title="Gérer les produits">Gérer les produits</li>
           </Link>
           <Link to="/admin/addRecipe">
-            <li>Ajouter une recette</li>
+            <li title="Ajouter une recette">Ajouter une recette</li>
           </Link>
           <Link to="/admin/manageRecipes">
-            <li>Gérer les recettes</li>
+            <li title="Gérer les recettes">Gérer les recettes</li>
           </Link>
           <Link to="/admin/addProductor">
-            <li>Ajouter un producteur</li>
+            <li title="Ajouter un producteur">Ajouter un producteur</li>
           </Link>
           <Link to="/admin/manageProductors">
-            <li>Gérer les producteurs</li>
+            <li title="Gérer les producteurs">Gérer les producteurs</li>
           </Link>
           <Link to="/admin/updateShop">
-            <li>Modifier les infos du magasin</li>
+            <li title="Modifier les infos du magasin">
+              Modifier les infos du magasin
+            </li>
           </Link>
           <Link to="/admin/createEvent">
-            <li>Ajouter un évènement</li>
+            <li title="Ajouter un événement">Ajouter un événement</li>
           </Link>
           <Link to="/admin/manageEvents">
-            <li>Gérer les évènements</li>
+            <li title="Gérer les événements">Gérer les événements</li>
           </Link>
-          <li role={"presentation"} onClick={() => disconnect()}>
+          <li
+            title="Déconnexion"
+            className="deconnexion"
+            role={"presentation"}
+            onClick={() => disconnect()}
+          >
             Déconnexion
           </li>
         </ul>

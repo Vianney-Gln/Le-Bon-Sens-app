@@ -17,40 +17,57 @@
     }
   }
 
-  .admin-description {
-    margin-top: 20px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    p {
-      width: 40%;
-      font-size: 1.2rem;
-      padding: 10px;
-      border-radius: 5px;
-      background-color: #c4c4c4;
-    }
-  }
   .container-rubrics-form {
     display: flex;
-    justify-content: space-around;
-    margin-top: 20px;
+    flex-direction: column;
+    margin-top: 40px;
     .container-list-rubrics {
-      width: 20%;
       list-style: none;
+      display: flex;
+      justify-content: center;
 
-      li {
-        background-color: #c4c4c4;
-        margin-top: 15px;
-        padding: 5px;
-        font-size: 1.4rem;
-        border-radius: 5px;
+      a {
+        white-space: nowrap;
+        overflow: hidden;
+
+        li {
+          background-color: #d7d5d5;
+          font-size: 1rem;
+          padding: 4px 8px;
+          cursor: pointer;
+          transition: all 0.5s ease;
+          position: relative;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        li:after {
+          content: "|";
+          position: absolute;
+          font-size: 1.2rem;
+          right: 0;
+        }
+      }
+
+      .deconnexion {
+        background-color: #d7d5d5;
+        font-size: 1rem;
+        padding: 4px 8px;
         cursor: pointer;
         transition: all 0.5s ease;
+        position: relative;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .deconnexion::after {
+        content: "";
       }
 
       li:hover {
-        transform: translateX(20px);
-        background-color: #858585;
+        background-color: #ebeaea;
       }
     }
     .container-rubric {
