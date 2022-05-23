@@ -9,6 +9,8 @@ import {
 import { useNavigate } from "react-router-dom";
 // Helper
 import getDataInput, { handleForm } from "../helpers/form";
+// Style
+import "../styles/formProducts.scss";
 
 const FormProduct = ({ operation, idProductToManage }) => {
   /* -----Navigate----- */
@@ -28,10 +30,9 @@ const FormProduct = ({ operation, idProductToManage }) => {
   }, []);
 
   return (
-    <>
-      {operation === "addProduct" && <h3>Ajouter des produits en stock</h3>}
-      {operation === "updateProduct" && <h3>Modifier un produit en stock</h3>}
+    <div className="container-formProduct">
       <form
+        className="formProducts"
         onSubmit={(e) => {
           if (operation === "addProduct") {
             handleForm(
@@ -57,6 +58,8 @@ const FormProduct = ({ operation, idProductToManage }) => {
           }
         }}
       >
+        {operation === "addProduct" && <h3>Ajouter des produits en stock</h3>}
+        {operation === "updateProduct" && <h3>Modifier un produit en stock</h3>}
         <label htmlFor="name">
           <input
             type="text"
@@ -129,9 +132,9 @@ const FormProduct = ({ operation, idProductToManage }) => {
         {operation === "updateProduct" && (
           <button type="submit">modifier</button>
         )}
-        {message && <p className={error ? "fail" : "success"}>{message}</p>}
+        {<p className={error ? "fail" : "success"}>{message ? message : ""}</p>}
       </form>
-    </>
+    </div>
   );
 };
 
