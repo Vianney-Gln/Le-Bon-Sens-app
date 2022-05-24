@@ -61,6 +61,7 @@ const FormProduct = ({ operation, idProductToManage }) => {
         {operation === "addProduct" && <h3>Ajouter des produits en stock</h3>}
         {operation === "updateProduct" && <h3>Modifier un produit en stock</h3>}
         <label htmlFor="name">
+          {operation === "updateProduct" && <span>Nom du produit:</span>}
           <input
             type="text"
             name="name"
@@ -73,6 +74,7 @@ const FormProduct = ({ operation, idProductToManage }) => {
           ></input>
         </label>
         <label htmlFor="price">
+          {operation === "updateProduct" && <span>Prix:</span>}
           <input
             type="text"
             name="price"
@@ -87,6 +89,7 @@ const FormProduct = ({ operation, idProductToManage }) => {
           ></input>
         </label>
         <label htmlFor="urlImage">
+          {operation === "updateProduct" && <span>Lien de l'image:</span>}
           <input
             type="text"
             name="urlImage"
@@ -106,6 +109,7 @@ const FormProduct = ({ operation, idProductToManage }) => {
           ></input>
         </label>
         <label htmlFor="category">
+          {operation === "updateProduct" && <span>Catégorie de produit:</span>}
           <select
             name="category"
             id="category"

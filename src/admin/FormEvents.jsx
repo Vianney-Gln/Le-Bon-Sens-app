@@ -140,7 +140,13 @@ const FormEvents = ({ operation, idEventToManage }) => {
             }
           ></input>
         </label>
-        <button type="submit">valider</button>
+        <button type="submit">
+          {operation === "createEvent"
+            ? "valider"
+            : operation === "updateEvent"
+            ? "modifier"
+            : ""}
+        </button>
         {<p className={!error ? "success" : "fail"}>{message && message}</p>}
       </form>
     </div>
