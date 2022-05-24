@@ -66,6 +66,7 @@ const FormEvents = ({ operation, idEventToManage }) => {
         {operation === "updateEvent" && <h3>Modifier un évènement</h3>}
         {operation === "createEvent" && <h3>Créer un évènement</h3>}
         <label htmlFor="name">
+          {operation === "updateEvent" && <span>Nom de l'événement:</span>}
           <input
             type="text"
             name="name"
@@ -77,6 +78,9 @@ const FormEvents = ({ operation, idEventToManage }) => {
           ></input>
         </label>
         <label htmlFor="description">
+          {operation === "updateEvent" && (
+            <span>Description de l'événement:</span>
+          )}
           <textarea
             name="description"
             placeholder="description de l'évènement"
@@ -95,6 +99,7 @@ const FormEvents = ({ operation, idEventToManage }) => {
         </label>
         <div className="container-fields-date-hour">
           <label htmlFor="date">
+            {operation === "updateEvent" && <span>Date:</span>}
             <input
               type="date"
               name="date"
@@ -105,6 +110,7 @@ const FormEvents = ({ operation, idEventToManage }) => {
             ></input>
           </label>
           <label htmlFor="hour">
+            {operation === "updateEvent" && <span>Heure:</span>}
             <input
               type="time"
               name="hour"
@@ -116,6 +122,7 @@ const FormEvents = ({ operation, idEventToManage }) => {
           </label>
         </div>
         <label htmlFor="urlImage">
+          {operation === "updateEvent" && <span>Lien de l'image:</span>}
           <input
             type="text"
             name="urlImage"
