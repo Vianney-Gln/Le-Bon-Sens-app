@@ -30,7 +30,6 @@ const FormShop = () => {
 
   return (
     <div className="container-update-infos-shop">
-      <h3>Modification des infos du magasin</h3>
       <form
         className="form-infosShop"
         onSubmit={(e) => {
@@ -45,6 +44,7 @@ const FormShop = () => {
           );
         }}
       >
+        <h3>Modification des infos du magasin</h3>
         <label htmlFor="name">
           <span>Nom du magasin:</span>
           <input
@@ -199,7 +199,7 @@ const FormShop = () => {
           ></input>
         </label>
         <button type="submit">Modifier</button>
-        {message && <p className={!error ? "success" : "fail"}>{message}</p>}
+        <p className={!error ? "success" : "fail"}>{message && message}</p>
       </form>
     </div>
   );
