@@ -112,7 +112,7 @@ const FormRecipe = ({ operation, idRecipeToManage }) => {
             </span>
             <input
               type="number"
-              placeholder="temps de cuisson"
+              placeholder="temps cuisson"
               name="cooking time"
               id="cooking time"
               defaultValue={
@@ -134,7 +134,7 @@ const FormRecipe = ({ operation, idRecipeToManage }) => {
             </span>
             <input
               type="number"
-              placeholder="temps de préparation"
+              placeholder="temps préparation"
               name="preparation time"
               id="preparation time"
               defaultValue={
