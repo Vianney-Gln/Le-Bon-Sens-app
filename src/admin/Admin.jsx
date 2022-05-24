@@ -168,6 +168,53 @@ const Admin = () => {
             Déconnexion
           </li>
         </ul>
+        <ul className="container-list-rubrics-mobile">
+          <li className={!param.operation ? "current-tab" : ""}>
+            <Link to="/admin">Accueil</Link>
+          </li>
+          <li className={param.operation === "addProduct" ? "current-tab" : ""}>
+            <Link to="/admin/addProduct">Ajouter un produit</Link>
+          </li>
+          <li
+            className={param.operation === "manageProduct" ? "current-tab" : ""}
+          >
+            <Link to="/admin/manageProduct">Gérer les produits</Link>
+          </li>
+          <li
+            className={param.operation === "createEvent" ? "current-tab" : ""}
+          >
+            <Link to="/admin/createEvent">Ajouter un événement</Link>
+          </li>
+          <li
+            className={param.operation === "manageEvents" ? "current-tab" : ""}
+          >
+            <Link to="/admin/manageEvents">Gérer les événements</Link>
+          </li>
+          <li className={param.operation === "addRecipe" ? "current-tab" : ""}>
+            <Link to="/admin/addRecipe">Ajouter une recette</Link>
+          </li>
+          <li
+            className={param.operation === "manageRecipes" ? "current-tab" : ""}
+          >
+            <Link to="/admin/manageRecipes">Gérer les recettes</Link>
+          </li>
+          <li
+            className={param.operation === "addProductor" ? "current-tab" : ""}
+          >
+            <Link to="/admin/addProductor">Ajouter un producteur</Link>
+          </li>
+          <li
+            className={
+              param.operation === "manageProductors" ? "current-tab" : ""
+            }
+          >
+            <Link to="/admin/manageProductors">Gérer les producteurs</Link>
+          </li>
+          <li className={param.operation === "updateShop" ? "current-tab" : ""}>
+            <Link to="/admin/updateShop">Gérer le magasin</Link>
+          </li>
+          <li onClick={() => disconnect()}>Déconnexion</li>
+        </ul>
         <div className="container-rubric">
           {!param.operation && <AdminHome />}
 

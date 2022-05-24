@@ -16,11 +16,16 @@
       border-radius: 5px;
     }
   }
-
   .container-rubrics-form {
     display: flex;
     flex-direction: column;
     margin-top: 40px;
+    .container-list-rubrics-mobile {
+      display: none;
+    }
+    .current-tab {
+      background-color: #f1f0f0;
+    }
     .container-list-rubrics {
       list-style: none;
       display: flex;
@@ -28,10 +33,6 @@
       margin: 0;
       padding: 0;
       padding-inline-start: 0;
-
-      .current-tab {
-        background-color: #f1f0f0;
-      }
 
       .stick:hover {
         background-color: #d7d5d5;
@@ -92,7 +93,27 @@
 
 /* ----- Mobile ------ */
 @media screen and (max-width: 700px) {
-  .stick {
-    display: none;
+  .container-admin {
+    .container-rubrics-form {
+      ::-webkit-scrollbar {
+        display: none;
+      }
+      .container-list-rubrics {
+        display: none;
+      }
+      .container-list-rubrics-mobile {
+        width: 100%;
+        display: flex;
+        list-style: none;
+        overflow-x: auto;
+        margin-top: 20px;
+        background-color: #d7d5d5;
+        li {
+          white-space: nowrap;
+          margin: 0px 10px;
+          padding: 10px 5px;
+        }
+      }
+    }
   }
 }
