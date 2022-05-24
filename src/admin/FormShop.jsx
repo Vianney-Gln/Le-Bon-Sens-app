@@ -5,6 +5,8 @@ import getInfosShop, { updateInfosShop } from "../services/shop";
 import getDataInput, { handleForm } from "../helpers/form";
 // Routing
 import { useNavigate, useParams } from "react-router-dom";
+// Style
+import "../styles/formShop.scss";
 
 const FormShop = () => {
   /* -------- States ------- */
@@ -30,6 +32,7 @@ const FormShop = () => {
     <div className="container-update-infos-shop">
       <h3>Modification des infos du magasin</h3>
       <form
+        className="form-infosShop"
         onSubmit={(e) => {
           handleForm(
             e,
@@ -43,7 +46,7 @@ const FormShop = () => {
         }}
       >
         <label htmlFor="name">
-          <span>nom du magasin:</span>
+          <span>Nom du magasin:</span>
           <input
             type="text"
             name="name"
@@ -60,7 +63,7 @@ const FormShop = () => {
           ></input>
         </label>
         <label htmlFor="description1">
-          <span>description1:</span>
+          <span>Description:</span>
           <textarea
             type="text"
             name="description1"
@@ -76,25 +79,8 @@ const FormShop = () => {
             }
           ></textarea>
         </label>
-        <label htmlFor="charte">
-          <span>charte:</span>
-          <textarea
-            type="text"
-            name="charte"
-            placeholder="charte"
-            defaultValue={dataShop ? dataShop.charte : ""}
-            onChange={(e) =>
-              getDataInput(
-                dataShopToUpdate,
-                setDataShopToUpdate,
-                e.target.value,
-                "charte"
-              )
-            }
-          ></textarea>
-        </label>
         <label htmlFor="urlPhoto1">
-          <span>urlPhoto1:</span>
+          <span>Lien image1:</span>
           <input
             type="text"
             name="urlPhoto1"
@@ -111,7 +97,7 @@ const FormShop = () => {
           ></input>
         </label>
         <label htmlFor="urlPhoto2">
-          <span>urlPhoto2:</span>
+          <span>Lien image2:</span>
           <input
             type="text"
             name="urlPhoto2"
@@ -128,7 +114,7 @@ const FormShop = () => {
           ></input>
         </label>
         <label htmlFor="urlPhoto3">
-          <span>urlPhoto3:</span>
+          <span>Lien image3:</span>
           <input
             type="text"
             name="urlPhoto3"
@@ -145,7 +131,7 @@ const FormShop = () => {
           ></input>
         </label>
         <label htmlFor="adress">
-          <span>adresse:</span>
+          <span>Adresse:</span>
           <input
             type="text"
             name="adress"
@@ -162,7 +148,7 @@ const FormShop = () => {
           ></input>
         </label>
         <label htmlFor="phone">
-          <span>téléphone:</span>
+          <span>Téléphone:</span>
           <input
             type="text"
             name="phone"
@@ -179,7 +165,7 @@ const FormShop = () => {
           ></input>
         </label>
         <label htmlFor="email">
-          <span>email:</span>
+          <span>Adresse email:</span>
           <input
             type="email"
             name="email"
@@ -196,7 +182,7 @@ const FormShop = () => {
           ></input>
         </label>
         <label htmlFor="schedule">
-          <span>horaires:</span>
+          <span>Horaires:</span>
           <input
             type="text"
             name="schedule"
