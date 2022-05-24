@@ -69,6 +69,7 @@ const FormRecipe = ({ operation, idRecipeToManage }) => {
           <h3>Modifier une recette</h3>
         )}
         <label htmlFor="name">
+          {operation === "updateRecipe" && <span>Nom de la recette:</span>}
           <input
             type="text"
             name="name"
@@ -81,6 +82,7 @@ const FormRecipe = ({ operation, idRecipeToManage }) => {
           ></input>
         </label>
         <label htmlFor="description">
+          {operation === "updateRecipe" && <span>Détail de la recette:</span>}
           <textarea
             type="text"
             name="description"
@@ -101,6 +103,7 @@ const FormRecipe = ({ operation, idRecipeToManage }) => {
         </label>
         <div className="container-fields-cooking-preparation">
           <label htmlFor="cooking time">
+            {operation === "updateRecipe" && <span>Temps de cuisson:</span>}
             <input
               type="number"
               placeholder="temps de cuisson"
@@ -120,6 +123,7 @@ const FormRecipe = ({ operation, idRecipeToManage }) => {
             ></input>
           </label>
           <label htmlFor="preparation time">
+            {operation === "updateRecipe" && <span>Temps de préparation:</span>}
             <input
               type="number"
               placeholder="temps de préparation"
@@ -140,6 +144,7 @@ const FormRecipe = ({ operation, idRecipeToManage }) => {
           </label>
         </div>
         <label htmlFor="urlImage">
+          {operation === "updateRecipe" && <span>Lien de l'image:</span>}
           <input
             type="text"
             placeholder="url de l'image"
