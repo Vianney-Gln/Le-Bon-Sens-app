@@ -66,7 +66,9 @@ const FormEvents = ({ operation, idEventToManage }) => {
         {operation === "updateEvent" && <h3>Modifier un évènement</h3>}
         {operation === "createEvent" && <h3>Créer un évènement</h3>}
         <label htmlFor="name">
-          {operation === "updateEvent" && <span>Nom de l'événement:</span>}
+          <span>
+            Nom de l'événement {operation === "createEvent" && " (requis)"}
+          </span>
           <input
             type="text"
             name="name"
@@ -78,9 +80,10 @@ const FormEvents = ({ operation, idEventToManage }) => {
           ></input>
         </label>
         <label htmlFor="description">
-          {operation === "updateEvent" && (
-            <span>Description de l'événement:</span>
-          )}
+          <span>
+            Description de l'événement
+            {operation === "createEvent" && " (requis)"}
+          </span>
           <textarea
             name="description"
             placeholder="description de l'évènement"
@@ -99,7 +102,7 @@ const FormEvents = ({ operation, idEventToManage }) => {
         </label>
         <div className="container-fields-date-hour">
           <label htmlFor="date">
-            {operation === "updateEvent" && <span>Date:</span>}
+            <span>Date {operation === "createEvent" && " (requis)"}</span>
             <input
               type="date"
               name="date"
@@ -110,7 +113,7 @@ const FormEvents = ({ operation, idEventToManage }) => {
             ></input>
           </label>
           <label htmlFor="hour">
-            {operation === "updateEvent" && <span>Heure:</span>}
+            <span>Heure{operation === "createEvent" && " (requis)"}</span>
             <input
               type="time"
               name="hour"
@@ -122,7 +125,9 @@ const FormEvents = ({ operation, idEventToManage }) => {
           </label>
         </div>
         <label htmlFor="urlImage">
-          {operation === "updateEvent" && <span>Lien de l'image:</span>}
+          <span>
+            Lien de l'image {operation === "createEvent" && " (requis)"}
+          </span>
           <input
             type="text"
             name="urlImage"
