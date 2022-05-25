@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 // Routing
 import { Link, useNavigate, useParams } from "react-router-dom";
 // Styles
@@ -16,6 +16,7 @@ import ManageEvents from "./ManageEvents";
 import FormProductors from "./FormProductors";
 import ManageProductors from "./ManageProductors";
 import FormCarrouselProductors from "./FormCarrouselProductors";
+import AdminHome from "./AdminHome";
 
 const Admin = () => {
   /* ----- Doc title ----- */
@@ -31,6 +32,25 @@ const Admin = () => {
   const [idEventToManage, setIdEventToManage] = useState(""); // id event to manage
   const [idProductorToManage, setIdProductorToManage] = useState(""); // id productor to manage
   const [idCarrouselItemToManage, setIdCarrouselItemToManage] = useState(""); // id item carrousel to manage
+  const [arrayParam, setArrayParam] = useState([]);
+
+  // Array with all possible param.operation
+  const paramOperation = [
+    "addProduct",
+    "manageProduct",
+    "updateProduct",
+    "addRecipe",
+    "updateShop",
+    "manageRecipes",
+    "updateRecipe",
+    "createEvent",
+    "manageEvents",
+    "updateEvent",
+    "updateProductor",
+    "addProductor",
+    "manageProductors",
+    "manageCarrouselProductor",
+  ];
 
   /* ----- UseNavigate ------ */
   const navigate = useNavigate();
@@ -40,50 +60,168 @@ const Admin = () => {
   };
   return (
     <div className="container-admin">
-      <h1>Bienvenue dans votre espace admin</h1>
-      <div className="admin-description">
-        <p>
-          Ici vous avez la possibilité de gérer le contenu des différentes pages
-          qui composent le site web en cliquant sur l’une des rubriques ci
-          dessous.
-        </p>
+      <div className="container-title">
+        <h1>Espace admin</h1>
       </div>
       <div className="container-rubrics-form">
         <ul className="container-list-rubrics">
-          <Link to="/admin/addProduct">
-            <li>Ajouter des produits en stock</li>
-          </Link>
-
-          <Link to="/admin/manageProduct">
-            <li>Gérer les produits</li>
-          </Link>
-          <Link to="/admin/addRecipe">
-            <li>Ajouter une recette</li>
-          </Link>
-          <Link to="/admin/manageRecipes">
-            <li>Gérer les recettes</li>
-          </Link>
-          <Link to="/admin/addProductor">
-            <li>Ajouter un producteur</li>
-          </Link>
-          <Link to="/admin/manageProductors">
-            <li>Gérer les producteurs</li>
-          </Link>
-          <Link to="/admin/updateShop">
-            <li>Modifier les infos du magasin</li>
-          </Link>
-          <Link to="/admin/createEvent">
-            <li>Ajouter un évènement</li>
-          </Link>
-          <Link to="/admin/manageEvents">
-            <li>Gérer les évènements</li>
-          </Link>
-          <li role={"presentation"} onClick={() => disconnect()}>
+          <li className={!param.operation ? "current-tab" : ""}>
+            <Link to="/admin">Accueil</Link>
+          </li>
+          <li className="stick">|</li>
+          <li
+            className={
+              param.operation === "addProduct" ||
+              param.operation === "manageProduct" ||
+              param.operation === "updateProduct"
+                ? "tab-products current-tab"
+                : "tab-products"
+            }
+          >
+            produits
+            <ul className="menu-products">
+              <li>
+                <Link to="/admin/addProduct">Ajouter des produits</Link>
+              </li>
+              <li>
+                <Link to="/admin/manageProduct">Gérer les produits</Link>
+              </li>
+            </ul>
+          </li>
+          <li className="stick">|</li>
+          <li
+            className={
+              param.operation === "addRecipe" ||
+              param.operation === "manageRecipes" ||
+              param.operation === "updateRecipe"
+                ? "tab-recipes current-tab"
+                : "tab-recipes"
+            }
+          >
+            Recettes
+            <ul className="menu-recipes">
+              <li>
+                <Link to="/admin/addRecipe">Ajouter des recettes</Link>
+              </li>
+              <li>
+                <Link to="/admin/manageRecipes">Gérer les recettes</Link>
+              </li>
+            </ul>
+          </li>
+          <li className="stick">|</li>
+          <li
+            className={
+              param.operation === "createEvent" ||
+              param.operation === "manageEvents" ||
+              param.operation === "updateEvent"
+                ? "tab-events current-tab"
+                : "tab-events"
+            }
+          >
+            Evénements
+            <ul className="menu-events">
+              <li>
+                <Link to="/admin/createEvent">Ajouter des événements</Link>
+              </li>
+              <li>
+                <Link to="/admin/manageEvents">Gérer les événements</Link>
+              </li>
+            </ul>
+          </li>
+          <li className="stick">|</li>
+          <li
+            className={
+              param.operation === "updateShop"
+                ? "tab-shop current-tab"
+                : "tab-shop"
+            }
+          >
+            <Link to="/admin/updateShop">Magasin</Link>
+          </li>
+          <li className="stick">|</li>
+          <li
+            className={
+              param.operation === "addProductor" ||
+              param.operation === "manageProductors" ||
+              param.operation === "manageCarrouselProductor" ||
+              param.operation === "updateProductor"
+                ? "tab-productors current-tab"
+                : "tab-productors"
+            }
+          >
+            Producteurs
+            <ul className="menu-productors">
+              <li>
+                <Link to="/admin/addProductor">Ajouter un producteur</Link>
+              </li>
+              <li>
+                <Link to="/admin/manageProductors">Gérer les producteurs</Link>
+              </li>
+            </ul>
+          </li>
+          <li className="stick">|</li>
+          <li
+            role={"presentation"}
+            onClick={() => disconnect()}
+            className="tab-deconnexion"
+          >
             Déconnexion
           </li>
         </ul>
-
+        <ul className="container-list-rubrics-mobile">
+          <li className={!param.operation ? "current-tab" : ""}>
+            <Link to="/admin">Accueil</Link>
+          </li>
+          <li className={param.operation === "addProduct" ? "current-tab" : ""}>
+            <Link to="/admin/addProduct">Ajouter un produit</Link>
+          </li>
+          <li
+            className={param.operation === "manageProduct" ? "current-tab" : ""}
+          >
+            <Link to="/admin/manageProduct">Gérer les produits</Link>
+          </li>
+          <li
+            className={param.operation === "createEvent" ? "current-tab" : ""}
+          >
+            <Link to="/admin/createEvent">Ajouter un événement</Link>
+          </li>
+          <li
+            className={param.operation === "manageEvents" ? "current-tab" : ""}
+          >
+            <Link to="/admin/manageEvents">Gérer les événements</Link>
+          </li>
+          <li className={param.operation === "addRecipe" ? "current-tab" : ""}>
+            <Link to="/admin/addRecipe">Ajouter une recette</Link>
+          </li>
+          <li
+            className={param.operation === "manageRecipes" ? "current-tab" : ""}
+          >
+            <Link to="/admin/manageRecipes">Gérer les recettes</Link>
+          </li>
+          <li
+            className={param.operation === "addProductor" ? "current-tab" : ""}
+          >
+            <Link to="/admin/addProductor">Ajouter un producteur</Link>
+          </li>
+          <li
+            className={
+              param.operation === "manageProductors" ? "current-tab" : ""
+            }
+          >
+            <Link to="/admin/manageProductors">Gérer les producteurs</Link>
+          </li>
+          <li className={param.operation === "updateShop" ? "current-tab" : ""}>
+            <Link to="/admin/updateShop">Gérer le magasin</Link>
+          </li>
+          <li onClick={() => disconnect()}>Déconnexion</li>
+        </ul>
         <div className="container-rubric">
+          {!param.operation && <AdminHome />}
+
+          {param.operation && paramOperation.indexOf(param.operation) === -1 ? (
+            <AdminHome />
+          ) : null}
+
           {param.operation === "addProduct" && (
             <FormProduct operation={param.operation} />
           )}

@@ -9,6 +9,8 @@ import {
 import { useNavigate } from "react-router-dom";
 // Helper
 import getDataInput, { handleForm } from "../helpers/form";
+// Style
+import "../styles/formProducts.scss";
 
 const FormProduct = ({ operation, idProductToManage }) => {
   /* -----Navigate----- */
@@ -28,10 +30,9 @@ const FormProduct = ({ operation, idProductToManage }) => {
   }, []);
 
   return (
-    <>
-      {operation === "addProduct" && <h3>Ajouter des produits en stock</h3>}
-      {operation === "updateProduct" && <h3>Modifier un produit en stock</h3>}
+    <div className="container-formProduct">
       <form
+        className="formProducts"
         onSubmit={(e) => {
           if (operation === "addProduct") {
             handleForm(
@@ -57,7 +58,12 @@ const FormProduct = ({ operation, idProductToManage }) => {
           }
         }}
       >
+        {operation === "addProduct" && <h3>Ajouter des produits en stock</h3>}
+        {operation === "updateProduct" && <h3>Modifier un produit en stock</h3>}
         <label htmlFor="name">
+          <span>
+            Nom du produit {operation === "addProduct" && " (requis)"}
+          </span>
           <input
             type="text"
             name="name"
@@ -70,6 +76,7 @@ const FormProduct = ({ operation, idProductToManage }) => {
           ></input>
         </label>
         <label htmlFor="price">
+          <span>Prix {operation === "addProduct" && " (requis)"}</span>
           <input
             type="text"
             name="price"
@@ -84,6 +91,7 @@ const FormProduct = ({ operation, idProductToManage }) => {
           ></input>
         </label>
         <label htmlFor="urlImage">
+          <span>Lien image {operation === "addProduct" && " (requis)"}</span>
           <input
             type="text"
             name="urlImage"
@@ -103,6 +111,9 @@ const FormProduct = ({ operation, idProductToManage }) => {
           ></input>
         </label>
         <label htmlFor="category">
+          <span>
+            Catégorie de produit {operation === "addProduct" && " (requis)"}
+          </span>
           <select
             name="category"
             id="category"
@@ -129,9 +140,9 @@ const FormProduct = ({ operation, idProductToManage }) => {
         {operation === "updateProduct" && (
           <button type="submit">modifier</button>
         )}
-        {message && <p className={error ? "fail" : "success"}>{message}</p>}
+        {<p className={error ? "fail" : "success"}>{message ? message : ""}</p>}
       </form>
-    </>
+    </div>
   );
 };
 

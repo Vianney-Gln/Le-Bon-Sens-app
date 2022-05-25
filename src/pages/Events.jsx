@@ -10,6 +10,7 @@ const Events = () => {
   // Variables statement
   const [currentEvents, setCurrentEvents] = useState([]); // currents events
   const [events, setEvents] = useState([]); // all other events
+  const [lastEvent, setLastEvent] = useState({}); // the last event past
 
   // Getting all infos about events on component mounting
   useEffect(() => {
@@ -17,22 +18,35 @@ const Events = () => {
       evts.forEach((evt) => {
         if (evt.isCurrent === 1) {
           setCurrentEvents((oldEvents) => [...oldEvents, evt]); // "push" currents events
+        } else {
+          setEvents((oldEvents) => [...oldEvents, evt]); // "push" past events
+          setLastEvent(evts[0]);
         }
-        setEvents((oldEvents) => [...oldEvents, evt]); // "push" past events
       });
     });
   }, []);
   return (
-    <div className="container-events">
+    <div
+      className={
+        !currentEvents.length && !events.length
+          ? "empty-event"
+          : "container-events"
+      }
+    >
       <h1>Evènements</h1>
+      {!currentEvents.length && !events.length && (
+        <p className="no-events">
+          Aucun événement disponible pour l'instant...
+        </p>
+      )}
       <div className="container-event-comming">
         {currentEvents.length ? (
           /* If there is one current event or more, display it */
           <>
             {currentEvents.length > 1 ? (
-              <h2>Evènements à venir</h2>
+              <h2>Evénements à venir</h2>
             ) : (
-              <h2>Evènement à venir</h2>
+              <h2>Evénement à venir</h2>
             )}
             {currentEvents.map((element) => {
               return (
@@ -61,18 +75,18 @@ const Events = () => {
               );
             })}
           </>
-        ) : events.length ? (
+        ) : lastEvent && Object.keys(lastEvent).length ? (
           /* If not, display the last past event (first of the list) */
           <div className="last-event">
-            <h2>Dernier évènement</h2>
+            <h2>Dernier événement</h2>
             <h3>
-              {events[0].name}
-              <span> du {events[0].date}</span>
+              {lastEvent.name}
+              <span> du {lastEvent.date}</span>
             </h3>
-            <img src={events[0].urlImage} alt={events[0].name} />
+            <img src={lastEvent.urlImage} alt={lastEvent.name} />
             <div className="description-event">
               <p>
-                {events[0].description.split("\n").map((element, index) => {
+                {lastEvent.description.split("\n").map((element, index) => {
                   return (
                     <span key={index}>
                       {element}
@@ -88,10 +102,10 @@ const Events = () => {
         )}
       </div>
       <div className="container-past-event">
-        <h2>Evènements passés</h2>
+        {events.length > 1 ? <h2>Evénements passés</h2> : ""}
         {events &&
-          events.map((eve) => {
-            if (eve.isCurrent === 0 && eve.date !== events[0].date) {
+          events.map((eve, index) => {
+            if (eve.isCurrent === 0 && index !== 0) {
               return (
                 <div key={eve.date} className="description-event">
                   <h3>
@@ -99,6 +113,7 @@ const Events = () => {
                     <span> le {eve.date}</span>
                   </h3>
                   <p>
+                    <img src={eve.urlImage} alt={eve.name} />
                     {eve.description.split("\n").map((element, index) => {
                       return (
                         <span key={index}>

@@ -1,4 +1,36 @@
 .container-formCarrouselProductor {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 600px;
+  margin-bottom: 30px;
+  .form-CarrouselProductor {
+    width: 60%;
+    border: 1px solid #c4c4c4;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    margin-top: 60px;
+    margin-bottom: 40px;
+    position: relative;
+    label {
+      input {
+        background-color: white;
+        border: 1px solid #c4c4c4;
+        height: 40px;
+      }
+
+      span {
+        margin-bottom: 5px;
+      }
+    }
+  }
   .container-preview-image {
     width: 100%;
     display: flex;
@@ -36,6 +68,46 @@
         button:hover {
           cursor: pointer;
           background-color: #858585;
+        }
+      }
+    }
+  }
+}
+
+/* ---- Mobile ----*/
+
+@media screen and (max-width: 700px) {
+  .container-formCarrouselProductor {
+    .form-CarrouselProductor {
+      width: 100%;
+      border: none;
+      box-shadow: none;
+      border-radius: none;
+      margin: 0;
+
+      label {
+        width: 100%;
+        input,
+        select {
+          width: 100%;
+        }
+        span {
+          white-space: nowrap;
+        }
+      }
+    }
+    .title-manage-carrousel {
+      margin: 0 !important;
+    }
+    .container-preview-image {
+      margin: 0;
+      .list-image-carrousel-to-manage {
+        li {
+          width: 100%;
+          flex-direction: column;
+          img {
+            height: 150px;
+          }
         }
       }
     }

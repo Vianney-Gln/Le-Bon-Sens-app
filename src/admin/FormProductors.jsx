@@ -9,6 +9,8 @@ import {
 } from "../services/productors";
 // Routing
 import { useNavigate } from "react-router-dom";
+// Style
+import "../styles/formProductor.scss";
 
 const FormProductors = ({ operation, idProductorToManage }) => {
   // States
@@ -37,10 +39,8 @@ const FormProductors = ({ operation, idProductorToManage }) => {
 
   return (
     <div className="container-addProductors">
-      {operation === "updateProductor" && <h3>Modifier un producteur</h3>}
-      {operation === "addProductor" && <h3>Créer un producteur</h3>}
-
       <form
+        className="formProductors"
         onSubmit={(e) => {
           if (operation === "addProductor") {
             handleForm(
@@ -66,11 +66,16 @@ const FormProductors = ({ operation, idProductorToManage }) => {
           }
         }}
       >
+        {operation === "updateProductor" && <h3>Modifier un producteur</h3>}
+        {operation === "addProductor" && <h3>Créer un producteur</h3>}
         <label htmlFor="name">
+          <span>
+            Nom du producteur {operation === "addProductor" && "(requis)"}
+          </span>
           <input
             type="text"
             name="name"
-            placeholder="nom du producteur"
+            placeholder="Veuillez entrer le nom du producteur"
             defaultValue={
               operation === "updateProductor" ? dataProductor.name : ""
             }
@@ -85,9 +90,13 @@ const FormProductors = ({ operation, idProductorToManage }) => {
           />
         </label>
         <label htmlFor="description1">
+          <span>
+            Description du producteur
+            {operation === "addProductor" && " (requis)"}
+          </span>
           <textarea
             name="description1"
-            placeholder="description du producteur"
+            placeholder="Veuillez entrer la description du producteur"
             defaultValue={
               operation === "updateProductor" ? dataProductor.description1 : ""
             }
@@ -102,10 +111,13 @@ const FormProductors = ({ operation, idProductorToManage }) => {
           />
         </label>
         <label htmlFor="urlGoogleMap">
+          <span>
+            Lien de google map {operation === "addProductor" && " (requis)"}
+          </span>
           <input
             type="text"
             name="urlGoogleMap"
-            placeholder="entrez l'url google map"
+            placeholder="Veuillez entrer l'url google map"
             defaultValue={
               operation === "updateProductor" ? dataProductor.urlGoogleMap : ""
             }
@@ -120,10 +132,13 @@ const FormProductors = ({ operation, idProductorToManage }) => {
           />
         </label>
         <label htmlFor="urlWebsite">
+          <span>
+            Lien du site web {operation === "addProductor" && " (requis)"}
+          </span>
           <input
             type="text"
             name="urlWebsite"
-            placeholder="entrez l'url du site web du producteur"
+            placeholder="Veuillez entrer l'url du site web du producteur"
             defaultValue={
               operation === "updateProductor" ? dataProductor.urlWebsite : ""
             }
@@ -138,10 +153,13 @@ const FormProductors = ({ operation, idProductorToManage }) => {
           />
         </label>
         <label htmlFor="urlImage1">
+          <span>
+            Lien de l'image 1 {operation === "addProductor" && " (requis)"}
+          </span>
           <input
             type="text"
             name="urlImage1"
-            placeholder="entrez l'url de votre image 1"
+            placeholder="Veuillez entrer l'url de votre image 1"
             defaultValue={
               operation === "updateProductor" ? dataProductor.urlImage1 : ""
             }
@@ -156,10 +174,13 @@ const FormProductors = ({ operation, idProductorToManage }) => {
           />
         </label>
         <label htmlFor="urlImage2">
+          <span>
+            Lien de l'image 2 {operation === "addProductor" && " (requis)"}
+          </span>
           <input
             type="text"
             name="urlImage2"
-            placeholder="entrez l'url de votre image 2"
+            placeholder="Veuillez entrer l'url de votre image 2"
             defaultValue={
               operation === "updateProductor" ? dataProductor.urlImage2 : ""
             }
@@ -174,10 +195,11 @@ const FormProductors = ({ operation, idProductorToManage }) => {
           />
         </label>
         <label htmlFor="urlFacebook">
+          <span>Lien du Facebook</span>
           <input
             type="text"
             name="urlFacebook"
-            placeholder="entrez l'url du Facebook"
+            placeholder="veuillez entrer l'url du Facebook"
             defaultValue={
               operation === "updateProductor" ? dataProductor.urlFacebook : ""
             }
@@ -192,10 +214,11 @@ const FormProductors = ({ operation, idProductorToManage }) => {
           />
         </label>
         <label htmlFor="urlTwitter">
+          <span>Lien du Twitter</span>
           <input
             type="text"
             name="urlTwitter"
-            placeholder="entrez l'url du twitter"
+            placeholder="Veuillez entrer l'url du twitter"
             defaultValue={
               operation === "updateProductor" ? dataProductor.urlTwitter : ""
             }
@@ -212,6 +235,7 @@ const FormProductors = ({ operation, idProductorToManage }) => {
         {(operation === "updateProductor" && dataProductor.isPublic === 0) ||
         dataProductor.isPublic === 1 ? (
           <label htmlFor="visibility">
+            <span>Gestion de la visibilité </span>
             <select
               name="visibility"
               placeholder="gérer la visibilité"
@@ -235,7 +259,7 @@ const FormProductors = ({ operation, idProductorToManage }) => {
         <button type="submit">
           {operation === "addProductor" ? "Valider" : "modifier"}
         </button>
-        {message && <p className={!error ? "success" : "fail"}>{message}</p>}
+        <p className={!error ? "success" : "fail"}>{message && message}</p>
       </form>
     </div>
   );

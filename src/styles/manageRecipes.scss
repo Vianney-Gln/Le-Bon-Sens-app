@@ -10,49 +10,16 @@
       justify-content: space-between;
       flex-wrap: wrap;
       width: 80%;
+    }
+  }
+}
 
-      .card-recipes {
-        .image {
-          min-height: 200px;
-          img {
-            height: 100%;
-          }
-        }
-        .container-description {
-          .container-buttons-managerecipe {
-            width: 100%;
-            display: flex;
-            justify-content: space-around;
-            padding: 15px;
-
-            button {
-              margin-left: 2px;
-              margin-right: 2px;
-              background-color: #c4c4c4;
-              border: none;
-              padding: 5px;
-              border-radius: 5px;
-              cursor: pointer;
-              transition: all 0.5s ease;
-            }
-            button:hover {
-              background-color: #858585;
-            }
-          }
-          .description {
-            min-height: 130px;
-            max-height: 130px;
-            padding: 15px;
-          }
-          .detail-recipe {
-            padding-top: 15px;
-            padding-bottom: 15px;
-            span {
-              font-size: 0.8rem;
-              font-weight: bold;
-            }
-          }
-        }
+/* -----Mobile ------ */
+@media screen and(max-width:700px) {
+  .container-manage-recipes {
+    .container-recipes-to-manage {
+      .container-list-recipes-to-manage {
+        width: 100%;
       }
     }
   }

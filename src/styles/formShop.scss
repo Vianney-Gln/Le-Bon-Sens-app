@@ -1,0 +1,69 @@
+.container-update-infos-shop {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .form-infosShop {
+    width: 60%;
+    border: 1px solid #c4c4c4;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    margin-top: 60px;
+    margin-bottom: 40px;
+    position: relative;
+    label {
+      input,
+      textarea,
+      select {
+        background-color: white;
+        border: 1px solid #c4c4c4;
+      }
+      textarea {
+        height: 200px;
+      }
+      input {
+        height: 40px;
+      }
+      span {
+        margin-bottom: 5px;
+      }
+    }
+    button {
+      background-color: #c4c4c4;
+    }
+    p {
+      height: 20px;
+    }
+  }
+}
+
+/* ---- Mobile ----*/
+
+@media screen and (max-width: 700px) {
+  .container-update-infos-shop {
+    .form-infosShop {
+      width: 100%;
+      border: none;
+      box-shadow: none;
+      border-radius: none;
+      margin: 0;
+
+      label {
+        width: 100%;
+        input,
+        select {
+          width: 100%;
+        }
+        span {
+          white-space: nowrap;
+        }
+      }
+    }
+  }
+}
