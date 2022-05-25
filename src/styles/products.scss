@@ -125,6 +125,10 @@
       margin-bottom: 0;
       .container-list-products {
         justify-content: center;
+
+        .no-results {
+          color: black;
+        }
       }
     }
 

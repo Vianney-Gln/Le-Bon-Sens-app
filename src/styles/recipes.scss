@@ -43,19 +43,6 @@
       background-image: url("../images/fond-bois.jpg");
     }
   }
-
-  ::-webkit-scrollbar {
-    /* Scrollbars */
-    width: 5px;
-    background-color: transparent;
-  }
-  ::-webkit-scrollbar-thumb {
-    border-radius: 20px; /* roundness of the scroll thumb */
-    border: 3px solid #c4c4c4; /* creates padding around scroll thumb */
-  }
-  ::-moz-scrollbar {
-    display: none;
-  }
 }
 
 /* ------ Mobile ------ */
