@@ -11,7 +11,6 @@ import "../styles/formShop.scss";
 const FormShop = () => {
   /* -------- States ------- */
   const [dataShop, setDataShop] = useState({});
-  const [dataShopToUpdate, setDataShopToUpdate] = useState({});
   const [message, setMessage] = useState("");
   const [error, setError] = useState(false);
 
@@ -38,7 +37,7 @@ const FormShop = () => {
             updateInfosShop,
             setMessage,
             setError,
-            dataShopToUpdate,
+            dataShop,
             navigate,
             operation
           );
@@ -53,12 +52,7 @@ const FormShop = () => {
             placeholder="nom du magasin"
             defaultValue={dataShop ? dataShop.name : ""}
             onChange={(e) =>
-              getDataInput(
-                dataShopToUpdate,
-                setDataShopToUpdate,
-                e.target.value,
-                "name"
-              )
+              getDataInput(dataShop, setDataShop, e.target.value, "name")
             }
           ></input>
         </label>
@@ -71,8 +65,8 @@ const FormShop = () => {
             defaultValue={dataShop ? dataShop.description1 : ""}
             onChange={(e) =>
               getDataInput(
-                dataShopToUpdate,
-                setDataShopToUpdate,
+                dataShop,
+                setDataShop,
                 e.target.value,
                 "description1"
               )
@@ -87,12 +81,7 @@ const FormShop = () => {
             placeholder="urlPhoto1"
             defaultValue={dataShop ? dataShop.urlPhoto1 : ""}
             onChange={(e) =>
-              getDataInput(
-                dataShopToUpdate,
-                setDataShopToUpdate,
-                e.target.value,
-                "urlPhoto1"
-              )
+              getDataInput(dataShop, setDataShop, e.target.value, "urlPhoto1")
             }
           ></input>
         </label>
@@ -104,12 +93,7 @@ const FormShop = () => {
             placeholder="urlPhoto2"
             defaultValue={dataShop ? dataShop.urlPhoto2 : ""}
             onChange={(e) =>
-              getDataInput(
-                dataShopToUpdate,
-                setDataShopToUpdate,
-                e.target.value,
-                "urlPhoto2"
-              )
+              getDataInput(dataShop, setDataShop, e.target.value, "urlPhoto2")
             }
           ></input>
         </label>
@@ -121,12 +105,7 @@ const FormShop = () => {
             placeholder="urlPhoto3"
             defaultValue={dataShop ? dataShop.urlPhoto3 : ""}
             onChange={(e) =>
-              getDataInput(
-                dataShopToUpdate,
-                setDataShopToUpdate,
-                e.target.value,
-                "urlPhoto3"
-              )
+              getDataInput(dataShop, setDataShop, e.target.value, "urlPhoto3")
             }
           ></input>
         </label>
@@ -138,12 +117,7 @@ const FormShop = () => {
             placeholder="nouvelle adresse"
             defaultValue={dataShop ? dataShop.address : ""}
             onChange={(e) =>
-              getDataInput(
-                dataShopToUpdate,
-                setDataShopToUpdate,
-                e.target.value,
-                "address"
-              )
+              getDataInput(dataShop, setDataShop, e.target.value, "address")
             }
           ></input>
         </label>
@@ -155,12 +129,7 @@ const FormShop = () => {
             placeholder="nouveau numéro de téléphone"
             defaultValue={dataShop ? dataShop.phone : ""}
             onChange={(e) =>
-              getDataInput(
-                dataShopToUpdate,
-                setDataShopToUpdate,
-                e.target.value,
-                "phone"
-              )
+              getDataInput(dataShop, setDataShop, e.target.value, "phone")
             }
           ></input>
         </label>
@@ -172,12 +141,7 @@ const FormShop = () => {
             placeholder="nouvelle adresse email"
             defaultValue={dataShop ? dataShop.email : ""}
             onChange={(e) =>
-              getDataInput(
-                dataShopToUpdate,
-                setDataShopToUpdate,
-                e.target.value,
-                "email"
-              )
+              getDataInput(dataShop, setDataShop, e.target.value, "email")
             }
           ></input>
         </label>
@@ -189,12 +153,7 @@ const FormShop = () => {
             placeholder="nouveaux horaires"
             defaultValue={dataShop ? dataShop.schedule : ""}
             onChange={(e) =>
-              getDataInput(
-                dataShopToUpdate,
-                setDataShopToUpdate,
-                e.target.value,
-                "schedule"
-              )
+              getDataInput(dataShop, setDataShop, e.target.value, "schedule")
             }
           ></input>
         </label>
