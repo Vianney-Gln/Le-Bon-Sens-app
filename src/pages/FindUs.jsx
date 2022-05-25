@@ -31,7 +31,7 @@ const FindUs = () => {
             loading="lazy"
           />
         </div>
-        <form>
+        <form action="https://formspree.io/f/xpzbbply" method="post">
           <div className="container-name-firstname">
             <p>
               <span>NOM,</span>
