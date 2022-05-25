@@ -36,6 +36,7 @@
     display: flex;
     justify-content: center;
     margin-top: 20px;
+
     .list-image-carrousel-to-manage {
       width: 90%;
       list-style: none;
@@ -69,6 +70,9 @@
           cursor: pointer;
           background-color: #858585;
         }
+      }
+      .no-image {
+        flex: 1;
       }
     }
   }
