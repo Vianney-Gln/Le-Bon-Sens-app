@@ -9,22 +9,28 @@ h3 {
 
   label {
     margin: 0px 10px;
+    input,
+    select {
+      background-color: white;
+      border: 1px solid #c4c4c4;
+      border-radius: 5px;
+      padding: 10px;
+    }
   }
 }
 .container-products-to-manage {
   width: 100%;
   display: flex;
   justify-content: center;
-  max-height: 600px;
+  min-height: 600px;
 
   .container-list-products-to-manage {
     list-style-type: none;
     width: 80%;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     margin-top: 30px;
     flex-wrap: wrap;
-    overflow-y: scroll;
 
     li {
       display: flex;
@@ -53,6 +59,7 @@ h3 {
       }
     }
   }
+
   ::-webkit-scrollbar {
     /* Scrollbars */
     display: none;

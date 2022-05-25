@@ -5,6 +5,8 @@
   flex-direction: column;
   align-items: center;
   position: relative;
+  background-image: url("../images/paysage.jpg");
+  background-size: cover;
   h1 {
     background-color: #c4c4c4;
     border: 1px solid white;
@@ -17,13 +19,15 @@
   .container-event-comming {
     width: 100%;
     margin-top: 40px;
-    background-color: whitesmoke;
     padding-bottom: 20px;
     h2 {
-      background-color: white;
       width: 100%;
       text-align: center;
-      padding-bottom: 20px;
+      margin-top: 40px;
+      padding: 10px 0px;
+      color: white;
+      font-size: 2rem;
+      text-shadow: 0px 1px 4px black;
     }
     div {
       display: flex;
@@ -34,6 +38,9 @@
 
       h3 {
         margin-top: 20px;
+        font-size: 1.4rem;
+        color: white;
+        text-shadow: 0px 1px 4px black;
       }
       img {
         margin-top: 20px;
@@ -62,15 +69,16 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: whitesmoke;
     padding-bottom: 50px;
     padding-top: 20px;
 
     h2 {
-      background-color: white;
       width: 100%;
       text-align: center;
-      padding: 20px 0px;
+      padding: 10px 0px;
+      font-size: 2rem;
+      color: white;
+      text-shadow: 0px 1px 4px black;
     }
     h3 {
       padding-bottom: 20px;
@@ -87,8 +95,45 @@
       p {
         text-align: left;
         padding: 0px 10px;
+        width: 100%;
+
+        img {
+          width: 200px;
+          height: 150px;
+          object-fit: cover;
+          object-position: center;
+          float: right;
+        }
       }
     }
+  }
+  .no-events {
+    width: 100%;
+    min-height: 300px;
+  }
+}
+
+.empty-event {
+  width: 100%;
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "Patrick Hand", cursive;
+  position: relative;
+
+  h1 {
+    background-color: #c4c4c4;
+    border: 1px solid white;
+    border-radius: 5px;
+    position: absolute;
+    top: -22px;
+    padding: 0px 10px;
+  }
+
+  .no-events {
+    font-size: 42px;
   }
 }
 
@@ -96,23 +141,59 @@
 
 @media screen and (max-width: 700px) {
   .container-events {
+    background-image: url("../images/paysage.jpg");
+    background-size: cover;
     h1 {
       font-size: 24px;
     }
     .container-event-comming {
+      margin-top: 0;
+      padding: 0;
+      h2 {
+        padding: 10px 0px;
+      }
       div {
+        h3 {
+          font-size: 18px;
+          padding: 0;
+        }
         .description-event {
           width: 100%;
           padding: 20px;
           border-radius: 0px;
+          box-shadow: none;
         }
       }
     }
     .container-past-event {
+      padding: 0;
+      h2 {
+        padding: 20px 0px;
+      }
+      h3 {
+        font-size: 18px;
+        padding: 0;
+      }
       .description-event {
         width: 100%;
         padding: 20px;
         border-radius: 0px;
+        box-shadow: none;
+        margin-top: 0px;
+
+        p {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          img {
+            float: none;
+            width: 120px;
+            height: 80px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+          }
+        }
       }
     }
   }

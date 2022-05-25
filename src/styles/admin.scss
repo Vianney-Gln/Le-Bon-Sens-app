@@ -1,59 +1,118 @@
 .container-admin {
   width: 100%;
   font-family: "Patrick Hand", cursive;
+  position: relative;
 
-  h1 {
-    text-align: center;
-    margin-top: 20px;
-  }
-
-  .admin-description {
-    margin-top: 20px;
+  .container-title {
     width: 100%;
+    position: absolute;
+    top: -22px;
     display: flex;
     justify-content: center;
-    p {
-      width: 40%;
-      font-size: 1.2rem;
-      padding: 10px;
-      border-radius: 5px;
+    h1 {
       background-color: #c4c4c4;
+      padding: 0px 20px;
+      border: 1px solid white;
+      border-radius: 5px;
     }
   }
   .container-rubrics-form {
     display: flex;
-    justify-content: space-around;
-    margin-top: 20px;
+    flex-direction: column;
+    margin-top: 40px;
+    .container-list-rubrics-mobile {
+      display: none;
+    }
+    .current-tab {
+      background-color: #f1f0f0;
+    }
     .container-list-rubrics {
-      width: 20%;
       list-style: none;
+      display: flex;
+      justify-content: center;
+      margin: 0;
+      padding: 0;
+      padding-inline-start: 0;
+
+      .stick:hover {
+        background-color: #d7d5d5;
+      }
 
       li {
-        background-color: #c4c4c4;
-        margin-top: 15px;
-        padding: 5px;
+        background-color: #d7d5d5;
         font-size: 1.4rem;
-        border-radius: 5px;
+        padding: 4px 8px;
         cursor: pointer;
         transition: all 0.5s ease;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        .menu-products,
+        .menu-recipes,
+        .menu-events,
+        .menu-productors {
+          position: absolute;
+          top: 79px;
+          background-color: #c4c4c4;
+          display: none;
+          li {
+            font-size: 1rem;
+          }
+        }
       }
 
       li:hover {
-        transform: translateX(20px);
-        background-color: #858585;
+        background-color: #f1f0f0;
+      }
+
+      .tab-products:hover .menu-products {
+        display: block;
+      }
+      .tab-recipes:hover .menu-recipes {
+        display: block;
+      }
+      .tab-events:hover .menu-events {
+        display: block;
+      }
+      .tab-productors:hover .menu-productors {
+        display: block;
       }
     }
     .container-rubric {
       margin-top: 15px;
-      width: 70%;
-      height: auto;
-
-      border: 1px solid black;
-
+      width: 100%;
       h3 {
         text-align: center;
         margin-top: 20px;
         font-size: 1.4rem;
+      }
+    }
+  }
+}
+
+/* ----- Mobile ------ */
+@media screen and (max-width: 700px) {
+  .container-admin {
+    .container-rubrics-form {
+      ::-webkit-scrollbar {
+        display: none;
+      }
+      .container-list-rubrics {
+        display: none;
+      }
+      .container-list-rubrics-mobile {
+        width: 100%;
+        display: flex;
+        list-style: none;
+        overflow-x: auto;
+        margin-top: 20px;
+        background-color: #d7d5d5;
+        li {
+          white-space: nowrap;
+          margin: 0px 10px;
+          padding: 10px 5px;
+        }
       }
     }
   }

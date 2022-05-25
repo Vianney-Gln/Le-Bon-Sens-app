@@ -29,12 +29,18 @@ const Products = () => {
   }, [sortParam, searchParam]);
 
   return (
-    <div className="container-products">
+    <div className="container-pageProducts">
       <h1>Nos Produits</h1>
-      <p className="infos-price">
-        Les prix indiqués sont valables en boutique, il n&apos; y a pas
-        possibilité d&apos; acheter sur ce site.
-      </p>
+      <div className="container-search-bar">
+        <label htmlFor="search">
+          <input
+            onChange={(e) => setSearchParam(e.target.value)}
+            type="text"
+            name="search"
+            placeholder="rechercher un produit"
+          />
+        </label>
+      </div>
       <div className="container-sort-products">
         <ul>
           <li
@@ -76,29 +82,25 @@ const Products = () => {
           </li>
         </ul>
       </div>
-      <div className="container-search-bar">
-        <label htmlFor="search">
-          <input
-            onChange={(e) => setSearchParam(e.target.value)}
-            type="text"
-            name="search"
-            placeholder="rechercher"
-          />
-        </label>
-      </div>
+      <p className="infos-price">
+        Les prix indiqués sont valables en boutique, il n&apos; y a pas
+        possibilité d&apos; acheter sur ce site.
+      </p>
       <div className="container-products">
         <ul className="container-list-products">
-          {listProducts
-            ? listProducts.map((prod) => (
-                <CardsProducts
-                  key={prod.id}
-                  productName={prod.name}
-                  productPrice={prod.price}
-                  productImage={prod.urlImage}
-                  productCategory={prod.category}
-                />
-              ))
-            : ""}
+          {listProducts.length ? (
+            listProducts.map((prod) => (
+              <CardsProducts
+                key={prod.id}
+                productName={prod.name}
+                productPrice={prod.price}
+                productImage={prod.urlImage}
+                productCategory={prod.category}
+              />
+            ))
+          ) : (
+            <p className="no-results">Pas de résultats pour cette recherche</p>
+          )}
         </ul>
       </div>
     </div>

@@ -43,7 +43,6 @@ const ManageProductors = ({ idProductorToManage, setIdProductorToManage }) => {
         idProductorToManage={idProductorToManage}
       />
       <div className="container-manageProductors">
-        <h3>ManageProductors</h3>
         <table>
           <caption>Gestion des producteurs</caption>
           <thead>

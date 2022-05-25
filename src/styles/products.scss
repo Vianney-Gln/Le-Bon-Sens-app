@@ -1,4 +1,4 @@
-.container-products {
+.container-pageProducts {
   font-family: "Patrick Hand", cursive;
   width: 100%;
   padding-left: 50px;
@@ -30,8 +30,7 @@
       input {
         width: 100%;
         border-radius: 5px;
-        border: none;
-        background-color: #c4c4c4;
+        border: 1px solid #c4c4c4;
         padding-top: 7px;
         padding-bottom: 7px;
         padding-left: 10px;
@@ -40,9 +39,12 @@
   }
   .container-sort-products {
     width: 100%;
-    margin-top: 40px;
+    margin-top: 80px;
+    background-color: whitesmoke;
+    border-radius: 5px;
     ul {
       width: 100%;
+      padding: 20px 0px;
       display: flex;
       justify-content: space-around;
       list-style-type: none;
@@ -69,16 +71,17 @@
         }
       }
       .filter-selected {
-        border-color: #c4c4c4;
+        border-color: whitesmoke;
       }
     }
   }
   .container-products {
     width: 100%;
+    min-height: 100px;
     display: flex;
     border-radius: 5px;
     justify-content: center;
-    background-color: whitesmoke;
+    background-image: url("../images/fond-bois.jpg");
     margin-top: 20px;
     margin-bottom: 40px;
 
@@ -89,10 +92,16 @@
       justify-content: flex-start;
       margin-top: 30px;
       flex-wrap: wrap;
+
+      .no-results {
+        text-align: center;
+        color: white;
+        width: 100%;
+      }
     }
   }
   .infos-price {
-    margin-top: 40px;
+    margin-top: 20px;
     text-align: center;
   }
 }
@@ -100,23 +109,36 @@
 /* ------ Mobile ------ */
 
 @media screen and (max-width: 700px) {
-  .container-products {
+  .container-pageProducts {
     padding: 0px;
+
     h1 {
       font-size: 24px;
     }
     .infos-price {
-      margin-top: 50px;
+      margin-top: 5px;
     }
 
     .container-products {
+      background-image: none;
+      background-color: whitesmoke;
+      margin-bottom: 0;
       .container-list-products {
         justify-content: center;
+
+        .no-results {
+          color: black;
+        }
       }
     }
 
     .container-sort-products {
-      background-color: whitesmoke;
+      background-color: #c4c4c4;
+      margin-top: 40px;
+
+      ul {
+        margin: 0;
+      }
     }
     .container-search-bar {
       margin: 20px 0px;

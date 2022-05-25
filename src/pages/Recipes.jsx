@@ -21,14 +21,14 @@ const Recipes = () => {
 
   return (
     <div className="container-recipes">
-      <h1>Quelques recettes ...</h1>
+      <h1>Recettes</h1>
 
       <label htmlFor="search-recipes">
         <input
           onChange={(e) => setSearchParam(e.target.value)}
           name="search-recipes"
           type="text"
-          placeholder="search"
+          placeholder="rechercher une recette"
         />
       </label>
       <div className="container-center-cards-recipes">

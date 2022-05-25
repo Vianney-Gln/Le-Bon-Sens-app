@@ -9,6 +9,7 @@
   h1 {
     background-color: #c4c4c4;
     position: absolute;
+    z-index: 3;
     top: -22px;
     padding: 0px 20px;
     border: 1px solid white;
@@ -16,7 +17,6 @@
   }
   .container-top {
     width: 100%;
-    margin-top: 80px;
     display: flex;
 
     .container-carrousel {
@@ -27,6 +27,11 @@
       .each-slide {
         height: 450px;
         .slide {
+          height: 100%;
+          background-size: cover;
+          background-position: center;
+        }
+        .slide-standard {
           height: 100%;
           background-size: cover;
           background-position: center;
@@ -51,8 +56,13 @@
       position: relative;
 
       h2 {
-        font-weight: normal;
+        font-weight: bold;
         margin-top: 40px;
+      }
+
+      .description-productor {
+        max-height: 125px;
+        overflow-y: auto;
       }
       .description-productor,
       .link-website {
@@ -110,6 +120,18 @@
     width: 26%;
     height: 60px;
     background-color: black;
+  }
+  ::-webkit-scrollbar {
+    /* Scrollbars */
+    width: 5px;
+    background-color: rgb(240, 231, 231);
+  }
+  ::-webkit-scrollbar-thumb {
+    border-radius: 20px; /* roundness of the scroll thumb */
+    border: 3px solid #c4c4c4; /* creates padding around scroll thumb */
+  }
+  ::-moz-scrollbar {
+    display: none;
   }
 }
 

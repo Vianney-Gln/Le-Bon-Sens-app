@@ -1,0 +1,98 @@
+.container-addRecipe {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .formRecipe {
+    width: 60%;
+    border: 1px solid #c4c4c4;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    margin-top: 60px;
+    margin-bottom: 40px;
+    position: relative;
+
+    .container-fields-cooking-preparation {
+      display: flex;
+      justify-content: space-between;
+      width: 60%;
+
+      label {
+        margin: 0;
+        margin-top: 30px;
+        width: 100%;
+        input {
+          width: 99%;
+        }
+      }
+    }
+    label {
+      input,
+      textarea,
+      select {
+        background-color: white;
+        border: 1px solid #c4c4c4;
+      }
+      input {
+        height: 40px;
+      }
+
+      textarea {
+        height: 200px;
+        width: 100%;
+      }
+      span {
+        margin-bottom: 5px;
+      }
+    }
+    button {
+      background-color: #c4c4c4;
+    }
+    p {
+      height: 20px;
+    }
+  }
+}
+
+/* ---- Mobile ----*/
+
+@media screen and (max-width: 700px) {
+  .container-addRecipe {
+    .formRecipe {
+      width: 100%;
+      border: none;
+      box-shadow: none;
+      border-radius: none;
+      margin: 0;
+
+      label {
+        width: 100%;
+        input,
+        select {
+          width: 100%;
+        }
+        span {
+          white-space: nowrap;
+        }
+      }
+      .container-fields-cooking-preparation {
+        width: 100%;
+        label {
+          input {
+            width: 99%;
+          }
+          span {
+            white-space: initial;
+          }
+        }
+      }
+    }
+  }
+}

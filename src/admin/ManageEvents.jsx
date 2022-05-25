@@ -54,15 +54,14 @@ const ManageEvents = ({ idEventToManage, setIdEventToManage }) => {
       />
 
       <div className="container-manageEvents">
-        <h3>ManageEvents</h3>
         <table>
-          <caption>Historique des évènements</caption>
+          <caption>Gestion des événements</caption>
           <thead>
             <tr align="center">
-              <th>Nom de l'event</th>
-              <th>Date de l'event</th>
-              <th>Heure de l'event</th>
-              <th>Status évènement</th>
+              <th>Nom</th>
+              <th>Date</th>
+              <th>Heure</th>
+              <th>Status</th>
               <th>Action</th>
             </tr>
           </thead>
