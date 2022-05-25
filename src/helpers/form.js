@@ -36,7 +36,6 @@ export const handleForm = (
   const token = localStorage.getItem("token_access_le_bon_sens");
   serviceFunction(dataInputs, token, idToManage)
     .then(() => {
-      console.log("ok!");
       manageSuccessMessage(operation, setMessage);
       setError(false);
       setTimeout(() => {
