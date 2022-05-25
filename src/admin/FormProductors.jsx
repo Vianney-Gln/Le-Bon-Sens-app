@@ -232,8 +232,7 @@ const FormProductors = ({ operation, idProductorToManage }) => {
             }
           />
         </label>
-        {(operation === "updateProductor" && dataProductor.isPublic === 0) ||
-        dataProductor.isPublic === 1 ? (
+        {operation === "updateProductor" ? (
           <label htmlFor="visibility">
             <span>Gestion de la visibilité </span>
             <select
