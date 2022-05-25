@@ -98,7 +98,9 @@ const FormCarrouselProductors = ({
         <button type="submit">Valider</button>
         <p className={!error ? "success" : "fail"}>{message && message}</p>
       </form>
-      <h3>Gestion et aperçu des images du carrousel</h3>
+      <h3 className="title-manage-carrousel">
+        Gestion et aperçu des images du carrousel
+      </h3>
       <div className="container-preview-image">
         <ul className="list-image-carrousel-to-manage">
           {carrousel.length ? (
