@@ -5,7 +5,7 @@
   flex-direction: column;
   align-items: center;
   position: relative;
-  background-image: url("../images/paysage.jpg");
+  background-image: url("../images/paysage-min.jpg");
   background-size: cover;
   h1 {
     background-color: #c4c4c4;
@@ -141,8 +141,6 @@
 
 @media screen and (max-width: 700px) {
   .container-events {
-    background-image: url("../images/paysage.jpg");
-    background-size: cover;
     h1 {
       font-size: 24px;
     }
