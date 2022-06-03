@@ -46,17 +46,21 @@
         cursor: pointer;
         transition: all 0.5s ease;
         white-space: nowrap;
-        overflow: hidden;
         text-overflow: ellipsis;
+        position: relative;
 
         .menu-products,
         .menu-recipes,
         .menu-events,
         .menu-productors {
           position: absolute;
-          top: 79px;
+          top: 38px;
+          left: 0px;
+          list-style: none;
+          z-index: 5;
           background-color: #c4c4c4;
           display: none;
+
           li {
             font-size: 1rem;
           }

@@ -46,7 +46,7 @@ const ManageProduct = ({ setIdProductToManage, idProductToManage }) => {
   }, [sortParam, searchParam]);
 
   return (
-    <>
+    <div className="container-manageProduct">
       <Modal1
         modalIsOpen={modalIsOpen}
         closeModal={closeModal}
@@ -93,7 +93,7 @@ const ManageProduct = ({ setIdProductToManage, idProductToManage }) => {
             ))}
         </ul>
       </div>
-    </>
+    </div>
   );
 };
 
