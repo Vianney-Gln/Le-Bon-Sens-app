@@ -94,7 +94,7 @@
 
 @media screen and (max-width: 700px) {
   .container-shop {
-    padding: 0px;
+    padding: 0;
     height: auto;
 
     h1 {
@@ -108,6 +108,7 @@
       border-radius: 0px;
       border-bottom: 1px solid white;
       max-height: none;
+      max-width: none;
       margin: 0;
     }
 
