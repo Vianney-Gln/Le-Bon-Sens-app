@@ -61,4 +61,4 @@ Middlewares<br>
 Helpers<br>
 
 ## API tree screenShot
-![API tree](https://github.com/Vianney-Gln/Le-Bon-Sens-app/tree/doc.readme/src/images/apercu-archi-back.png)
+![API tree](https://www.udrop.com/file/6L7n/apercu-archi-back.png)
