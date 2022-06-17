@@ -32,8 +32,33 @@ This project uses 1 API, Le Bon Sens Back create with Express JS<br>
 Clone this repository.<br>
 Launch `npm install` to install all packages.
 <br>
-
 <br>
 You can launch the project with `npm start` after you have installed all packages.<br>
 This project uses same commands like the basics `create-react-app`.
 <br>
+
+## How to get the Api Express js
+<br>
+Got to the repository Le Bon Sens Back and clone it.<br>
+You 'll need to complete .env-sample and ask to the owner config to acceed the dataBase.<br>
+You also need to create a private-key.<br>
+To run node-mailer you 'll need to enter a user-email and user-email-password.
+
+## Tips about email for gmail users
+<br>
+Google recently made an update about security. <br>
+Now you need to go to security options from your google account and enable the double authentification.<br>
+Then you will need to enter an application name which will be authorized to use your email address<br>
+Google will generate a specific password for this app <br>
+
+## API tree
+<br>
+This API use the MVC architecture.<br>
+There a few kind of folders as:<br>
+Routes<br>
+Models<br>
+Middlewares<br>
+Helpers<br>
+
+## API tree screenShot
+![API tree](https://github.com/Vianney-Gln/Le-Bon-Sens-app/tree/doc.readme/src/images/apercu-archi-back.png)
