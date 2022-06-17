@@ -1,6 +1,6 @@
-![Le Bon Sens]
+## Le Bon Sens
 
-## ![What is Le Bon Sens](https://i.imgur.com/XqLrPTo.png)
+## What is Le Bon Sens
 
 <br>
 
@@ -13,7 +13,7 @@ The admin also needs to authentificate himself to acceed back-office.
 
 <br>
 
-## ![Technologies Used](https://i.imgur.com/Kxz5fpB.png)
+## Technologies Used
 
 <br>
 
@@ -26,7 +26,7 @@ For this project I used:<br>
 
 <br>
 
-## ![Usage](https://i.imgur.com/Hf1U6Ux.png)
+## Usage
 <br>
 This project uses 1 API, Le Bon Sens Back create with Express JS<br>
 Clone this repository.<br>
