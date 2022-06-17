@@ -1,0 +1,52 @@
+.container-manageProductors {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
+  min-height: 70vh;
+
+  table {
+    width: 80%;
+    margin-top: 40px;
+    border-collapse: collapse;
+    background-color: whitesmoke;
+    max-height: 400px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 0px 8px;
+    overflow-y: auto;
+
+    caption {
+      padding: 15px;
+      font-size: 1.4rem;
+      margin-bottom: 20px;
+    }
+
+    td,
+    th {
+      border: 1px solid black;
+      padding: 10px;
+    }
+
+    th {
+      background-color: white;
+    }
+    .action {
+      span {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+
+        i {
+          cursor: pointer;
+          transition: all 0.5s ease;
+          color: #c4c4c4;
+          margin: 0px 10px;
+        }
+        i:hover {
+          transform: scale(1.1);
+          color: black;
+        }
+      }
+    }
+  }
+}

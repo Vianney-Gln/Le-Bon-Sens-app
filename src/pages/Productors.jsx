@@ -1,0 +1,140 @@
+import React, { useState, useEffect } from "react";
+//Routing
+import { useParams, useNavigate } from "react-router-dom";
+// Style
+import "../styles/productors.scss";
+//React Slideshow
+import { Slide } from "react-slideshow-image";
+import "react-slideshow-image/dist/styles.css";
+// Images
+import iconFaceBook from "../images/icone-fb.jpg";
+import iconTwitter from "../images/icone-twitter.png";
+import std1 from "../images/leaf.png";
+import std2 from "../images/leaf2.png";
+import std3 from "../images/leaf3.png";
+//Services
+import { getInfosProductors } from "../services/productors";
+
+const Productors = () => {
+  /* ----- Doc title ----- */
+  document.title = "Le Bon Sens - Nos Producteurs associés";
+
+  /* ----- UseParam ----- */
+  const param = useParams();
+
+  /* ----- UseNavigate ------ */
+  const navigate = useNavigate();
+
+  /* ----- States ----- */
+  const [infosProductor, setInfosProductor] = useState({});
+  const [carrousel, setCarrousel] = useState([]);
+
+  /* ----- Standards carrousel image ------*/
+  const stdImages = [std1, std2, std3];
+
+  /* ----- Getting infos productor by id on component mounting ----- */
+  useEffect(() => {
+    getInfosProductors(param.id)
+      .then((result) => {
+        setInfosProductor(result);
+        if (result.carrousel) {
+          setCarrousel(result.carrousel);
+        } else {
+          setCarrousel([]);
+        }
+      })
+      .catch(() => {
+        navigate("/*");
+      });
+  }, [param.id]);
+
+  return (
+    <div className="container-productors">
+      <h1>Nos producteurs</h1>
+      <div className="container-top">
+        <div className="container-carrousel">
+          <Slide>
+            {carrousel.length
+              ? carrousel.map((slideImage) => (
+                  <div
+                    className="each-slide"
+                    key={slideImage.urlImageCarrousel}
+                  >
+                    <div
+                      className="slide"
+                      style={{
+                        backgroundImage: `url(${slideImage.urlImageCarrousel})`,
+                      }}
+                    />
+                  </div>
+                ))
+              : stdImages.map((img) => {
+                  return (
+                    <div className="each-slide" key={img}>
+                      <div
+                        className="slide-standard"
+                        style={{
+                          backgroundImage: `url(${img})`,
+                        }}
+                      />
+                    </div>
+                  );
+                })}
+          </Slide>
+          <div className="container-buttons-mobile"></div>
+        </div>
+        <div className="container-description-productor">
+          <h2>{infosProductor.name}</h2>
+          <p className="description-productor">{infosProductor.description1}</p>
+          <p className="link-website">
+            <a
+              href={infosProductor.urlWebsite ? infosProductor.urlWebsite : "#"}
+            >
+              Site Web
+              <span>
+                <svg width="40" height="12" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M34.05 0l5.481 5.527h.008v.008L40 6l-.461.465v.063l-.062-.001L34.049 12l-.662-.668 4.765-4.805H0v-1h38.206l-4.82-4.86L34.05 0z"
+                    fill="#000"
+                    fillRule="nonzero"
+                  />
+                </svg>
+              </span>
+            </a>
+          </p>
+          <div className="link-social-networks">
+            {infosProductor.urlFacebook && (
+              <a href={infosProductor.urlFacebook}>
+                <img src={iconFaceBook} alt="facebook" />
+              </a>
+            )}
+            {infosProductor.urlTwitter && (
+              <a href={infosProductor.urlTwitter}>
+                <img src={iconTwitter} alt="twitter" />
+              </a>
+            )}
+          </div>
+          <div className="container-buttons"></div>
+        </div>
+      </div>
+      <div className="container-bottom">
+        <img src={infosProductor.urlImage1} alt={infosProductor.name} />
+        <div className="container-iframe">
+          <div>
+            <iframe
+              title="location Le Bon Sens"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2702.053648826712!2d-1.2235271845005193!3d47.371871379169725!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x480603f0e515c905%3A0x8d19d704011726e5!2zTmF0dXInw6lsZXZhZ2UgZGUgU2FpbnQtR8OpcsOpb24!5e0!3m2!1sfr!2sfr!4v1645537785093!5m2!1sfr!2sfr"
+              width="auto"
+              height="auto"
+              allowFullScreen=""
+              loading="lazy"
+            />
+          </div>
+        </div>
+        <img src={infosProductor.urlImage2} alt={infosProductor.name} />
+      </div>
+    </div>
+  );
+};
+
+export default Productors;

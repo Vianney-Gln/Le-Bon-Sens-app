@@ -1,0 +1,71 @@
+.container-recipes {
+  width: 100%;
+  font-family: "Patrick Hand", cursive;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 70vh;
+
+  h1 {
+    background-color: #c4c4c4;
+    position: absolute;
+    top: -22px;
+    padding: 0px 20px;
+    border: 1px solid white;
+    border-radius: 5px;
+  }
+
+  label {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+
+    input {
+      width: 30%;
+      margin-top: 20px;
+      border-radius: 5px;
+      border: 1px solid #c4c4c4;
+      padding-top: 7px;
+      padding-bottom: 7px;
+    }
+  }
+  .container-center-cards-recipes {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    .container-cards-recipes {
+      width: 80%;
+      display: flex;
+      margin-top: 20px;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      background-image: url("../images/fond-bois.jpg");
+    }
+  }
+}
+
+/* ------ Mobile ------ */
+
+@media screen and (max-width: 700px) {
+  .container-recipes {
+    h1 {
+      font-size: 24px;
+    }
+    label {
+      input {
+        width: 80%;
+      }
+      margin-bottom: 40px;
+    }
+    .container-center-cards-recipes {
+      background-color: whitesmoke;
+      .container-cards-recipes {
+        background-color: whitesmoke;
+        background-image: none;
+        width: 100%;
+      }
+    }
+  }
+}

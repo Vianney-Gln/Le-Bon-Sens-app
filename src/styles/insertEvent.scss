@@ -1,0 +1,48 @@
+.insert-event {
+  width: 150px;
+  height: 150px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  background-color: #e3e7e3;
+  border-radius: 100%;
+  padding: 10px;
+  position: absolute;
+  top: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 0;
+  z-index: 10;
+
+  a {
+    p {
+      text-align: center;
+      font-size: 0.8rem;
+      color: black;
+      text-shadow: none;
+    }
+    p:hover {
+      text-decoration: underline;
+    }
+  }
+
+  button {
+    font-size: 0.7rem;
+    cursor: pointer;
+    border: none;
+    background-color: #e3e7e3;
+    font-family: "Patrick Hand", cursive;
+  }
+  button:hover {
+    text-decoration: underline;
+    font-weight: bold;
+  }
+}
+
+/* ------ Mobile ------ */
+
+@media screen and (max-width: 700px) {
+  .insert-event {
+    display: none;
+  }
+}
