@@ -1,70 +1,64 @@
-# Getting Started with Create React App
+## Le Bon Sens
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## What is Le Bon Sens
 
-## Available Scripts
+<br>
 
-In the project directory, you can run:
+Proudly presents: Le Bon Sens, a web site with back-office.<br>
+It was born the 13th of Febuary, 2022.<br>
+It came as my first real project. I 'll presente this project to pass the developper certificate.<br>
+This web site contains 5 pages about products to sell, events, recipes, productors and contact. <br>
+There is a back-office that allow the admin to create, update or delete almost all the content of the web site.<br>
+The admin also needs to authentificate himself to acceed back-office.
 
-### `npm start`
+<br>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Technologies Used
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<br>
 
-### `npm test`
+For this project I used:<br>
+⇒ Html, Css (Scss), Javascript, ReactJs, Node js, Express js, MySql<br>
+⇒ NPM for additional packages<br>
+⇒ Webpack to compile the final project.<br>
+⇒ Node js with the framework Express js to create the API.<br>
+⇒ MySql as DataBase
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<br>
 
-### `npm run build`
+## Usage
+<br>
+This project uses 1 API, Le Bon Sens Back create with Express JS<br>
+Clone this repository.<br>
+Launch `npm install` to install all packages.
+<br>
+<br>
+You can launch the project with `npm start` after you have installed all packages.<br>
+This project uses same commands like the basics `create-react-app`.
+<br>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## How to get the Api Express js
+<br>
+Got to the repository Le Bon Sens Back and clone it.<br>
+You 'll need to complete .env-sample and ask to the owner config to acceed the dataBase.<br>
+You also need to create a private-key.<br>
+To run node-mailer you 'll need to enter a user-email and user-email-password.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Tips about email for gmail users
+<br>
+Google recently made an update about security. <br>
+Now you need to go to security options from your google account and enable the double authentification.<br>
+Then you will need to enter an application name which will be authorized to use your email address<br>
+Google will generate a specific password for this app <br>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## API tree
+<br>
+This API use the MVC architecture.<br>
+There a few kind of folders as:<br>
+Routes<br>
+Models<br>
+Middlewares<br>
+Helpers<br>
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## API tree screenShot
+![API tree](https://www.udrop.com/file/6L7n/apercu-archi-back.png)
