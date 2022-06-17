@@ -67,7 +67,7 @@ const Login = () => {
     e.preventDefault();
     changePasswordRequest(creds)
       .then(() => {
-        setMessage("un lien de réinitialisation vous a été envoyer");
+        setMessage("un lien de réinitialisation vous a été envoyé");
         setError(false);
       })
       .catch(() => {
