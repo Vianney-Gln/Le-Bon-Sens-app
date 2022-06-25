@@ -17,12 +17,10 @@ const Events = () => {
     getInfosEvents().then((evts) => {
       evts.forEach((evt) => {
         if (evt.isCurrent === 1) {
-          console.log(evt);
           setCurrentEvents((oldEvents) => [...oldEvents, evt]); // "push" currents events
         } else {
           setEvents((oldEvents) => [...oldEvents, evt]); // "push" past events
           setLastEvent(evts[0]);
-          console.log(evt);
         }
       });
     });
