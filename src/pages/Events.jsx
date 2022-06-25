@@ -17,10 +17,12 @@ const Events = () => {
     getInfosEvents().then((evts) => {
       evts.forEach((evt) => {
         if (evt.isCurrent === 1) {
+          console.log(evt);
           setCurrentEvents((oldEvents) => [...oldEvents, evt]); // "push" currents events
         } else {
           setEvents((oldEvents) => [...oldEvents, evt]); // "push" past events
           setLastEvent(evts[0]);
+          console.log(evt);
         }
       });
     });
@@ -102,10 +104,15 @@ const Events = () => {
         )}
       </div>
       <div className="container-past-event">
-        {events.length > 1 ? <h2>Evénements passés</h2> : ""}
-        {events &&
-          events.map((eve, index) => {
-            if (eve.isCurrent === 0 && index !== 0) {
+        {events.length > 1 ? (
+          <h2>Evénements passés</h2>
+        ) : (
+          <h2>Evénement passé</h2>
+        )}
+        {events.length &&
+          events
+            .filter((ev) => ev.id !== lastEvent.id)
+            .map((eve) => {
               return (
                 <div key={eve.date} className="description-event">
                   <h3>
@@ -125,9 +132,9 @@ const Events = () => {
                   </p>
                 </div>
               );
-            }
-            return true;
-          })}
+
+              return true;
+            })}
       </div>
     </div>
   );
