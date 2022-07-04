@@ -238,16 +238,16 @@ const FormProductors = ({ operation, idProductorToManage }) => {
             <select
               name="visibility"
               placeholder="gérer la visibilité"
-              defaultValue={dataProductor.isPublic}
               onChange={(e) => {
                 getDataInput(
                   dataProductor,
                   setDataProductor,
-                  e.target.value,
+                  Number(e.target.value),
                   "isPublic"
                 );
               }}
             >
+              <option value={dataProductor.isPublic}>--choix--</option>
               <option value={0}>Admin</option>
               <option value={1}>Publique</option>
             </select>
