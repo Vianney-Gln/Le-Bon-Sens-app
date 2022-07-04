@@ -168,6 +168,7 @@
       padding: 0;
       h2 {
         padding: 20px 0px;
+        text-shadow: 0px 1px 4px black;
       }
       h3 {
         font-size: 18px;
@@ -187,10 +188,12 @@
           align-items: center;
           img {
             float: none;
-            width: 120px;
-            height: 80px;
+            width: 300px;
+            height: 216px;
             margin-bottom: 20px;
             margin-top: 20px;
+            object-fit: cover;
+            object-position: center;
           }
         }
       }
