@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 // style
 import "../styles/findUs.scss";
 //Font awesome
@@ -10,6 +10,10 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 // Context
 import { shopContext } from "../context/shop";
+// Helper
+import getDataInput from "../helpers/form";
+// Service
+import sendMail from "../services/sendMail";
 
 const FindUs = () => {
   // Doc title
@@ -17,6 +21,64 @@ const FindUs = () => {
 
   // UseContext
   const ShopContext = useContext(shopContext);
+
+  // States
+  const [data, setData] = useState({}); // state data form contact
+  const [message, setMessage] = useState(""); // message success or error
+  const [error, setError] = useState(false); // error boolean
+
+  /**
+   * Function generate error message
+   * @param {string} errorMessage
+   */
+  const manageErrorMessage = (errorMessage) => {
+    if (errorMessage.includes("pattern:")) {
+      setMessage("caractères spéciaux non autorisés");
+    } else if (
+      errorMessage.includes(
+        "length must be less than or equal to 100 characters long"
+      )
+    ) {
+      setMessage("nom et prénom ne doivent pas dépasser 100 caractères");
+    } else if (
+      errorMessage.includes("empty") ||
+      errorMessage.includes("is required")
+    ) {
+      setMessage("tous les champs doivent être remplis");
+    } else if (
+      errorMessage.includes("length must be at least 20 characters long")
+    ) {
+      setMessage("le message doit faire au moins 20 caractères de long");
+    } else if (errorMessage.includes("must be a valid email")) {
+      setMessage("l'adresse email n'est pas valide.");
+    } else {
+      setMessage("désolé, il y a eu une erreur lors de l'envois du message");
+    }
+  };
+
+  const runSendMail = (e) => {
+    e.preventDefault();
+    sendMail(data)
+      .then(() => {
+        setError(false);
+        setMessage("merci pour votre message!");
+        setData({});
+        setTimeout(() => {
+          document.getElementById("name").value = "";
+          document.getElementById("firstname").value = "";
+          document.getElementById("object").value = "";
+          document.getElementById("email").value = "";
+          document.getElementById("message").value = "";
+          setMessage("");
+        }, 4000);
+      })
+      .catch((err) => {
+        setError(true);
+        const error = err.response.data.validationError[0].message;
+        console.log(error);
+        manageErrorMessage(error);
+      });
+  };
   return (
     <div className="container-find-us">
       <h1>Nous contacter</h1>
@@ -31,14 +93,22 @@ const FindUs = () => {
             loading="lazy"
           />
         </div>
-        <form action="https://formspree.io/f/xpzbbply" method="post">
+        <form onSubmit={(e) => runSendMail(e)}>
           <div className="container-name-firstname">
             <p>
               <span>NOM,</span>
               <span> PRENOM</span>
             </p>
             <label htmlFor="name">
-              <input type="text" name="name" placeholder="nom" required></input>
+              <input
+                type="text"
+                name="name"
+                placeholder="nom"
+                id="name"
+                onChange={(e) =>
+                  getDataInput(data, setData, e.target.value, "name")
+                }
+              ></input>
             </label>
             <label htmlFor="firstname">
               <input
@@ -46,7 +116,10 @@ const FindUs = () => {
                 name="firstname"
                 placeholder="prénom"
                 className="input-firstname"
-                required
+                id="firstname"
+                onChange={(e) =>
+                  getDataInput(data, setData, e.target.value, "firstname")
+                }
               ></input>
             </label>
           </div>
@@ -59,7 +132,26 @@ const FindUs = () => {
                 type="email"
                 name="email"
                 placeholder="email"
-                required
+                id="email"
+                onChange={(e) =>
+                  getDataInput(data, setData, e.target.value, "email")
+                }
+              ></input>
+            </label>
+          </div>
+          <div className="container-object">
+            <p>
+              <span>OBJET</span>
+            </p>
+            <label htmlFor="objet">
+              <input
+                type="text"
+                name="objet"
+                placeholder="objet"
+                id="object"
+                onChange={(e) =>
+                  getDataInput(data, setData, e.target.value, "object")
+                }
               ></input>
             </label>
           </div>
@@ -71,12 +163,20 @@ const FindUs = () => {
               <textarea
                 name="message"
                 placeholder="votre message ici"
-                required
-                minLength={50}
+                id="message"
+                onChange={(e) =>
+                  getDataInput(data, setData, e.target.value, "message")
+                }
               ></textarea>
             </label>
           </div>
           <button type="submit">Envoyer</button>
+          <p
+            style={error ? { color: "red" } : { color: "green" }}
+            className="message-form"
+          >
+            {message ? message : ""}
+          </p>
         </form>
       </div>
       <div className="container-contact-information">
