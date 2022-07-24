@@ -17,6 +17,11 @@ const FindUs = () => {
 
   // UseContext
   const ShopContext = useContext(shopContext);
+
+  const runSendMail = (e) => {
+    e.preventDefault();
+    console.log("mail envoyé!");
+  };
   return (
     <div className="container-find-us">
       <h1>Nous contacter</h1>
@@ -31,7 +36,7 @@ const FindUs = () => {
             loading="lazy"
           />
         </div>
-        <form action="https://formspree.io/f/xpzbbply" method="post">
+        <form onSubmit={(e) => runSendMail(e)}>
           <div className="container-name-firstname">
             <p>
               <span>NOM,</span>
@@ -46,7 +51,6 @@ const FindUs = () => {
                 name="firstname"
                 placeholder="prénom"
                 className="input-firstname"
-                required
               ></input>
             </label>
           </div>
@@ -55,12 +59,15 @@ const FindUs = () => {
               <span>EMAIL</span>
             </p>
             <label htmlFor="email">
-              <input
-                type="email"
-                name="email"
-                placeholder="email"
-                required
-              ></input>
+              <input type="email" name="email" placeholder="email"></input>
+            </label>
+          </div>
+          <div className="container-object">
+            <p>
+              <span>OBJET</span>
+            </p>
+            <label htmlFor="objet">
+              <input type="text" name="objet" placeholder="objet"></input>
             </label>
           </div>
           <div className="container-message">
@@ -71,8 +78,6 @@ const FindUs = () => {
               <textarea
                 name="message"
                 placeholder="votre message ici"
-                required
-                minLength={50}
               ></textarea>
             </label>
           </div>
