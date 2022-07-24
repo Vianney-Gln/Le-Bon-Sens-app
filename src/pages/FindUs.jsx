@@ -25,6 +25,7 @@ const FindUs = () => {
   // States
   const [data, setData] = useState({}); // state data form contact
   const [message, setMessage] = useState(""); // message success or error
+  const [error, setError] = useState(false); // error boolean
 
   /**
    * Function generate error message
@@ -59,6 +60,7 @@ const FindUs = () => {
     e.preventDefault();
     sendMail(data)
       .then(() => {
+        setError(false);
         setMessage("merci pour votre message!");
         setData({});
         setTimeout(() => {
@@ -71,6 +73,7 @@ const FindUs = () => {
         }, 4000);
       })
       .catch((err) => {
+        setError(true);
         const error = err.response.data.validationError[0].message;
         console.log(error);
         manageErrorMessage(error);
@@ -168,7 +171,12 @@ const FindUs = () => {
             </label>
           </div>
           <button type="submit">Envoyer</button>
-          <p className="message-form">{message ? message : ""}</p>
+          <p
+            style={error ? { color: "red" } : { color: "green" }}
+            className="message-form"
+          >
+            {message ? message : ""}
+          </p>
         </form>
       </div>
       <div className="container-contact-information">
