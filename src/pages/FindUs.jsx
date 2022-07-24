@@ -60,7 +60,7 @@ const FindUs = () => {
     sendMail(data)
       .then(() => {
         setMessage("merci pour votre message!");
-        setDataMail({});
+        setData({});
         setTimeout(() => {
           document.getElementById("name").value = "";
           document.getElementById("firstname").value = "";
@@ -72,6 +72,7 @@ const FindUs = () => {
       })
       .catch((err) => {
         const error = err.response.data.validationError[0].message;
+        console.log(error);
         manageErrorMessage(error);
       });
   };
@@ -167,6 +168,7 @@ const FindUs = () => {
             </label>
           </div>
           <button type="submit">Envoyer</button>
+          <p className="message-form">{message ? message : ""}</p>
         </form>
       </div>
       <div className="container-contact-information">

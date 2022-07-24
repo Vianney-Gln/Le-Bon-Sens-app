@@ -11,7 +11,7 @@ const sendMail = (data) => {
   return axios({
     method: "post",
     url: `${baseUrl}/api/LeBonSens/sendMail`,
-    dat: data,
+    data: data,
   }).then((result) => result.data);
 };
 
