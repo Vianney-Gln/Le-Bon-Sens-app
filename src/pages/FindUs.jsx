@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 // style
 import "../styles/findUs.scss";
 //Font awesome
@@ -10,6 +10,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 // Context
 import { shopContext } from "../context/shop";
+// Helper
+import getDataInput from "../helpers/form";
 
 const FindUs = () => {
   // Doc title
@@ -18,9 +20,12 @@ const FindUs = () => {
   // UseContext
   const ShopContext = useContext(shopContext);
 
+  // State
+  const [data, setData] = useState({}); // state data form contact
+
   const runSendMail = (e) => {
     e.preventDefault();
-    console.log("mail envoyé!");
+    console.log(data);
   };
   return (
     <div className="container-find-us">
@@ -43,7 +48,14 @@ const FindUs = () => {
               <span> PRENOM</span>
             </p>
             <label htmlFor="name">
-              <input type="text" name="name" placeholder="nom" required></input>
+              <input
+                type="text"
+                name="name"
+                placeholder="nom"
+                onChange={(e) =>
+                  getDataInput(data, setData, e.target.value, "name")
+                }
+              ></input>
             </label>
             <label htmlFor="firstname">
               <input
@@ -51,6 +63,9 @@ const FindUs = () => {
                 name="firstname"
                 placeholder="prénom"
                 className="input-firstname"
+                onChange={(e) =>
+                  getDataInput(data, setData, e.target.value, "firstname")
+                }
               ></input>
             </label>
           </div>
@@ -59,7 +74,14 @@ const FindUs = () => {
               <span>EMAIL</span>
             </p>
             <label htmlFor="email">
-              <input type="email" name="email" placeholder="email"></input>
+              <input
+                type="email"
+                name="email"
+                placeholder="email"
+                onChange={(e) =>
+                  getDataInput(data, setData, e.target.value, "email")
+                }
+              ></input>
             </label>
           </div>
           <div className="container-object">
@@ -67,7 +89,14 @@ const FindUs = () => {
               <span>OBJET</span>
             </p>
             <label htmlFor="objet">
-              <input type="text" name="objet" placeholder="objet"></input>
+              <input
+                type="text"
+                name="objet"
+                placeholder="objet"
+                onChange={(e) =>
+                  getDataInput(data, setData, e.target.value, "object")
+                }
+              ></input>
             </label>
           </div>
           <div className="container-message">
@@ -78,6 +107,9 @@ const FindUs = () => {
               <textarea
                 name="message"
                 placeholder="votre message ici"
+                onChange={(e) =>
+                  getDataInput(data, setData, e.target.value, "message")
+                }
               ></textarea>
             </label>
           </div>
